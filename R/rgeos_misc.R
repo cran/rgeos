@@ -1,0 +1,99 @@
+RGEOSMiscFunc = function(spgeom, byid, func) {
+    byid = as.logical(byid)
+    if (is.na(byid)) stop("Invalid value for byid, must be logical")
+    
+    x <- .Call(func, .RGEOS_HANDLE, spgeom, byid, PACKAGE="rgeos")
+    if(byid) names(x) <- unique(row.names(spgeom))
+    
+    return(x)
+}
+
+gArea = function(spgeom, byid=FALSE) {
+    return( RGEOSMiscFunc(spgeom,byid,"rgeos_area") )
+}
+
+gLength = function(spgeom, byid=FALSE) {
+    return(RGEOSMiscFunc(spgeom,byid,"rgeos_length"))
+}
+
+
+RGEOSDistanceFunc = function(spgeom1, spgeom2, byid, func, densifyFrac = 1) {
+    byid = as.logical(byid)
+    if (any(is.na(byid)) ) stop("Invalid value for byid, must be logical")
+
+    if( length(byid) < 1 || length(byid) > 2 )
+        stop("Invalid length for byid, must be of length 1 or 2")
+
+    if (length(byid) == 1)
+        byid <- rep(byid,2)
+
+    if(!is.null(spgeom1) & !is.null(spgeom2)) {
+        if(!identical(spgeom1@proj4string,spgeom2@proj4string))
+            warning("spgeom1 and spgeom2 have different proj4 strings")
+    }
+
+    if (func == "rgeos_hausdorffdistancedensify") {
+        x <- .Call(func, .RGEOS_HANDLE, spgeom1, spgeom2, densifyFrac, byid, PACKAGE="rgeos")
+    } else {
+        x <- .Call(func, .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    }
+    
+    if(any(byid)) {
+        id1 = row.names(spgeom1) 
+        if (is.null(spgeom2))
+            id2 = id1
+        else 
+            id2 = row.names(spgeom2)
+        
+        colnames(x) = id1
+        rownames(x) = id2
+    }
+
+    return(x)
+} 
+
+gDistance = function(spgeom1, spgeom2=NULL, byid=FALSE, hausdorff=FALSE, densifyFrac = NULL) {
+	if (hausdorff) {
+		if(is.null(densifyFrac)) {
+			return( RGEOSDistanceFunc(spgeom1, spgeom2, byid, "rgeos_hausdorffdistance") )
+		} else {
+			if (!is.numeric(densifyFrac))
+		        stop("densifyFrac must be numeric")
+
+		    if (densifyFrac > 1 | densifyFrac <= 0)
+		        stop("densifyFrac must be in the range (0,1]")
+
+		    return( RGEOSDistanceFunc(spgeom1, spgeom2, byid, "rgeos_hausdorffdistancedensify", densifyFrac) )
+		}
+	} else {
+    	return( RGEOSDistanceFunc(spgeom1, spgeom2, byid, "rgeos_distance") )
+	}
+}
+
+gWithinDistance = function(spgeom1, spgeom2=NULL, dist, byid=FALSE, hausdorff=FALSE, densifyFrac=NULL) {
+    #TODO - include a tolerance?
+    return( gDistance(spgeom1,spgeom2,byid, hausdorff, densifyFrac) <= dist )
+}
+
+
+#Deprecated function names
+RGEOSArea = function(spgeom, byid=FALSE) {
+    .Deprecated("gArea")
+    return( gArea(spgeom, byid) )
+}
+RGEOSLength = function(spgeom, byid=FALSE) {
+    .Deprecated("gLength")
+    return( gLength(spgeom, byid) )
+}
+RGEOSDistance = function(spgeom1, spgeom2=NULL, byid=FALSE) {
+    .Deprecated("gDistance")
+    return( gDistance(spgeom1, spgeom2, byid) )
+}
+RGEOSisWithinDistance = function(spgeom1, spgeom2=NULL, dist, byid=FALSE) {
+    .Deprecated("gWithinDistance")
+    return( gWithinDistance(spgeom1, spgeom2, dist, byid) )
+}
+RGEOSHausdorffDistance = function(spgeom1, spgeom2=NULL, byid=FALSE) {
+    .Deprecated("gDistance")
+    return( gDistance(spgeom1, spgeom2, byid, TRUE) )
+}

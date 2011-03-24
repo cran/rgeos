@@ -1,0 +1,10 @@
+WINDOWS BINARY PACKAGE
+
+In fulfillment of distribution requirements, the source code for GEOS
+together with the MSYS/MinGW built DLLs, header and other files used in
+the building of the Windows binary package are available for download
+from:
+
+http://spatial.nhh.no/R/rgeos/
+
+
