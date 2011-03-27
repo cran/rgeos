@@ -1,6 +1,8 @@
 RGEOSUnaryPredFunc = function(spgeom, byid, func) {
     byid = as.logical(byid)
     if (is.na(byid)) stop("Invalid value for byid, must be logical")
+    if (inherits(spgeom, "SpatialPolygons")) 
+        spgeom <- createSPComment(spgeom)
 
     x <- .Call(func, .RGEOS_HANDLE, spgeom, byid, PACKAGE="rgeos")
     

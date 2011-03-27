@@ -32,21 +32,39 @@ gBinarySTRtreeQuery <- function(obj1, obj2) {
 }
 
 
+set_do_poly_check <- function(value) {
+  stopifnot(is.logical(value))
+  stopifnot(length(value) == 1)
+  assign("do_poly_check", value, envir=.RGEOS_HANDLE)
+}
+
+get_do_poly_check <- function() {
+  get("do_poly_check", envir=.RGEOS_HANDLE)
+}
+
+
 createSPComment = function(sppoly,which=NULL,overwrite=TRUE) {
     if (!inherits(sppoly, "SpatialPolygons")) 
         stop("not a SpatialPolygons object")
-    
-    if (is.null(which))
+    if (get_do_poly_check()) { 
+      if (is.null(which))
         which = 1:length(sppoly@polygons)
     
-    sppoly@polygons[which] = lapply(sppoly@polygons[which], function(p) {
-
-        if (!overwrite & !is.null(attr(p,"comment")))
+      sppoly@polygons[which] = lapply(sppoly@polygons[which], function(p) {
+        
+        if (!overwrite && !is.null(attr(p, "comment"))) {
             return(p)
-            
-        attr(p, "comment") = createPolygonsComment(p)
-        return(p)
-    })
+        } else if (all(sapply(slot(p, "Polygons"), function(j)
+            is.null(slot(j, "coords"))))) {
+            comment(p) <- paste(rep(0, length(slot(p, "Polygons"))),
+                collapse=" ")
+            return(p)
+        } else {
+            attr(p, "comment") = createPolygonsComment(p)
+            return(p)
+        }
+      })
+    }
 
     return(sppoly)
 }
