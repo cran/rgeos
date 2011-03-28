@@ -13,6 +13,10 @@ RGEOSBinTopoFunc = function(spgeom1, spgeom2, byid, ids=NULL, func) {
     if(!identical(spgeom1@proj4string,spgeom2@proj4string))
         warning("spgeom1 and spgeom2 have different proj4 strings")
     
+    if (inherits(spgeom1, "SpatialPolygons")) 
+        spgeom1 <- createSPComment(spgeom1)
+    if (inherits(spgeom2, "SpatialPolygons")) 
+        spgeom2 <- createSPComment(spgeom2)
     id1 = row.names(spgeom1) 
     id2 = row.names(spgeom2)    
     if(all(byid)) {

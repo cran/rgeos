@@ -1,12 +1,15 @@
 \name{RGEOS Polygon Hole Comment Functions}
 \alias{createSPComment}
 \alias{createPolygonsComment}
-
+\alias{get_do_poly_check}
+\alias{set_do_poly_check}
 \title{RGEOS Polygon Hole Comment Functions}
 \description{Utility functions for assigning ownership of holes to parent polygons}
 \usage{
 	createSPComment(sppoly,which=NULL,overwrite=TRUE)
 	createPolygonsComment(poly)
+        set_do_poly_check(value)
+        get_do_poly_check()
 }
 
 \arguments{
@@ -14,11 +17,24 @@
   \item{which}{Vector, which subset of geometries in sppoly should comment attributes be generated}
   \item{overwrite}{Logical, if a comment attribute already exists should it be overwritten}
   \item{poly}{Object of class \code{Polygons}}
+  \item{value}{logical value to set \dQuote{do_poly_check} option, default TRUE}
+}
+
+\section{Warning: check polygons}{
+The helper functions get and set the imposition of checking of objects inheriting from \code{SpatialPolygons} for proper assignment of hole \emph{interior rings} to \emph{exterior rings} in \code{Polygons} objects. The internal GEOS representation defines a POLYGON object as a collection of only one exterior ring and from zero to many interior rings, so an \pkg{sp} \code{Polygons} object corresponds to a GEOS MULTIPOLYGON object, but without proper hole assignment. By default \code{do_poly_check} is TRUE; if it is set to FALSE using \code{set_do_poly_check(FALSE)}, and the \code{Polygons} object is not valid in GEOS terms, GEOS may crash R, which is why checks are imposed by default. 
+
+The details below show how hole assignment is handled in the package; here we assume that the hole status slots of all Polygon objects in a given Polygons object are set correctly. In the examples below, we use a data set from \pkg{maptools} which has the holes correctly assigned, and we see that the SpatialPolygons object is geometrically valid both initially and after removing the comment attribute on the only Polygons object in \code{usa} - regenerating internally within \pkg{rgeos} from the hole status slots since \code{do_poly_check} is TRUE.
+
+If we modify \code{usa} by setting all hole status slots to FALSE, the SpatialPolygons object is geometrically invalid even though a comment attribute can be created - the function \code{createSPComment} is deceived by the incorrect hole status slots. To rectify this, we use \code{\link[maptools]{checkPolygonsHoles}} from \pkg{maptools} on each \code{Polygons} object. This function calls \code{\link{gContains}}, \code{\link{gContainsProperly}}, \code{\link{gEquals}} and \code{\link{createPolygonsComment}} from \pkg{rgeos} to check whether the hole status slots are set correctly. Experience shows that many imported datasets from for example publically provided shapefiles have incorrect hole status values. Running \code{checkPolygonsHoles} is time-consuming when the number of member \code{Polygon} objects is large - attempts will be made to make this more efficient.
+}
+
+\section{Warning: planar geometries}{
+The geometries handled by GEOS are assumed to be planar, so that any \pkg{rgeos} functions making measurements will give incorrect results when used on geographical coordinates measured in decimal degrees. Topological functions may work satisfactorily, but will not understand spherical wrap-around.
 }
 
 \details{In order for rgeos to function properly it is necessary that all holes within a given POLYGON or MULTIPOLYGON geometry must belong to a specific polygon. The \code{SpatialPolygons} class implementation does not currently include this information. To work around this limitation rgeos uses an additional comment attribute on the \code{Polygons} class that indicates which hole belongs to which polygon.
 
-Under the current implementation this comment is a text string of numbers separated by spaces where the order of the numbers corresponds to the order of the \code{Polygon} objects in the \code{Polygons} slot of the \code{Polygons} object. A \code{0} implies the \code{Polygon} object is a polygon, a non-zero number implies that the \code{Polygon} object is a hole with the value indicating the index of the \code{Polygon} that "owns" the hole.
+Under the current implementation this comment is a text string of numbers separated by spaces where the order of the numbers corresponds to the order of the \code{Polygon} objects in the \code{Polygons} slot of the \code{Polygons} object. A \code{0} implies the \code{Polygon} object is a polygon, a non-zero number implies that the \code{Polygon} object is a hole with the value indicating the index of the \code{Polygon} that \dQuote{owns} the hole.
 
 \code{createPolygonsComment} attempts to create a valid comment for a \code{Polygons} object by assessing which polygons contain a given hole (using \code{\link{gContains}}). Ownership is assigned to the smallest polygon (by area) that contains the given hole. This is not guaranteed to generate valid polygons, always check the resulting objects for validity.
 
@@ -57,7 +73,32 @@ Under the current implementation this comment is a text string of numbers separa
 	
 	plot(SpatialPolygons(list(pls)), col="magenta", pbg="cyan")
 	title(xlab="Hole slot values before checking")
-	
+require(maptools)
+data(wrld_simpl)
+usa <- wrld_simpl[wrld_simpl$ISO3=="USA",]
+lapply(slot(usa, "polygons"), comment)
+gIsValid(usa, reason=TRUE)
+comment(slot(usa, "polygons")[[1]]) <- NULL
+lapply(slot(usa, "polygons"), comment)
+gIsValid(usa)
+any(c(sapply(slot(usa, "polygons"),
+ function(x) sapply(slot(x, "Polygons"), slot, "hole"))))
+lapply(slot(createSPComment(usa), "polygons"), comment)
+usa1 <- usa
+Pls <- slot(usa1, "polygons")
+pls <- slot(Pls[[1]], "Polygons")
+pls1 <- lapply(pls, function(p) {slot(p, "hole") <- FALSE; return(p)})
+slot(Pls[[1]], "Polygons") <- pls1
+slot(usa1, "polygons") <- Pls
+any(c(sapply(slot(usa1, "polygons"),
+ function(x) sapply(slot(x, "Polygons"), slot, "hole"))))
+lapply(slot(createSPComment(usa1), "polygons"), comment)
+gIsValid(usa1, reason=TRUE)
+Pls <- slot(usa1, "polygons")
+Pls1 <- lapply(Pls, checkPolygonsHoles)
+slot(usa1, "polygons") <- Pls1
+lapply(slot(usa1, "polygons"), comment)
+gIsValid(usa1, reason=TRUE)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

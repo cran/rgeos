@@ -3,7 +3,7 @@ useDynLib(rgeos)
 import(methods)
 import(sp)
 
-export(createPolygonsComment,createSPComment)
+export(createPolygonsComment, createSPComment, set_do_poly_check, get_do_poly_check)
 
 #export(checkPolygonsGEOS)
 #export(checkHolesGPC)

@@ -4,6 +4,8 @@ gSimplify = function(spgeom, tol, topologyPreserve=FALSE) {
 	if (is.na(topologyPreserve))
 		stop("Invalid value for topologyPreserve, must be logical")
 	
+    if (inherits(spgeom, "SpatialPolygons")) 
+        spgeom <- createSPComment(spgeom)
     id = row.names(spgeom)
     return( .Call("rgeos_simplify", .RGEOS_HANDLE, spgeom, tol, id, 
 									FALSE, topologyPreserve, PACKAGE="rgeos") )
@@ -15,6 +17,13 @@ gPolygonize = function( splist, getCutEdges=FALSE) {
 		splist = list(splist)
 
 	p4slist = lapply(splist,function(x) x@proj4string)
+        splist <- lapply(splist, function(s) {
+            if (inherits(s, "SpatialPolygons")) {
+                createSPComment(s)
+            } else {
+                s
+            }
+        })
 	
 	p4s = p4slist[[1]]
 	if (length(p4slist) != 1) {
@@ -52,6 +61,7 @@ TopologyFunc = function(spgeom, id, byid, func) {
         else        id = "1"
     }
     id = as.character(id)
+    if (inherits(spgeom, "SpatialPolygons")) spgeom <- createSPComment(spgeom)
     
     if ( length(id) != length(unique(id)) )
         stop("Non-unique values for id ")

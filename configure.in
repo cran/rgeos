@@ -33,7 +33,11 @@ else
 
 fi
 
+GEOS_VER=`${GEOS_CONFIG} --version`
+echo "GEOS: $GEOS_VER"
+echo "CPPFLAGS: $PKG_CPPFLAGS"
 AC_SUBST(PKG_CPPFLAGS)
+echo "LIBS: $PKG_LIBS"
 AC_SUBST(PKG_LIBS)
 
 if test -e ".svn" ; then
