@@ -24,7 +24,6 @@ gIntersection(spgeom1, spgeom2, byid=FALSE, id=NULL)
 
 \examples{
 library(maptools)
-assign("rgeos", TRUE, envir=maptools:::.MAPTOOLS_CACHE)
 xx <- readShapeSpatial(system.file("shapes/fylk-val-ll.shp", package="maptools")[1], proj4string=CRS("+proj=longlat +datum=WGS84"))
 bbxx <- bbox(xx)
 wdb_lines <- system.file("share/wdb_borders_c.b", package="maptools")

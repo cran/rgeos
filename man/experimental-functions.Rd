@@ -26,7 +26,6 @@
 
 \examples{
 library(maptools)
-assign("rgeos", TRUE, envir=maptools:::.MAPTOOLS_CACHE)
 xx <- readShapeSpatial(system.file("shapes/fylk-val-ll.shp",
  package="maptools")[1], proj4string=CRS("+proj=longlat +datum=WGS84"))
 a0 <- gUnarySTRtreeQuery(xx)
@@ -42,6 +41,9 @@ a2 <- gUnarySTRtreeQuery(nc1)
 a3 <- poly_findInBoxGEOS(nc1)
 all.equal(a2, a3)
 a2
+pl <- slot(nc1, "polygons")[[4]]
+a5 <- gUnarySTRtreeQuery(pl)
+a5
 SG <- Sobj_SpatialGrid(nc1, n=400)$SG
 obj1 <- as(as(SG, "SpatialPixels"), "SpatialPolygons")
 a4 <- gBinarySTRtreeQuery(nc1, obj1)
