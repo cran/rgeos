@@ -51,6 +51,8 @@ SEXP rgeos_unarypredfunc(SEXP env, SEXP spgeom, SEXP byid,
         LOGICAL_POINTER(ans)[i] = val;
     }
 
+    GEOSGeom_destroy_r(GEOShandle, geom);
+
     UNPROTECT(pc);
     return(ans);
 }

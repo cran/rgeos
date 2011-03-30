@@ -1,3 +1,20 @@
+2011-03-30 14:40  rsbivand
+
+	* R/AAA.R, R/rgeos_util.R, src/rgeos_poly2nb.c,
+	  src/rgeos_predicate_binary.c, src/rgeos_predicate_unary.c:
+	  attempts to limit memory hunger
+
+2011-03-29 08:25  rsbivand
+
+	* DESCRIPTION, R/rgeos_util.R, man/experimental-functions.Rd,
+	  man/topo-bin-gIntersection.Rd, src/rgeos.h, src/rgeos_R2geos.c,
+	  src/rgeos_poly2nb.c: STRtree for Polygons
+
+2011-03-28 09:40  rsbivand
+
+	* ChangeLog, inst/ChangeLog: documenting hole checking for Polygons
+	  objects
+
 2011-03-28 09:39  rsbivand
 
 	* R/AAA.R: documenting hole checking for Polygons objects

@@ -80,6 +80,7 @@ GEOSGeom rgeos_SpatialPolygons2geospolygon(SEXP env, SEXP obj);
 GEOSGeom rgeos_Polygons2geospolygon(SEXP env, SEXP obj);
 GEOSGeom rgeos_Polygons2MP(SEXP env, SEXP obj);
 GEOSGeom rgeos_Lines2MP(SEXP env, SEXP obj);
+GEOSGeom rgeos_Polygon2MP(SEXP env, SEXP obj);
 GEOSGeom rgeos_Polygons_i_2Polygon(SEXP env, SEXP pls, SEXP vec);
 
 

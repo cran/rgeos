@@ -1,13 +1,24 @@
 .RGEOS_HANDLE <- new.env(FALSE, parent=globalenv())
 
+set_RGEOS_HANDLE <- function(handle) {
+    assign("GEOSptr", handle, envir=.RGEOS_HANDLE)
+}
+
+init_RGEOS <- function() {
+    .Call('rgeos_Init', PACKAGE="rgeos")
+}
+
+finish_RGEOS <- function() {
+    .Call('rgeos_finish', .RGEOS_HANDLE, PACKAGE="rgeos")
+}
+
 .onLoad <- function(lib, pkg) {
   require(methods, quietly = TRUE, warn.conflicts = FALSE)
   require("sp")
   require("stringr")
   library.dynam('rgeos', pkg, lib)
 
-  GEOSptr <- .Call('rgeos_Init', PACKAGE="rgeos")
-  assign("GEOSptr", GEOSptr, envir=.RGEOS_HANDLE)
+  set_RGEOS_HANDLE(init_RGEOS())
   assign("scale", 100000000, envir=.RGEOS_HANDLE)
   assign("do_poly_check", TRUE, envir=.RGEOS_HANDLE)
   fn <- system.file("SVN_VERSION", package="rgeos")
@@ -26,5 +37,5 @@
 }
 
 .onUnload <- function(libpath) {
-  invisible(.Call('rgeos_finish', .RGEOS_HANDLE, PACKAGE="rgeos"))
+  invisible(finish_RGEOS())
 }

@@ -80,9 +80,9 @@ SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid,
         setAttrib(ans, R_DimSymbol, dims);
     }
     
-    //GEOSGeom_destroy_r(GEOShandle, geom1);
-    //if (!sym_ans)
-    //    GEOSGeom_destroy_r(GEOShandle, geom2);
+    GEOSGeom_destroy_r(GEOShandle, geom1);
+    if (!sym_ans)
+        GEOSGeom_destroy_r(GEOShandle, geom2);
     
     UNPROTECT(pc);
     return(ans);
@@ -196,9 +196,9 @@ SEXP rgeos_binpredfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid,
         setAttrib(ans, R_DimSymbol, dims);
     }
     
-    //GEOSGeom_destroy_r(GEOShandle, geom1);
-    //if (!sym_ans)
-    //    GEOSGeom_destroy_r(GEOShandle, geom2);
+    GEOSGeom_destroy_r(GEOShandle, geom1);
+    if (!sym_ans)
+        GEOSGeom_destroy_r(GEOShandle, geom2);
     
     UNPROTECT(pc);
     return(ans);
@@ -278,6 +278,9 @@ SEXP rgeos_binpredfunc_opt(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP opt, SEXP 
         setAttrib(ans, R_DimSymbol, dims);
     }
     
+    GEOSGeom_destroy_r(GEOShandle, geom1);
+    if (!sym_ans)
+        GEOSGeom_destroy_r(GEOShandle, geom2);
     
     UNPROTECT(pc);
     return(ans);

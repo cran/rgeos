@@ -29,7 +29,7 @@ SEXP rgeos_poly_findInBox(SEXP env, SEXP pls, SEXP as_points) {
     str = (GEOSSTRtree *) GEOSSTRtree_create_r(GEOShandle, (size_t) 10);
 
     npls = length(pls);
-    bbs = (GEOSGeom *) R_alloc((size_t) npls, sizeof(GEOSGeom));
+    bbs = (GEOSGeom *) R_Calloc((size_t) npls, GEOSGeom);
     ids = (int *) R_alloc((size_t) npls, sizeof(int));
     UD.ids = (int *) R_alloc((size_t) npls, sizeof(int));
     oids = (int *) R_alloc((size_t) npls, sizeof(int));
@@ -75,6 +75,12 @@ SEXP rgeos_poly_findInBox(SEXP env, SEXP pls, SEXP as_points) {
             INTEGER_POINTER(VECTOR_ELT(bblist, i))[j] = oids[j];
         }
     }
+
+    GEOSSTRtree_destroy_r(GEOShandle, str);
+    for (i=0; i<npls; i++) {
+        GEOSGeom_destroy_r(GEOShandle, bbs[i]);
+    }
+    R_Free(bbs);
 
     UNPROTECT(pc);
     return(bblist);
@@ -159,6 +165,11 @@ SEXP rgeos_binary_STRtree_query(SEXP env, SEXP obj1, SEXP obj2) {
         }
     }
 
+    GEOSSTRtree_destroy_r(GEOShandle, str);
+    for (i=0; i<nobj2; i++) {
+        GEOSGeom_destroy(bbs2[i]);
+    }
+
     UNPROTECT(pc);
     return(bblist);
 }
@@ -179,7 +190,7 @@ SEXP rgeos_unary_STRtree_query(SEXP env, SEXP obj) {
     str = (GEOSSTRtree *) GEOSSTRtree_create_r(GEOShandle, (size_t) 10);
 
     nobj = length(obj);
-    bbs = (GEOSGeom *) R_alloc((size_t) nobj, sizeof(GEOSGeom));
+    bbs = (GEOSGeom *) R_Calloc((size_t) nobj, GEOSGeom);
     ids = (int *) R_alloc((size_t) nobj, sizeof(int));
     UD.ids = (int *) R_alloc((size_t) nobj, sizeof(int));
     oids = (int *) R_alloc((size_t) nobj, sizeof(int));
@@ -189,6 +200,7 @@ SEXP rgeos_unary_STRtree_query(SEXP env, SEXP obj) {
         pl = VECTOR_ELT(obj, i);
         if (!strcmp(classbuf, "Polygons")) GC = rgeos_Polygons2MP(env, pl);
         else if (!strcmp(classbuf, "Lines")) GC = rgeos_Lines2MP(env, pl);
+        else if (!strcmp(classbuf, "Polygon")) GC = rgeos_Polygon2MP(env, pl);
         else error("rgeos_unary_STRtree_query: object class %s unknown",
             classbuf);
         if (GC == NULL) {
@@ -225,6 +237,13 @@ SEXP rgeos_unary_STRtree_query(SEXP env, SEXP obj) {
             }
         }
     }
+
+    for (i=0; i<nobj; i++) {
+        GEOSSTRtree_remove_r(GEOShandle, str, bbs[i], (int *) ids[i]);
+        GEOSGeom_destroy_r(GEOShandle, bbs[i]);
+    }
+    GEOSSTRtree_destroy_r(GEOShandle, str);
+    R_Free(bbs);
 
     UNPROTECT(pc);
     return(bblist);

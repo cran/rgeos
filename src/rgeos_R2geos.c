@@ -422,6 +422,35 @@ GEOSGeom rgeos_Polygons2MP(SEXP env, SEXP obj) {
     return(GC);
 }
 
+// sp Polygon to fish soup geometry collection (multipoint) 
+GEOSGeom rgeos_Polygon2MP(SEXP env, SEXP obj) {
+
+    int nn;
+    
+    GEOSContextHandle_t GEOShandle = getContextHandle(env);
+
+    SEXP crdMat = GET_SLOT(obj, install("coords"));
+    SEXP dim = getAttrib(crdMat, R_DimSymbol);
+    nn = (INTEGER_POINTER(dim)[0]-1);
+
+    GEOSGeom *geoms = (GEOSGeom *) R_alloc((size_t) nn, sizeof(GEOSGeom));
+
+    for (int i=0; i<nn; i++) {
+        GEOSGeom pt = rgeos_xy2Pt(env, NUMERIC_POINTER(crdMat)[i],NUMERIC_POINTER(crdMat)[i+nn]);
+        geoms[i] = pt;
+
+    }
+
+    GEOSGeom GC = GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOINT, geoms, nn);
+    if (GC == NULL) {
+        error("rgeos_Polygon2MP: collection not created");
+    }
+
+    return(GC);
+
+}
+
+
 // sp Lines to fish soup geometry collection (multipoint) 
 GEOSGeom rgeos_Lines2MP(SEXP env, SEXP obj) {
     
