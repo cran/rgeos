@@ -20,6 +20,7 @@ exportMethods(row.names)
 
 # Utility Functions
 export(getScale,setScale,translate,checkP4S) #,groupID)
+export(version_GEOS, version_GEOS0)
 
 # WKT Functions
 export(readWKT, writeWKT)
@@ -47,7 +48,7 @@ export( gArea, gLength, gDistance, gWithinDistance)
 export( RGEOSEnvelope, RGEOSConvexHull, RGEOSBoundary, RGEOSGetCentroid, 
 		RGEOSPointOnSurface, RGEOSLineMerge, RGEOSUnionCascaded)
 export( gEnvelope, gConvexHull, gBoundary, gCentroid, 
-		gPointOnSurface, gLineMerge, gUnionCascaded)
+		gPointOnSurface, gLineMerge, gUnionCascaded, gUnaryUnion)
 
 export(	gSimplify, gPolygonize)
 		

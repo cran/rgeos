@@ -35,6 +35,10 @@ fi
 
 GEOS_VER=`${GEOS_CONFIG} --version`
 echo "GEOS: $GEOS_VER"
+GEOS_VER_DOT=`echo $GEOS_VER | tr -d "."`
+if test ${GEOS_VER_DOT} -gt 322 ; then
+  AC_SUBST([PKG_CPPFLAGS],["-DHAVEUNARYUNION ${PKG_CPPFLAGS}"])
+fi
 echo "CPPFLAGS: $PKG_CPPFLAGS"
 AC_SUBST(PKG_CPPFLAGS)
 echo "LIBS: $PKG_LIBS"

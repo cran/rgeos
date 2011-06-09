@@ -3,6 +3,8 @@
 \alias{setScale}
 \alias{translate}
 \alias{checkP4S}
+\alias{version_GEOS}
+\alias{version_GEOS0}
 
 \title{RGEOS Utility Functions}
 \description{Utility functions for the RGEOS package}
@@ -11,6 +13,8 @@
 	setScale(scale=100000000)
 	translate(spgeom)
 	checkP4S(p4s)
+        version_GEOS()
+        version_GEOS0()
 }
 
 \arguments{
@@ -24,6 +28,8 @@
 translate is a testing function which translates the sp object into a GEOS C object and then back into an sp object and is used extensively in the translation unit tests. In all cases it is expected that \code{spgeom} and \code{translate(spgeom)} should be identical.
 
 checkP4S is a validation function for proj4strings and is used in testing.
+
+version_GEOS returns the full runtime version string, and version_GEOS0 only the GEOS version number.
 }
 
 \author{Roger Bivand & Colin Rundel}

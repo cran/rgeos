@@ -1,8 +1,8 @@
 Package: rgeos
 Title: Interface to Geometry Engine - Open Source (GEOS)
-Version: 0.1-6
-Date: 2011-05-19
-Depends: R (>= 2.10.0), methods, sp (>= 0.9-57)
+Version: 0.1-7
+Date: 2011-06-19
+Depends: R (>= 2.10.0), methods, sp (>= 0.9-80)
 LinkingTo: sp
 Suggests: maptools (>= 0.8-5), testthat, plyr, stringr, XML
 LazyLoad: yes
@@ -12,10 +12,10 @@ Author: Roger Bivand and Colin Rundel
 Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
 License: GPL (>= 2)
 URL: http://trac.osgeo.org/geos/
-SystemRequirements: for building from source: GEOS from
-        http://trac.osgeo.org/geos/; GEOS OSX frameworks built by
+SystemRequirements: GEOS (>= 3.2.2); for building from source: GEOS
+        from http://trac.osgeo.org/geos/; GEOS OSX frameworks built by
         William Kyngesburye at http://www.kyngchaos.com/ may be used
         for source installs on OSX.
-Packaged: 2011-05-19 14:55:08 UTC; rsb
+Packaged: 2011-06-09 14:10:40 UTC; rsb
 Repository: CRAN
-Date/Publication: 2011-05-19 15:21:14
+Date/Publication: 2011-06-09 15:04:17

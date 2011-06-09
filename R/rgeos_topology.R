@@ -61,6 +61,7 @@ TopologyFunc = function(spgeom, id, byid, func) {
         else        id = "1"
     }
     id = as.character(id)
+
     if (inherits(spgeom, "SpatialPolygons") && get_do_poly_check()) spgeom <- createSPComment(spgeom)
     
     if ( length(id) != length(unique(id)) )
@@ -90,17 +91,62 @@ gPointOnSurface = function(spgeom, byid=FALSE, id = NULL) {
 gLineMerge = function(spgeom, byid=FALSE, id = NULL) {
     return( TopologyFunc(spgeom,id,byid,"rgeos_linemerge") ) 
 }
-gUnionCascaded = function(spgeom, id = NULL) {
+
+gUnionCascaded = function(spgeom, id = NULL, bound = 1000L) {
     
     if (!inherits(spgeom,"SpatialPolygons"))
         stop("Invalid geometry, may only be applied to polygons")
+    spgeom <- as(spgeom, "SpatialPolygons")
 
     if (is.null(id))
         id = rep("1",length(row.names(spgeom)))
 
-    return( TopologyFunc(groupID(spgeom,id),unique(na.omit(id)),TRUE,"rgeos_unioncascaded") ) 
+    if (any(is.na(id))) stop("No NAs permitted in id")
+
+    if (get_do_poly_check()) spgeom <- createSPComment(spgeom)
+
+    ids <- split(1:length(id), id)
+    sl <- sapply(ids, length)
+    if (any(sl > bound)) {
+        stop(paste("Too many polygons in group to dissolve:",
+            paste(sl, collapse=","), "greater than", bound,
+            "- see help page", ifelse(version_GEOS0() < "3.3.0", "",
+            "- consider using gUnaryUnion instead")))
+    }
+    out <- vector(mode="list", length=length(ids))
+    for (i in seq(along=ids)) {
+        out[[i]] <- TopologyFunc(groupID(spgeom[ids[[i]]], id[ids[[i]]]),
+            names(ids)[i], TRUE, "rgeos_unioncascaded")
+    }
+    res <- do.call("rbind.SpatialPolygons", out)
+
+    res
 }
 
+gUnaryUnion = function(spgeom, id = NULL) {
+
+    if (version_GEOS0() < "3.3.0")
+        stop("No UnaryUnion in this version of GEOS")
+    
+    if (!inherits(spgeom,"SpatialPolygons"))
+        stop("Invalid geometry, may only be applied to polygons")
+    spgeom <- as(spgeom, "SpatialPolygons")
+    if (is.null(id))
+        id = rep("1",length(row.names(spgeom)))
+
+    if (any(is.na(id))) stop("No NAs permitted in id")
+
+    if (get_do_poly_check()) spgeom <- createSPComment(spgeom)
+
+    ids <- split(1:length(id), id)
+    out <- vector(mode="list", length=length(ids))
+    for (i in seq(along=ids)) {
+        out[[i]] <- .Call("rgeos_unaryunion", .RGEOS_HANDLE,
+        spgeom[ids[[i]]], names(ids)[i], FALSE, PACKAGE="rgeos") 
+    }
+    res <- do.call("rbind.SpatialPolygons", out)
+    res
+}
 
 
 RGEOSEnvelope = function(spgeom, byid=FALSE, id = NULL) {

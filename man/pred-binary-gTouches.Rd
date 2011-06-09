@@ -13,7 +13,7 @@
   \item{byid}{Logical vector determining if the function should be applied across ids (TRUE) or the entire object (FALSE) for spgeom1 and spgeom2}
 }
 
-\value{Returns TRUE if the union of the boundaries of the two geometries is not empty.}
+\value{Returns TRUE if the intersection of the boundaries of the two geometries is not empty.}
 
 \author{Roger Bivand & Colin Rundel}
 

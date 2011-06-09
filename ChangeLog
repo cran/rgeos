@@ -1,196 +1,131 @@
+2011-06-09 13:55  rsbivand
+
+	* DESCRIPTION:
+	  update sp version
+
+2011-06-09 08:23  rsbivand
+
+	* R/rgeos_topology.R,
+	  man/topo-bin-gUnion.Rd: gUnionCascaded suggestion
+
+2011-06-09 06:21  rsbivand
+
+	* DESCRIPTION,
+	  NAMESPACE, R/AAA.R, R/rgeos_topology.R, configure, configure.in,
+	  man/pred-binary-gTouches.Rd, man/topo-bin-gUnion.Rd,
+	  man/utility-functions.Rd, src/init.c, src/rgeos.h,
+	  src/rgeos_topology.c: adding UnaryUnion for GEOS 3.3.0
+
+2011-05-24 16:15  rsbivand
+
+	* DESCRIPTION:
+	  added version to GEOS required
+
+2011-05-24 11:27  edzer
+
+	* DESCRIPTION:
+	  increased dependency on sp 0.9-73, which has over defined
+	  as generic.
+
+2011-05-18 21:07  rsbivand
+
+	* ChangeLog,
+	  inst/ChangeLog: RGEOSBinPredFunc single argument fix
+
 2011-05-18 21:06  rsbivand
 
 	* R/rgeos_predicate_binary.R,
-	  R/rgeos_predicate_unary.R,
-	  R/rgeos_topology.R,
-	  R/rgeos_topology_binary.R:
-	  RGEOSBinPredFunc
-	  single
-	  argument
-	  fix
+	  R/rgeos_predicate_unary.R, R/rgeos_topology.R,
+	  R/rgeos_topology_binary.R: RGEOSBinPredFunc single argument fix
 
 2011-05-18 20:53  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  RGEOSBinPredFunc
-	  single
-	  argument
-	  fix
+	  inst/ChangeLog: RGEOSBinPredFunc single argument fix
 
 2011-05-18 20:49  rsbivand
 
 	* DESCRIPTION,
-	  R/rgeos_predicate_binary.R:
-	  RGEOSBinPredFunc
-	  single
-	  argument
-	  fix
+	  R/rgeos_predicate_binary.R: RGEOSBinPredFunc single argument fix
 
 2011-05-11 12:49  edzer
 
 	* R/over.R:
-	  improved
-	  over
-	  methods
-	  for
-	  gridded
-	  objects
+	  improved over methods for gridded objects
 
 2011-05-09 20:31  edzer
 
 	* R/over.R:
-	  added
-	  the
-	  lines
-	  &
-	  (grids
-	  /
-	  pixels)
-	  methods
-	  for
-	  "over"
-	  overlay.
+	  added the lines & (grids / pixels) methods for "over" overlay.
 
 2011-05-09 16:50  edzer
 
 	* DESCRIPTION,
-	  R/over.R:
-	  added
-	  18
-	  overlay
-	  methods
-	  for
-	  "over"
-	  (from
-	  sp)
+	  R/over.R: added 18 overlay methods for "over" (from sp)
 
 2011-03-30 14:42  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  attempts
-	  to
-	  limit
-	  memory
-	  hunger
+	  inst/ChangeLog: attempts to limit memory hunger
 
 2011-03-30 14:40  rsbivand
 
 	* R/AAA.R,
-	  R/rgeos_util.R,
-	  src/rgeos_poly2nb.c,
-	  src/rgeos_predicate_binary.c,
-	  src/rgeos_predicate_unary.c:
-	  attempts
-	  to
-	  limit
-	  memory
-	  hunger
+	  R/rgeos_util.R, src/rgeos_poly2nb.c,
+	  src/rgeos_predicate_binary.c, src/rgeos_predicate_unary.c:
+	  attempts to limit memory hunger
 
 2011-03-29 08:25  rsbivand
 
 	* DESCRIPTION,
-	  R/rgeos_util.R,
-	  man/experimental-functions.Rd,
-	  man/topo-bin-gIntersection.Rd,
-	  src/rgeos.h,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_poly2nb.c:
-	  STRtree
-	  for
-	  Polygons
+	  R/rgeos_util.R, man/experimental-functions.Rd,
+	  man/topo-bin-gIntersection.Rd, src/rgeos.h, src/rgeos_R2geos.c,
+	  src/rgeos_poly2nb.c: STRtree for Polygons
 
 2011-03-28 09:40  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  documenting
-	  hole
-	  checking
-	  for
-	  Polygons
-	  objects
+	  inst/ChangeLog: documenting hole checking for Polygons objects
 
 2011-03-28 09:39  rsbivand
 
 	* R/AAA.R:
-	  documenting
-	  hole
-	  checking
-	  for
-	  Polygons
-	  objects
+	  documenting hole checking for Polygons objects
 
 2011-03-28 09:29  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  documenting
-	  hole
-	  checking
-	  for
-	  Polygons
-	  objects
+	  inst/ChangeLog: documenting hole checking for Polygons objects
 
 2011-03-28 09:28  rsbivand
 
 	* DESCRIPTION,
-	  configure,
-	  configure.in,
-	  man/comment-functions.Rd:
-	  documenting
-	  hole
-	  checking
-	  for
-	  Polygons
-	  objects
+	  configure, configure.in, man/comment-functions.Rd: documenting
+	  hole checking for Polygons objects
 
 2011-03-26 19:41  rsbivand
 
 	* R/rgeos_buffer.R,
-	  R/rgeos_misc.R:
-	  adding
-	  projection
-	  check
-	  for
-	  buffer
-	  and
-	  misc
+	  R/rgeos_misc.R: adding projection check for buffer and misc
 
 2011-03-26 19:29  rsbivand
 
 	* DESCRIPTION,
-	  NAMESPACE,
-	  R/AAA.R,
-	  R/rgeos_buffer.R,
-	  R/rgeos_misc.R,
-	  R/rgeos_predicate_binary.R,
-	  R/rgeos_predicate_unary.R,
-	  R/rgeos_topology.R,
-	  R/rgeos_topology_binary.R,
-	  R/rgeos_util.R,
-	  man/comment-functions.Rd,
-	  src/rgeos_geos2R.c,
-	  tests/test-all.R:
-	  imposing
-	  polygon
-	  checking
-	  unless
-	  option
-	  set
+	  NAMESPACE, R/AAA.R, R/rgeos_buffer.R, R/rgeos_misc.R,
+	  R/rgeos_predicate_binary.R, R/rgeos_predicate_unary.R,
+	  R/rgeos_topology.R, R/rgeos_topology_binary.R, R/rgeos_util.R,
+	  man/comment-functions.Rd, src/rgeos_geos2R.c, tests/test-all.R:
+	  imposing polygon checking unless option set
 
 2011-03-21 10:13  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  prerelease
+	  inst/ChangeLog: prerelease
 
 2011-03-21 09:04  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  prerelease
+	  inst/ChangeLog: prerelease
 
 2011-03-21 09:03  rsbivand
 
@@ -200,107 +135,65 @@
 2011-02-26 23:03  rsbivand
 
 	* inst/tests/test-jts-xml.R:
-	  xml
-	  file
-	  reading
-	  wrapper
-	  for
-	  32-bit
-	  libxml2
-	  on
-	  F14
-	  in
-	  tests
+	  xml file reading wrapper for 32-bit libxml2 on F14 in tests
 
 2011-02-06 14:58  rsbivand
 
 	* R/AAA.R:
-	  suppress
-	  startup
-	  messages
+	  suppress startup messages
 
 2010-11-30 17:38  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  tidy
+	  inst/ChangeLog: tidy
 
 2010-11-24 12:31  rsbivand
 
 	* R/rgeos_topology.R,
-	  R/rgeos_util.R,
-	  man/topo-bin-gUnion.Rd:
-	  g*STRtreeQuery
-	  added
-	  to
-	  experimental
+	  R/rgeos_util.R, man/topo-bin-gUnion.Rd: g*STRtreeQuery added
+	  to experimental
 
 2010-11-24 10:44  rsbivand
 
 	* man/experimental-functions.Rd:
-	  g*STRtreeQuery
-	  added
-	  to
-	  experimental
+	  g*STRtreeQuery added to experimental
 
 2010-11-24 10:39  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  g*STRtreeQuery
-	  added
-	  to
-	  experimental
+	  inst/ChangeLog: g*STRtreeQuery added to experimental
 
 2010-11-24 10:39  rsbivand
 
 	* DESCRIPTION,
-	  NAMESPACE,
-	  R/rgeos_util.R,
-	  man/experimental-functions.Rd,
-	  src/rgeos_poly2nb.c:
-	  g*STRtreeQuery
-	  added
-	  to
-	  experimental
+	  NAMESPACE, R/rgeos_util.R, man/experimental-functions.Rd,
+	  src/rgeos_poly2nb.c: g*STRtreeQuery added to experimental
 
 2010-11-19 21:56  rsbivand
 
 	* .Rbuildignore:
-	  add
-	  rgeos_unary_STRtree_query
-	  and
-	  rgeos_binary_STRtree_query
+	  add rgeos_unary_STRtree_query and rgeos_binary_STRtree_query
 
 2010-11-19 21:54  rsbivand
 
 	* src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_poly2nb.c:
-	  add
-	  rgeos_unary_STRtree_query
-	  and
-	  rgeos_binary_STRtree_query
+	  src/rgeos.h, src/rgeos_R2geos.c, src/rgeos_poly2nb.c: add
+	  rgeos_unary_STRtree_query and rgeos_binary_STRtree_query
 
 2010-11-19 13:18  rsbivand
 
 	* src/rgeos_poly2nb.c:
-	  STRtree
-	  attempts
+	  STRtree attempts
 
 2010-11-18 23:07  crundel
 
 	* inst/tests/testxml/vivid:
-	  Removing
-	  empty
-	  folder
+	  Removing empty folder
 
 2010-11-08 20:43  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  tidy
+	  inst/ChangeLog: tidy
 
 2010-11-08 20:42  rsbivand
 
@@ -310,1114 +203,459 @@
 2010-11-08 20:39  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  tidy
+	  inst/ChangeLog: tidy
 
 2010-11-08 20:05  crundel
 
 	* inst/poly-ex-gpc,
-	  inst/poly-ex-gpc/ex-poly1.txt,
-	  inst/poly-ex-gpc/ex-poly2.txt,
-	  inst/poly-ex-gpc/hole-poly.txt:
-	  Added
-	  gpc
-	  polygon
-	  example
-	  data
-	  files
+	  inst/poly-ex-gpc/ex-poly1.txt, inst/poly-ex-gpc/ex-poly2.txt,
+	  inst/poly-ex-gpc/hole-poly.txt: Added gpc polygon example
+	  data files
 
 2010-11-08 20:02  crundel
 
 	* data,
-	  man/class-gpc.poly.Rd,
-	  man/experimental-functions.Rd:
-	  More
-	  clean
-	  up
+	  man/class-gpc.poly.Rd, man/experimental-functions.Rd: More
+	  clean up
 
 2010-11-08 19:44  crundel
 
 	* DESCRIPTION,
-	  inst/tests/test-jts-xml.R,
-	  man,
-	  man/class-gpc.poly.Rd,
-	  tests,
-	  tests/test-all.R:
-	  Package
-	  clean
-	  up
-	  for
-	  release
+	  inst/tests/test-jts-xml.R, man, man/class-gpc.poly.Rd, tests,
+	  tests/test-all.R: Package clean up for release
 
 2010-11-07 19:38  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  tidy
+	  inst/ChangeLog: tidy
 
 2010-11-07 19:18  rsbivand
 
 	* configure.win,
-	  src/Makevars.win:
-	  Windows
-	  static
-	  build
+	  src/Makevars.win: Windows static build
 
 2010-11-01 18:02  crundel
 
 	* R/rgeos_misc.R,
-	  src/rgeos_R2geos.c:
-	  Fixed
-	  a
-	  bug
-	  in
-	  handling
-	  polygons
-	  with
-	  holes
-	  but
-	  no
-	  comment.
+	  src/rgeos_R2geos.c: Fixed a bug in handling polygons with
+	  holes but no comment.
 
 2010-09-29 17:51  crundel
 
 	* NAMESPACE,
 	  R/rgeos_util.R:
-	  
+
 
 2010-09-26 20:29  crundel
 
 	* R/rgeos_util.R,
-	  src/rgeos_R2geos.c,
-	  tests/test-all.R:
-	  Small
-	  fixes
-	  to
-	  get
-	  CHECK
-	  to
-	  work
+	  src/rgeos_R2geos.c, tests/test-all.R: Small fixes to get CHECK
+	  to work
 
 2010-09-09 20:47  crundel
 
 	* src/rgeos_R2geos.c:
-	  Changed
-	  translate
-	  functions
-	  
-	  so
-	  that
-	  unassigned
-	  holes
-	  are
-	  ignored
-	  and
-	  a
-	  warning
-	  reported.
+	  Changed translate functions
+
+	  so that unassigned holes are ignored and a warning reported.
 
 2010-09-09 19:56  crundel
 
 	* NAMESPACE,
-	  R/gpc_geos.R,
-	  R/rgeos.R,
-	  R/rgeos_util.R,
-	  man/checkHolesGPC.Rd,
-	  man/checkPolygonsGEOS.Rd,
-	  man/comment-functions.Rd,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_validate.c:
-	  Removed
-	  checkPolygonsGEOS
-	  and
-	  checkHolesGPC
-	  functions
-	  and
-	  replaced
-	  then
-	  with
-	  createPolygonsComment
-	  and
-	  createSPComment
-	  functions.
-	  Similar
-	  functionality,
-	  but
-	  removes
-	  guessing
-	  of
-	  hole
-	  status
-	  for
-	  polygons
-	  and
-	  focuses
-	  on
-	  assign
-	  ownership
-	  via
-	  comment
-	  attributes.
+	  R/gpc_geos.R, R/rgeos.R, R/rgeos_util.R, man/checkHolesGPC.Rd,
+	  man/checkPolygonsGEOS.Rd, man/comment-functions.Rd, src/init.c,
+	  src/rgeos.h, src/rgeos_R2geos.c, src/rgeos_validate.c: Removed
+	  checkPolygonsGEOS and checkHolesGPC functions and replaced
+	  then with createPolygonsComment and createSPComment functions.
+	  Similar functionality, but removes guessing of hole status for
+	  polygons and focuses on assign ownership via comment attributes.
 
 2010-08-16 12:36  crundel
 
 	* src/rgeos_predicate_binary.c:
-	  Added
-	  const
-	  to
-	  prepared
-	  geometry
-	  to
-	  deal
-	  with
-	  compiler
-	  warning
+	  Added const to prepared geometry to deal with compiler warning
 
 2010-08-16 12:34  crundel
 
 	* man/pred-binary-gEquals.Rd,
-	  man/pred-binary-gRelate.Rd:
-	  Small
-	  docs
-	  typo
-	  fix
+	  man/pred-binary-gRelate.Rd: Small docs typo fix
 
 2010-08-16 12:31  crundel
 
 	* inst/tests/test-jts-xml.R,
-	  tests/test-all.R:
-	  Small
-	  test
-	  fixes Some
-	  of
-	  the
-	  tests
-	  in
-	  the
-	  JTS
-	  xml
-	  files
-	  are
-	  skipped
-	  due
-	  to
-	  compatibility
-	  issues,
-	  see
-	  descSkip
+	  tests/test-all.R: Small test fixes Some of the tests in the JTS
+	  xml files are skipped due to compatibility issues, see descSkip
 
 2010-08-16 12:27  crundel
 
 	* R/rgeos_predicate_binary.R,
-	  man/pred-binary-gEquals.Rd,
-	  man/pred-binary-gRelate.Rd,
-	  man/pred-unary-gIsSimple.Rd,
-	  man/pred-unary-gIsValid.Rd,
-	  man/topo-unary-gSimplify.Rd:
-	  Small
-	  documentation
-	  fixes Put
-	  tol
-	  and
-	  pattern
-	  as
-	  3rd
-	  arguments
-	  in
-	  gEquals
-	  and
-	  gRelate
+	  man/pred-binary-gEquals.Rd, man/pred-binary-gRelate.Rd,
+	  man/pred-unary-gIsSimple.Rd, man/pred-unary-gIsValid.Rd,
+	  man/topo-unary-gSimplify.Rd: Small documentation fixes Put
+	  tol and pattern as 3rd arguments in gEquals and gRelate
 
 2010-08-16 11:46  crundel
 
 	* man/misc-gDistance.Rd,
 	  man/pred-binary-gContains.Rd,
-	  man/pred-binary-gCrosses.Rd,
-	  man/pred-binary-gEquals.Rd,
-	  man/pred-binary-gIntersects.Rd,
-	  man/pred-binary-gRelate.Rd,
-	  man/pred-binary-gTouches.Rd,
-	  man/pred-unary-gIsSimple.Rd,
-	  man/pred-unary-gIsValid.Rd,
-	  man/topo-bin-gDifference.Rd,
-	  man/topo-bin-gIntersection.Rd,
-	  man/topo-bin-gSymdifference.Rd,
-	  man/topo-bin-gUnion.Rd,
-	  man/topo-unary-gBoundary.Rd,
-	  man/topo-unary-gCentroid.Rd,
-	  man/topo-unary-gConvexHull.Rd,
-	  man/topo-unary-gEnvelope.Rd,
-	  man/topo-unary-gPointOnSurface.Rd,
-	  man/topo-unary-gPolygonize.Rd,
-	  man/topo-unary-gSimplify.Rd:
-	  Documentation
-	  update
+	  man/pred-binary-gCrosses.Rd, man/pred-binary-gEquals.Rd,
+	  man/pred-binary-gIntersects.Rd, man/pred-binary-gRelate.Rd,
+	  man/pred-binary-gTouches.Rd, man/pred-unary-gIsSimple.Rd,
+	  man/pred-unary-gIsValid.Rd, man/topo-bin-gDifference.Rd,
+	  man/topo-bin-gIntersection.Rd, man/topo-bin-gSymdifference.Rd,
+	  man/topo-bin-gUnion.Rd, man/topo-unary-gBoundary.Rd,
+	  man/topo-unary-gCentroid.Rd, man/topo-unary-gConvexHull.Rd,
+	  man/topo-unary-gEnvelope.Rd, man/topo-unary-gPointOnSurface.Rd,
+	  man/topo-unary-gPolygonize.Rd, man/topo-unary-gSimplify.Rd:
+	  Documentation update
 
 2010-08-16 11:45  crundel
 
 	* NAMESPACE:
-	  Commented
-	  out
-	  poly_findInBoxGEOS
+	  Commented out poly_findInBoxGEOS
 
 2010-08-16 10:25  crundel
 
 	* R/rgeos_topology.R:
-	  Simplified
-	  function
-	  arguments
-	  for
-	  gSimplify
-	  since
-	  byid
-	  doesnt
-	  really
-	  matter.
+	  Simplified function arguments for gSimplify since byid doesnt
+	  really matter.
 
 2010-08-16 09:10  crundel
 
 	* R/rgeos_spExtensions_Methods.R:
-	  Added
-	  isGenerics
-	  checks
-	  for
-	  row.names
-	  and
-	  row.names<-
+	  Added isGenerics checks for row.names and row.names<-
 
 2010-08-16 09:09  crundel
 
 	* NAMESPACE,
-	  R/rgeos_predicate_binary.R:
-	  Separated
-	  Equals
-	  and
-	  EqualsExact
-	  back
-	  into
-	  different
-	  functions,
-	  had
-	  misunderstood
-	  how
-	  they
-	  worked. Removed
-	  groupID
-	  from
-	  NAMESPACE
-	  for
-	  the
-	  time
-	  being,
-	  probably
-	  needs
-	  to
-	  be
-	  reimplemented
-	  in
-	  C.
+	  R/rgeos_predicate_binary.R: Separated Equals and EqualsExact
+	  back into different functions, had misunderstood how they
+	  worked. Removed groupID from NAMESPACE for the time being,
+	  probably needs to be reimplemented in C.
 
 2010-08-15 13:46  crundel
 
 	* man/misc-gArea.Rd,
-	  man/misc-gBuffer.Rd,
-	  man/misc-gDistance.Rd,
-	  man/misc-gLength.Rd,
-	  man/pred-unary-gIsEmpty.Rd,
-	  man/pred-unary-gIsRing.Rd,
-	  man/pred-unary-gIsSimple.Rd,
-	  man/pred-unary-gIsValid.Rd,
-	  man/topo-bin-gUnion.Rd,
-	  man/topo-unary-gBoundary.Rd,
-	  man/topo-unary-gCentroid.Rd,
-	  man/topo-unary-gConvexHull.Rd,
-	  man/topo-unary-gEnvelope.Rd:
-	  Documentation
-	  update
+	  man/misc-gBuffer.Rd, man/misc-gDistance.Rd, man/misc-gLength.Rd,
+	  man/pred-unary-gIsEmpty.Rd, man/pred-unary-gIsRing.Rd,
+	  man/pred-unary-gIsSimple.Rd, man/pred-unary-gIsValid.Rd,
+	  man/topo-bin-gUnion.Rd, man/topo-unary-gBoundary.Rd,
+	  man/topo-unary-gCentroid.Rd, man/topo-unary-gConvexHull.Rd,
+	  man/topo-unary-gEnvelope.Rd: Documentation update
 
 2010-08-15 13:44  crundel
 
 	* NAMESPACE,
-	  R/rgeos_buffer.R,
-	  R/rgeos_predicate_binary.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_predicate_binary.c:
-	  Fixed
-	  bug
-	  with
-	  gRelate
-	  when
-	  pattern
-	  was
-	  specified Combined
-	  gEquals
-	  and
-	  gEqualsExact
-	  functions
-	  by
-	  adding
-	  tol
-	  argument
-	  to
-	  gEquals Changed
-	  default
-	  of
-	  byid
-	  in
-	  gBuffer
-	  to
-	  FALSE
-	  for
-	  consistency
+	  R/rgeos_buffer.R, R/rgeos_predicate_binary.R, src/init.c,
+	  src/rgeos.h, src/rgeos_predicate_binary.c: Fixed bug with
+	  gRelate when pattern was specified Combined gEquals and
+	  gEqualsExact functions by adding tol argument to gEquals
+	  Changed default of byid in gBuffer to FALSE for consistency
 
 2010-08-15 10:07  crundel
 
 	* R/rgeos_misc.R:
-	  Fixed
-	  bug,
-	  GEOSArea_r
-	  was
-	  being
-	  called
-	  by
-	  both
-	  gLength
-	  and
-	  gArea
+	  Fixed bug, GEOSArea_r was being called by both gLength and gArea
 
 2010-08-15 10:06  crundel
 
 	* NAMESPACE:
-	  Removed
-	  reference
-	  for
-	  gHasZ,
-	  no
-	  use
-	  for
-	  the
-	  function
-	  currently
-	  as
-	  3d
-	  geometries
-	  are
-	  not
-	  supported
+	  Removed reference for gHasZ, no use for the function currently
+	  as 3d geometries are not supported
 
 2010-08-15 10:05  crundel
 
 	* src/rgeos_predicate_unary.c:
-	  Cleaned
-	  up
-	  code
-	  /
-	  variable
-	  declarations
+	  Cleaned up code / variable declarations
 
 2010-08-14 11:47  crundel
 
 	* man/pred-unary-gIsValid.Rd:
-	  Fixed
-	  extra
-	  line
-	  in
-	  example,
-	  and
-	  linearring
-	  example
+	  Fixed extra line in example, and linearring example
 
 2010-08-14 10:51  crundel
 
 	* man/gpc-new-generics.Rd:
-	  Added
-	  alias
-	  to
-	  symdiff
-	  function
+	  Added alias to symdiff function
 
 2010-08-14 10:51  crundel
 
 	* NAMESPACE,
-	  R/rgeos_predicate_unary.R,
-	  inst/tests/test-jts-xml.R:
-	  Unary
-	  Predicate
-	  functions
-	  renamed
+	  R/rgeos_predicate_unary.R, inst/tests/test-jts-xml.R: Unary
+	  Predicate functions renamed
 
 2010-08-14 10:50  crundel
 
 	* man/pred-unary-gIsSimple.Rd,
-	  man/pred-unary-gIsValid.Rd,
-	  man/topo-unary-gBoundary.Rd,
-	  man/topo-unary-gCentroid.Rd,
-	  man/topo-unary-gConvexHull.Rd,
-	  man/topo-unary-gEnvelope.Rd,
-	  man/topo-unary-gPointOnSurface.Rd,
-	  man/wkt-functions.Rd:
-	  Documentation
-	  update
+	  man/pred-unary-gIsValid.Rd, man/topo-unary-gBoundary.Rd,
+	  man/topo-unary-gCentroid.Rd, man/topo-unary-gConvexHull.Rd,
+	  man/topo-unary-gEnvelope.Rd, man/topo-unary-gPointOnSurface.Rd,
+	  man/wkt-functions.Rd: Documentation update
 
 2010-08-11 13:41  crundel
 
 	* R/rgeos_util.R,
-	  man/utility-functions.Rd:
-	  Small
-	  bugfix
-	  /
-	  typo
-	  fix
+	  man/utility-functions.Rd: Small bugfix / typo fix
 
 2010-08-11 12:46  crundel
 
 	* NAMESPACE,
-	  R/rgeos_util.R,
-	  man/utility-functions.Rd:
-	  Utility
-	  function
-	  documentation Renamed
-	  argument
-	  in
-	  checkP4S
-	  to
-	  p4s
-	  for
-	  the
-	  sake
-	  of
-	  brevity
+	  R/rgeos_util.R, man/utility-functions.Rd: Utility function
+	  documentation Renamed argument in checkP4S to p4s for the sake
+	  of brevity
 
 2010-08-11 12:19  crundel
 
 	* NAMESPACE,
-	  R/rgeos_util.R,
-	  inst/tests/test-translate-empty.R,
-	  inst/tests/test-translate.R:
-	  Renamed
-	  function
-	  doubletranslate
-	  to
-	  translate
+	  R/rgeos_util.R, inst/tests/test-translate-empty.R,
+	  inst/tests/test-translate.R: Renamed function doubletranslate
+	  to translate
 
 2010-08-11 12:18  crundel
 
 	* man/checkHolesGPC.Rd:
-	  Removed
-	  empty
-	  documentation
-	  sections
+	  Removed empty documentation sections
 
 2010-08-11 12:14  crundel
 
 	* NAMESPACE,
-	  R/rgeos.R:
-	  Removed
-	  unused
-	  intersection
-	  functions
+	  R/rgeos.R: Removed unused intersection functions
 
 2010-08-11 12:14  crundel
 
 	* man/gpc.poly-class.Rd,
-	  man/gpc.poly.nohole-class.Rd,
-	  man/new-generics.Rd,
-	  man/polyfile.Rd:
-	  Files
-	  renamed
+	  man/gpc.poly.nohole-class.Rd, man/new-generics.Rd,
+	  man/polyfile.Rd: Files renamed
 
 2010-08-11 12:13  crundel
 
 	* man/class-Ring.Rd,
-	  man/class-SpatialCollections.Rd,
-	  man/class-SpatialRings.Rd,
+	  man/class-SpatialCollections.Rd, man/class-SpatialRings.Rd,
 	  man/class-SpatialRingsDataFrame.Rd,
-	  man/class-gpc.poly.Rd,
-	  man/class-gpc.poly.nohole.Rd,
+	  man/class-gpc.poly.Rd, man/class-gpc.poly.nohole.Rd,
 	  man/constructor-SpatialCollections.Rd,
-	  man/constructor-SpatialRings.Rd,
-	  man/gpc-new-generics.Rd,
-	  man/gpc-polyfile.Rd,
-	  man/topo-bin-gDifference.Rd,
-	  man/topo-bin-gIntersection.Rd,
-	  man/topo-bin-gSymdifference.Rd,
-	  man/topo-bin-gUnion.Rd,
-	  man/topo-unary-gBoundary.Rd,
-	  man/topo-unary-gCentroid.Rd,
-	  man/topo-unary-gConvexHull.Rd,
-	  man/topo-unary-gEnvelope.Rd,
-	  man/topo-unary-gPointOnSurface.Rd:
-	  Documentation
-	  update,
-	  changed
-	  naming
-	  convention
-	  to
-	  keep
-	  things
-	  clear
+	  man/constructor-SpatialRings.Rd, man/gpc-new-generics.Rd,
+	  man/gpc-polyfile.Rd, man/topo-bin-gDifference.Rd,
+	  man/topo-bin-gIntersection.Rd, man/topo-bin-gSymdifference.Rd,
+	  man/topo-bin-gUnion.Rd, man/topo-unary-gBoundary.Rd,
+	  man/topo-unary-gCentroid.Rd, man/topo-unary-gConvexHull.Rd,
+	  man/topo-unary-gEnvelope.Rd, man/topo-unary-gPointOnSurface.Rd:
+	  Documentation update, changed naming convention to keep
+	  things clear
 
 2010-08-10 18:04  crundel
 
 	* man/topo-bin-gUnion.Rd:
-	  Fixed
-	  function
-	  argument
-	  ordering
-	  in
-	  gLineMerge
-	  usage.
+	  Fixed function argument ordering in gLineMerge usage.
 
 2010-08-10 18:02  crundel
 
 	* man/topo-unary-gBoundary.Rd,
-	  man/topo-unary-gEnvelope.Rd,
-	  man/topo-unary-gPointOnSurface.Rd:
-	  Fixed
-	  incorrect
-	  function
-	  names
-	  in
-	  usage
-	  section
+	  man/topo-unary-gEnvelope.Rd, man/topo-unary-gPointOnSurface.Rd:
+	  Fixed incorrect function names in usage section
 
 2010-08-10 17:57  crundel
 
 	* tests/test-all.R:
-	  Fixed
-	  test
-	  path
+	  Fixed test path
 
 2010-08-10 17:56  crundel
 
 	* man/gpc.poly-class.Rd:
-	  Removed
-	  triangulate
-	  example
+	  Removed triangulate example
 
 2010-08-10 17:49  crundel
 
 	* man/gIntersection.Rd,
-	  man/gUnion.Rd,
-	  man/topo-bin-gDifference.Rd,
-	  man/topo-bin-gIntersection.Rd,
-	  man/topo-bin-gSymdifference.Rd,
-	  man/topo-bin-gUnion.Rd,
-	  man/topo-unary-gBoundary.Rd,
-	  man/topo-unary-gCentroid.Rd,
-	  man/topo-unary-gConvexHull.Rd,
-	  man/topo-unary-gEnvelope.Rd,
-	  man/topo-unary-gPointOnSurface.Rd:
-	  Preliminary
-	  documentation
-	  for
-	  all
-	  topology
-	  functions
-	  along
-	  with
-	  examples.
-	  Changed
-	  Rd
-	  file
-	  naming
-	  scheme
-	  for
-	  clarity
+	  man/gUnion.Rd, man/topo-bin-gDifference.Rd,
+	  man/topo-bin-gIntersection.Rd, man/topo-bin-gSymdifference.Rd,
+	  man/topo-bin-gUnion.Rd, man/topo-unary-gBoundary.Rd,
+	  man/topo-unary-gCentroid.Rd, man/topo-unary-gConvexHull.Rd,
+	  man/topo-unary-gEnvelope.Rd, man/topo-unary-gPointOnSurface.Rd:
+	  Preliminary documentation for all topology functions along
+	  with examples.  Changed Rd file naming scheme for clarity
 
 2010-08-10 17:48  crundel
 
 	* R/rgeos_topology.R:
-	  Changed
-	  argument
-	  order
-	  for
-	  topology
-	  functions
-	  for
-	  the
-	  sake
-	  of
-	  consistency.
+	  Changed argument order for topology functions for the sake
+	  of consistency.
 
 2010-08-10 13:26  crundel
 
 	* R/rgeos_topology.R:
-	  Fixed
-	  bug
-	  in
-	  gPolygonizer
+	  Fixed bug in gPolygonizer
 
 2010-08-10 13:24  crundel
 
 	* man/gpc.poly-class.Rd,
-	  man/gpc.poly.nohole-class.Rd,
-	  man/new-generics.Rd,
-	  man/polyfile.Rd:
-	  Updated
-	  documentation
-	  files
-	  for
-	  gpcpoly
+	  man/gpc.poly.nohole-class.Rd, man/new-generics.Rd,
+	  man/polyfile.Rd: Updated documentation files for gpcpoly
 	  functions
 
 2010-07-27 06:08  crundel
 
 	* inst/tests/test-jts-xml.R:
-	  Fixed
-	  (working)
-	  version
-	  of
-	  jts
-	  xml
-	  test
-	  processing
+	  Fixed (working) version of jts xml test processing
 
 2010-07-27 05:15  crundel
 
 	* inst/tests/test-translate-empty.R,
-	  inst/tests/test-translate.R:
-	  Added
-	  setScale()
-	  call
-	  to
-	  begin
-	  of
-	  each
-	  set
-	  of
-	  tests
-	  to
-	  reset
-	  scale
-	  option
-	  (changed
-	  by
-	  some
-	  of
-	  the
-	  JTS
-	  tests)
+	  inst/tests/test-translate.R: Added setScale() call to begin
+	  of each set of tests to reset scale option (changed by some
+	  of the JTS tests)
 
 2010-07-27 05:14  crundel
 
 	* NAMESPACE,
-	  R/rgeos_predicate_binary.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_predicate_binary.c:
-	  Added
-	  prepared
-	  geometry
-	  functions
-	  -
-	  gContainsProperly,
-	  gCovers,
-	  gCoveredBy
-	  and
-	  prepared
-	  variants
-	  of
-	  gIntersects
-	  and
-	  gContains
-	  specified
-	  by
-	  a
-	  flag.
+	  R/rgeos_predicate_binary.R, src/init.c, src/rgeos.h,
+	  src/rgeos_predicate_binary.c: Added prepared geometry functions
+	  - gContainsProperly, gCovers, gCoveredBy and prepared variants
+	  of gIntersects and gContains specified by a flag.
 
 2010-07-27 05:04  crundel
 
 	* R/rgeos_util.R:
-	  Fixed
-	  bug,
-	  extra
-	  )
-	  in
-	  double
-	  translate
+	  Fixed bug, extra ) in double translate
 
 2010-07-27 03:44  crundel
 
 	* inst/tests/test-empty-geom.R,
-	  inst/tests/test-translate-empty.R,
-	  inst/tests/test-translate.R:
-	  Changed
-	  phrasing
-	  of
-	  some
-	  of
-	  the
-	  tests
-	  in
-	  translate
-	  to
-	  make
-	  it
-	  easier
-	  to
-	  distinguish
-	  between
-	  similar
-	  tests. Renamed
-	  test-empty-geom.R
-	  to
-	  test-translate-empty.R
+	  inst/tests/test-translate-empty.R, inst/tests/test-translate.R:
+	  Changed phrasing of some of the tests in translate to make
+	  it easier to distinguish between similar tests. Renamed
+	  test-empty-geom.R to test-translate-empty.R
 
 2010-07-25 09:15  crundel
 
 	* R/rgeos_util.R,
-	  R/rgeos_wkt.R,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_geos2R.c:
-	  Fixed
-	  bug
-	  in
-	  passing
-	  ids
-	  during
-	  translation
+	  R/rgeos_wkt.R, src/rgeos_R2geos.c, src/rgeos_geos2R.c: Fixed
+	  bug in passing ids during translation
 
 2010-07-25 08:08  crundel
 
 	* R/rgeos_predicate_binary.R:
-	  Removed
-	  more
-	  leftover
-	  debug
-	  messaging
+	  Removed more leftover debug messaging
 
 2010-07-25 07:56  crundel
 
 	* R/rgeos_predicate_binary.R:
-	  Fixed
-	  bug
-	  in
-	  gRelate,
-	  still
-	  called
-	  RGEOSRelate
-	  and
-	  passed
-	  byid
-	  instead
-	  of
-	  pattern
-	  as
-	  3rd
-	  argument
+	  Fixed bug in gRelate, still called RGEOSRelate and passed byid
+	  instead of pattern as 3rd argument
 
 2010-07-25 06:31  crundel
 
 	* src/rgeos_geos2R.c:
-	  Removed
-	  leftover
-	  debug
-	  messages
+	  Removed leftover debug messages
 
 2010-07-25 06:24  crundel
 
 	* inst/tests/test-empty-geom.R:
-	  Added
-	  test
-	  for
-	  GEOMETRYCOLLECTION
-	  EMPTY
+	  Added test for GEOMETRYCOLLECTION EMPTY
 
 2010-07-25 06:23  crundel
 
 	* R/rgeos_wkt.R:
-	  Fixed
-	  bug
-	  to
-	  handle
-	  null
-	  geometries
+	  Fixed bug to handle null geometries
 
 2010-07-25 06:22  crundel
 
 	* src/rgeos_R2geos.c,
-	  src/rgeos_geos2R.c:
-	  Fixed
-	  bugs
-	  handling
-	  empty
-	  geometries,
-	  collections
-	  were
-	  getting
-	  turned
-	  into
-	  nulls.
-	  Now
-	  only
-	  GEOMETRYCOLLECTION
-	  EMPTY
-	  returns
-	  null.
+	  src/rgeos_geos2R.c: Fixed bugs handling empty geometries,
+	  collections were getting turned into nulls.  Now only
+	  GEOMETRYCOLLECTION EMPTY returns null.
 
 2010-07-24 07:03  crundel
 
 	* NAMESPACE,
-	  R/rgeos_topology.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_topology.c:
-	  Added
-	  gSimplify
-	  and
-	  gPolygonize
-	  functionality,
-	  no
-	  idea
-	  how
-	  the
-	  latter
-	  works
+	  R/rgeos_topology.R, src/init.c, src/rgeos.h,
+	  src/rgeos_topology.c: Added gSimplify and gPolygonize
+	  functionality, no idea how the latter works
 
 2010-07-24 03:19  crundel
 
 	* src/rgeos_R2geos.c:
-	  Fixed
-	  bug
-	  in
-	  R2geos
-	  translate
-	  function
-	  for
-	  SpatialPoints
-	  object
-	  without
-	  row
-	  names.
+	  Fixed bug in R2geos translate function for SpatialPoints object
+	  without row names.
 
 2010-07-19 18:17  crundel
 
 	* NAMESPACE,
-	  R/rgeos_spExtensions_Methods.R,
-	  R/rgeos_util.R,
-	  R/rgeos_wkt.R:
-	  Small
-	  fixes
-	  for
-	  handling
-	  SpatialCollections
+	  R/rgeos_spExtensions_Methods.R, R/rgeos_util.R, R/rgeos_wkt.R:
+	  Small fixes for handling SpatialCollections
 
 2010-07-19 06:28  crundel
 
 	* src/rgeos_R2geos.c,
-	  src/rgeos_geos2R.c:
-	  Initial
-	  implementation
-	  of
-	  translation
-	  of
-	  SpatialCollections
-	  classes
-	  to
-	  and
-	  from
-	  geos.
+	  src/rgeos_geos2R.c: Initial implementation of translation of
+	  SpatialCollections classes to and from geos.
 
 2010-07-19 04:58  crundel
 
 	* R/rgeos_spExtensions_Methods.R:
-	  Fixed
-	  bug
-	  in
-	  SpatialCollections
-	  print
-	  method
-	  to
-	  use
-	  NA
-	  as
-	  default
-	  polygon
-	  color
-	  if
-	  col
-	  is
-	  not
-	  specified.
+	  Fixed bug in SpatialCollections print method to use NA as
+	  default polygon color if col is not specified.
 
 2010-07-19 04:27  crundel
 
 	* R/rgeos_spExtensions_Methods.R:
-	  Fixed
-	  bug
-	  in
-	  SpatialCollections
-	  print
-	  method
-	  to
-	  have
-	  the
-	  proper
-	  range
+	  Fixed bug in SpatialCollections print method to have the
+	  proper range
 
 2010-07-19 04:17  crundel
 
 	* NAMESPACE:
-	  Export
-	  SpatialCollections
-	  classes
-	  and
-	  constructor
+	  Export SpatialCollections classes and constructor
 
 2010-07-19 04:16  crundel
 
 	* R/rgeos_SpatialCollections.R,
-	  R/rgeos_SpatialRings.R,
-	  R/rgeos_SpatialRingsDataFrame.R,
-	  R/rgeos_spExtensions_Classes.R,
-	  R/rgeos_spExtensions_Methods.R:
-	  Combined
-	  SpatialCollections
-	  and
-	  SpatialRings
-	  extension
-	  classes
-	  into
-	  the
-	  same
-	  file
-	  (SpatialCollections
-	  depends
-	  on
-	  SpatialRings
-	  this
-	  way
-	  we
-	  can
-	  be
-	  sure
-	  that
-	  the
-	  latter
-	  is
-	  defined
-	  first)
+	  R/rgeos_SpatialRings.R, R/rgeos_SpatialRingsDataFrame.R,
+	  R/rgeos_spExtensions_Classes.R, R/rgeos_spExtensions_Methods.R:
+	  Combined SpatialCollections and SpatialRings extension classes
+	  into the same file (SpatialCollections depends on SpatialRings
+	  this way we can be sure that the latter is defined first)
 
 2010-07-19 01:46  crundel
 
 	* R/rgeos_SpatialCollections.R:
-	  Initial
-	  implementation
-	  of
-	  SpatialCollections
-	  with
-	  plot
-	  method
-	  missing
-	  additional
-	  helper
-	  methods
+	  Initial implementation of SpatialCollections with plot method
+	  missing additional helper methods
 
 2010-07-17 04:56  crundel
 
 	* R/Rgpc_funcs.R,
-	  R/gpc_geos.R,
-	  src/gpc_geos.c:
-	  Updated
-	  gpc
-	  replacement
-	  functions,
-	  added
-	  translation
-	  functions
-	  to
-	  and
-	  from
-	  gpc
-	  and
-	  sp
+	  R/gpc_geos.R, src/gpc_geos.c: Updated gpc replacement functions,
+	  added translation functions to and from gpc and sp
 
 2010-07-17 04:54  crundel
 
 	* man/LinesIntersections.Rd,
-	  man/gIntersection.Rd,
-	  man/gUnion.Rd,
-	  man/gpc.poly-class.Rd,
-	  man/thinnedSpatialPolyGEOS.Rd,
-	  man/unionSpatialPolygonsGEOS.Rd:
-	  Documentation
-	  update -removed
-	  thinnedSpatialPolyGEOS.Rd -replaced
-	  LinesIntersections.Rd
-	  with
-	  gIntersections.Rd -replaced
-	  unionSpatialPolygons.Rd
-	  with
-	  gUnion.Rd -removed
-	  unnecessary
-	  example
-	  from
-	  gpc.poly-class.Rd
+	  man/gIntersection.Rd, man/gUnion.Rd, man/gpc.poly-class.Rd,
+	  man/thinnedSpatialPolyGEOS.Rd, man/unionSpatialPolygonsGEOS.Rd:
+	  Documentation update -removed thinnedSpatialPolyGEOS.Rd
+	  -replaced LinesIntersections.Rd with gIntersections.Rd -replaced
+	  unionSpatialPolygons.Rd with gUnion.Rd -removed unnecessary
+	  example from gpc.poly-class.Rd
 
 2010-07-17 04:51  crundel
 
 	* NAMESPACE,
-	  R/rgeos_buffer.R,
-	  R/rgeos_linearref.R,
-	  R/rgeos_misc.R,
-	  R/rgeos_predicate_binary.R,
-	  R/rgeos_predicate_unary.R,
-	  R/rgeos_topology.R,
-	  R/rgeos_topology_binary.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_coord.c,
-	  src/rgeos_misc.c,
-	  src/rgeos_predicate_binary.c,
-	  src/rgeos_topology_binary.c:
-	  Major
-	  Update switched
-	  from
-	  RGEOS
-	  prefix
-	  on
-	  functions
-	  to
-	  gFunction
-	  style.
-	  Old
-	  function
-	  names
-	  retained
-	  but
-	  with
-	  Deprecated
-	  warning.
-	  Removed
-	  "is"
-	  prefix
-	  from
-	  relevant
-	  functions
-	  Added
-	  binary
-	  topology
-	  functions
-	  (gUnion,
-	  gDifference,
-	  etc) Combined
-	  related
-	  functions
-	  (hausdorffdistance
-	  with
-	  distance
-	  etc)
+	  R/rgeos_buffer.R, R/rgeos_linearref.R, R/rgeos_misc.R,
+	  R/rgeos_predicate_binary.R, R/rgeos_predicate_unary.R,
+	  R/rgeos_topology.R, R/rgeos_topology_binary.R, src/init.c,
+	  src/rgeos.h, src/rgeos_coord.c, src/rgeos_misc.c,
+	  src/rgeos_predicate_binary.c, src/rgeos_topology_binary.c: Major
+	  Update switched from RGEOS prefix on functions to gFunction
+	  style.  Old function names retained but with Deprecated
+	  warning.  Removed "is" prefix from relevant functions Added
+	  binary topology functions (gUnion, gDifference, etc) Combined
+	  related functions (hausdorffdistance with distance etc)
 
 2010-07-12 19:00  rsbivand
 
 	* R/AAA.R,
-	  configure,
-	  configure.in:
-	  version
+	  configure, configure.in: version
 
 2010-07-12 18:55  rsbivand
 
@@ -1437,1380 +675,502 @@
 2010-07-12 18:29  rsbivand
 
 	* configure,
-	  configure.in:
-	  version
+	  configure.in: version
 
 2010-07-12 18:24  rsbivand
 
 	* R/AAA.R,
-	  configure,
-	  configure.in:
-	  version
+	  configure, configure.in: version
 
 2010-07-10 17:57  rsbivand
 
 	* NAMESPACE:
-	  fixed
-	  NAMESPACE
+	  fixed NAMESPACE
 
 2010-07-10 07:05  crundel
 
 	* R/rgeos_wkt.R,
-	  src/rgeos_geos2R.c:
-	  Fixes
-	  for
-	  handling
-	  GEOMETRYCOLLECTION
-	  EMPTY,
-	  now
-	  returns
-	  NULL
+	  src/rgeos_geos2R.c: Fixes for handling GEOMETRYCOLLECTION EMPTY,
+	  now returns NULL
 
 2010-07-08 21:24  crundel
 
 	* inst/tests/test-empty-geom.R:
-	  Bug
-	  fix
-	  -
-	  misnamed
-	  variabel
+	  Bug fix - misnamed variabel
 
 2010-07-08 21:19  crundel
 
 	* R/rgeos_buffer.R,
-	  R/rgeos_topology.R,
-	  R/rgeos_wkt.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_buffer.c,
-	  src/rgeos_geos2R.c,
-	  src/rgeos_topology.c,
-	  src/rgeos_wkt.c:
-	  Removed
-	  all
-	  references
-	  to
-	  threshold
-	  in
-	  geos2R
-	  translate
-	  functions
-	  and
-	  calling
-	  functions
+	  R/rgeos_topology.R, R/rgeos_wkt.R, src/init.c, src/rgeos.h,
+	  src/rgeos_R2geos.c, src/rgeos_buffer.c, src/rgeos_geos2R.c,
+	  src/rgeos_topology.c, src/rgeos_wkt.c: Removed all references
+	  to threshold in geos2R translate functions and calling functions
 
 2010-07-08 21:17  crundel
 
 	* man/LinesIntersections.Rd,
-	  man/thinnedSpatialPolyGEOS.Rd:
-	  Commented
-	  out
-	  current
-	  broken
-	  function
-	  calls
+	  man/thinnedSpatialPolyGEOS.Rd: Commented out current broken
+	  function calls
 
 2010-07-08 21:05  crundel
 
 	* R/rgeos_SpatialRingsDataFrame.R:
-	  Small
-	  bug
-	  fix
-	  in
-	  chFIDsSpatialRingsDataFrame
+	  Small bug fix in chFIDsSpatialRingsDataFrame
 
 2010-07-08 20:52  crundel
 
 	* R/rgeos_simplify.R,
-	  R/rgeos_union.R,
-	  src/rgeos_sp.c:
-	  Removed
-	  files,
-	  functionality
-	  will
-	  be
-	  replicated
-	  elsewhere
+	  R/rgeos_union.R, src/rgeos_sp.c: Removed files, functionality
+	  will be replicated elsewhere
 
 2010-07-08 20:17  crundel
 
 	* inst/tests/test-empty-geom.R:
-	  Updated
-	  unit
-	  tests
-	  for
-	  handling
-	  empty
-	  geometries
-	  (added
-	  polygons
-	  and
-	  a
-	  few
-	  small
-	  fixes)
+	  Updated unit tests for handling empty geometries (added polygons
+	  and a few small fixes)
 
 2010-07-08 20:16  crundel
 
 	* src/rgeos.h,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_coord.c,
-	  src/rgeos_geos2R.c,
-	  src/rgeos_sp.c:
-	  Renamed
-	  functions
-	  for
-	  parsing
-	  polygons
-	  to
-	  and
-	  from
-	  geos
-	  and
-	  R
-	  to
-	  be
-	  more
-	  consistent Added
-	  handling
-	  for
-	  empty
-	  polygons
-	  to
-	  translate
-	  functions Removed
-	  thresholding
-	  from
-	  R2geos
-	  polygon
-	  translation
-	  functions.
-	  Will
-	  re-implement
-	  as
-	  a
-	  separate
-	  function. FIXME
-	  -
-	  remove
-	  threshold
-	  parameter
-	  from
-	  function
-	  calls Added
-	  rgeos_Pt2xy
-	  coordinate
-	  function
-	  for
-	  getting
-	  x
-	  and
-	  y
-	  coordinates
-	  from
-	  a
-	  geos
-	  point Added
-	  rgeos_crdMatFixDir
-	  which
-	  ensures
-	  coordinate
-	  direction
-	  is
-	  correct
-	  in
-	  a
-	  coordinate
-	  matrix
-	  depending
-	  of
-	  if
-	  it
-	  is
-	  a
-	  hole
-	  or
-	  not
+	  src/rgeos_R2geos.c, src/rgeos_coord.c, src/rgeos_geos2R.c,
+	  src/rgeos_sp.c: Renamed functions for parsing polygons to
+	  and from geos and R to be more consistent Added handling for
+	  empty polygons to translate functions Removed thresholding
+	  from R2geos polygon translation functions.  Will re-implement
+	  as a separate function. FIXME - remove threshold parameter from
+	  function calls Added rgeos_Pt2xy coordinate function for getting
+	  x and y coordinates from a geos point Added rgeos_crdMatFixDir
+	  which ensures coordinate direction is correct in a coordinate
+	  matrix depending of if it is a hole or not
 
 2010-07-08 20:10  crundel
 
 	* R/rgeos_SpatialRings.R:
-	  Fixed
-	  Ring
-	  class
-	  constructor
-	  to
-	  check
-	  the
-	  direction
-	  of
-	  points,
-	  if
-	  not
-	  CW
-	  then
-	  reverses
-	  them.
+	  Fixed Ring class constructor to check the direction of points,
+	  if not CW then reverses them.
 
 2010-06-27 22:25  crundel
 
 	* inst/tests/test-empty-geom.R:
-	  Unit
-	  tests
-	  for
-	  empty
-	  geometries
-	  and
-	  their
-	  translations
+	  Unit tests for empty geometries and their translations
 
 2010-06-27 07:49  crundel
 
 	* src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_coord.c:
-	  Separated
-	  LinearRing
-	  translate
-	  functions
-	  from
-	  Linestring
-	  functions Fixed
-	  R2geos
-	  translation
-	  of
-	  empty
-	  geometries
+	  src/rgeos.h, src/rgeos_R2geos.c, src/rgeos_coord.c: Separated
+	  LinearRing translate functions from Linestring functions Fixed
+	  R2geos translation of empty geometries
 
 2010-06-26 22:24  crundel
 
 	* NAMESPACE:
-	  Export
-	  class
-	  constructor
-	  functions
+	  Export class constructor functions
 
 2010-06-26 22:23  crundel
 
 	* inst/tests/test-translate.R,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_geos2R.c:
-	  Translate
-	  functions
-	  for
-	  SpatialRings,
-	  fixed
-	  translate
-	  unit
-	  tests
-	  to
-	  use
-	  the
-	  proper
-	  class.
+	  src/rgeos_R2geos.c, src/rgeos_geos2R.c: Translate functions
+	  for SpatialRings, fixed translate unit tests to use the
+	  proper class.
 
 2010-06-26 22:23  crundel
 
 	* R/rgeos_buffer.R,
-	  R/rgeos_misc.R,
-	  R/rgeos_predicate_unary.R,
-	  R/rgeos_topology.R,
-	  R/rgeos_util.R:
-	  Removed
-	  extractIDs
-	  function,
-	  uses
-	  row.names
+	  R/rgeos_misc.R, R/rgeos_predicate_unary.R, R/rgeos_topology.R,
+	  R/rgeos_util.R: Removed extractIDs function, uses row.names
 	  instead
 
 2010-06-26 18:54  crundel
 
 	* src/rgeos_geos2R.c:
-	  Initial
-	  handling
-	  of
-	  empty
-	  points
-	  and
-	  empty
-	  linestrings
-	  proof
-	  of
-	  concept
-	  (probably
-	  doesn't
-	  play
-	  well
-	  with
-	  existing
-	  sp
-	  methods)
+	  Initial handling of empty points and empty linestrings proof
+	  of concept (probably doesn't play well with existing sp methods)
 
 2010-06-26 18:50  crundel
 
 	* src/rgeos_coord.c:
-	  Cleaned
-	  code
+	  Cleaned code
 
 2010-06-26 18:44  crundel
 
 	* src/rgeos_bbox.c:
-	  Cleaned
-	  code
+	  Cleaned code
 
 2010-06-26 18:42  crundel
 
 	* NAMESPACE,
-	  R/rgeos_SpatialRings.R,
-	  R/rgeos_SpatialRingsDataFrame.R:
-	  Initial
-	  implementation
-	  of
-	  SpatialRings
-	  and
-	  SpatialRingsDataFrame
-	  classes
-	  based
-	  on
-	  SpatialLines
+	  R/rgeos_SpatialRings.R, R/rgeos_SpatialRingsDataFrame.R:
+	  Initial implementation of SpatialRings and SpatialRingsDataFrame
+	  classes based on SpatialLines
 
 2010-06-26 18:41  crundel
 
 	* R/rgeos_wkt.R:
-	  changed
-	  readWKT,
-	  let
-	  GEOS
-	  do
-	  all
-	  parsing/checking
-	  of
-	  WKTs
-	  instead
-	  of
-	  trying
-	  to
-	  sort
-	  it
-	  out
-	  in
-	  R.
+	  changed readWKT, let GEOS do all parsing/checking of WKTs
+	  instead of trying to sort it out in R.
 
 2010-06-26 02:04  crundel
 
 	* src/rgeos_R2geos.c:
-	  Cleaned
-	  up
-	  c
-	  code,
-	  no
-	  changes
-	  in
-	  functionality
+	  Cleaned up c code, no changes in functionality
 
 2010-06-21 02:36  crundel
 
 	* tests/.Rhistory:
-	  Removed
-	  .Rhistory
+	  Removed .Rhistory
 
 2010-06-15 17:13  rsbivand
 
 	* R/AAA.R:
-	  keyword
-	  on
-	  load
+	  keyword on load
 
 2010-06-15 17:10  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  keyword
-	  on
-	  load
+	  inst/ChangeLog: keyword on load
 
 2010-06-15 17:09  rsbivand
 
 	* R/AAA.R:
-	  keyword
-	  on
-	  load
+	  keyword on load
 
 2010-06-14 05:30  crundel
 
 	* src/rgeos_bbox.c,
-	  src/rgeos_buffer.c,
-	  src/rgeos_coord.c,
-	  src/rgeos_misc.c,
-	  src/rgeos_wkt.c:
-	  Cleaned
-	  c
-	  code
-	  formatting
+	  src/rgeos_buffer.c, src/rgeos_coord.c, src/rgeos_misc.c,
+	  src/rgeos_wkt.c: Cleaned c code formatting
 
 2010-06-12 20:38  crundel
 
 	* src/rgeos_area.c,
-	  src/rgeos_geos2R.c:
-	  Cleaned
-	  code
-	  in
-	  rgeos_LinearRingPolygon
-	  removed
-	  dependence
-	  on
-	  rgeos_csArea.
-	  Uses
-	  GEOSArea_r
-	  now.
-	  Should
-	  be
-	  slightly
-	  faster. Removed
-	  rgeos_area.c
-	  (rgeos_csArea
-	  only
-	  referenced
-	  in
-	  rgeos_LinearRingPolygon)
+	  src/rgeos_geos2R.c: Cleaned code in rgeos_LinearRingPolygon
+	  removed dependence on rgeos_csArea.  Uses GEOSArea_r now.
+	  Should be slightly faster. Removed rgeos_area.c (rgeos_csArea
+	  only referenced in rgeos_LinearRingPolygon)
 
 2010-06-12 19:48  crundel
 
 	* src/rgeos.c,
-	  src/rgeos.h:
-	  Cleaned
-	  code
-	  in
-	  rgeos.c
+	  src/rgeos.h: Cleaned code in rgeos.c
 
 2010-06-10 00:50  crundel
 
 	* R/rgeos_misc.R,
-	  R/rgeos_predicate_binary.R,
-	  src/rgeos_misc.c,
-	  src/rgeos_predicate_binary.c:
-	  Modified
-	  Binary
-	  predicate
-	  functions
-	  and
-	  distance
-	  functions
-	  to
-	  allow
-	  byid
-	  to
-	  be
-	  of
-	  length
-	  2
-	  to
-	  indicate
-	  if
-	  one
-	  geometry
-	  should
-	  be
-	  processed
-	  by
-	  id
-	  and
-	  the
-	  other
-	  not.
+	  R/rgeos_predicate_binary.R, src/rgeos_misc.c,
+	  src/rgeos_predicate_binary.c: Modified Binary predicate
+	  functions and distance functions to allow byid to be of length
+	  2 to indicate if one geometry should be processed by id and
+	  the other not.
 
 2010-06-09 23:25  crundel
 
 	* NAMESPACE:
-	  Forgot
-	  to
-	  add
-	  groupID
-	  to
-	  NAMESPACE
+	  Forgot to add groupID to NAMESPACE
 
 2010-06-09 23:22  crundel
 
 	* NAMESPACE,
-	  R/rgeos_topology.R,
-	  R/rgeos_util.R,
-	  man/unionSpatialPolygonsGEOS.Rd,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_sp.c,
-	  src/rgeos_topology.c:
-	  Added
-	  RGEOSUnionCascaded,
-	  replicates
-	  unionSpatialPolygonsGEOS
-	  functionality
-	  but
-	  is
-	  currently
-	  slower.
-	  Added
-	  groupID
-	  utility
-	  function
-	  which
-	  restructures
-	  a
-	  SP
-	  object
-	  based
-	  on
-	  newly
-	  assigned
-	  IDs,
-	  subobjects
-	  with
-	  the
-	  same
-	  ID
-	  are
-	  grouped
-	  together.
-	  General
-	  solution
-	  to
-	  the
-	  need
-	  to
-	  flatten
-	  SpatialPolygons
-	  for
-	  use
-	  with
-	  RGEOSUnionCascaded,
-	  but
-	  may
-	  be
-	  too
-	  slow
-	  for
-	  practical
-	  use.
+	  R/rgeos_topology.R, R/rgeos_util.R,
+	  man/unionSpatialPolygonsGEOS.Rd, src/init.c, src/rgeos.h,
+	  src/rgeos_sp.c, src/rgeos_topology.c: Added RGEOSUnionCascaded,
+	  replicates unionSpatialPolygonsGEOS functionality but is
+	  currently slower.  Added groupID utility function which
+	  restructures a SP object based on newly assigned IDs, subobjects
+	  with the same ID are grouped together.  General solution to the
+	  need to flatten SpatialPolygons for use with RGEOSUnionCascaded,
+	  but may be too slow for practical use.
 
 2010-06-07 09:02  rsbivand
 
 	* inst/ChangeLog:
-	  update
-	  changelog
+	  update changelog
 
 2010-06-07 08:54  rsbivand
 
 	* ChangeLog:
-	  update
-	  changelog
+	  update changelog
 
 2010-06-07 08:28  rsbivand
 
 	* DESCRIPTION,
-	  NAMESPACE,
-	  src/gpc_geos.c,
-	  src/init.c,
-	  src/rgeos_coord.c,
-	  src/rgeos_sp.c:
-	  tidying
-	  up
-	  to
-	  run
-	  CMD
-	  check
+	  NAMESPACE, src/gpc_geos.c, src/init.c, src/rgeos_coord.c,
+	  src/rgeos_sp.c: tidying up to run CMD check
 
 2010-06-07 05:01  crundel
 
 	* src/rgeos_topology_binary.c:
-	  
+
 
 2010-06-07 04:28  crundel
 
 	* src/rgeos_R2geos.c:
-	  Handles
-	  Spatial
-	  DataFrame
-	  classes,
-	  currently
-	  just
-	  ignores
-	  the
-	  data
-	  frame
+	  Handles Spatial DataFrame classes, currently just ignores the
+	  data frame
 
 2010-06-07 02:51  crundel
 
 	* R/rgeos_topology_binary.R,
-	  R/rgeos_topology_relation.R:
-	  Renamed
-	  rgeos_topology_relation
-	  to
-	  rgeos_topology_binary
+	  R/rgeos_topology_relation.R: Renamed rgeos_topology_relation
+	  to rgeos_topology_binary
 
 2010-06-06 05:48  crundel
 
 	* src/rgeos_topology.c:
-	  Fixed
-	  error
-	  message
-	  typos
-	  (referred
-	  to
-	  wrong
-	  parent
-	  function)
+	  Fixed error message typos (referred to wrong parent function)
 
 2010-06-06 05:37  crundel
 
 	* R/rgeos_predicate_binary.R,
-	  R/rgeos_topology_relation.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_predicate_binary.c,
-	  src/rgeos_predicate_unary.c:
-	  Fixed
-	  issue
-	  with
-	  argument
-	  number
-	  mismatch
-	  in
-	  binary
-	  predicate
-	  function. Binary
-	  predicate
-	  functions
-	  take
-	  into
-	  account
-	  when
-	  the
-	  result
-	  is
-	  symmetric
-	  and
-	  perform
-	  only
-	  the
-	  necessary
-	  calculations. RGEOSRelate
-	  and
-	  RGEOSRelatePattern
-	  moved
-	  to
-	  rgeos_binary_
-	  predicate
+	  R/rgeos_topology_relation.R, src/init.c, src/rgeos.h,
+	  src/rgeos_predicate_binary.c, src/rgeos_predicate_unary.c:
+	  Fixed issue with argument number mismatch in binary predicate
+	  function. Binary predicate functions take into account
+	  when the result is symmetric and perform only the necessary
+	  calculations. RGEOSRelate and RGEOSRelatePattern moved to
+	  rgeos_binary_ predicate
 
 2010-06-05 21:33  crundel
 
 	* R/rgeos_misc.R,
-	  R/rgeos_predicate_binary.R,
-	  R/rgeos_predicate_unary.R,
-	  R/rgeos_topology.R,
-	  R/rgeos_topology_relation.R,
-	  src/init.c,
-	  src/rgeos.c,
-	  src/rgeos.h,
-	  src/rgeos_predicate_binary.c,
-	  src/rgeos_predicate_unary.c:
-	  Fixed
-	  issues
-	  with
-	  binary
-	  predicate
-	  issue
-	  (temporarily
-	  remove
-	  rgeos_relatepattern) Added
-	  Unary
-	  Predicate
-	  Functions
+	  R/rgeos_predicate_binary.R, R/rgeos_predicate_unary.R,
+	  R/rgeos_topology.R, R/rgeos_topology_relation.R, src/init.c,
+	  src/rgeos.c, src/rgeos.h, src/rgeos_predicate_binary.c,
+	  src/rgeos_predicate_unary.c: Fixed issues with binary predicate
+	  issue (temporarily remove rgeos_relatepattern) Added Unary
+	  Predicate Functions
 
 2010-06-03 22:46  crundel
 
 	* src/rgeos.h,
-	  src/rgeos_misc.c,
-	  src/rgeos_predicate_binary.c,
-	  src/rgeos_topology.c:
-	  Removed
-	  the
-	  enum
-	  for
-	  each
-	  function
-	  and
-	  just
-	  passing
-	  a
-	  function
-	  pointer
-	  directly
-	  now.
+	  src/rgeos_misc.c, src/rgeos_predicate_binary.c,
+	  src/rgeos_topology.c: Removed the enum for each function and
+	  just passing a function pointer directly now.
 
 2010-06-02 03:44  crundel
 
 	* R/rgeos_misc.R,
-	  R/rgeos_predicate_binary.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_predicate_binary.c:
-	  Added
-	  binary
-	  predicate
-	  functions:
-	  RGEOSDisjoint,
-	  RGEOSTouches,
-	  RGEOSIntersects,
-	  RGEOSCrosses,
-	  RGEOSWithin,
-	  RGEOSContains,
-	  RGEOSOverlaps,
-	  RGEOSEquals Generalized
-	  functions
-	  in
-	  rgeos_misc
+	  R/rgeos_predicate_binary.R, src/init.c, src/rgeos.h,
+	  src/rgeos_predicate_binary.c: Added binary predicate functions:
+	  RGEOSDisjoint, RGEOSTouches, RGEOSIntersects, RGEOSCrosses,
+	  RGEOSWithin, RGEOSContains, RGEOSOverlaps, RGEOSEquals
+	  Generalized functions in rgeos_misc
 
 2010-06-02 00:35  crundel
 
 	* R/rgeos_topology.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_coord.c,
-	  src/rgeos_geos2R.c,
-	  src/rgeos_misc.c,
-	  src/rgeos_topology.c:
-	  Added
-	  RGEOSLineMerge Generalized
-	  function
-	  calls
-	  in
-	  topology
-	  and
-	  misc,
-	  functions
-	  with
-	  the
-	  same
-	  type
-	  of
-	  parameters
-	  and
-	  differ
-	  only
-	  in
-	  the
-	  GEOS
-	  function
-	  used
-	  are
-	  processed
-	  by
-	  the
-	  same
-	  function. Small
-	  bug
-	  fixes
-	  in
-	  coord
-	  and
-	  geos2R
+	  src/init.c, src/rgeos.h, src/rgeos_coord.c, src/rgeos_geos2R.c,
+	  src/rgeos_misc.c, src/rgeos_topology.c: Added RGEOSLineMerge
+	  Generalized function calls in topology and misc, functions
+	  with the same type of parameters and differ only in the GEOS
+	  function used are processed by the same function. Small bug
+	  fixes in coord and geos2R
 
 2010-05-31 03:05  crundel
 
 	* R/rgeos_misc.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_misc.c:
-	  Added
-	  RGEOSHausdorffDistance,
-	  combined
-	  underlying
-	  C
-	  code
-	  with
-	  rgeosdistance
-	  since
-	  everything
-	  is
-	  the
-	  same
-	  except
-	  for
-	  the
-	  geos
-	  function
-	  call.
-	  FIXME
-	  -
-	  currently
-	  uses
-	  function
-	  pointers
-	  which
-	  are
-	  causing
-	  gcc
-	  warnings,
-	  but
-	  code
-	  appears
-	  to
-	  work.
+	  src/init.c, src/rgeos.h, src/rgeos_misc.c: Added
+	  RGEOSHausdorffDistance, combined underlying C code with
+	  rgeosdistance since everything is the same except for the geos
+	  function call.  FIXME - currently uses function pointers which
+	  are causing gcc warnings, but code appears to work.
 
 2010-05-30 21:53  crundel
 
 	* R/rgeos_misc.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_misc.c:
-	  Added
-	  RGEOSDistance
-	  and
-	  RGEOSisWithinDistance
-	  in
-	  rgeos_misc
+	  src/init.c, src/rgeos.h, src/rgeos_misc.c: Added RGEOSDistance
+	  and RGEOSisWithinDistance in rgeos_misc
 
 2010-05-30 21:14  crundel
 
 	* R/rgeos_misc.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_misc.c:
-	  Added
-	  RGEOSArea
-	  and
-	  RGEOSLength
-	  in
-	  rgeos_misc
+	  src/init.c, src/rgeos.h, src/rgeos_misc.c: Added RGEOSArea
+	  and RGEOSLength in rgeos_misc
 
 2010-05-30 20:40  crundel
 
 	* src/rgeos.h:
-	  More
-	  cleaning
-	  of
-	  rgeos.h
+	  More cleaning of rgeos.h
 
 2010-05-30 20:38  crundel
 
 	* src/rgeos_contains.c,
-	  src/rgeos_distance.c,
-	  src/rgeos_length.c:
-	  Removed
-	  rgeos_contains.c,
-	  rgeos_distance.c,
-	  rgeos_length.c
-	  functionality
-	  will
-	  be
-	  covered
-	  by
-	  rgeos_misc.c
+	  src/rgeos_distance.c, src/rgeos_length.c: Removed
+	  rgeos_contains.c, rgeos_distance.c, rgeos_length.c functionality
+	  will be covered by rgeos_misc.c
 
 2010-05-30 20:37  crundel
 
 	* src/init.c,
-	  src/rgeos.h:
-	  Removed
-	  rgeos_contains.c,
-	  rgeos_distance.c,
-	  rgeos_length.c
-	  functionality
-	  will
-	  be
-	  covered
-	  by
-	  rgeos_misc.c Cleaned
-	  up
-	  init.c
-	  and
-	  rgeos.h
+	  src/rgeos.h: Removed rgeos_contains.c, rgeos_distance.c,
+	  rgeos_length.c functionality will be covered by rgeos_misc.c
+	  Cleaned up init.c and rgeos.h
 
 2010-05-30 20:15  crundel
 
 	* R/rgeos_buffer.R,
-	  src/rgeos_buffer.c:
-	  Added
-	  RGEOSBuffer
+	  src/rgeos_buffer.c: Added RGEOSBuffer
 
 2010-05-30 20:11  crundel
 
 	* R/rgeos_util.R:
-	  Added
-	  default
-	  value
-	  for
-	  setScale
+	  Added default value for setScale
 
 2010-05-30 20:10  crundel
 
 	* src/rgeos_poly2nb.c,
-	  src/rgeos_sp.c,
-	  src/rgeos_validate.c:
-	  Updated
-	  function
-	  names
+	  src/rgeos_sp.c, src/rgeos_validate.c: Updated function names
 
 2010-05-29 09:38  crundel
 
 	* NAMESPACE,
-	  R/rgeos_wkt.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_geos2R.c,
-	  src/rgeos_wkt.c:
-	  Added
-	  writeWKT,
-	  small
-	  fixes
-	  to
-	  translate
-	  functions
+	  R/rgeos_wkt.R, src/init.c, src/rgeos.h, src/rgeos_R2geos.c,
+	  src/rgeos_geos2R.c, src/rgeos_wkt.c: Added writeWKT, small
+	  fixes to translate functions
 
 2010-05-27 19:47  crundel
 
 	* NAMESPACE,
-	  R/rgeos_buffer.R,
-	  R/rgeos_linearref.R,
-	  R/rgeos_topology.R,
-	  src/init.c,
-	  src/rgeos.c,
-	  src/rgeos.h,
-	  src/rgeos_buffer.c,
-	  src/rgeos_predicate_unary.c,
-	  src/rgeos_topology.c:
-	  Added
-	  RGEOSBoundary,
-	  RGEOSGetCentroid,
-	  RGEOSPointOnSurface,
-	  RGEOSBuffer
-	  which
-	  mostly
-	  work
-	  
+	  R/rgeos_buffer.R, R/rgeos_linearref.R, R/rgeos_topology.R,
+	  src/init.c, src/rgeos.c, src/rgeos.h, src/rgeos_buffer.c,
+	  src/rgeos_predicate_unary.c, src/rgeos_topology.c: Added
+	  RGEOSBoundary, RGEOSGetCentroid, RGEOSPointOnSurface,
+	  RGEOSBuffer which mostly work
+
 
 2010-05-26 17:59  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  changelogs
+	  inst/ChangeLog: changelogs
 
 2010-05-26 06:06  crundel
 
 	* src/init.c:
-	  
+
 
 2010-05-26 06:06  crundel
 
 	* R/rgeos_topology.R,
-	  inst/tests/test-translate.R,
-	  src/rgeos.h,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_geos2R.c,
-	  src/rgeos_sp.c,
-	  src/rgeos_topology.c:
-	  Small
-	  fixes
-	  to
-	  translation
-	  functions,
-	  everything
-	  should
-	  be
-	  working Updated
-	  test-translate.R
-	  with
-	  polygon
-	  unit
-	  tests Added
-	  RGEOSConvexHull
-	  (untested)
+	  inst/tests/test-translate.R, src/rgeos.h, src/rgeos_R2geos.c,
+	  src/rgeos_geos2R.c, src/rgeos_sp.c, src/rgeos_topology.c:
+	  Small fixes to translation functions, everything should be
+	  working Updated test-translate.R with polygon unit tests Added
+	  RGEOSConvexHull (untested)
 
 2010-05-24 04:40  crundel
 
 	* R/rgeos_topology.R,
-	  R/rgeos_util.R,
-	  src/rgeos_topology.c:
-	  Added
-	  rgeos_envelope
-	  and
-	  RGEOSEnvelope
-	  functions
+	  R/rgeos_util.R, src/rgeos_topology.c: Added rgeos_envelope
+	  and RGEOSEnvelope functions
 
 2010-05-24 04:25  crundel
 
 	* src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_bbox.c,
-	  src/rgeos_geos2R.c:
-	  Unified
-	  bounding
-	  box
-	  functions,
-	  geom2bbox
-	  should
-	  work
-	  for
-	  all
-	  geometry
-	  types
-	  now
+	  src/rgeos.h, src/rgeos_R2geos.c, src/rgeos_bbox.c,
+	  src/rgeos_geos2R.c: Unified bounding box functions, geom2bbox
+	  should work for all geometry types now
 
 2010-05-23 08:03  crundel
 
 	* NAMESPACE,
-	  R/rgeos_util.R,
-	  R/rgeos_wkt.R,
-	  inst/tests,
-	  inst/tests/test-jts-xml.R,
-	  inst/tests/test-translate.R,
-	  src/rgeos.h,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_coord.c,
-	  src/rgeos_geos2R.c:
-	  Added
-	  proper
-	  ID
-	  handling
-	  to
-	  translation
-	  functions
-	  and
-	  readWKT.
-	  Currently
-	  point
-	  ids
-	  are
-	  stored
-	  as
-	  row
-	  names
-	  which
-	  is
-	  a
-	  design
-	  decision
-	  that
-	  should
-	  be
-	  revisited
-	  later
-	  (current
-	  implementation
-	  works,
-	  but
-	  probably
-	  doesn't
-	  integrate
-	  well
-	  with
-	  existing
-	  sp
-	  tools) Added
-	  fixes
-	  to
-	  test-translate.R,
-	  mostly
-	  related
-	  to
-	  IDs
-	  
-	  Removed
-	  SP2WKT
-	  (which
-	  never
-	  worked)
-	  and
-	  WKT2SP
-	  in
-	  favor
-	  of
-	  readWKT
-	  -
-	  revisit
-	  naming
-	  convention?
+	  R/rgeos_util.R, R/rgeos_wkt.R, inst/tests,
+	  inst/tests/test-jts-xml.R, inst/tests/test-translate.R,
+	  src/rgeos.h, src/rgeos_R2geos.c, src/rgeos_coord.c,
+	  src/rgeos_geos2R.c: Added proper ID handling to translation
+	  functions and readWKT.  Currently point ids are stored as row
+	  names which is a design decision that should be revisited later
+	  (current implementation works, but probably doesn't integrate
+	  well with existing sp tools) Added fixes to test-translate.R,
+	  mostly related to IDs
+
+	  Removed SP2WKT (which never worked) and WKT2SP in favor of
+	  readWKT - revisit naming convention?
 
 2010-05-21 22:00  crundel
 
 	* NAMESPACE:
-	  
+
 
 2010-05-21 22:00  crundel
 
 	* R/rgeos_util.R,
-	  R/rgeos_wkt.R,
-	  inst/tests/test-translate.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_geos2R.c,
-	  src/rgeos_sp.c,
-	  tests/test-all.R:
-	  Added
-	  rgeos_convert_R2geos
-	  -
-	  generic
-	  function
-	  to
-	  translate
-	  R
-	  sp
-	  objects
-	  to
-	  geos
-	  geometries Moved
-	  rgeos_Polygons_i_2Polygon
-	  to
-	  rgeos_R2geos.c Added
-	  rgeos_double_translate
-	  which
-	  translates
-	  R->geos->R
-	  for
-	  testing
-	  purposes Added
-	  test-translate.R
-	  with
-	  unit
-	  tests
-	  for
-	  translations
-	  -
-	  currently
-	  tests
-	  Points,
-	  Lines,
-	  and
-	  Rings readWKT
-	  fix
-	  -
-	  if
-	  the
-	  result
-	  is
-	  only
-	  one
-	  object
-	  return
-	  it
-	  and
-	  not
-	  a
-	  list
-	  of
-	  objects
+	  R/rgeos_wkt.R, inst/tests/test-translate.R, src/init.c,
+	  src/rgeos.h, src/rgeos_R2geos.c, src/rgeos_geos2R.c,
+	  src/rgeos_sp.c, tests/test-all.R: Added rgeos_convert_R2geos -
+	  generic function to translate R sp objects to geos geometries
+	  Moved rgeos_Polygons_i_2Polygon to rgeos_R2geos.c Added
+	  rgeos_double_translate which translates R->geos->R for testing
+	  purposes Added test-translate.R with unit tests for translations
+	  - currently tests Points, Lines, and Rings readWKT fix - if the
+	  result is only one object return it and not a list of objects
 
 2010-05-21 00:59  crundel
 
 	* src/rgeos_coord.c:
-	  Broke
-	  the
-	  geospoint2crdMat
-	  in
-	  the
-	  last
-	  commit,
-	  fixes
-	  POINT
-	  and
-	  MULTIPOINT
-	  cases
+	  Broke the geospoint2crdMat in the last commit, fixes POINT
+	  and MULTIPOINT cases
 
 2010-05-20 22:46  crundel
 
 	* src/rgeos_coord.c,
-	  src/rgeos_geos2R.c:
-	  Cleaned
-	  up
-	  /
-	  clarified
-	  point
-	  and
-	  line
-	  handling
-	  code
+	  src/rgeos_geos2R.c: Cleaned up / clarified point and line
+	  handling code
 
 2010-05-20 21:25  crundel
 
 	* src/rgeos_geos2R.c:
-	  Added
-	  handling
-	  of
-	  geometry
-	  collections
-	  of
-	  Lines
-	  and
-	  Multilines
-	  and
-	  Linear
-	  Rings
+	  Added handling of geometry collections of Lines and Multilines
+	  and Linear Rings
 
 2010-05-20 20:40  rsbivand
 
 	* src/rgeos_sp.c:
-	  temp
-	  FIXME
-	  in
-	  Line
-	  Intersection
+	  temp FIXME in Line Intersection
 
 2010-05-19 04:37  crundel
 
 	* src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_coord.c,
-	  src/rgeos_geos2R.c,
-	  src/rgeos_sp.c:
-	  Updated
-	  handling
-	  conversion
-	  of
-	  geos
-	  points
-	  to
-	  R
-	  to
-	  handle
-	  geometry
-	  collections
-	  of
-	  points
-	  and
-	  multipoints
+	  src/rgeos.h, src/rgeos_coord.c, src/rgeos_geos2R.c,
+	  src/rgeos_sp.c: Updated handling conversion of geos points to
+	  R to handle geometry collections of points and multipoints
 
 2010-05-17 21:51  crundel
 
 	* src/rgeos_geos2R.c:
-	  Fix
-	  to
-	  rgeos_multiline2SpatialLines,
-	  SpatialLines
-	  class
-	  was
-	  being
-	  built
-	  incorrectly,
-	  Lines
-	  class
-	  is
-	  now
-	  added
-	  to
-	  a
-	  list
-	  before
-	  being
-	  attached
+	  Fix to rgeos_multiline2SpatialLines, SpatialLines class was
+	  being built incorrectly, Lines class is now added to a list
+	  before being attached
 
 2010-05-17 02:33  crundel
 
 	* R/rgeos_util.R,
-	  R/rgeos_wkt.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_bbox.c,
-	  src/rgeos_geos2R.c,
-	  src/rgeos_wkt.c:
-	  Added
-	  rgeos_multiline2SpatialLines
-	  function
-	  to
-	  covert
-	  LINESTRING
-	  and
-	  MULTILINESTRING
-	  to
-	  SpatialLines Added
-	  rgeos_convert_geos2R
-	  function
-	  which
-	  is
-	  geometry
-	  type
-	  agnostic
-	  and
-	  calls
-	  other
-	  conversion
-	  functions
-	  based
-	  on
-	  geometry
-	  type Fixed
-	  rgeos_crdMat2bbox
-	  function
-	  to
-	  make
-	  updates
-	  to
-	  an
-	  existing
-	  bbox,
-	  added
-	  rgeos_initbbox
-	  and
-	  rgeos_formatbbox
-	  helper
-	  functions Added
-	  checkP4S
-	  for
-	  basic
-	  proj4string
-	  checking
-	  and
-	  initialization,
-	  should
-	  now
-	  be
-	  handled
-	  in
-	  R
-	  and
-	  an
-	  initialized
-	  CRS
-	  class
-	  passed
-	  to
-	  conversion
-	  functions Other
-	  small
-	  code
-	  cleanups
+	  R/rgeos_wkt.R, src/init.c, src/rgeos.h, src/rgeos_bbox.c,
+	  src/rgeos_geos2R.c, src/rgeos_wkt.c: Added
+	  rgeos_multiline2SpatialLines function to covert LINESTRING and
+	  MULTILINESTRING to SpatialLines Added rgeos_convert_geos2R
+	  function which is geometry type agnostic and calls
+	  other conversion functions based on geometry type Fixed
+	  rgeos_crdMat2bbox function to make updates to an existing bbox,
+	  added rgeos_initbbox and rgeos_formatbbox helper functions Added
+	  checkP4S for basic proj4string checking and initialization,
+	  should now be handled in R and an initialized CRS class passed
+	  to conversion functions Other small code cleanups
 
 2010-05-15 05:41  crundel
 
 	* src/init.c,
-	  src/rgeos_R2geos.c:
-	  More
-	  merge
-	  fixes
+	  src/rgeos_R2geos.c: More merge fixes
 
 2010-05-15 05:39  crundel
 
 	* src/rgeos.h:
-	  Broke
-	  rgeos.h
-	  somehow
-	  while
-	  merging.
+	  Broke rgeos.h somehow while merging.
 
 2010-05-15 05:28  crundel
 
 	* .,
-	  NAMESPACE,
-	  R,
-	  R/AAA.R,
-	  R/rgeos_wkt.R,
-	  inst/tests,
-	  inst/tests/test-jts-xml.R,
-	  inst/tests/testxml,
-	  inst/tests/testxml/general,
+	  NAMESPACE, R, R/AAA.R, R/rgeos_wkt.R,
+	  inst/tests, inst/tests/test-jts-xml.R,
+	  inst/tests/testxml, inst/tests/testxml/general,
 	  inst/tests/testxml/general/TestBoundary.xml,
 	  inst/tests/testxml/general/TestCentroid.xml,
 	  inst/tests/testxml/general/TestConvexHull-big.xml,
@@ -2855,739 +1215,361 @@
 	  inst/tests/testxml/validate/TestRelatePA.xml,
 	  inst/tests/testxml/validate/TestRelatePL.xml,
 	  inst/tests/testxml/validate/TestRelatePP.xml,
-	  inst/tests/testxml/vivid,
-	  src,
-	  src/gpc_geos.c,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_bbox.c,
-	  src/rgeos_coord.c,
-	  src/rgeos_geos2R.c,
-	  src/rgeos_length.c,
-	  src/rgeos_sp.c,
-	  src/rgeos_wkt.c,
-	  tests,
-	  tests/.Rhistory,
-	  tests/test-all.R:
-	  Fixed
-	  issue
-	  where
-	  CoordSeq
-	  were
-	  not
-	  being
-	  destroyed Added
-	  some
-	  initial
-	  work
-	  on
-	  UnitTests
-	  using
-	  testthat
-	  package,
-	  testxml
-	  folder
-	  contains
-	  xml
-	  test
-	  files
-	  from
-	  JTS General
-	  cleaning
-	  and
-	  reorganization
-	  of
-	  C
-	  code.
-	  Added
-	  functions
-	  to
-	  convert
-	  point
-	  and
-	  multipoint
-	  geos
-	  geometries Added
-	  readWKT
-	  functions
-	  that
-	  are
-	  geometry
-	  agnostic
+	  inst/tests/testxml/vivid, src, src/gpc_geos.c, src/init.c,
+	  src/rgeos.h, src/rgeos_R2geos.c, src/rgeos_bbox.c,
+	  src/rgeos_coord.c, src/rgeos_geos2R.c, src/rgeos_length.c,
+	  src/rgeos_sp.c, src/rgeos_wkt.c, tests, tests/.Rhistory,
+	  tests/test-all.R: Fixed issue where CoordSeq were not being
+	  destroyed Added some initial work on UnitTests using testthat
+	  package, testxml folder contains xml test files from JTS General
+	  cleaning and reorganization of C code.  Added functions to
+	  convert point and multipoint geos geometries Added readWKT
+	  functions that are geometry agnostic
 
 2010-05-13 20:10  crundel
 
 	* R/rgeos_misc.R,
-	  R/rgeos_predicate_binary.R,
-	  R/rgeos_predicate_unary.R,
-	  R/rgeos_topology.R,
-	  R/rgeos_topology_relation.R:
-	  Created
-	  new
-	  files
-	  with
-	  basic
-	  rgeos
-	  functions
-	  organized
-	  by
-	  task,
-	  each
-	  file
-	  contains
-	  empty
-	  function
-	  definitions.
+	  R/rgeos_predicate_binary.R, R/rgeos_predicate_unary.R,
+	  R/rgeos_topology.R, R/rgeos_topology_relation.R: Created new
+	  files with basic rgeos functions organized by task, each file
+	  contains empty function definitions.
 
 2010-05-06 16:19  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  use
-	  points
-	  not
-	  polygons
-	  for
-	  b-box
-	  intersection
-	  envelope
-	  in
-	  poly2nb
+	  inst/ChangeLog: use points not polygons for b-box intersection
+	  envelope in poly2nb
 
 2010-05-06 16:19  rsbivand
 
 	* R/rgeos.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_poly2nb.c:
-	  use
-	  points
-	  not
-	  polygons
-	  for
-	  b-box
-	  intersection
-	  envelope
-	  in
-	  poly2nb
+	  src/init.c, src/rgeos.h, src/rgeos_R2geos.c,
+	  src/rgeos_poly2nb.c: use points not polygons for b-box
+	  intersection envelope in poly2nb
 
 2010-05-05 08:42  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  bounding
-	  box
-	  intersections
+	  inst/ChangeLog: bounding box intersections
 
 2010-05-05 08:41  rsbivand
 
 	* NAMESPACE,
-	  R/rgeos.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_poly2nb.c:
-	  bounding
-	  box
-	  intersections
+	  R/rgeos.R, src/init.c, src/rgeos.h, src/rgeos_poly2nb.c:
+	  bounding box intersections
 
 2010-05-03 17:19  rsbivand
 
 	* DESCRIPTION:
-	  increment
-	  DESCRIPTION
-	  version
-	  #
+	  increment DESCRIPTION version #
 
 2010-05-03 16:35  rsbivand
 
 	* DESCRIPTION,
-	  R/AAA.R,
-	  R/rgeos.R:
-	  increment
-	  DESCRIPTION
-	  version
-	  #
+	  R/AAA.R, R/rgeos.R: increment DESCRIPTION version #
 
 2010-05-03 14:04  rsbivand
 
 	* src/rgeos.c,
-	  src/rgeos.h,
-	  src/rgeos_coord.c,
-	  src/rgeos_geos2R.c,
-	  src/rgeos_validate.c,
-	  src/rgeos_wkt.c:
-	  removing
-	  inline
-	  declaration
-	  in
-	  rgeos.h
-	  -
-	  see
-	  comment
+	  src/rgeos.h, src/rgeos_coord.c, src/rgeos_geos2R.c,
+	  src/rgeos_validate.c, src/rgeos_wkt.c: removing inline
+	  declaration in rgeos.h - see comment
 
 2010-05-03 13:33  rsbivand
 
 	* src/Makevars:
-	  removing
-	  pkg/src/Makevars
-	  -
-	  auto-generated
-	  from
-	  Makevars.in
+	  removing pkg/src/Makevars - auto-generated from Makevars.in
 
 2010-05-03 05:24  crundel
 
 	* NAMESPACE,
-	  R/AAA.R,
-	  R/rgeos.R,
-	  R/rgeos_util.R,
-	  R/rgeos_wkt.R,
-	  src/Makevars,
-	  src/init.c,
-	  src/rgeos.c,
-	  src/rgeos.h,
-	  src/rgeos_R2geos.c,
-	  src/rgeos_area.c,
-	  src/rgeos_coord.c,
-	  src/rgeos_geos2R.c,
-	  src/rgeos_sp.c,
-	  src/rgeos_validate.c,
-	  src/rgeos_wkt.c:
-	  Tidying
-	  existing
-	  functions,
-	  roughly
-	  grouped
-	  into
-	  files
-	  by
-	  task. Added
-	  functions
-	  for
-	  WKT
-	  output. Fixed
-	  precision
-	  issue
-	  leading
-	  to
-	  small
-	  polygons
-	  not
-	  being
-	  joined.
-	  Added
-	  functionality
-	  to
-	  get,
-	  set,
-	  and
-	  use
-	  a
-	  scale
-	  variable
-	  that
-	  determines
-	  min
-	  precision
-	  with
-	  appropriate
-	  rounding
-	  functions
-	  from
-	  GEOS.
+	  R/AAA.R, R/rgeos.R, R/rgeos_util.R, R/rgeos_wkt.R, src/Makevars,
+	  src/init.c, src/rgeos.c, src/rgeos.h, src/rgeos_R2geos.c,
+	  src/rgeos_area.c, src/rgeos_coord.c, src/rgeos_geos2R.c,
+	  src/rgeos_sp.c, src/rgeos_validate.c, src/rgeos_wkt.c: Tidying
+	  existing functions, roughly grouped into files by task. Added
+	  functions for WKT output. Fixed precision issue leading to
+	  small polygons not being joined.  Added functionality to get,
+	  set, and use a scale variable that determines min precision
+	  with appropriate rounding functions from GEOS.
 
 2010-04-29 14:35  rsbivand
 
 	* R/rgeos.R,
-	  man/LinesIntersections.Rd:
-	  fix
-	  poly2nb
-	  framework
+	  man/LinesIntersections.Rd: fix poly2nb framework
 	  (non-operational)
 
 2010-04-28 08:44  rsbivand
 
 	* R/AAA.R,
-	  R/rgeos.R,
-	  R/rgeos_simplify.R,
-	  R/rgeos_union.R,
-	  src/gpc_geos.c,
-	  src/rgeos.c,
-	  src/rgeos.h,
-	  src/rgeos_distance.c,
-	  src/rgeos_length.c,
-	  src/rgeos_sp.c:
-	  tidy
+	  R/rgeos.R, R/rgeos_simplify.R, R/rgeos_union.R,
+	  src/gpc_geos.c, src/rgeos.c, src/rgeos.h, src/rgeos_distance.c,
+	  src/rgeos_length.c, src/rgeos_sp.c: tidy
 
 2010-04-26 08:32  rsbivand
 
 	* R/rgeos.R:
-	  starting
-	  poly2nb
+	  starting poly2nb
 
 2010-02-12 12:27  rsbivand
 
 	* DESCRIPTION,
-	  NAMESPACE,
-	  R/AAA.R,
-	  R/Rgpc_funcs.R,
-	  R/gpc_geos.R,
-	  R/rgeos.R,
-	  R/rgeos_simplify.R,
-	  R/rgeos_union.R,
-	  data,
-	  data/poly_ex.rda,
-	  man/checkHolesGPC.Rd,
-	  man/gpc.poly-class.Rd,
-	  man/new-generics.Rd,
-	  man/unionSpatialPolygonsGEOS.Rd,
-	  src/gpc_geos.c,
-	  src/init.c,
-	  src/rgeos.c,
-	  src/rgeos.h,
-	  src/rgeos_contains.c,
-	  src/rgeos_distance.c,
-	  src/rgeos_length.c,
-	  src/rgeos_sp.c:
-	  adding
-	  gpc.poly
-	  <->
-	  GEOS
-	  interface
+	  NAMESPACE, R/AAA.R, R/Rgpc_funcs.R, R/gpc_geos.R,
+	  R/rgeos.R, R/rgeos_simplify.R, R/rgeos_union.R, data,
+	  data/poly_ex.rda, man/checkHolesGPC.Rd, man/gpc.poly-class.Rd,
+	  man/new-generics.Rd, man/unionSpatialPolygonsGEOS.Rd,
+	  src/gpc_geos.c, src/init.c, src/rgeos.c, src/rgeos.h,
+	  src/rgeos_contains.c, src/rgeos_distance.c, src/rgeos_length.c,
+	  src/rgeos_sp.c: adding gpc.poly <-> GEOS interface
 
 2010-02-08 14:55  rsbivand
 
 	* configure.win,
-	  src/Makevars.win:
-	  Windows
-	  DLL
-	  to
-	  static
+	  src/Makevars.win: Windows DLL to static
 
 2010-02-01 18:01  rsbivand
 
 	* R/Rgpc_funcs.R:
-	  Rgpc
-	  functions
+	  Rgpc functions
 
 2010-02-01 12:21  rsbivand
 
 	* configure.win:
-	  Win
-	  binaries
-	  to
-	  320
+	  Win binaries to 320
 
 2010-01-31 19:22  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  union
-	  buffer
-	  scale
-	  problem
+	  inst/ChangeLog: union buffer scale problem
 
 2010-01-31 19:21  rsbivand
 
 	* man/checkHolesGPC.Rd:
-	  union
-	  buffer
-	  scale
-	  problem
+	  union buffer scale problem
 
 2010-01-31 19:19  rsbivand
 
 	* R/gpc_geos.R,
-	  R/rgeos.R,
-	  R/rgeos_union.R,
-	  man/checkPolygonsGEOS.Rd,
-	  man/unionSpatialPolygonsGEOS.Rd,
-	  src/gpc_geos.c,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_sp.c:
-	  union
-	  buffer
-	  scale
-	  problem
+	  R/rgeos.R, R/rgeos_union.R, man/checkPolygonsGEOS.Rd,
+	  man/unionSpatialPolygonsGEOS.Rd, src/gpc_geos.c, src/init.c,
+	  src/rgeos.h, src/rgeos_sp.c: union buffer scale problem
 
 2010-01-27 10:53  rsbivand
 
 	* R/gpc_geos.R,
-	  src/gpc_geos.c:
-	  refactoring
-	  for
-	  gpcpoly
-	  objects
+	  src/gpc_geos.c: refactoring for gpcpoly objects
 
 2010-01-27 10:20  rsbivand
 
 	* DESCRIPTION,
-	  NAMESPACE,
-	  R/rgeos.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_sp.c:
-	  refactoring
-	  for
-	  gpcpoly
-	  objects
+	  NAMESPACE, R/rgeos.R, src/init.c, src/rgeos.h, src/rgeos_sp.c:
+	  refactoring for gpcpoly objects
 
 2010-01-14 07:41  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  declaration
-	  for
-	  Windows
-	  binary
+	  inst/ChangeLog: declaration for Windows binary
 
 2010-01-14 07:41  rsbivand
 
 	* inst/README.windows:
-	  declaration
-	  for
-	  Windows
-	  binary
+	  declaration for Windows binary
 
 2010-01-13 19:37  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  rgeos_finish
-	  declaration
-	  in
-	  init.c
+	  inst/ChangeLog: rgeos_finish declaration in init.c
 
 2010-01-13 19:37  rsbivand
 
 	* src/init.c:
-	  rgeos_finish
-	  declaration
-	  in
-	  init.c
+	  rgeos_finish declaration in init.c
 
 2010-01-10 19:01  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  hole
-	  verification
-	  fix
+	  inst/ChangeLog: hole verification fix
 
 2010-01-10 19:00  rsbivand
 
 	* DESCRIPTION,
-	  R/rgeos.R,
-	  man/checkPolygonsGEOS.Rd:
-	  hole
-	  verification
-	  fix
+	  R/rgeos.R, man/checkPolygonsGEOS.Rd: hole verification fix
 
 2010-01-07 18:50  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  union
-	  dim
-	  fix
+	  inst/ChangeLog: union dim fix
 
 2010-01-07 18:49  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  union
-	  dim
-	  fix
+	  inst/ChangeLog: union dim fix
 
 2010-01-07 18:49  rsbivand
 
 	* R/rgeos_union.R:
-	  union
-	  dim
-	  fix
+	  union dim fix
 
 2010-01-07 18:14  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  missing
-	  man
-	  file
+	  inst/ChangeLog: missing man file
 
 2010-01-07 18:11  rsbivand
 
 	* man/LinesIntersections.Rd:
-	  missing
-	  man
-	  file
+	  missing man file
 
 2010-01-07 12:08  rsbivand
 
 	* DESCRIPTION,
-	  NAMESPACE,
-	  R/rgeos.R,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_sp.c:
-	  maptools
-	  integration
+	  NAMESPACE, R/rgeos.R, src/init.c, src/rgeos.h, src/rgeos_sp.c:
+	  maptools integration
 
 2010-01-04 09:35  rsbivand
 
 	* configure.win:
-	  prepare
-	  for
-	  Windows
-	  binary
+	  prepare for Windows binary
 
 2010-01-04 07:48  rsbivand
 
 	* configure.win:
-	  preparing
-	  for
-	  Windows
-	  build
+	  preparing for Windows build
 
 2010-01-04 07:21  rsbivand
 
 	* configure.win,
-	  src/Makevars.win,
-	  src/init.c,
-	  src/rgeos.h,
-	  src/rgeos_sp.c:
-	  preparing
-	  for
-	  Windows
-	  build
+	  src/Makevars.win, src/init.c, src/rgeos.h, src/rgeos_sp.c:
+	  preparing for Windows build
 
 2010-01-03 16:41  rsbivand
 
 	* src/init.c:
-	  tightening
-	  sp
-	  dependence
+	  tightening sp dependence
 
 2010-01-03 16:36  rsbivand
 
 	* DESCRIPTION,
-	  src/init.c,
-	  src/rgeos.c,
-	  src/rgeos.h,
-	  src/rgeos_sp.c,
-	  src/sp_rgeos.c:
-	  tightening
-	  sp
-	  dependence
+	  src/init.c, src/rgeos.c, src/rgeos.h, src/rgeos_sp.c,
+	  src/sp_rgeos.c: tightening sp dependence
 
 2009-12-17 18:46  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  C
-	  API
-	  tidy
+	  inst/ChangeLog: C API tidy
 
 2009-12-17 18:44  rsbivand
 
 	* src/init.c,
-	  src/local_stubs.c:
-	  C
-	  API
-	  tidy
+	  src/local_stubs.c: C API tidy
 
 2009-12-17 18:42  rsbivand
 
 	* DESCRIPTION,
-	  R/AAA.R,
-	  src/rgeos.h,
-	  src/rgeos_sp.c:
-	  C
-	  API
-	  tidy
+	  R/AAA.R, src/rgeos.h, src/rgeos_sp.c: C API tidy
 
 2009-12-04 09:11  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  small
-	  fixes
-	  from
-	  sp
-	  transition
+	  inst/ChangeLog: small fixes from sp transition
 
 2009-12-04 09:10  rsbivand
 
 	* DESCRIPTION:
-	  small
-	  fixes
-	  from
-	  sp
-	  transition
+	  small fixes from sp transition
 
 2009-12-04 09:08  rsbivand
 
 	* src/rgeos_sp.c:
-	  small
-	  fixes
-	  from
-	  sp
-	  transition
+	  small fixes from sp transition
 
 2009-12-03 08:50  rsbivand
 
 	* svn2cl.xsl:
-	  first
-	  release
+	  first release
 
 2009-12-03 08:47  rsbivand
 
 	* ChangeLog,
-	  inst/ChangeLog:
-	  first
-	  release
+	  inst/ChangeLog: first release
 
 2009-12-03 08:47  rsbivand
 
 	* src/sp_rgeos.c:
-	  first
-	  release
+	  first release
 
 2009-12-03 08:42  rsbivand
 
 	* ChangeLog,
-	  inst,
-	  inst/ChangeLog:
-	  first
-	  release
+	  inst, inst/ChangeLog: first release
 
 2009-12-03 08:39  rsbivand
 
 	* DESCRIPTION,
-	  NAMESPACE,
-	  R/AAA.R,
-	  R/rgeos_simplify.R,
-	  R/rgeos_union.R,
-	  configure,
-	  configure.in,
-	  man,
-	  man/checkPolygonsGEOS.Rd,
-	  man/thinnedSpatialPolyGEOS.Rd,
-	  man/unionSpatialPolygonsGEOS.Rd,
-	  src/Makevars.in,
-	  src/rgeos_length.c:
-	  first
-	  release
+	  NAMESPACE, R/AAA.R, R/rgeos_simplify.R, R/rgeos_union.R,
+	  configure, configure.in, man, man/checkPolygonsGEOS.Rd,
+	  man/thinnedSpatialPolyGEOS.Rd, man/unionSpatialPolygonsGEOS.Rd,
+	  src/Makevars.in, src/rgeos_length.c: first release
 
 2009-12-02 21:03  rsbivand
 
 	* R/rgeos.R,
-	  src/rgeos.h,
-	  src/rgeos_sp.c:
-	  status
+	  src/rgeos.h, src/rgeos_sp.c: status
 
 2009-11-30 15:55  rsbivand
 
 	* src/rgeos.h,
-	  src/rgeos_sp.c:
-	  simplify
-	  in
-	  and
-	  out
+	  src/rgeos_sp.c: simplify in and out
 
 2009-11-29 20:52  rsbivand
 
 	* src/rgeos.c,
-	  src/rgeos.h,
-	  src/rgeos_sp.c:
-	  simplify
-	  in
-	  and
-	  out
+	  src/rgeos.h, src/rgeos_sp.c: simplify in and out
 
 2009-11-28 20:34  rsbivand
 
 	* src/rgeos.c,
-	  src/rgeos.h,
-	  src/rgeos_sp.c:
-	  simplify
-	  in
-	  and
-	  out
+	  src/rgeos.h, src/rgeos_sp.c: simplify in and out
 
 2009-11-25 20:52  rsbivand
 
 	* src/rgeos.h,
-	  src/rgeos_sp.c:
-	  parse
-	  comment
-	  in
-	  C
+	  src/rgeos_sp.c: parse comment in C
 
 2009-11-25 17:43  rsbivand
 
 	* R/rgeos.R,
-	  src/rgeos.c,
-	  src/rgeos.h,
-	  src/rgeos_sp.c:
-	  parse
-	  comment
-	  in
-	  C
+	  src/rgeos.c, src/rgeos.h, src/rgeos_sp.c: parse comment in C
 
 2009-11-24 20:53  rsbivand
 
 	* R/rgeos.R,
-	  src/rgeos.h,
-	  src/rgeos_sp.c:
-	  contains
+	  src/rgeos.h, src/rgeos_sp.c: contains
 
 2009-11-21 14:52  rsbivand
 
 	* R/rgeos.R,
-	  src/rgeos.c,
-	  src/rgeos.h,
-	  src/rgeos_sp.c:
-	  after
-	  Oslo
+	  src/rgeos.c, src/rgeos.h, src/rgeos_sp.c: after Oslo
 
 2009-11-15 13:56  rsbivand
 
 	* src/rgeos_sp.c:
-	  graphs
-	  and
-	  relations
+	  graphs and relations
 
 2009-11-15 11:08  rsbivand
 
 	* R/rgeos.R,
-	  src/rgeos.h,
-	  src/rgeos_sp.c:
-	  graphs
-	  and
-	  relations
+	  src/rgeos.h, src/rgeos_sp.c: graphs and relations
 
 2009-11-14 12:22  rsbivand
 
 	* R,
-	  src,
-	  src/rgeos.c,
-	  src/rgeos.h,
-	  src/rgeos_contains.c,
-	  src/rgeos_distance.c,
-	  src/rgeos_length.c,
-	  src/rgeos_sp.c:
-	  initial
-	  C
-	  files
+	  src, src/rgeos.c, src/rgeos.h, src/rgeos_contains.c,
+	  src/rgeos_distance.c, src/rgeos_length.c, src/rgeos_sp.c:
+	  initial C files
 
 2009-05-28 12:17  stefan7th
 
 	* .:
-	  R-Forge:
-	  updated
-	  repository
-	  structure
+	  R-Forge: updated repository structure
 

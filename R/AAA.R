@@ -12,6 +12,14 @@ finish_RGEOS <- function() {
     .Call('rgeos_finish', .RGEOS_HANDLE, PACKAGE="rgeos")
 }
 
+version_GEOS <- function() {
+    .Call("rgeos_GEOSversion", PACKAGE="rgeos")
+}
+
+version_GEOS0 <- function() {
+    substring(version_GEOS(), 1, 5)
+}
+
 .onLoad <- function(lib, pkg) {
   require(methods, quietly = TRUE, warn.conflicts = FALSE)
   require("sp")
@@ -30,7 +38,7 @@ finish_RGEOS <- function() {
   }
   Smess <- paste("rgeos: (SVN revision ", svn_version, ")\n", sep="")
   Smess <- paste(Smess, "GEOS runtime version:",
-    .Call("rgeos_GEOSversion", PACKAGE="rgeos"), "\n")
+    version_GEOS(), "\n")
   Smess <- paste(Smess, "Polygon checking:", get_do_poly_check(), "\n")
   Smess <- paste(Smess, "WARNING! if you turn polygon checking off, and polygons are\n not valid in GEOS, you risk losing data as your R session may crash!", "\n")
   packageStartupMessage(Smess, appendLF = TRUE)
