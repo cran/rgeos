@@ -377,8 +377,9 @@ SEXP rgeos_geospolygon2Polygons(SEXP env, GEOSGeom geom, SEXP ID) {
     
     SEXP comment;
     PROTECT(comment = NEW_CHARACTER(1)); pc++;
-    char buf[BUFSIZ];
-    SP_PREFIX(comm2comment)(buf, comm, npoly);
+    char *buf;
+    buf = (char *) R_alloc((size_t) (npoly*2), sizeof(char));
+    SP_PREFIX(comm2comment)(buf, npoly*2, comm, npoly);
     SET_STRING_ELT(comment, 0, COPY_TO_USER_STRING(buf));
 
     SEXP ans;

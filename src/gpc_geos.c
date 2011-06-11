@@ -158,7 +158,7 @@ SEXP GCGCPPts(SEXP env, GEOSGeom Geom) {
     int n, nn, nr, i, j, k, jj;
     int *comm;
     GEOSGeom GC, lr;
-    char buf[BUFSIZ];
+    char *buf;
 
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
 
@@ -221,7 +221,8 @@ SEXP GCGCPPts(SEXP env, GEOSGeom Geom) {
             }
         }
     }
-    SP_PREFIX(comm2comment)(buf, comm, n);
+    buf = (char *) R_alloc((size_t) (n*2), sizeof(char));
+    SP_PREFIX(comm2comment)(buf, n*2, comm, n);
     PROTECT(comment = NEW_CHARACTER(1)); pc++;
     SET_STRING_ELT(comment, 0, COPY_TO_USER_STRING(buf));
 

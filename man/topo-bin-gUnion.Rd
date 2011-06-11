@@ -10,7 +10,7 @@
 \description{Functions for joining intersecting geometries.}
 \usage{
 gUnion(spgeom1, spgeom2, byid=FALSE, id=NULL)
-gUnionCascaded(spgeom, id = NULL, bound=1000L)
+gUnionCascaded(spgeom, id = NULL)
 gUnaryUnion(spgeom, id = NULL)
 gLineMerge(spgeom, byid=FALSE, id = NULL)
 }
@@ -20,12 +20,11 @@ gLineMerge(spgeom, byid=FALSE, id = NULL)
   \item{byid}{Logical vector determining if the function should be applied across ids (TRUE) or the entire object (FALSE) for spgeom1 and spgeom2}
   \item{id}{Character vector defining id labels for the resulting geometries, if unspecified returned geometries will be labeled based on their parent geometries' labels; it may contain NA values for input objects not included in the union}
   \item{spgeom}{sp Polygon(s) or Line(s) depending on the function used}
-  \item{bound}{an integer bound on the number of geometries that may be dissolved using gUnionCascaded}
 }
 
 \details{Returns an sp object with intersecting geometries merged. If geometries do not intersect then both are returned as distinct subgeometries.
 
-gUnionCascaded expects a single sp object of class SpatialPolygons with subgeometries which it unions together. Because gUnionCascaded can only dissolve MultiPolygon objects, the number that can be handled per id group appears to be limited by the length of the Polygons comment string. If gUnionCascaded exits reporting that \dQuote{too many polygons in group to dissolve}, use some subgouping first on groups that are too large to reduce the number in each group. The critical bound beyond which a crash may occur is unknown, the default bound may be conservative. If GEOS version 3.3.0 is available, use gUnaryUnion.
+gUnionCascaded expects a single sp object of class SpatialPolygons with subgeometries which it unions together. gUnionCascaded can only dissolve MultiPolygon objects, so GeometryCollection objects to be dissolved, here a SpatialPolygons object, must be flattened a Polygons object; if GEOS version 3.3.0 is available, use gUnaryUnion.
 
 gUnaryUnion expects a single sp object of class SpatialPolygons with subgeometries which it unions together; introduced in GEOS version 3.3.0, and handles GeometryCollection objects.
 

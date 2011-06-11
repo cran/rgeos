@@ -1,3 +1,30 @@
+2011-06-11 06:59  rsbivand
+
+	* src/local_stubs.c:
+	  touch local_stubs.c
+
+2011-06-11 05:26  rsbivand
+
+	* ChangeLog,
+	  inst/ChangeLog: permit NA IDs in union
+
+2011-06-11 05:25  rsbivand
+
+	* R/rgeos_topology.R:
+	  permit NA IDs in union
+
+2011-06-10 22:06  rsbivand
+
+	* DESCRIPTION,
+	  R/rgeos_topology.R, configure.in, man/topo-bin-gUnion.Rd,
+	  src/gpc_geos.c, src/rgeos_geos2R.c: sp comment buffer
+	  overflow fix
+
+2011-06-09 14:04  rsbivand
+
+	* ChangeLog,
+	  inst/ChangeLog: tidy
+
 2011-06-09 13:55  rsbivand
 
 	* DESCRIPTION:

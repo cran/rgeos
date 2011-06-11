@@ -36,6 +36,12 @@ fi
 GEOS_VER=`${GEOS_CONFIG} --version`
 echo "GEOS: $GEOS_VER"
 GEOS_VER_DOT=`echo $GEOS_VER | tr -d "."`
+if test ${GEOS_VER_DOT} -lt 322 ; then
+    echo "Error: GEOS version less than 3.2.2"
+    echo "Upgrade GEOS to at least 3.2.2"
+
+    exit 1
+fi
 if test ${GEOS_VER_DOT} -gt 322 ; then
   AC_SUBST([PKG_CPPFLAGS],["-DHAVEUNARYUNION ${PKG_CPPFLAGS}"])
 fi
