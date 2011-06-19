@@ -26,8 +26,17 @@ SEXP rgeos_linemerge(SEXP env, SEXP obj, SEXP id, SEXP byid) {
 }
 
 SEXP rgeos_unioncascaded(SEXP env, SEXP obj, SEXP id, SEXP byid ) {
-    return( rgeos_topologyfunc(env, obj, id, byid, &GEOSUnionCascaded_r) );  
+    return( rgeos_topologyfunc(env, obj, id, byid, &GEOSUnionCascaded_r) );
 }
+
+#ifdef HAVEUNARYUNION
+
+SEXP rgeos_unaryunion(SEXP env, SEXP obj, SEXP id, SEXP byid ) {
+
+    return( rgeos_topologyfunc(env, obj, id, byid, &GEOSUnaryUnion_r) ); 
+}
+
+#endif
 
 SEXP rgeos_topologyfunc(SEXP env, SEXP obj, SEXP id, SEXP byid, 
                         GEOSGeom (*topofunc)(GEOSContextHandle_t, const GEOSGeom) ) {
@@ -54,7 +63,6 @@ SEXP rgeos_topologyfunc(SEXP env, SEXP obj, SEXP id, SEXP byid,
             if (curgeom == NULL) error("rgeos_topologyfunc: unable to get subgeometries");
             curtype = GEOSGeomTypeId_r(GEOShandle, curgeom);
         }
-        
         if (topofunc == GEOSUnionCascaded_r && curtype == GEOS_POLYGON) {
             resgeoms[i] = curgeom;
         } else {
