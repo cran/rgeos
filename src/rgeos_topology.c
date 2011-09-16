@@ -30,16 +30,12 @@ SEXP rgeos_unioncascaded(SEXP env, SEXP obj, SEXP id, SEXP byid ) {
 }
 
 #ifdef HAVEUNARYUNION
-
 SEXP rgeos_unaryunion(SEXP env, SEXP obj, SEXP id, SEXP byid ) {
-
     return( rgeos_topologyfunc(env, obj, id, byid, &GEOSUnaryUnion_r) ); 
 }
-
 #endif
 
-SEXP rgeos_topologyfunc(SEXP env, SEXP obj, SEXP id, SEXP byid, 
-                        GEOSGeom (*topofunc)(GEOSContextHandle_t, const GEOSGeom) ) {
+SEXP rgeos_topologyfunc(SEXP env, SEXP obj, SEXP id, SEXP byid, p_topofunc topofunc) {
 
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
 
@@ -93,8 +89,8 @@ SEXP rgeos_simplify(SEXP env, SEXP obj, SEXP tol, SEXP id, SEXP byid, SEXP topPr
     GEOSGeom geom = rgeos_convert_R2geos(env, obj);
     int type = GEOSGeomTypeId_r(GEOShandle, geom);
     
-	int preserve = LOGICAL_POINTER(topPres)[0];
-	double tolerance = NUMERIC_POINTER(tol)[0];
+    int preserve = LOGICAL_POINTER(topPres)[0];
+    double tolerance = NUMERIC_POINTER(tol)[0];
 
     int n = 1;
     if (LOGICAL_POINTER(byid)[0] && type == GEOS_GEOMETRYCOLLECTION)
@@ -113,15 +109,15 @@ SEXP rgeos_simplify(SEXP env, SEXP obj, SEXP tol, SEXP id, SEXP byid, SEXP topPr
             curtype = GEOSGeomTypeId_r(GEOShandle, curgeom);
         }
         
-		if (preserve) {
-			resgeoms[i] = GEOSTopologyPreserveSimplify_r(GEOShandle, curgeom, tolerance);
-		} else {
-			resgeoms[i] = GEOSSimplify_r(GEOShandle, curgeom, tolerance);
-		}
+        if (preserve) {
+            resgeoms[i] = GEOSTopologyPreserveSimplify_r(GEOShandle, curgeom, tolerance);
+        } else {
+            resgeoms[i] = GEOSSimplify_r(GEOShandle, curgeom, tolerance);
+        }
     }
     
     GEOSGeom res = (n == 1) ? resgeoms[0] :
-    				GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, resgeoms, n);
+                    GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, resgeoms, n);
   
     return( rgeos_convert_geos2R(env, res, p4s, id) );
 }
@@ -130,17 +126,17 @@ SEXP rgeos_polygonize(SEXP env, SEXP obj, SEXP id, SEXP p4s, SEXP cutEdges) {
 
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
 
-	int getCutEdges = LOGICAL_POINTER(cutEdges)[0];
+    int getCutEdges = LOGICAL_POINTER(cutEdges)[0];
     int n = length(obj);
     GEOSGeom *geoms = (GEOSGeom *) R_alloc((size_t) n, sizeof(GEOSGeom));
     
     for(int i=0; i<n; i++) {    
-		geoms[i] = rgeos_convert_R2geos(env, VECTOR_ELT(obj,i));
-	}
-	
-	GEOSGeom res = (getCutEdges) ? 
-					GEOSPolygonizer_getCutEdges_r(GEOShandle, geoms, (unsigned int) n) :
-					GEOSPolygonize_r(GEOShandle, geoms, (unsigned int) n);
-	
+        geoms[i] = rgeos_convert_R2geos(env, VECTOR_ELT(obj,i));
+    }
+    
+    GEOSGeom res = (getCutEdges)
+                     ? GEOSPolygonizer_getCutEdges_r(GEOShandle, (const GEOSGeometry *const *) geoms, (unsigned int) n)
+                     : GEOSPolygonize_r(GEOShandle, (const GEOSGeometry *const *) geoms, (unsigned int) n);
+    
     return( rgeos_convert_geos2R(env, res, p4s, id) );
 }

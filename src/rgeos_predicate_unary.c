@@ -21,8 +21,7 @@ SEXP rgeos_isempty(SEXP env, SEXP spgeom, SEXP byid) {
 }
 
 
-SEXP rgeos_unarypredfunc(SEXP env, SEXP spgeom, SEXP byid, 
-                       char (*unarypredfunc)(GEOSContextHandle_t, const GEOSGeom)) {
+SEXP rgeos_unarypredfunc(SEXP env, SEXP spgeom, SEXP byid, p_unarypredfunc unarypredfunc) {
 
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
     

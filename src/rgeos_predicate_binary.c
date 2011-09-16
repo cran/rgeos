@@ -13,13 +13,9 @@ SEXP rgeos_covers_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
     return( rgeos_binpredfunc_prepared(env,spgeom1,spgeom2,byid, &GEOSPreparedCovers_r) );
 }
 
-SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, 
-		char (*binpredfunc_prepared)(GEOSContextHandle_t, const GEOSPreparedGeometry* pg1, const GEOSGeometry* g2)) {
+SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpredfunc_prepared binpredfunc_prepared) {
 
-
-    
-    GEOSContextHandle_t GEOShandle = getContextHandle(env);
-    
+    GEOSContextHandle_t GEOShandle = getContextHandle(env);    
     
 	GEOSGeom geom1 = rgeos_convert_R2geos(env, spgeom1);
 	int type1 = GEOSGeomTypeId_r(GEOShandle, geom1);
@@ -118,11 +114,8 @@ SEXP rgeos_relate(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
     return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSRelate_r) );
 }
 
-SEXP rgeos_binpredfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, 
-                        char (*binpredfunc)(GEOSContextHandle_t, const GEOSGeom, const GEOSGeom)) {
+SEXP rgeos_binpredfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpredfunc binpredfunc) {
 
-
-    
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
     
     

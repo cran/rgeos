@@ -10,7 +10,7 @@ SEXP rgeos_length(SEXP env, SEXP obj, SEXP byid) {
 }
 
 
-SEXP rgeos_miscfunc(SEXP env, SEXP obj, SEXP byid, int (*miscfunc)(GEOSContextHandle_t, const GEOSGeom, double *) ) {
+SEXP rgeos_miscfunc(SEXP env, SEXP obj, SEXP byid, p_miscfunc miscfunc) {
 
     SEXP ans;
     
@@ -55,12 +55,9 @@ SEXP rgeos_hausdorffdistance(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
     return( rgeos_distancefunc(env, spgeom1, spgeom2, byid, &GEOSHausdorffDistance_r) );
 }
 
-SEXP rgeos_distancefunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, 
-                        int (*distfunc)(GEOSContextHandle_t,const GEOSGeom,const GEOSGeom, double *)) {
-
+SEXP rgeos_distancefunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_distfunc distfunc) {
 
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
-
 
     GEOSGeom geom1 = rgeos_convert_R2geos(env, spgeom1);
     int type1 = GEOSGeomTypeId_r(GEOShandle, geom1);
@@ -137,12 +134,9 @@ SEXP rgeos_hausdorffdistancedensify(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP d
     return( rgeos_distancedensifyfunc(env, spgeom1, spgeom2, densifyFrac, byid, &GEOSHausdorffDistanceDensify_r) );
 }
 
-SEXP rgeos_distancedensifyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP densifyFrac, SEXP byid, 
-                                int (*distfunc)(GEOSContextHandle_t,const GEOSGeom,const GEOSGeom, double, double *)) {
-
+SEXP rgeos_distancedensifyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP densifyFrac, SEXP byid, p_distdenfunc distfunc) {
 
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
-
 
     GEOSGeom geom1 = rgeos_convert_R2geos(env, spgeom1);
     int type1 = GEOSGeomTypeId_r(GEOShandle, geom1);

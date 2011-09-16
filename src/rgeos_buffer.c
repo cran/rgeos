@@ -20,7 +20,7 @@ SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width, SEXP quads
     for(int i=0; i<n; i++) {
         if ( n > 1) {
             curgeom = (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, geom, i);
-            if (curgeom == NULL) error("rgeos_writeWKT: unable to get subgeometries");
+            if (curgeom == NULL) error("rgeos_buffer: unable to get subgeometries");
         }
         
         geoms[i] = GEOSBufferWithStyle_r(GEOShandle, curgeom, 

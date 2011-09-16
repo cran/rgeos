@@ -21,10 +21,10 @@ version_GEOS0 <- function() {
 }
 
 .onLoad <- function(lib, pkg) {
-  require(methods, quietly = TRUE, warn.conflicts = FALSE)
-  require("sp")
-  require("stringr")
-  library.dynam('rgeos', pkg, lib)
+#  require(methods, quietly = TRUE, warn.conflicts = FALSE)
+#  require("sp")
+#  require("stringr")
+#  library.dynam('rgeos', pkg, lib)
 
   set_RGEOS_HANDLE(init_RGEOS())
   assign("scale", 100000000, envir=.RGEOS_HANDLE)
