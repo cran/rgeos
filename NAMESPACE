@@ -2,6 +2,7 @@ useDynLib(rgeos)
 
 import(methods)
 import(sp)
+import(stringr)
 
 export(createPolygonsComment, createSPComment, set_do_poly_check, get_do_poly_check)
 

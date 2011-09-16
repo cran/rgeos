@@ -55,3 +55,4 @@ SEXP rgeos_writeWKT(SEXP env, SEXP obj, SEXP byid) {
     
     return(ans);
 }
+

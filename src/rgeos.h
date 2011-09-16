@@ -6,6 +6,7 @@
 
 #include <geos_c.h>
 
+
 /* use same define in package's local_stubs.c file */
 #define SP_XPORT(x) RGEOS_ ## x
 #include "sp.h"
@@ -101,8 +102,9 @@ SEXP rgeos_unioncascaded(SEXP env, SEXP obj, SEXP id, SEXP byid );
 #ifdef HAVEUNARYUNION
 SEXP rgeos_unaryunion(SEXP env, SEXP obj, SEXP id, SEXP byid );
 #endif
-SEXP rgeos_topologyfunc(SEXP env, SEXP obj, SEXP id, SEXP byid, 
-                        GEOSGeom (*topofunc)(GEOSContextHandle_t, const GEOSGeom) );
+
+typedef GEOSGeometry* (*p_topofunc)(GEOSContextHandle_t, const GEOSGeometry*);
+SEXP rgeos_topologyfunc(SEXP env, SEXP obj, SEXP id, SEXP byid, p_topofunc);
 
 SEXP rgeos_simplify(SEXP env, SEXP obj, SEXP tol, SEXP id, SEXP byid, SEXP topPres);
 SEXP rgeos_polygonize(SEXP env, SEXP obj, SEXP id, SEXP p4s, SEXP cutEdges);
@@ -113,8 +115,9 @@ SEXP rgeos_difference(SEXP env, SEXP geom1, SEXP geom2, SEXP byid, SEXP ids);
 SEXP rgeos_symdifference(SEXP env, SEXP geom1, SEXP geom2, SEXP byid, SEXP ids);
 SEXP rgeos_intersection(SEXP env, SEXP geom1, SEXP geom2, SEXP byid, SEXP ids);
 SEXP rgeos_union(SEXP env, SEXP geom1, SEXP geom2, SEXP byid, SEXP ids);
-SEXP rgeos_binarytopologyfunc(SEXP env, SEXP geom1, SEXP geom2, SEXP byid, SEXP ids,
-                              GEOSGeom (*bintopofunc)(GEOSContextHandle_t, const GEOSGeom, const GEOSGeom));
+
+typedef GEOSGeometry* (*p_bintopofunc)(GEOSContextHandle_t, const GEOSGeometry*, const GEOSGeometry*);
+SEXP rgeos_binarytopologyfunc(SEXP env, SEXP geom1, SEXP geom2, SEXP byid, SEXP ids, p_bintopofunc);
 
 
 // Binary Predicate Functions - rgeos_predicate_binary.c
@@ -124,8 +127,8 @@ SEXP rgeos_contains_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
 SEXP rgeos_containsproperly_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
 SEXP rgeos_covers_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
 
-SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, 
-		char (*binpredfunc_prepared)(GEOSContextHandle_t, const GEOSPreparedGeometry* pg1, const GEOSGeometry* g2));
+typedef char (*p_binpredfunc_prepared)(GEOSContextHandle_t, const GEOSPreparedGeometry*, const GEOSGeometry*);
+SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpredfunc_prepared);
 
 SEXP rgeos_disjoint(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
 SEXP rgeos_touches(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
@@ -136,8 +139,9 @@ SEXP rgeos_contains(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
 SEXP rgeos_overlaps(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
 SEXP rgeos_equals(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
 SEXP rgeos_relate(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
-SEXP rgeos_binpredfunc( SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, 
-                        char (*binpredfunc)(GEOSContextHandle_t, const GEOSGeom, const GEOSGeom));
+
+typedef char (*p_binpredfunc)(GEOSContextHandle_t, const GEOSGeometry*, const GEOSGeometry*);
+SEXP rgeos_binpredfunc( SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpredfunc);
 
 SEXP rgeos_equalsexact(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP tol, SEXP byid);
 SEXP rgeos_relatepattern(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP pattern, SEXP byid);
@@ -152,8 +156,9 @@ SEXP rgeos_issimple(SEXP env, SEXP spgeom, SEXP byid);
 SEXP rgeos_isring(SEXP env, SEXP spgeom, SEXP byid);
 SEXP rgeos_hasz(SEXP env, SEXP spgeom, SEXP byid);
 SEXP rgeos_isempty(SEXP env, SEXP spgeom, SEXP byid);
-SEXP rgeos_unarypredfunc(SEXP env, SEXP spgeom, SEXP byid,
-                         char (*unarypredfunc)(GEOSContextHandle_t, const GEOSGeom));
+
+typedef char (*p_unarypredfunc)(GEOSContextHandle_t, const GEOSGeometry*);
+SEXP rgeos_unarypredfunc(SEXP env, SEXP spgeom, SEXP byid, p_unarypredfunc);
 
 // Buffer Functions - rgeos_buffer.c
 SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width, SEXP quadsegs, 
@@ -164,16 +169,18 @@ SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width, SEXP quads
 
 SEXP rgeos_area(SEXP env, SEXP obj, SEXP byid);
 SEXP rgeos_length(SEXP env, SEXP obj, SEXP byid);
-SEXP rgeos_miscfunc(SEXP env, SEXP obj, SEXP byid, int (*miscfunc)(GEOSContextHandle_t, const GEOSGeom, double *) );
+
+typedef int (*p_miscfunc)(GEOSContextHandle_t, const GEOSGeometry*, double *);
+SEXP rgeos_miscfunc(SEXP env, SEXP obj, SEXP byid, p_miscfunc );
 
 SEXP rgeos_distance(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
 SEXP rgeos_hausdorffdistance(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
-SEXP rgeos_distancefunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, 
-                        int (*distfunc)(GEOSContextHandle_t,const GEOSGeom,const GEOSGeom, double *));
+typedef int (*p_distfunc)(GEOSContextHandle_t,const GEOSGeometry*,const GEOSGeometry*, double *);
+SEXP rgeos_distancefunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_distfunc);
 
 SEXP rgeos_hausdorffdistancedensify(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP densifyFrac, SEXP byid);
-SEXP rgeos_distancedensifyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP densifyFrac, SEXP byid, 
-                                int (*distfunc)(GEOSContextHandle_t,const GEOSGeom,const GEOSGeom, double, double *));
+typedef int (*p_distdenfunc)(GEOSContextHandle_t,const GEOSGeometry*,const GEOSGeometry*, double, double *);
+SEXP rgeos_distancedensifyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP densifyFrac, SEXP byid, p_distdenfunc);
 
 // GPC functions
 GEOSGeom GPCptPolygon(SEXP env, SEXP obj);

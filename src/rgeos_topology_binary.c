@@ -13,8 +13,7 @@ SEXP rgeos_union(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, SEXP ids) {
     return( rgeos_binarytopologyfunc(env, spgeom1, spgeom2, byid, ids, &GEOSUnion_r) );
 }
 
-SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, SEXP ids,
-                              GEOSGeom (*bintopofunc)(GEOSContextHandle_t, const GEOSGeom, const GEOSGeom)) {
+SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, SEXP ids, p_bintopofunc bintopofunc) {
     
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
     
