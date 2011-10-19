@@ -1,3 +1,12 @@
+2011-10-19 18:51  rsbivand
+
+	* DESCRIPTION, src/gpc_geos.c, src/local_stubs.c,
+	  src/rgeos_geos2R.c: fix comment string length
+
+2011-09-16 07:24  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2011-09-16 07:22  rsbivand
 
 	* DESCRIPTION: tidy
