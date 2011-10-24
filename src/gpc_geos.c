@@ -221,10 +221,14 @@ SEXP GCGCPPts(SEXP env, GEOSGeom Geom) {
             }
         }
     }
-    buf = (char *) R_alloc((size_t) (n*2), sizeof(char));
-    SP_PREFIX(comm2comment)(buf, n*2, comm, n);
+
+    int nc;
+
+    nc = ceil(log10(n)+1)+1;
+    buf = (char *) R_alloc((size_t) (n*nc)+1, sizeof(char));
+    SP_PREFIX(comm2comment)(buf, (n*nc)+1, comm, n);
     PROTECT(comment = NEW_CHARACTER(1)); pc++;
-    SET_STRING_ELT(comment, 0, COPY_TO_USER_STRING(buf));
+    SET_STRING_ELT(comment, 0, mkChar((const char*) buf));
 
     setAttrib(res, install("comment"), comment);
 

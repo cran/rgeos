@@ -378,9 +378,12 @@ SEXP rgeos_geospolygon2Polygons(SEXP env, GEOSGeom geom, SEXP ID) {
     SEXP comment;
     PROTECT(comment = NEW_CHARACTER(1)); pc++;
     char *buf;
-    buf = (char *) R_alloc((size_t) (npoly*2), sizeof(char));
-    SP_PREFIX(comm2comment)(buf, npoly*2, comm, npoly);
-    SET_STRING_ELT(comment, 0, COPY_TO_USER_STRING(buf));
+    int nc;
+
+    nc = ceil(log10(npoly)+1)+1;
+    buf = (char *) R_alloc((size_t) (npoly*nc)+1, sizeof(char));
+    SP_PREFIX(comm2comment)(buf, (npoly*nc)+1, comm, npoly);
+    SET_STRING_ELT(comment, 0, mkChar((const char*) buf));
 
     SEXP ans;
     PROTECT(ans = NEW_OBJECT(MAKE_CLASS("Polygons"))); pc++;    
