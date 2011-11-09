@@ -232,7 +232,9 @@ SEXP rgeos_geospolygon2SpatialPolygons(SEXP env, GEOSGeom geom, SEXP p4s, SEXP I
         SET_VECTOR_ELT(pls, i, poly);
         
         po[i] = i + R_OFFSET;
-        
+
+        //GEOSGeom_destroy_r(GEOShandle, GC);
+
         UNPROTECT(2); 
     }
     
@@ -277,6 +279,7 @@ SEXP rgeos_geospolygon2Polygons(SEXP env, GEOSGeom geom, SEXP ID) {
                         GEOSGetNumInteriorRings_r(GEOShandle, GC) + 1;
 
         npoly += GCpolys;
+        //GEOSGeom_destroy_r(GEOShandle, GC);
     }
     
     SEXP polys;
@@ -359,8 +362,10 @@ SEXP rgeos_geospolygon2Polygons(SEXP env, GEOSGeom geom, SEXP ID) {
                 po[k] = k + R_OFFSET;
             
                 k++;
+                //GEOSGeom_destroy_r(GEOShandle, lr);
             }
         }
+        //GEOSGeom_destroy_r(GEOShandle, GC);
     }
     
     SEXP plotOrder;
@@ -416,6 +421,7 @@ SEXP rgeos_geosring2Polygon(SEXP env, GEOSGeom lr, int hole) {
         error("rgeos_geosring2Polygon: CoordSeq failure");
         
     PROTECT(crd = rgeos_CoordSeq2crdMat(env, s, FALSE, hole)); pc++;
+    //GEOSCoordSeq_destroy_r(GEOShandle, s);
     PROTECT(crdfix = rgeos_crdMatFixDir(crd, hole)); pc++;
     
     GEOSGeom p = GEOSGeom_createPolygon_r(GEOShandle,lr,NULL,0);
@@ -459,6 +465,8 @@ SEXP rgeos_geosring2Polygon(SEXP env, GEOSGeom lr, int hole) {
         else error("invalid Polygon object");
     }
 
+    //GEOSGeom_destroy_r(GEOShandle, centroid);
+    //GEOSGeom_destroy_r(GEOShandle, p);
     UNPROTECT(pc);
     return(ans);
 }
@@ -497,6 +505,9 @@ SEXP rgeos_geosline2SpatialLines(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
     
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
     
+    GEOSGeom curgeom;
+    GEOSGeom subgeom;
+    GEOSCoordSeq s;
     int type = GEOSGeomTypeId_r(GEOShandle, geom);
     if (type != GEOS_LINESTRING && type != GEOS_MULTILINESTRING && 
         type != GEOS_LINEARRING && type != GEOS_GEOMETRYCOLLECTION ) {
@@ -512,7 +523,7 @@ SEXP rgeos_geosline2SpatialLines(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
     
     for(int j = 0; j < nlines; j++) {
         
-        GEOSGeom curgeom = (type == GEOS_GEOMETRYCOLLECTION) ?
+        curgeom = (type == GEOS_GEOMETRYCOLLECTION) ?
                                 (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, geom, j) :
                                 geom;
         if (curgeom == NULL) 
@@ -527,14 +538,14 @@ SEXP rgeos_geosline2SpatialLines(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
         PROTECT(line_list = NEW_LIST(n));
         
         for(int i = 0; i < n; i++) {
-            GEOSGeom subgeom = (curtype == GEOS_MULTILINESTRING && !GEOSisEmpty_r(GEOShandle, curgeom)) ?
+            subgeom = (curtype == GEOS_MULTILINESTRING && !GEOSisEmpty_r(GEOShandle, curgeom)) ?
                                     (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, curgeom, i) :
                                     curgeom;
             if(subgeom == NULL) error("rgeos_geosline2SpatialLines: unable to get subgeometry");
             
             SEXP crdmat;
             if (GEOSisEmpty_r(GEOShandle, subgeom) == 0) {
-                GEOSCoordSeq s = (GEOSCoordSeq) GEOSGeom_getCoordSeq_r(GEOShandle, subgeom);
+                s = (GEOSCoordSeq) GEOSGeom_getCoordSeq_r(GEOShandle, subgeom);
                 if (s == NULL) 
                     error("rgeos_geosline2SpatialLines: unable to generate coordinate sequence");
 
@@ -543,6 +554,8 @@ SEXP rgeos_geosline2SpatialLines(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
             } else {
                 PROTECT( crdmat = R_NilValue);
             }
+            //GEOSGeom_destroy_r(GEOShandle, subgeom);
+
             SEXP line;
             PROTECT(line = NEW_OBJECT(MAKE_CLASS("Line")));   
             SET_SLOT(line, install("coords"), crdmat);
@@ -550,6 +563,8 @@ SEXP rgeos_geosline2SpatialLines(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
         
             UNPROTECT(2);
         }
+        //GEOSGeom_destroy_r(GEOShandle, curgeom);
+
         SEXP lines;
         PROTECT( lines = NEW_OBJECT(MAKE_CLASS("Lines")) );
         SET_SLOT(lines, install("Lines"), line_list);
@@ -572,6 +587,7 @@ SEXP rgeos_geosline2SpatialLines(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
     SET_SLOT(ans, install("lines"), lines_list);
     SET_SLOT(ans, install("bbox"), bbox);
     SET_SLOT(ans, install("proj4string"), p4s);
+
 
     UNPROTECT(pc);
     return(ans);
