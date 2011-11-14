@@ -32,7 +32,7 @@ static R_CallMethodDef CallEntries[] = {
     {"rgeos_pointonsurface", (DL_FUNC) &rgeos_pointonsurface, 4},
     {"rgeos_linemerge", (DL_FUNC) &rgeos_linemerge, 4},
     {"rgeos_unioncascaded", (DL_FUNC) &rgeos_unioncascaded, 4},
-#ifdef HAVEUNARYUNION
+#ifdef HAVE_UNARYUNION
     {"rgeos_unaryunion", (DL_FUNC) &rgeos_unaryunion, 4},
 #endif
 	{"rgeos_simplify", (DL_FUNC) &rgeos_simplify, 6},
