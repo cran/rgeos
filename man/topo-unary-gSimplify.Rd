@@ -39,6 +39,7 @@ plot(l);title("Original")
 plot(gSimplify(l,tol=3));title("tol: 3")
 plot(gSimplify(l,tol=5));title("tol: 5")
 plot(gSimplify(l,tol=7));title("tol: 7")
+par(mfrow=c(1,1))
 }
 
 \keyword{spatial}

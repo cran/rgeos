@@ -50,15 +50,17 @@ SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, S
             if (curgeom2 == NULL) 
                 error("rgeos_bintopofunc: unable to get subgeometries from geometry 2");
             
-            geoms[k] = bintopofunc(GEOShandle, curgeom1, curgeom2);
-            if (geoms[k] == NULL)
+            GEOSGeom geomsk = bintopofunc(GEOShandle, curgeom1, curgeom2);
+            if (geomsk == NULL)
                 error("rgeos_bintopofunc: topology function failed");
-            
+//Rprintf("%d: %d %d %s\n", k, GEOSisEmpty_r(GEOShandle, geomsk), GEOSGeomTypeId_r(GEOShandle, geomsk), GEOSGeomType_r(GEOShandle, geomsk));
+            if (GEOSisEmpty_r(GEOShandle, geomsk)) continue;
+            geoms[k] = geomsk;
             k++;
         }
     }
-
-    GEOSGeom res = (m*n > 1) ? GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, m*n)
+    if (k == 0) return(R_NilValue);
+    GEOSGeom res = (k > 1) ? GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, k)
                              : geoms[0];
     
     return( rgeos_convert_geos2R(env, res, p4s, ids) );

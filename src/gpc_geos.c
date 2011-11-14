@@ -16,7 +16,7 @@ GEOSGeom GPCptPolygon(SEXP env, SEXP obj) {
     GEOSGeom g1 = GPCpt2LinearRing(env, obj);
 	GEOSGeom p1 = GEOSGeom_createPolygon_r(GEOShandle, g1, NULL, (unsigned int) 0);
     if (p1 == NULL) {
-        GEOSGeom_destroy_r(GEOShandle, g1);
+        //GEOSGeom_destroy_r(GEOShandle, g1);
         error("GPCptPolygon: Polygon not created");
     }
 
@@ -30,7 +30,7 @@ GEOSGeom GPCpt2LinearRing(SEXP env, SEXP obj) {
     GEOSCoordSeq s = GPCpt2CoordSeq(env, obj);
     GEOSGeom gl = GEOSGeom_createLinearRing_r(GEOShandle, s);
     if (gl == NULL) {
-        GEOSGeom_destroy_r(GEOShandle, gl);
+        //GEOSGeom_destroy_r(GEOShandle, gl);
         error("GPCpt2LinearRing: linearRing not created");
     }
 
@@ -61,7 +61,7 @@ GEOSCoordSeq GPCpt2CoordSeq(SEXP env, SEXP obj) {
 		if (GEOSCoordSeq_setX_r(GEOShandle, s, i, x) == 0 || 
 			GEOSCoordSeq_setY_r(GEOShandle, s, i, y) == 0) {
             
-			GEOSCoordSeq_destroy_r(GEOShandle, s);
+			//GEOSCoordSeq_destroy_r(GEOShandle, s);
             error("GPCpt2CoordSeq: X or Y not set for %d", i);
         }
     }
@@ -72,7 +72,7 @@ GEOSCoordSeq GPCpt2CoordSeq(SEXP env, SEXP obj) {
 	if (GEOSCoordSeq_setX_r(GEOShandle, s, n, x) == 0 || 
 		GEOSCoordSeq_setY_r(GEOShandle, s, n, y) == 0) {
         
-		GEOSCoordSeq_destroy_r(GEOShandle, s);
+		//GEOSCoordSeq_destroy_r(GEOShandle, s);
         error("GPCpt2CoordSeq: X or Y not set for %d", n);
     }
 
@@ -85,7 +85,7 @@ GEOSGeom GCPPtsGC(SEXP env, SEXP pls) {
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
 
     int npls = length(pls);
-    
+    int nErings;
 	int pc=0;
 	SEXP comm;
 	PROTECT(comm = SP_PREFIX(comment2comm)(pls)); pc++;
@@ -98,7 +98,7 @@ GEOSGeom GCPPtsGC(SEXP env, SEXP pls) {
             geoms[i] = GPCptPolygon(env, VECTOR_ELT(pls, i));
         }
     } else {
-        int nErings = length(comm);
+        nErings = length(comm);
         geoms = (GEOSGeom *) R_alloc((size_t) nErings, sizeof(GEOSGeom));
         
 		for (int i=0; i<nErings; i++) {
@@ -108,7 +108,12 @@ GEOSGeom GCPPtsGC(SEXP env, SEXP pls) {
 
 	GEOSGeom GC = (npls == 1) ? geoms[0]
 		: GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOLYGON, geoms, npls);
-    
+
+    if (comm == R_NilValue) {
+        for (int i=0; i<npls; i++) GEOSGeom_destroy_r(GEOShandle, geoms[i]);
+    } else {
+        for (int i=0; i<nErings; i++) GEOSGeom_destroy_r(GEOShandle, geoms[i]);
+    }
 	if (GC == NULL)
         error("GCPPtsGC: collection not created");
 
@@ -133,7 +138,7 @@ GEOSGeom GPCpt_i_Polygon(SEXP env, SEXP pls, SEXP vec) {
     if (n == 1) {
         if ((res = GEOSGeom_createPolygon_r(GEOShandle, pol, NULL,
             (unsigned int) 0)) == NULL) {
-            GEOSGeom_destroy_r(GEOShandle, pol);
+            //GEOSGeom_destroy_r(GEOShandle, pol);
             error("GPCpt_i_Polygon: Polygon not created");
         }
     } else {
@@ -145,10 +150,13 @@ GEOSGeom GPCpt_i_Polygon(SEXP env, SEXP pls, SEXP vec) {
         }
         if ((res = GEOSGeom_createPolygon_r(GEOShandle, pol, holes,
             (unsigned int) (n-1))) == NULL) {
-            GEOSGeom_destroy_r(GEOShandle, pol);
+            for (j=0; j<(n-1); j++) GEOSGeom_destroy_r(GEOShandle, holes[j]);
+            //GEOSGeom_destroy_r(GEOShandle, pol);
             error("GPCpt_i_Polygon: Polygon not created");
         }
     }
+    for (j=0; j<(n-1); j++) GEOSGeom_destroy_r(GEOShandle, holes[j]);
+    //GEOSGeom_destroy_r(GEOShandle, pol);
     return(res);
 }
 
@@ -270,7 +278,7 @@ SEXP rgeos_LinearRingGCPPts(SEXP env, GEOSGeom lr, int hole) {
         NUMERIC_POINTER(VECTOR_ELT(res, 1))[i] = val;
     }
     
-    GEOSCoordSeq_destroy_r(GEOShandle,s); 
+    //GEOSCoordSeq_destroy_r(GEOShandle,s); 
     
     UNPROTECT(pc);
     return(res);

@@ -1,3 +1,30 @@
+2011-11-10 07:43  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2011-11-09 10:51  rsbivand
+
+	* DESCRIPTION, src/rgeos_topology_binary.c: drop empty objects
+	  before building Geometry Collection in binary topology ops
+
+2011-10-30 18:59  rsbivand
+
+	* DESCRIPTION, man/topo-unary-gSimplify.Rd, src/gpc_geos.c,
+	  src/rgeos_buffer.c, src/rgeos_geos2R.c: tickling destroy
+
+2011-10-25 21:22  crundel
+
+	* DESCRIPTION: Require stringr >= 0.5
+
+2011-10-19 19:20  rsbivand
+
+	* src/gpc_geos.c, src/rgeos_geos2R.c: add space character for
+	  safety in comment
+
+2011-10-19 18:52  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2011-10-19 18:51  rsbivand
 
 	* DESCRIPTION, src/gpc_geos.c, src/local_stubs.c,
