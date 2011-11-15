@@ -29,7 +29,7 @@ SEXP rgeos_unioncascaded(SEXP env, SEXP obj, SEXP id, SEXP byid ) {
     return( rgeos_topologyfunc(env, obj, id, byid, &GEOSUnionCascaded_r) );
 }
 
-#ifdef HAVEUNARYUNION
+#ifdef HAVE_UNARYUNION
 SEXP rgeos_unaryunion(SEXP env, SEXP obj, SEXP id, SEXP byid ) {
     return( rgeos_topologyfunc(env, obj, id, byid, &GEOSUnaryUnion_r) ); 
 }

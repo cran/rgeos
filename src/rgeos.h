@@ -6,6 +6,17 @@
 
 #include <geos_c.h>
 
+// suggested BDR 111114
+#if GEOS_VERSION_MAJOR > 3
+#define  HAVE_UNARYUNION 1
+#endif
+#if GEOS_VERSION_MAJOR == 3
+#if GEOS_VERSION_MINOR >= 3
+#define  HAVE_UNARYUNION 1
+#endif
+#endif
+
+
 
 /* use same define in package's local_stubs.c file */
 #define SP_XPORT(x) RGEOS_ ## x
@@ -99,7 +110,7 @@ SEXP rgeos_getcentroid(SEXP env, SEXP obj, SEXP id, SEXP byid);
 SEXP rgeos_pointonsurface(SEXP env, SEXP obj, SEXP id, SEXP byid);
 SEXP rgeos_linemerge(SEXP env, SEXP obj, SEXP id, SEXP byid);
 SEXP rgeos_unioncascaded(SEXP env, SEXP obj, SEXP id, SEXP byid );
-#ifdef HAVEUNARYUNION
+#ifdef HAVE_UNARYUNION
 SEXP rgeos_unaryunion(SEXP env, SEXP obj, SEXP id, SEXP byid );
 #endif
 

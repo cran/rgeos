@@ -42,9 +42,6 @@ if test ${GEOS_VER_DOT} -lt 322 ; then
 
     exit 1
 fi
-if test ${GEOS_VER_DOT} -gt 322 ; then
-  AC_SUBST([PKG_CPPFLAGS],["-DHAVEUNARYUNION ${PKG_CPPFLAGS}"])
-fi
 echo "CPPFLAGS: $PKG_CPPFLAGS"
 AC_SUBST(PKG_CPPFLAGS)
 echo "LIBS: $PKG_LIBS"
