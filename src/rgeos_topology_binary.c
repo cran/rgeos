@@ -53,9 +53,13 @@ SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, S
             GEOSGeom geomsk = bintopofunc(GEOShandle, curgeom1, curgeom2);
             if (geomsk == NULL)
                 error("rgeos_bintopofunc: topology function failed");
-//Rprintf("%d: %d %d %s\n", k, GEOSisEmpty_r(GEOShandle, geomsk), GEOSGeomTypeId_r(GEOShandle, geomsk), GEOSGeomType_r(GEOShandle, geomsk));
+            
+            //Rprintf("%d: %d %d %s\n", k, GEOSisEmpty_r(GEOShandle, geomsk), GEOSGeomTypeId_r(GEOShandle, geomsk), GEOSGeomType_r(GEOShandle, geomsk));
             if (GEOSisEmpty_r(GEOShandle, geomsk)) continue;
+            
             geoms[k] = geomsk;
+            SET_STRING_ELT(ids, k, STRING_ELT(ids, i*n+j));
+            
             k++;
         }
     }

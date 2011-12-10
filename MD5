@@ -1,5 +1,5 @@
-49cf510e34f565c08963f8ff937ef47d *ChangeLog
-328a7c58c5bcd18deeba1ba838718a05 *DESCRIPTION
+41ceaaf2f467905f2580ab02d36902e6 *ChangeLog
+423a7436a92d3f64326df583bb01603f *DESCRIPTION
 f6018370621ec594a6f7c3cc56e91218 *NAMESPACE
 721e2d42cf0a3d393dbfcd1d03d75e7f *R/AAA.R
 cee0b8fd57d5e9505d028e019bc571f0 *R/Rgpc_funcs.R
@@ -15,12 +15,12 @@ c07b13afe4332fc059b0c9ba419c4d3a *R/rgeos_predicate_binary.R
 05f38f03842d9796980509437cd92a65 *R/rgeos_topology.R
 f30c1fa6d932e516b6d883a5a1ccac2c *R/rgeos_topology_binary.R
 eb3aa0cf064ab92e871091470d85926f *R/rgeos_util.R
-863374563c56a0d5e7c4fa44fb612836 *R/rgeos_wkt.R
+cc00c42e145a426160c978f6f818c766 *R/rgeos_wkt.R
 a941a6a9d2a0a971a2cfa76426c35b57 *configure
 33c54d6b0e7fbea7f9ec6704df4c0003 *configure.in
-49cf510e34f565c08963f8ff937ef47d *inst/ChangeLog
+41ceaaf2f467905f2580ab02d36902e6 *inst/ChangeLog
 b67cf3d7ef496900cd2157f98bfaef2b *inst/README.windows
-09cb77d7c494a06fc6a7fcf626c3fe09 *inst/SVN_VERSION
+d395771085aab05244a4fb8fd91bf4ee *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -116,9 +116,9 @@ ec96bf6b670ff312b948de46584a5956 *src/init.c
 14ff6fcbe0807d7d4f66157f6db26d5c *src/local_stubs.c
 2e6bab604726f1d390f63fc26a8ec917 *src/rgeos.c
 ff7e51ecce8582e1d2dbc28ded2b38a3 *src/rgeos.h
-8e62e8491ce3b46d8b3e3bb723132802 *src/rgeos_R2geos.c
+e3699fb85c1c2d8d48513635769f4769 *src/rgeos_R2geos.c
 10b16fe5723972b41bcce31f2da47f6f *src/rgeos_bbox.c
-503aec0753f8818ae51bfebe7ba04816 *src/rgeos_buffer.c
+42f6579e6fb0b01cb4780ba50ebb12a7 *src/rgeos_buffer.c
 9b9dd1727865b3eaebf29040d266d710 *src/rgeos_coord.c
 84af62366da5c116353c09b3ed9ca4ce *src/rgeos_geos2R.c
 0947a89ed62141a58d8d0e8569ec15ea *src/rgeos_misc.c
@@ -126,7 +126,7 @@ ff7e51ecce8582e1d2dbc28ded2b38a3 *src/rgeos.h
 b75ac85673f205c5a773bc3b3d51718a *src/rgeos_predicate_binary.c
 07cb7ce377aabf3e520f79772e8efa94 *src/rgeos_predicate_unary.c
 c5eca04b436a09a6dd865967d8efc9e6 *src/rgeos_topology.c
-2a3ded0405956deb1ba81e74f5626989 *src/rgeos_topology_binary.c
+cd40101411a1b54099d9d1a776a98e52 *src/rgeos_topology_binary.c
 472eab8cb28f502034cb93286a88d04d *src/rgeos_validate.c
 d2e01e81cdc08d9a6c3053f1af32a6c2 *src/rgeos_wkt.c
-484f4fe79937c70b03671123cc42abc9 *tests/test-all.R
+ae6812f145768aacaa29b9128a8c3f8f *tests/test-all.R

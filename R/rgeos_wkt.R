@@ -1,15 +1,13 @@
 
 readWKT = function( text, id = NULL, p4s = NULL) {
     
-    #WKTregex = "(GEOMETRYCOLLECTION\\s?\\(?\\s?)?(((POINT|LINESTRING|LINEARRING|POLYGON|MULTIPOINT|MULTILINESTRING|MULTIPOLYGON)\\s?((\\(\\s?(\\(?\\s?(\\(?((-?\\d+(\\.\\d+)?\\s-?\\d+(\\.\\d+)?,?\\s?)+,?)+\\)?,?\\s?)+\\)?,?\\s?)+\\))|EMPTY),?\\s?)+)\\)?"
-    #wkts = str_match_all(text,WKTregex)[[1]][,1]
-        
     wkt = str_replace(text,"\n","")
 
     if (length(wkt) != 1) stop("WKT must have length 1")
     
-    m =  str_match_all(wkt, "POINT|LINESTRING|LINEARRING|POLYGON|MULTIPOINT|MULTILINESTRING|MULTIPOLYGON")   
-    ngeoms =  dim( m[[1]] )[1]
+    m =  str_extract_all(wkt, "POINT|LINESTRING|LINEARRING|POLYGON|MULTIPOINT|MULTILINESTRING|MULTIPOLYGON")   
+    ngeoms =  length( m[[1]] )
+    if(is.null(ngeoms)) ngeoms = 0
     
     if(is.null(id)) {
         if (ngeoms == 0) {

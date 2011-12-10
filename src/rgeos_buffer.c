@@ -29,7 +29,9 @@ SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width, SEXP quads
                                          INTEGER_POINTER(capStyle)[0], 
                                          INTEGER_POINTER(joinStyle)[0],  
                                          NUMERIC_POINTER(mitreLimit)[0]);
+        GEOSGeom_destroy_r(GEOShandle, curgeom);
     }
+    //GEOSGeom_destroy_r(GEOShandle, geom);
     
     GEOSGeometry* res;
     if (n == 1) {
@@ -42,8 +44,6 @@ SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width, SEXP quads
     SEXP ans;
     PROTECT(ans = rgeos_convert_geos2R(env, res, p4s, id));
 
-    //GEOSGeom_destroy_r(GEOShandle, curgeom);
-    //GEOSGeom_destroy_r(GEOShandle, geom);
     //GEOSGeom_destroy_r(GEOShandle, res);
     for (i=0; i<n; i++) GEOSGeom_destroy_r(GEOShandle, geoms[i]);
     UNPROTECT(1);
