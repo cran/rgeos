@@ -9,6 +9,7 @@ SEXP rgeos_double_translate(SEXP env, SEXP obj, SEXP id) {
     SEXP p4s = (obj == R_NilValue) ? R_NilValue : GET_SLOT(obj, install("proj4string"));
     
     SEXP ans = rgeos_convert_geos2R(env, geom, p4s, id); 
+    GEOSGeom_destroy_r(GEOShandle, geom);
     
     return(ans);
 }
@@ -120,6 +121,7 @@ GEOSGeom rgeos_SpatialPoints2geospoint(SEXP env, SEXP obj) {
             }
         
             GC = (n == 1) ? geoms[0] : GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, n);   
+            for (int j=0; j<n; j++) GEOSGeom_destroy_r(GEOShandle, geoms[j]);
             if (GC == NULL) error("rgeos_SpatialPoints2geospoint: collection not created");
             
         } else {
@@ -165,12 +167,14 @@ GEOSGeom rgeos_SpatialPoints2geospoint(SEXP env, SEXP obj) {
 
                 geoms[j] = (k == 1) ? subgeoms[0] : 
                             GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOINT, subgeoms, unqcnt[j]);
+//                for (k=0; k<unqcnt[j]; k++) GEOSGeom_destroy_r(GEOShandle, subgeoms[k]);
             
                 if (geoms[j] == NULL) error("rgeos_SpatialPoints2geospoint: collection not created");
             }
         
             GC = (nunq == 1) ? geoms[0] :
                     GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, nunq);
+//            for (int j=0; j<nunq; j++) GEOSGeom_destroy_r(GEOShandle, geoms[j]);
             if (GC == NULL) error("rgeos_SpatialPoints2geospoint: collection not created");
         }
         
