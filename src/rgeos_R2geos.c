@@ -9,7 +9,7 @@ SEXP rgeos_double_translate(SEXP env, SEXP obj, SEXP id) {
     SEXP p4s = (obj == R_NilValue) ? R_NilValue : GET_SLOT(obj, install("proj4string"));
     
     SEXP ans = rgeos_convert_geos2R(env, geom, p4s, id); 
-    GEOSGeom_destroy_r(GEOShandle, geom);
+//    GEOSGeom_destroy_r(GEOShandle, geom);
     
     return(ans);
 }
@@ -121,7 +121,7 @@ GEOSGeom rgeos_SpatialPoints2geospoint(SEXP env, SEXP obj) {
             }
         
             GC = (n == 1) ? geoms[0] : GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, n);   
-            for (int j=0; j<n; j++) GEOSGeom_destroy_r(GEOShandle, geoms[j]);
+//            for (int j=0; j<n; j++) GEOSGeom_destroy_r(GEOShandle, geoms[j]);
             if (GC == NULL) error("rgeos_SpatialPoints2geospoint: collection not created");
             
         } else {
@@ -378,7 +378,7 @@ GEOSGeom rgeos_Polygons_i_2Polygon(SEXP env, SEXP pls, SEXP vec) {
     }
     
     if (res == NULL) {
-        GEOSGeom_destroy_r(GEOShandle, pol);
+//        GEOSGeom_destroy_r(GEOShandle, pol);
         error("rgeos_Polygons_i_2Polygon: Polygon not created");
     }
     
