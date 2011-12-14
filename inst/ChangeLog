@@ -1,3 +1,11 @@
+2011-12-14 09:10  rsbivand
+
+	* DESCRIPTION, src/rgeos_R2geos.c: revert destroy in R2geos.c
+
+2011-12-10 11:37  rsbivand
+
+	* ChangeLog, inst/ChangeLog: clear stringr 0.6 mess
+
 2011-12-10 11:36  rsbivand
 
 	* DESCRIPTION, src/rgeos_R2geos.c: clear stringr 0.6 mess
