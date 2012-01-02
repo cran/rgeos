@@ -88,8 +88,8 @@ Duncan Murdoch}
 
 \seealso{\code{"gpc.poly"} class documentation.}
 \examples{
-holepoly <- read.polyfile(system.file("poly-ex/hole-poly.txt", package =
-"gpclib"), nohole = FALSE)
+holepoly <- read.polyfile(system.file("poly-ex-gpc/hole-poly.txt",
+ package ="rgeos"), nohole = FALSE)
 area.poly(holepoly)
 stopifnot(area.poly(holepoly) == 8)
 }

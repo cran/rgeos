@@ -1,5 +1,5 @@
-48f1673c5fb53f89aeaedc3ca5b0e98d *ChangeLog
-3d98bf95c3c19402470bbd581a842cea *DESCRIPTION
+0ffabe1d143c6a60538f54ad6eae3133 *ChangeLog
+3896f28743b5615482223f17fa833d4f *DESCRIPTION
 f6018370621ec594a6f7c3cc56e91218 *NAMESPACE
 721e2d42cf0a3d393dbfcd1d03d75e7f *R/AAA.R
 cee0b8fd57d5e9505d028e019bc571f0 *R/Rgpc_funcs.R
@@ -18,9 +18,9 @@ eb3aa0cf064ab92e871091470d85926f *R/rgeos_util.R
 cc00c42e145a426160c978f6f818c766 *R/rgeos_wkt.R
 a941a6a9d2a0a971a2cfa76426c35b57 *configure
 33c54d6b0e7fbea7f9ec6704df4c0003 *configure.in
-48f1673c5fb53f89aeaedc3ca5b0e98d *inst/ChangeLog
+0ffabe1d143c6a60538f54ad6eae3133 *inst/ChangeLog
 b67cf3d7ef496900cd2157f98bfaef2b *inst/README.windows
-e3796ae838835da0b6f6ea37bcf8bcb7 *inst/SVN_VERSION
+0f49c89d1e7298bb9930789c8ed59d48 *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -79,7 +79,7 @@ aed22fcecc8afa3757bfd9b4fe50b2a4 *man/class-gpc.poly.nohole.Rd
 8da17348d1b95b254c6a28e688df311a *man/constructor-SpatialCollections.Rd
 a4f8b6f11e2595120e19822213c04368 *man/constructor-SpatialRings.Rd
 8411c5a434cb5fc76b91878438dd9bf1 *man/experimental-functions.Rd
-159d5cf8977e5479d31ecd576f10ba87 *man/gpc-new-generics.Rd
+9b8dad2cab20bd54dd7bf27f1383f7ca *man/gpc-new-generics.Rd
 9daa96192eadb9b1f430ff76cf9b795f *man/gpc-polyfile.Rd
 fef7af694fc71c476e43cc35f1f2fa5b *man/misc-gArea.Rd
 90178f8f46ccb171ddc28fd14e7ba3fc *man/misc-gBuffer.Rd

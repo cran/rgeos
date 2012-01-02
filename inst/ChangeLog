@@ -1,3 +1,12 @@
+2012-01-02 09:05  rsbivand
+
+	* DESCRIPTION, man/gpc-new-generics.Rd: avoid gpclib suggest via
+	  maptools
+
+2011-12-14 09:11  rsbivand
+
+	* ChangeLog, inst/ChangeLog: revert destroy in R2geos.c
+
 2011-12-14 09:10  rsbivand
 
 	* DESCRIPTION, src/rgeos_R2geos.c: revert destroy in R2geos.c
