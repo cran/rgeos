@@ -77,7 +77,7 @@ SEXP rgeos_topologyfunc(SEXP env, SEXP obj, SEXP id, SEXP byid, p_topofunc topof
     //FIXME - crashes if geom created from a collection created by R_Alloc
     //GEOSGeom_destroy_r(GEOShandle, geom);
         
-    return( rgeos_convert_geos2R(env, res, p4s, id) );
+    return( rgeos_convert_geos2R(env, res, p4s, id) ); // releases res
 }
 
 

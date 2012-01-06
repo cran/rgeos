@@ -268,8 +268,8 @@ GEOSGeom rgeos_xy2Pt(SEXP env, double x, double y) {
         gl = GEOSGeom_createPoint_r(GEOShandle, s);
     }
     
-    if (gl == NULL) {
-        GEOSGeom_destroy_r(GEOShandle, gl);
+    if (gl == NULL) { // EJP: destroy NULL pointer?
+        //GEOSGeom_destroy_r(GEOShandle, gl);
         error("rgeos_xy2Pt: point not created");
     }
     

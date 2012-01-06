@@ -192,6 +192,8 @@ SEXP rgeos_convert_geos2R(SEXP env, GEOSGeom geom, SEXP p4s, SEXP id) {
             error("Unknown type");
     }
 
+	// destroy geom; EJP Sat Jan  7 00:04:38 CET 2012
+    GEOSGeom_destroy_r(GEOShandle, geom);
     UNPROTECT(pc);
     return(ans);
 }
@@ -232,8 +234,6 @@ SEXP rgeos_geospolygon2SpatialPolygons(SEXP env, GEOSGeom geom, SEXP p4s, SEXP I
         SET_VECTOR_ELT(pls, i, poly);
         
         po[i] = i + R_OFFSET;
-
-        //GEOSGeom_destroy_r(GEOShandle, GC);
 
         UNPROTECT(2); 
     }
@@ -279,7 +279,6 @@ SEXP rgeos_geospolygon2Polygons(SEXP env, GEOSGeom geom, SEXP ID) {
                         GEOSGetNumInteriorRings_r(GEOShandle, GC) + 1;
 
         npoly += GCpolys;
-        //GEOSGeom_destroy_r(GEOShandle, GC);
     }
     
     SEXP polys;
@@ -362,10 +361,8 @@ SEXP rgeos_geospolygon2Polygons(SEXP env, GEOSGeom geom, SEXP ID) {
                 po[k] = k + R_OFFSET;
             
                 k++;
-                //GEOSGeom_destroy_r(GEOShandle, lr);
             }
         }
-        //GEOSGeom_destroy_r(GEOShandle, GC);
     }
     
     SEXP plotOrder;
@@ -421,7 +418,6 @@ SEXP rgeos_geosring2Polygon(SEXP env, GEOSGeom lr, int hole) {
         error("rgeos_geosring2Polygon: CoordSeq failure");
         
     PROTECT(crd = rgeos_CoordSeq2crdMat(env, s, FALSE, hole)); pc++;
-    //GEOSCoordSeq_destroy_r(GEOShandle, s);
     PROTECT(crdfix = rgeos_crdMatFixDir(crd, hole)); pc++;
     
     GEOSGeom p = GEOSGeom_createPolygon_r(GEOShandle,lr,NULL,0);
@@ -435,7 +431,7 @@ SEXP rgeos_geosring2Polygon(SEXP env, GEOSGeom lr, int hole) {
 
 
     double xc,yc;
-    GEOSGeom centroid = GEOSGetCentroid_r(GEOShandle,p);
+    GEOSGeom centroid = GEOSGetCentroid_r(GEOShandle, p);
     rgeos_Pt2xy(env, centroid, &xc, &yc);
     //FIXME - do we really need this? what cases produce a nonfinite centroid?
     if (!R_FINITE(xc) || !R_FINITE(yc)) {
@@ -465,8 +461,7 @@ SEXP rgeos_geosring2Polygon(SEXP env, GEOSGeom lr, int hole) {
         else error("invalid Polygon object");
     }
 
-    //GEOSGeom_destroy_r(GEOShandle, centroid);
-    //GEOSGeom_destroy_r(GEOShandle, p);
+    //GEOSGeom_destroy_r(GEOShandle, p); -- won't work, as members are owned by geom too.
     UNPROTECT(pc);
     return(ans);
 }
@@ -550,11 +545,9 @@ SEXP rgeos_geosline2SpatialLines(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
                     error("rgeos_geosline2SpatialLines: unable to generate coordinate sequence");
 
                 PROTECT( crdmat = rgeos_CoordSeq2crdMat(env, s, FALSE, FALSE));
-                //GEOSCoordSeq_destroy_r(GEOShandle, s);
             } else {
                 PROTECT( crdmat = R_NilValue);
             }
-            //GEOSGeom_destroy_r(GEOShandle, subgeom);
 
             SEXP line;
             PROTECT(line = NEW_OBJECT(MAKE_CLASS("Line")));   
@@ -563,7 +556,6 @@ SEXP rgeos_geosline2SpatialLines(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
         
             UNPROTECT(2);
         }
-        //GEOSGeom_destroy_r(GEOShandle, curgeom);
 
         SEXP lines;
         PROTECT( lines = NEW_OBJECT(MAKE_CLASS("Lines")) );
@@ -624,7 +616,6 @@ SEXP rgeos_geosring2SpatialRings(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
                 error("rgeos_geosring2SpatialRings: unable to generate coordinate sequence");
 
             PROTECT(crdmat = rgeos_crdMatFixDir(rgeos_CoordSeq2crdMat(env, s, FALSE, FALSE), FALSE));
-            //GEOSCoordSeq_destroy_r(GEOShandle, s);
         } else {
             PROTECT( crdmat = R_NilValue);
         }
