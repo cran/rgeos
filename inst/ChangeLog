@@ -1,3 +1,23 @@
+2012-01-06 23:20  edzer
+
+	* src/rgeos_buffer.c, src/rgeos_geos2R.c: further memory release
+	  hunting...
+
+2012-01-06 18:31  edzer
+
+	* DESCRIPTION, src/rgeos_R2geos.c, src/rgeos_buffer.c,
+	  src/rgeos_coord.c, src/rgeos_geos2R.c, src/rgeos_topology.c,
+	  src/rgeos_wkt.c: version bump; hunt for memory leaks.
+
+2012-01-05 22:07  edzer
+
+	* src/rgeos_buffer.c: un-commented the GEOS_destroy_r() commands in
+	  buffer, after adding conditions.
+
+2012-01-02 09:06  rsbivand
+
+	* ChangeLog, inst/ChangeLog: avoid gpclib suggest via maptools
+
 2012-01-02 09:05  rsbivand
 
 	* DESCRIPTION, man/gpc-new-generics.Rd: avoid gpclib suggest via
