@@ -36,34 +36,36 @@ SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, S
     if (n == -1) error("rgeos_bintopofunc: invalid number of subgeometries in geometry 2");
 
     GEOSGeom *geoms = (GEOSGeom *) R_alloc((size_t) m*n, sizeof(GEOSGeom));
-    int k=0;
     
+    int k=0;
     for(int i=0; i<m; i++) {
 
-        GEOSGeom curgeom1 = ( m > 1) ? (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, geom1, i) : geom1;
+        const GEOSGeometry *curgeom1 = (m > 1) ? GEOSGetGeometryN_r(GEOShandle, geom1, i) : geom1;
         if (curgeom1 == NULL) 
             error("rgeos_bintopofunc: unable to get subgeometries from geometry 1");
         
-        for(int j=0; j<n; j++) {
+        for(int j=0; j<n; j++, k++) {
         
-            GEOSGeom curgeom2 = ( n > 1) ? (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, geom2, j) : geom2;
+            const GEOSGeometry *curgeom2 = (n > 1) ? GEOSGetGeometryN_r(GEOShandle, geom2, j) : geom2;
             if (curgeom2 == NULL) 
                 error("rgeos_bintopofunc: unable to get subgeometries from geometry 2");
             
-            GEOSGeom geomsk = bintopofunc(GEOShandle, curgeom1, curgeom2);
-            if (geomsk == NULL)
+            geoms[k] = bintopofunc(GEOShandle, curgeom1, curgeom2);
+            if (geoms[k] == NULL)
                 error("rgeos_bintopofunc: topology function failed");
             
-            //Rprintf("%d: %d %d %s\n", k, GEOSisEmpty_r(GEOShandle, geomsk), GEOSGeomTypeId_r(GEOShandle, geomsk), GEOSGeomType_r(GEOShandle, geomsk));
-            if (GEOSisEmpty_r(GEOShandle, geomsk)) continue;
-            
-            geoms[k] = geomsk;
             SET_STRING_ELT(ids, k, STRING_ELT(ids, i*n+j));
             
-            k++;
+            //Rprintf("%d: %d %d %s\n", k, GEOSisEmpty_r(GEOShandle, geomsk), GEOSGeomTypeId_r(GEOShandle, geomsk), GEOSGeomType_r(GEOShandle, geomsk));
+            //if (GEOSisEmpty_r(GEOShandle, geomsk)) continue;
         }
     }
-    if (k == 0) return(R_NilValue);
+    
+    GEOSGeom_destroy_r(GEOShandle, geom1);
+    GEOSGeom_destroy_r(GEOShandle, geom2);
+    
+    if (k == 0)
+        return(R_NilValue);
     GEOSGeom res = (k > 1) ? GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, k)
                              : geoms[0];
     

@@ -51,47 +51,43 @@ SEXP rgeos_topologyfunc(SEXP env, SEXP obj, SEXP id, SEXP byid, p_topofunc topof
     
     GEOSGeom *resgeoms = (GEOSGeom *) R_alloc((size_t) n, sizeof(GEOSGeom));
     
-    GEOSGeom curgeom = geom;
-    int curtype = GEOSGeomTypeId_r(GEOShandle, curgeom);
     for(int i=0; i<n; i++) {
-        if ( n > 1) {
-            curgeom = (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, geom, i);
-            if (curgeom == NULL) error("rgeos_topologyfunc: unable to get subgeometries");
-            curtype = GEOSGeomTypeId_r(GEOShandle, curgeom);
-        }
-        if (topofunc == GEOSUnionCascaded_r && curtype == GEOS_POLYGON) {
-            resgeoms[i] = curgeom;
+        const GEOSGeometry *curgeom = (n > 1) ? (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, geom, i)
+                                       : geom;
+        
+        if (curgeom == NULL) 
+            error("rgeos_topologyfunc: unable to get subgeometries");
+        
+        if (    topofunc == GEOSUnionCascaded_r
+             && GEOSGeomTypeId_r(GEOShandle, curgeom) == GEOS_POLYGON) {
+            resgeoms[i] = GEOSGeom_clone_r(GEOShandle, curgeom);
         } else {
             resgeoms[i] = topofunc(GEOShandle, curgeom);
             if (resgeoms[i] == NULL)
                 error("rgeos_topologyfunc: unable to calculate");
         }
-
-
     }
     
-    GEOSGeom res = resgeoms[0];
-    if (n > 1)
-        res = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, resgeoms, n);
+    GEOSGeom_destroy_r(GEOShandle, geom);
     
-    //FIXME - crashes if geom created from a collection created by R_Alloc
-    //GEOSGeom_destroy_r(GEOShandle, geom);
-        
+    GEOSGeom res = (n == 1) ? resgeoms[0]
+                    : GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, resgeoms, n);
+    
     return( rgeos_convert_geos2R(env, res, p4s, id) ); // releases res
 }
 
 
 SEXP rgeos_simplify(SEXP env, SEXP obj, SEXP tol, SEXP id, SEXP byid, SEXP topPres) {
-
+    
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
-
+    
     SEXP p4s = GET_SLOT(obj, install("proj4string"));
     GEOSGeom geom = rgeos_convert_R2geos(env, obj);
     int type = GEOSGeomTypeId_r(GEOShandle, geom);
     
     int preserve = LOGICAL_POINTER(topPres)[0];
     double tolerance = NUMERIC_POINTER(tol)[0];
-
+    
     int n = 1;
     if (LOGICAL_POINTER(byid)[0] && type == GEOS_GEOMETRYCOLLECTION)
         n = GEOSGetNumGeometries_r(GEOShandle, geom);
@@ -100,37 +96,34 @@ SEXP rgeos_simplify(SEXP env, SEXP obj, SEXP tol, SEXP id, SEXP byid, SEXP topPr
     
     GEOSGeom *resgeoms = (GEOSGeom *) R_alloc((size_t) n, sizeof(GEOSGeom));
     
-    GEOSGeom curgeom = geom;
-    int curtype = GEOSGeomTypeId_r(GEOShandle, curgeom);
     for(int i=0; i<n; i++) {
-        if ( n > 1) {
-            curgeom = (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, geom, i);
-            if (curgeom == NULL) error("rgeos_topologyfunc: unable to get subgeometries");
-            curtype = GEOSGeomTypeId_r(GEOShandle, curgeom);
-        }
+        const GEOSGeometry *curgeom = (n > 1) ? (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, geom, i)
+                                       : geom;
+        if (curgeom == NULL)
+            error("rgeos_topologyfunc: unable to get subgeometries");
         
-        if (preserve) {
-            resgeoms[i] = GEOSTopologyPreserveSimplify_r(GEOShandle, curgeom, tolerance);
-        } else {
-            resgeoms[i] = GEOSSimplify_r(GEOShandle, curgeom, tolerance);
-        }
+        resgeoms[i] = (preserve)
+                        ? GEOSTopologyPreserveSimplify_r(GEOShandle, curgeom, tolerance)
+                        : GEOSSimplify_r(GEOShandle, curgeom, tolerance);
     }
+    
+    GEOSGeom_destroy_r(GEOShandle, geom);
     
     GEOSGeom res = (n == 1) ? resgeoms[0] :
                     GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, resgeoms, n);
-  
+    
     return( rgeos_convert_geos2R(env, res, p4s, id) );
 }
 
 SEXP rgeos_polygonize(SEXP env, SEXP obj, SEXP id, SEXP p4s, SEXP cutEdges) {
-
+    
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
-
+    
     int getCutEdges = LOGICAL_POINTER(cutEdges)[0];
     int n = length(obj);
     GEOSGeom *geoms = (GEOSGeom *) R_alloc((size_t) n, sizeof(GEOSGeom));
     
-    for(int i=0; i<n; i++) {    
+    for(int i=0; i<n; i++) {
         geoms[i] = rgeos_convert_R2geos(env, VECTOR_ELT(obj,i));
     }
     
