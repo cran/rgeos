@@ -133,6 +133,7 @@ SEXP rgeos_binary_STRtree_query(SEXP env, SEXP obj1, SEXP obj2) {
         }
         GEOSGeom_destroy_r(GEOShandle, GC);
         GEOSSTRtree_insert_r(GEOShandle, str, bb, &(ids[i]));
+        GEOSGeom_destroy_r(GEOShandle, bb); // EJP, try
 // 110904 EJP
     }
 

@@ -1,3 +1,144 @@
+2012-01-15 11:37  edzer
+
+	* DESCRIPTION, src/rgeos_predicate_binary.c: added r-forge URL to
+	  DESCRIPTION
+	  added type casts to remove compilation warnings
+
+2012-01-15 09:58  crundel
+
+	* src/rgeos_geos2R.c: Cleanup
+
+2012-01-15 09:58  crundel
+
+	* src/rgeos_topology.c, src/rgeos_topology_binary.c: Cleanup and
+	  memory leak
+
+2012-01-15 09:58  crundel
+
+	* src/rgeos_R2geos.c: memory leak
+
+2012-01-15 09:58  crundel
+
+	* src/rgeos_predicate_binary.c, src/rgeos_predicate_unary.c:
+	  cleanup
+
+2012-01-15 09:58  crundel
+
+	* src/rgeos_geos2R.c: Small memory leak
+
+2012-01-15 09:58  crundel
+
+	* src/rgeos_bbox.c: Fixing what I broke
+
+2012-01-15 09:58  crundel
+
+	* src/rgeos_geos2R.c: Cleanup
+
+2012-01-15 09:58  crundel
+
+	* src/rgeos_R2geos.c, src/rgeos_R2geosMP.c: Cleanup and moved
+	  multipoint functions to new source file
+
+2012-01-15 09:58  crundel
+
+	* inst/tests/process_testxml.R, inst/tests/test-jts-xml.R: Break up
+	  XML test runner to allow for separate testing
+
+2012-01-15 09:58  crundel
+
+	* src/rgeos_bbox.c: Should function for all geometry types now
+
+2012-01-15 09:58  crundel
+
+	* src/rgeos.h, src/rgeos_coord.c: Fixed const correctness for
+	  coordSequence
+
+2012-01-15 09:58  crundel
+
+	* src/gpc_geos.c, src/init.c, src/rgeos.h: Removed gpc_geos
+	  functions since we arn't using them
+
+2012-01-15 09:58  crundel
+
+	* src/rgeos.h: cleanup
+
+2012-01-15 09:58  crundel
+
+	* src/gpc_geos.c, src/rgeos.h: Lots of cleaning and minor
+	  refactoring, changes have not been tested since we don't
+	  currently use any of this functionality
+
+2012-01-15 09:58  crundel
+
+	* src/rgeos_coord.c: cleanup
+
+2012-01-15 09:58  crundel
+
+	* src/rgeos_geos2R.c: cleanup
+
+2012-01-15 09:57  crundel
+
+	* src/rgeos_R2geos.c: cleanup
+
+2012-01-15 09:57  crundel
+
+	* src/rgeos_R2geos.c: Don't use the handle here
+
+2012-01-15 09:57  crundel
+
+	* src/rgeos_R2geos.c: Removed unused scale variable
+
+2012-01-15 09:57  crundel
+
+	* src/rgeos_R2geos.c: Cleaned tabs
+
+2012-01-15 09:57  crundel
+
+	* src/rgeos_topology.c: More cleanup, removed unused curtype
+
+2012-01-15 09:57  crundel
+
+	* src/rgeos_topology.c: Cleanup and switch to use just one call to
+	  GEOSGeomTypeId_r
+
+2012-01-15 09:57  crundel
+
+	* src/rgeos_geos2R.c: Cleaning tabs
+
+2012-01-13 00:02  crundel
+
+	* src/rgeos_geos2R.c: Cleanup and memory leak fix
+
+2012-01-13 00:02  crundel
+
+	* src/rgeos_geos2R.c: Cleanup
+
+2012-01-13 00:02  crundel
+
+	* inst/tests/test-translate-lines.R,
+	  inst/tests/test-translate-points.R,
+	  inst/tests/test-translate-polygon-collection.R,
+	  inst/tests/test-translate-polygons.R,
+	  inst/tests/test-translate-rings.R, inst/tests/test-translate.R:
+	  Break up translate tests into separate files
+
+2012-01-09 07:59  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2012-01-08 21:42  edzer
+
+	* src/rgeos_geos2R.c: one more memory leak fixed.
+
+2012-01-08 19:46  edzer
+
+	* DESCRIPTION, src/rgeos_bbox.c, src/rgeos_poly2nb.c,
+	  src/rgeos_validate.c: version bump; fixed more memory leaks.
+
+2012-01-07 13:22  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2012-01-06 23:20  edzer
 
 	* src/rgeos_buffer.c, src/rgeos_geos2R.c: further memory release

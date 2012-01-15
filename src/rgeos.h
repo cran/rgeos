@@ -31,20 +31,14 @@ SEXP rgeos_finish(SEXP env);
 static void rgeos_finish_handle(SEXP ptr);
 GEOSContextHandle_t getContextHandle(SEXP env);
 
-
 double getScale(SEXP env);
 double makePrecise(double val, double scale);
 double sym_round(double val);
 double java_math_round(double val);
 double rint_vc(double val);
-// Based on geos rounding methods, use just one global 
-// round function, so it can be easily switched globally 
-double rgeos_round(double val);
-// inline removed, see Writing R extensions, section 6.14
-// http://cran.r-project.org/doc/manuals/R-exts.html#Inlining-C-functions
+double rgeos_round(double val); // Based on geos rounding methods, use just one global round function
 
 SEXP rgeos_double_translate(SEXP env, SEXP obj, SEXP id);
-
 SEXP rgeos_PolyCreateComment(SEXP env, SEXP pls);
 
 // Bounding Box functions - rgeos_bbox.c
@@ -52,7 +46,6 @@ SEXP rgeos_geom2bbox(SEXP env, GEOSGeom geom);
 
 
 // Coordinate sequence and matrix functions - rgeos_coord.c
-
 void     rgeos_Pt2xy(SEXP env, GEOSGeom point, double *x, double *y);
 GEOSGeom rgeos_xy2Pt(SEXP env, double x, double y);
 
@@ -61,12 +54,11 @@ GEOSGeom rgeos_crdMat2LineString(SEXP env, SEXP mat, SEXP dim);
 GEOSGeom rgeos_crdMat2LinearRing(SEXP env, SEXP mat, SEXP dim);
 GEOSGeom rgeos_crdMat2Polygon(SEXP env, SEXP mat, SEXP dim);
 
-SEXP rgeos_CoordSeq2crdMat(SEXP env, GEOSCoordSeq s, int HasZ, int rev);
+SEXP rgeos_CoordSeq2crdMat(SEXP env, const GEOSCoordSequence *s, int HasZ, int rev);
 SEXP rgeos_geospoint2crdMat(SEXP env, GEOSGeom geom, SEXP idlist, int ntotal, int type);
 
 SEXP rgeos_formatcrdMat(SEXP crdMat, int n );
 SEXP rgeos_crdMatFixDir(SEXP crd, int hole);
-
 
 
 // Translate functions GEOS to R - rgeos_geos2R.c
@@ -102,7 +94,6 @@ SEXP rgeos_writeWKT(SEXP env, SEXP obj, SEXP byid);
 
 
 // Topology Functions - rgeos_topology.c
-
 SEXP rgeos_envelope(SEXP env, SEXP obj, SEXP id, SEXP byid);
 SEXP rgeos_convexhull(SEXP env, SEXP obj, SEXP id, SEXP byid);
 SEXP rgeos_boundary(SEXP env, SEXP obj, SEXP id, SEXP byid); 
@@ -120,8 +111,8 @@ SEXP rgeos_topologyfunc(SEXP env, SEXP obj, SEXP id, SEXP byid, p_topofunc);
 SEXP rgeos_simplify(SEXP env, SEXP obj, SEXP tol, SEXP id, SEXP byid, SEXP topPres);
 SEXP rgeos_polygonize(SEXP env, SEXP obj, SEXP id, SEXP p4s, SEXP cutEdges);
 
-// Binary Topology Functions - rgeos_topology_binary.c
 
+// Binary Topology Functions - rgeos_topology_binary.c
 SEXP rgeos_difference(SEXP env, SEXP geom1, SEXP geom2, SEXP byid, SEXP ids);
 SEXP rgeos_symdifference(SEXP env, SEXP geom1, SEXP geom2, SEXP byid, SEXP ids);
 SEXP rgeos_intersection(SEXP env, SEXP geom1, SEXP geom2, SEXP byid, SEXP ids);
@@ -171,6 +162,7 @@ SEXP rgeos_isempty(SEXP env, SEXP spgeom, SEXP byid);
 typedef char (*p_unarypredfunc)(GEOSContextHandle_t, const GEOSGeometry*);
 SEXP rgeos_unarypredfunc(SEXP env, SEXP spgeom, SEXP byid, p_unarypredfunc);
 
+
 // Buffer Functions - rgeos_buffer.c
 SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width, SEXP quadsegs, 
                   SEXP capStyle, SEXP joinStyle, SEXP mitreLimit);
@@ -193,30 +185,13 @@ SEXP rgeos_hausdorffdistancedensify(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP d
 typedef int (*p_distdenfunc)(GEOSContextHandle_t,const GEOSGeometry*,const GEOSGeometry*, double, double *);
 SEXP rgeos_distancedensifyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP densifyFrac, SEXP byid, p_distdenfunc);
 
-// GPC functions
-GEOSGeom GPCptPolygon(SEXP env, SEXP obj);
-GEOSGeom GPCpt2LinearRing(SEXP env, SEXP obj);
-GEOSCoordSeq GPCpt2CoordSeq(SEXP env, SEXP obj);
-GEOSGeom GCPPtsGC(SEXP env, SEXP pls);
-GEOSGeom GPCpt_i_Polygon(SEXP env, SEXP pls, SEXP vec);
-
-
-SEXP checkHolesGPC(SEXP env, SEXP A);
-
-/* SEXP GCpolysGPCpts(SEXP env, GEOSGeom GC); */
-SEXP GCGCPPts(SEXP env, GEOSGeom Geom);
-SEXP rgeos_LinearRingGCPPts(SEXP env, GEOSGeom lr, int hole);
-
 
 // Needs to be classified
-
-
 SEXP rgeos_PolygonsContain(SEXP env, SEXP obj);
 SEXP GC_Contains(SEXP env, GEOSGeom GC);
 SEXP rgeos_poly_findInBox(SEXP env, SEXP pls, SEXP as_points);
 
 // STRtree functions
-
 SEXP rgeos_binary_STRtree_query(SEXP env, SEXP obj1, SEXP obj2);
 SEXP rgeos_unary_STRtree_query(SEXP env, SEXP obj);
 

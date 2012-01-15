@@ -89,6 +89,11 @@ SEXP rgeos_PolyCreateComment(SEXP env, SEXP pls) {
             }
         }
     }
+	// EJP:
+    for(int i=0; i<nholes; i++)
+    	GEOSGeom_destroy_r(GEOShandle, holes[i]);
+    for(int i=0; i<npolys; i++)
+    	GEOSGeom_destroy_r(GEOShandle, polys[i]);
     
     UNPROTECT(pc);
     return(commentvec);

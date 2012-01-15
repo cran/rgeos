@@ -108,11 +108,11 @@ SEXP rgeos_crdMatFixDir(SEXP crd, int hole) {
     return(crd);
 }
 
-SEXP rgeos_CoordSeq2crdMat(SEXP env, GEOSCoordSeq s, int HasZ, int rev) {
+SEXP rgeos_CoordSeq2crdMat(SEXP env, const GEOSCoordSequence *s, int HasZ, int rev) {
 
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
     
-    int n, m;
+    unsigned int n, m;
     if (GEOSCoordSeq_getSize_r(GEOShandle, s, &n) == 0 ||
         GEOSCoordSeq_getDimensions_r(GEOShandle, s, &m) == 0) {
         error("rgeos_CoordSeq2crdMat: unable to get size and or get dimension of Coord Seq");
