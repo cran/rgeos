@@ -1,5 +1,5 @@
-b5b0137d79357b1174d56fdf1f4d9691 *ChangeLog
-67ed59438903d5287b62259d5baf2c51 *DESCRIPTION
+ef0aeccca6f4925ebf6ac3ac95061d8f *ChangeLog
+0a679b46e59467901cbb33a67a04faeb *DESCRIPTION
 f6018370621ec594a6f7c3cc56e91218 *NAMESPACE
 721e2d42cf0a3d393dbfcd1d03d75e7f *R/AAA.R
 cee0b8fd57d5e9505d028e019bc571f0 *R/Rgpc_funcs.R
@@ -18,9 +18,9 @@ eb3aa0cf064ab92e871091470d85926f *R/rgeos_util.R
 cc00c42e145a426160c978f6f818c766 *R/rgeos_wkt.R
 a941a6a9d2a0a971a2cfa76426c35b57 *configure
 33c54d6b0e7fbea7f9ec6704df4c0003 *configure.in
-b5b0137d79357b1174d56fdf1f4d9691 *inst/ChangeLog
+ef0aeccca6f4925ebf6ac3ac95061d8f *inst/ChangeLog
 b67cf3d7ef496900cd2157f98bfaef2b *inst/README.windows
-432aca3a1e345e339f35a30c8f65edce *inst/SVN_VERSION
+5737c6ec2e0716f3d8a7a5c4e0de0d9a *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -83,7 +83,7 @@ aed22fcecc8afa3757bfd9b4fe50b2a4 *man/class-gpc.poly.nohole.Rd
 6ffcd1a8878b8fb97166508966933320 *man/comment-functions.Rd
 8da17348d1b95b254c6a28e688df311a *man/constructor-SpatialCollections.Rd
 a4f8b6f11e2595120e19822213c04368 *man/constructor-SpatialRings.Rd
-8411c5a434cb5fc76b91878438dd9bf1 *man/experimental-functions.Rd
+f3dc655a884488e7ffbda7cdb88b6dfb *man/experimental-functions.Rd
 9b8dad2cab20bd54dd7bf27f1383f7ca *man/gpc-new-generics.Rd
 9daa96192eadb9b1f430ff76cf9b795f *man/gpc-polyfile.Rd
 fef7af694fc71c476e43cc35f1f2fa5b *man/misc-gArea.Rd
@@ -127,7 +127,7 @@ f275eb5be52bf6586cc1e4ff884b98ad *src/rgeos_bbox.c
 f7b3974fbb1cc732f9ff449bb7462e3d *src/rgeos_coord.c
 c67b2d4dab1ecfb0dc8bfe959ea695b5 *src/rgeos_geos2R.c
 0947a89ed62141a58d8d0e8569ec15ea *src/rgeos_misc.c
-5832bd77bc53e890dda23e54efa5f6fb *src/rgeos_poly2nb.c
+4ea248f781059f5ff779bb3e513532fa *src/rgeos_poly2nb.c
 fe07be43ef847ab99cee81b32c6c28c0 *src/rgeos_predicate_binary.c
 4f39ba7f07b85f29216673dc7d9be3b6 *src/rgeos_predicate_unary.c
 df8d9475a5679c21587edbabcd8541fe *src/rgeos_topology.c

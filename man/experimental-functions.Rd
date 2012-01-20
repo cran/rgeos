@@ -48,5 +48,5 @@ SG <- Sobj_SpatialGrid(nc1, n=400)$SG
 obj1 <- as(as(SG, "SpatialPixels"), "SpatialPolygons")
 a4 <- gBinarySTRtreeQuery(nc1, obj1)
 plot(nc1, col="orange", border="yellow")
-plot(obj1,  border=sapply(a4, is.null)+1, add=TRUE)
+plot(obj1, angle=sapply(a4, is.null)*45, density=20, lwd=0.5, add=TRUE)
 }

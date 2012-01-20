@@ -1,3 +1,20 @@
+2012-01-19 19:25  rsbivand
+
+	* src/rgeos_poly2nb.c: fixing gBinarySTRtreeQuery
+
+2012-01-19 19:08  rsbivand
+
+	* man/experimental-functions.Rd, src/rgeos_poly2nb.c: fixing
+	  gBinarySTRtreeQuery
+
+2012-01-18 19:11  rsbivand
+
+	* DESCRIPTION, src/rgeos_poly2nb.c: fixing gBinarySTRtreeQuery
+
+2012-01-15 13:12  rsbivand
+
+	* ChangeLog, DESCRIPTION, inst/ChangeLog: tidy
+
 2012-01-15 11:37  edzer
 
 	* DESCRIPTION, src/rgeos_predicate_binary.c: added r-forge URL to
