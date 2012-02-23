@@ -89,7 +89,23 @@ gPointOnSurface = function(spgeom, byid=FALSE, id = NULL) {
     return( TopologyFunc(spgeom,id,byid,"rgeos_pointonsurface") ) 
 }
 gLineMerge = function(spgeom, byid=FALSE, id = NULL) {
-    return( TopologyFunc(spgeom,id,byid,"rgeos_linemerge") ) 
+#    return( TopologyFunc(spgeom,id,byid,"rgeos_linemerge") ) 
+    if (!inherits(spgeom,"SpatialLines"))
+        stop("Invalid geometry, may only be applied to lines")
+    spgeom <- as(spgeom, "SpatialLines")
+    if (is.null(id))
+        id = rep("1",length(row.names(spgeom)))
+
+#    if (any(is.na(id))) stop("No NAs permitted in id")
+
+    ids <- split(1:length(id), id)
+    out <- vector(mode="list", length=length(ids))
+    for (i in seq(along=ids)) {
+        out[[i]] <- .Call("rgeos_linemerge", .RGEOS_HANDLE,
+        spgeom[ids[[i]]], names(ids)[i], FALSE, PACKAGE="rgeos") 
+    }
+    res <- do.call("rbind.SpatialLines", out)
+    res
 }
 
 gUnionCascaded = function(spgeom, id = NULL) {

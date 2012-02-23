@@ -1,5 +1,5 @@
-ef0aeccca6f4925ebf6ac3ac95061d8f *ChangeLog
-0a679b46e59467901cbb33a67a04faeb *DESCRIPTION
+793b03cd2bd54cd48929cae32a4086ce *ChangeLog
+7d3dca0d83ce253b4e49e1dbdac413fd *DESCRIPTION
 f6018370621ec594a6f7c3cc56e91218 *NAMESPACE
 721e2d42cf0a3d393dbfcd1d03d75e7f *R/AAA.R
 cee0b8fd57d5e9505d028e019bc571f0 *R/Rgpc_funcs.R
@@ -12,15 +12,15 @@ c07b13afe4332fc059b0c9ba419c4d3a *R/rgeos_predicate_binary.R
 93ae9ac01702175eb29bbba7a64b082e *R/rgeos_predicate_unary.R
 96f670127773380ac223dcc5580bd861 *R/rgeos_spExtensions_Classes.R
 337732ae897adf3217e126fee210f7d7 *R/rgeos_spExtensions_Methods.R
-05f38f03842d9796980509437cd92a65 *R/rgeos_topology.R
+e2ebd1ff5e28b6a5ad77f137dedf6a1a *R/rgeos_topology.R
 f30c1fa6d932e516b6d883a5a1ccac2c *R/rgeos_topology_binary.R
 eb3aa0cf064ab92e871091470d85926f *R/rgeos_util.R
 cc00c42e145a426160c978f6f818c766 *R/rgeos_wkt.R
 a941a6a9d2a0a971a2cfa76426c35b57 *configure
 33c54d6b0e7fbea7f9ec6704df4c0003 *configure.in
-ef0aeccca6f4925ebf6ac3ac95061d8f *inst/ChangeLog
+793b03cd2bd54cd48929cae32a4086ce *inst/ChangeLog
 b67cf3d7ef496900cd2157f98bfaef2b *inst/README.windows
-5737c6ec2e0716f3d8a7a5c4e0de0d9a *inst/SVN_VERSION
+a666587afda6e89aec274a3657558a27 *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -103,7 +103,7 @@ a1a2affcf224c5fb332129eefd0a85fb *man/pred-unary-gIsEmpty.Rd
 a1f314782c69ac16013ca580bddc48c3 *man/topo-bin-gDifference.Rd
 5e27f15ef578551ab3e6281f0104ab2b *man/topo-bin-gIntersection.Rd
 3fb4faeb31c36af73881471bbd13ac92 *man/topo-bin-gSymdifference.Rd
-f62fee22af7dce33b7ef14901421e568 *man/topo-bin-gUnion.Rd
+c008e031f2a0338168597a85c64d8339 *man/topo-bin-gUnion.Rd
 b05955696472d44437c45f50812907f0 *man/topo-unary-gBoundary.Rd
 984d8a45c609218aa4ac1420b6e8b763 *man/topo-unary-gCentroid.Rd
 96c36b56a3587b5af63c55bc7501a532 *man/topo-unary-gConvexHull.Rd

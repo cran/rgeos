@@ -18,7 +18,7 @@ gLineMerge(spgeom, byid=FALSE, id = NULL)
 \arguments{
   \item{spgeom1, spgeom2}{sp objects as defined in package sp}
   \item{byid}{Logical vector determining if the function should be applied across ids (TRUE) or the entire object (FALSE) for spgeom1 and spgeom2}
-  \item{id}{Character vector defining id labels for the resulting geometries, if unspecified returned geometries will be labeled based on their parent geometries' labels; it may contain NA values for input objects not included in the union}
+  \item{id}{Character vector defining id labels for the resulting geometries, if unspecified returned geometries will be labeled based on their parent geometries' labels; it may contain NA values for input objects not included in the union; it should define the memberships of the output Polygons objects}
   \item{spgeom}{sp Polygon(s) or Line(s) depending on the function used}
 }
 
@@ -26,7 +26,7 @@ gLineMerge(spgeom, byid=FALSE, id = NULL)
 
 gUnionCascaded expects a single sp object of class SpatialPolygons with subgeometries which it unions together. gUnionCascaded can only dissolve MultiPolygon objects, so GeometryCollection objects to be dissolved, here a SpatialPolygons object, must be flattened a Polygons object; if GEOS version 3.3.0 is available, use gUnaryUnion.
 
-gUnaryUnion expects a single sp object of class SpatialPolygons with subgeometries which it unions together; introduced in GEOS version 3.3.0, and handles GeometryCollection objects.
+gUnaryUnion expects a single sp object of class SpatialPolygons with subgeometries which it unions together; introduced in GEOS version 3.3.0, and handles GeometryCollection objects. If the id argument is used, it should be a character vector defining the memberships of the output Polygons objects, equal in length to the length of the polygons slot of spgeom.
 
 gLineMerge is similar to gUnionCascaded but is written to work with lines, specifically it joins line segments with intersecting end points. 
 }

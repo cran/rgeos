@@ -1,3 +1,19 @@
+2012-02-22 16:59  rsbivand
+
+	* DESCRIPTION: tidy
+
+2012-01-30 10:44  rsbivand
+
+	* DESCRIPTION, R/rgeos_topology.R: revise gLineMerge
+
+2012-01-27 12:31  rsbivand
+
+	* man/topo-bin-gUnion.Rd: fix documentation
+
+2012-01-20 10:12  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2012-01-19 19:25  rsbivand
 
 	* src/rgeos_poly2nb.c: fixing gBinarySTRtreeQuery
