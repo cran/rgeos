@@ -3,6 +3,8 @@ RGEOSMiscFunc = function(spgeom, byid, func) {
      warning("Spatial object is not projected; GEOS expects planar coordinates")
     byid = as.logical(byid)
     if (is.na(byid)) stop("Invalid value for byid, must be logical")
+    if (inherits(spgeom, "SpatialPolygons") && get_do_poly_check()) 
+        spgeom <- createSPComment(spgeom)
     
     x <- .Call(func, .RGEOS_HANDLE, spgeom, byid, PACKAGE="rgeos")
     if(byid) names(x) <- unique(row.names(spgeom))
