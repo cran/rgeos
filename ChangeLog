@@ -1,3 +1,12 @@
+2012-03-16 11:54  rsbivand
+
+	* DESCRIPTION, R/rgeos_misc.R: added createSPComment to
+	  RGEOSMiscFunc
+
+2012-02-22 17:00  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2012-02-22 16:59  rsbivand
 
 	* DESCRIPTION: tidy
