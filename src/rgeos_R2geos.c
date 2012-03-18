@@ -295,11 +295,11 @@ GEOSGeom rgeos_Polygons2geospolygon(SEXP env, SEXP obj) {
                 }
                 continue;
             }
-            n++;
-
-            geoms[i] = (crdMat == R_NilValue)
+            
+            geoms[n] = (crdMat == R_NilValue)
                          ? GEOSGeom_createPolygon_r(GEOShandle, NULL, NULL, (unsigned int) 0)
                          : rgeos_crdMat2Polygon(env, crdMat, getAttrib(crdMat, R_DimSymbol));
+            n++;
         }
         
         GC = (n == 1) ? geoms[0]

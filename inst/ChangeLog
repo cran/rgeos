@@ -1,3 +1,12 @@
+2012-03-16 18:53  crundel
+
+	* src/rgeos_R2geos.c: Fixed crashing bug when ignoring holes with
+	  unknown parent poly
+
+2012-03-16 14:46  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2012-03-16 11:54  rsbivand
 
 	* DESCRIPTION, R/rgeos_misc.R: added createSPComment to
