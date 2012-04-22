@@ -4,7 +4,7 @@ gSimplify = function(spgeom, tol, topologyPreserve=FALSE) {
 	if (is.na(topologyPreserve))
 		stop("Invalid value for topologyPreserve, must be logical")
 	
-    if (inherits(spgeom, "SpatialPolygons") && get_do_poly_check()) 
+    if (inherits(spgeom, "SpatialPolygons") && get_do_poly_check() && notAllComments(spgeom)) 
         spgeom <- createSPComment(spgeom)
     id = row.names(spgeom)
     return( .Call("rgeos_simplify", .RGEOS_HANDLE, spgeom, tol, id, 
@@ -18,7 +18,7 @@ gPolygonize = function( splist, getCutEdges=FALSE) {
 
 	p4slist = lapply(splist,function(x) x@proj4string)
         splist <- lapply(splist, function(s) {
-            if (inherits(s, "SpatialPolygons") && get_do_poly_check()) {
+            if (inherits(s, "SpatialPolygons") && get_do_poly_check() && notAllComments(s)) {
                 createSPComment(s)
             } else {
                 s
@@ -62,7 +62,7 @@ TopologyFunc = function(spgeom, id, byid, func) {
     }
     id = as.character(id)
 
-    if (inherits(spgeom, "SpatialPolygons") && get_do_poly_check()) spgeom <- createSPComment(spgeom)
+    if (inherits(spgeom, "SpatialPolygons") && get_do_poly_check() && notAllComments(spgeom)) spgeom <- createSPComment(spgeom)
     
     if ( length(id) != length(unique(id)) )
         stop("Non-unique values for id ")
@@ -119,7 +119,7 @@ gUnionCascaded = function(spgeom, id = NULL) {
 
 #    if (any(is.na(id))) stop("No NAs permitted in id")
 
-    if (get_do_poly_check()) spgeom <- createSPComment(spgeom)
+    if (get_do_poly_check() && notAllComments(spgeom)) spgeom <- createSPComment(spgeom)
 
     ids <- split(1:length(id), id)
     sl <- sapply(ids, length)
@@ -146,7 +146,7 @@ gUnaryUnion = function(spgeom, id = NULL) {
 
 #    if (any(is.na(id))) stop("No NAs permitted in id")
 
-    if (get_do_poly_check()) spgeom <- createSPComment(spgeom)
+    if (get_do_poly_check() && notAllComments(spgeom)) spgeom <- createSPComment(spgeom)
 
     ids <- split(1:length(id), id)
     out <- vector(mode="list", length=length(ids))

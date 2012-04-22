@@ -1,3 +1,71 @@
+2012-05-02 09:58  rsbivand
+
+	* configure, configure.ac: more configure updates
+
+2012-04-24 10:56  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2012-04-24 10:54  rsbivand
+
+	* configure, configure.ac: tidying configure.ac
+
+2012-04-22 11:42  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2012-04-22 11:42  rsbivand
+
+	* DESCRIPTION: add plyr dependency
+
+2012-04-20 08:32  rsbivand
+
+	* configure, configure.ac: tidy
+
+2012-04-20 07:06  rsbivand
+
+	* R/AAA.R: tidy
+
+2012-04-20 07:01  rsbivand
+
+	* DESCRIPTION: tidy
+
+2012-04-20 07:01  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2012-04-20 07:00  rsbivand
+
+	* configure, configure.ac, configure.in, src/Makevars.in: upgrading
+	  configure
+
+2012-04-19 13:20  rsbivand
+
+	* inst/tests/test-translate-polygon-collection.R,
+	  src/rgeos_geos2R.c: fixed broken tests
+
+2012-04-17 13:38  rsbivand
+
+	* DESCRIPTION, inst/tests/test-translate-polygons.R,
+	  src/rgeos_geos2R.c: broken tests
+
+2012-04-16 13:21  rsbivand
+
+	* R/rgeos_util.R: using top-level comment to SpatialPolygons for
+	  all member Polygons commented with OGC SFS kludge
+
+2012-04-16 13:13  rsbivand
+
+	* DESCRIPTION, R/rgeos_misc.R, R/rgeos_predicate_binary.R,
+	  R/rgeos_predicate_unary.R, R/rgeos_topology.R,
+	  R/rgeos_topology_binary.R, R/rgeos_util.R: using top-level
+	  comment to SpatialPolygons for all member Polygons commented with
+	  OGC SFS kludge
+
+2012-03-17 15:08  rsbivand
+
+	* ChangeLog, DESCRIPTION, inst/ChangeLog: tidy
+
 2012-03-16 18:53  crundel
 
 	* src/rgeos_R2geos.c: Fixed crashing bug when ignoring holes with

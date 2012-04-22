@@ -9,15 +9,15 @@ RGEOSBinPredFunc = function(spgeom1, spgeom2, byid, func, optparam=NULL) {
         byid <- rep(byid,2)
 
     if (is.null(spgeom2) && inherits(spgeom1, "SpatialPolygons") 
-        && get_do_poly_check()) 
+        && get_do_poly_check() && notAllComments(spgeom1)) 
         spgeom1 <- createSPComment(spgeom1)
 
     if(!is.null(spgeom1) & !is.null(spgeom2)) {
         if(!identical(spgeom1@proj4string,spgeom2@proj4string))
             warning("spgeom1 and spgeom2 have different proj4 strings")
-        if (inherits(spgeom1, "SpatialPolygons") && get_do_poly_check()) 
+        if (inherits(spgeom1, "SpatialPolygons") && get_do_poly_check() && notAllComments(spgeom1)) 
             spgeom1 <- createSPComment(spgeom1)
-        if (inherits(spgeom2, "SpatialPolygons") && get_do_poly_check()) 
+        if (inherits(spgeom2, "SpatialPolygons") && get_do_poly_check() && notAllComments(spgeom2)) 
             spgeom2 <- createSPComment(spgeom2)
     }
 	
