@@ -32,6 +32,14 @@ test_that("translate simple polygon", {
     Polysmph2 = Polygons(list(Poly1,Poly4,Poly5), ID="1" )
     Polysmph3 = Polygons(list(Poly1,Poly2,Poly4,Poly5), ID="1" )
     
+    comment(Polysp) <- "0"
+    comment(Polysph1) <- "0 1"
+    comment(Polysph2) <- "0 1 1"
+    comment(Polysmp) <- "0 0"
+    comment(Polysmph1) <- "0 1 0"
+    comment(Polysmph2) <- "0 0 2"
+    comment(Polysmph3) <- "0 1 0 3"
+
     spp     = SpatialPolygons( list(Polysp) )
     spph1   = SpatialPolygons( list(Polysph1) )
     spph2   = SpatialPolygons( list(Polysph2) )
@@ -39,14 +47,6 @@ test_that("translate simple polygon", {
     spmph1  = SpatialPolygons( list(Polysmph1) )
     spmph2  = SpatialPolygons( list(Polysmph2) )
     spmph3  = SpatialPolygons( list(Polysmph3) )
-    
-    attr(spp@polygons[[1]],"comment") = "0"
-    attr(spph1@polygons[[1]],"comment") = "0 1"
-    attr(spph2@polygons[[1]],"comment") = "0 1 1"
-    attr(spmp@polygons[[1]],"comment") = "0 0"
-    attr(spmph1@polygons[[1]],"comment") = "0 1 0"
-    attr(spmph2@polygons[[1]],"comment") = "0 0 2"
-    attr(spmph3@polygons[[1]],"comment") = "0 1 0 3"
     
     expect_that( identical(p    , spp), is_true())
     expect_that( identical(ph1  , spph1), is_true())

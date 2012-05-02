@@ -48,11 +48,18 @@ get_do_poly_check <- function() {
   get("do_poly_check", envir=.RGEOS_HANDLE)
 }
 
+notAllComments <- function(spgeom) {
+    if (!get_do_poly_check()) return(FALSE)
+    if (!inherits(spgeom, "SpatialPolygons")) return(TRUE)
+    if (is.null(comment(spgeom))) return(TRUE)
+    return(comment(spgeom) != "TRUE")
+}
+
 
 createSPComment = function(sppoly,which=NULL,overwrite=TRUE) {
     if (!inherits(sppoly, "SpatialPolygons")) 
         stop("not a SpatialPolygons object")
-    if (get_do_poly_check()) { 
+    if (get_do_poly_check() && notAllComments(sppoly)) { 
       if (is.null(which))
         which = 1:length(sppoly@polygons)
     
@@ -70,6 +77,8 @@ createSPComment = function(sppoly,which=NULL,overwrite=TRUE) {
             return(p)
         }
       })
+      comment(sppoly) <- as.character(any(sapply(slot(sppoly, "polygons"),
+                function(x) !is.null(comment(x))), na.rm=TRUE))
     }
 
     return(sppoly)

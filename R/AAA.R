@@ -40,7 +40,6 @@ version_GEOS0 <- function() {
   Smess <- paste(Smess, "GEOS runtime version:",
     version_GEOS(), "\n")
   Smess <- paste(Smess, "Polygon checking:", get_do_poly_check(), "\n")
-  Smess <- paste(Smess, "WARNING! if you turn polygon checking off, and polygons are\n not valid in GEOS, you risk losing data as your R session may crash!", "\n")
   packageStartupMessage(Smess, appendLF = TRUE)
 }
 

@@ -41,6 +41,23 @@ test_that("translate polygon collection", {
     Polygcph31 = Polygons(list(Poly1,Poly2), ID="1")
     Polygcph32 = Polygons(list(Poly4,Poly5,Poly6), ID="2")
 
+    comment(Polygcp11) <- "0"
+    comment(Polygcp12) <- "0"
+    comment(Polygcp13) <- "0"
+    comment(Polygcp21) <- "0 0"
+    comment(Polygcp22) <- "0"
+    comment(Polygcp31) <- "0"
+    comment(Polygcp32) <- "0 0"
+    comment(Polygcp4) <- "0 0 0"
+
+    comment(Polygcph11) <- "0 1"
+    comment(Polygcph12) <- "0 1"
+    comment(Polygcph13) <- "0"
+    comment(Polygcph21) <- "0 1 0 3"
+    comment(Polygcph22) <- "0"
+    comment(Polygcph31) <- "0 1"
+    comment(Polygcph32) <- "0 1 0"
+
     spgcp1  = SpatialPolygons( list(Polygcp11,Polygcp12,Polygcp13) )
     spgcp2  = SpatialPolygons( list(Polygcp21,Polygcp22) )
     spgcp3  = SpatialPolygons( list(Polygcp31,Polygcp32) )
@@ -48,28 +65,6 @@ test_that("translate polygon collection", {
     spgcph1 = SpatialPolygons( list(Polygcph11,Polygcph12,Polygcph13) )
     spgcph2 = SpatialPolygons( list(Polygcph21,Polygcph22) )
     spgcph3 = SpatialPolygons( list(Polygcph31,Polygcph32) )
-    
-    attr(spgcp1@polygons[[1]],"comment") = "0"
-    attr(spgcp1@polygons[[2]],"comment") = "0"
-    attr(spgcp1@polygons[[3]],"comment") = "0"
-    
-    attr(spgcp2@polygons[[1]],"comment") = "0 0"
-    attr(spgcp2@polygons[[2]],"comment") = "0"
-    
-    attr(spgcp3@polygons[[1]],"comment") = "0"
-    attr(spgcp3@polygons[[2]],"comment") = "0 0"
-    
-    attr(spgcp4@polygons[[1]],"comment") = "0 0 0"
-    
-    attr(spgcph1@polygons[[1]],"comment") = "0 1"
-    attr(spgcph1@polygons[[2]],"comment") = "0 1"
-    attr(spgcph1@polygons[[3]],"comment") = "0"
-    
-    attr(spgcph2@polygons[[1]],"comment") = "0 1 0 3"
-    attr(spgcph2@polygons[[2]],"comment") = "0"
-    
-    attr(spgcph3@polygons[[1]],"comment") = "0 1"
-    attr(spgcph3@polygons[[2]],"comment") = "0 1 0"
     
     expect_that( gcp1 , is_identical_to(spgcp1) )
     expect_that( gcp2 , is_identical_to(spgcp2) )
