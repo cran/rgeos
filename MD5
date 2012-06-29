@@ -1,5 +1,5 @@
-1a195ad12109d012995bbf94a46f0b4d *ChangeLog
-6063a40fa19ee8da7cb6ca0a223158cf *DESCRIPTION
+bb26ae05873d2c86d0444b1de06ac19d *ChangeLog
+b2c3692aa3effd783dd760a8d85a303e *DESCRIPTION
 f6018370621ec594a6f7c3cc56e91218 *NAMESPACE
 c415f28b334deb9f2af0d379bcd5310f *R/AAA.R
 cee0b8fd57d5e9505d028e019bc571f0 *R/Rgpc_funcs.R
@@ -18,9 +18,9 @@ ac2eef6b8f4c6181968d155964e90998 *R/rgeos_util.R
 cc00c42e145a426160c978f6f818c766 *R/rgeos_wkt.R
 1a9f2f6144de01cc083e82e5cffe1072 *configure
 1b65d2266e869bf5d21b5683544e2751 *configure.ac
-1a195ad12109d012995bbf94a46f0b4d *inst/ChangeLog
+bb26ae05873d2c86d0444b1de06ac19d *inst/ChangeLog
 b67cf3d7ef496900cd2157f98bfaef2b *inst/README.windows
-602112f9546cd69edbdc21a5c2d43e72 *inst/SVN_VERSION
+01386bd6d8e091c2ab4c7c7de644d37b *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -116,8 +116,9 @@ a7821db543e50c0650c4015a54ffa353 *man/utility-functions.Rd
 1ba8949a405cacb6688f68399cf9c3ad *src/Makevars
 b9d869d125e18d6f05c1de7ff4e95d9b *src/Makevars.in
 fcb3bfa1aa3b0919b69ca55a1439f92c *src/Makevars.win
+d41d8cd98f00b204e9800998ecf8427e *src/dummy.cc
 243e34ca2b3592cc716a7f82ec8dc3a1 *src/init.c
-14ff6fcbe0807d7d4f66157f6db26d5c *src/local_stubs.c
+22487056d51247176401a6afff9f3eba *src/local_stubs.c
 2e6bab604726f1d390f63fc26a8ec917 *src/rgeos.c
 02a3c43a2f23c6ce1d08117a5a9d1aea *src/rgeos.h
 41a50bc26eff0545ccddc22acc3a9817 *src/rgeos_R2geos.c
@@ -126,7 +127,7 @@ f275eb5be52bf6586cc1e4ff884b98ad *src/rgeos_bbox.c
 776395b5ad72341aa0623922903e5f7a *src/rgeos_buffer.c
 f7b3974fbb1cc732f9ff449bb7462e3d *src/rgeos_coord.c
 2719a32641a1d95182f8c38706e9944d *src/rgeos_geos2R.c
-0947a89ed62141a58d8d0e8569ec15ea *src/rgeos_misc.c
+483e6828e808edc83e80e3a0b2f1979f *src/rgeos_misc.c
 4ea248f781059f5ff779bb3e513532fa *src/rgeos_poly2nb.c
 fe07be43ef847ab99cee81b32c6c28c0 *src/rgeos_predicate_binary.c
 4f39ba7f07b85f29216673dc7d9be3b6 *src/rgeos_predicate_unary.c

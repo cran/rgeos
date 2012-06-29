@@ -68,6 +68,7 @@ SEXP rgeos_distancefunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_distf
     if (spgeom2 == R_NilValue) {
         sym_ans = TRUE;
         geom2 = geom1;
+        type2 = GEOSGeomTypeId_r(GEOShandle, geom2);
     } else {
         geom2 = rgeos_convert_R2geos(env, spgeom2);
         type2 = GEOSGeomTypeId_r(GEOShandle, geom2);
@@ -106,7 +107,7 @@ SEXP rgeos_distancefunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_distf
             
             double dist;
             if (!distfunc(GEOShandle, curgeom1, curgeom2, &dist))
-                error("rgeos_distancefunc: unable to calculate area");
+                error("rgeos_distancefunc: unable to calculate distance");
 
             NUMERIC_POINTER(ans)[n*i+j] = dist;
             if (sym_ans) NUMERIC_POINTER(ans)[n*j+i] = dist;
@@ -147,6 +148,7 @@ SEXP rgeos_distancedensifyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP densif
     if (spgeom2 == R_NilValue) {
         sym_ans = TRUE;
         geom2 = geom1;
+        type2 = GEOSGeomTypeId_r(GEOShandle, geom2);
     } else {
         geom2 = rgeos_convert_R2geos(env, spgeom2);
         type2 = GEOSGeomTypeId_r(GEOShandle, geom2);
@@ -187,7 +189,7 @@ SEXP rgeos_distancedensifyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP densif
             
             double dist;
             if (!distfunc(GEOShandle, curgeom1, curgeom2, frac, &dist))
-                error("rgeos_distancefunc: unable to calculate area");
+                error("rgeos_distancefunc: unable to calculate distance");
 
             NUMERIC_POINTER(ans)[n*i+j] = dist;
             if (sym_ans) NUMERIC_POINTER(ans)[n*j+i] = dist;

@@ -1,3 +1,16 @@
+2012-06-24 13:27  rsbivand
+
+	* DESCRIPTION, src/dummy.cc, src/local_stubs.c: adding src/dummy.cc
+
+2012-05-07 16:48  rsbivand
+
+	* DESCRIPTION, src/rgeos_misc.c: fixed single geometry bug in
+	  gDistance
+
+2012-05-02 09:58  rsbivand
+
+	* ChangeLog, inst/ChangeLog: more configure updates
+
 2012-05-02 09:58  rsbivand
 
 	* configure, configure.ac: more configure updates
