@@ -1,8 +1,8 @@
 Package: rgeos
 Title: Interface to Geometry Engine - Open Source (GEOS)
-Version: 0.2-7
-Date: 2012-06-24
-Depends: R (>= 2.10.0), methods, sp (>= 0.9-99), stringr (>= 0.5), plyr
+Version: 0.2-8
+Date: 2012-11-04
+Depends: R (>= 2.10.0), methods, sp (>= 0.9-99)
 LinkingTo: sp
 Suggests: maptools (>= 0.8-5), testthat, XML
 LazyLoad: yes
@@ -11,15 +11,20 @@ Description: Interface to Geometry Engine - Open Source (GEOS) using
         library is external to the package, and, when installing the
         package from source, must be correctly installed first. Windows
         and Mac Intel OS X binaries are provided on CRAN.
-Author: Roger Bivand and Colin Rundel
-Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
+Authors@R: c( person("Roger", "Bivand", role = c("cre", "aut"), email =
+        "Roger.Bivand@nhh.no"), person("Colin", "Rundel", role =
+        "aut"), person("Edzer", "Pebesma", role = "ctb"), person("Karl
+        Ove", "Hufthammer", role = "ctb"))
 License: GPL (>= 2)
-URL: http://trac.osgeo.org/geos/
-        https://r-forge.r-project.org/projects/rgeos/
+URL: https://r-forge.r-project.org/projects/rgeos/
+        http://trac.osgeo.org/geos/
 SystemRequirements: GEOS (>= 3.2.2); for building from source: GEOS
         from http://trac.osgeo.org/geos/; GEOS OSX frameworks built by
         William Kyngesburye at http://www.kyngchaos.com/ may be used
         for source installs on OSX.
-Packaged: 2012-06-24 13:30:35 UTC; rsb
+Packaged: 2012-11-05 17:32:17 UTC; rsb
+Author: Roger Bivand [cre, aut], Colin Rundel [aut], Edzer Pebesma
+        [ctb], Karl Ove Hufthammer [ctb]
+Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
 Repository: CRAN
-Date/Publication: 2012-06-29 09:02:37
+Date/Publication: 2012-11-05 17:52:36

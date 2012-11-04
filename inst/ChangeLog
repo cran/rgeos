@@ -1,3 +1,48 @@
+2012-11-05 17:30  rsbivand
+
+	* man/comment-functions.Rd: dontrun part of check holes example
+
+2012-11-05 08:56  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2012-11-05 08:55  rsbivand
+
+	* DESCRIPTION: tidy
+
+2012-09-30 18:05  edzer
+
+	* DESCRIPTION, NAMESPACE, R/rgeos_wkt.R: removed dependency on
+	  stringr and plyr, replaced two str_ function
+	  calls with the equivalent ones in base R.
+
+2012-09-06 09:30  rsbivand
+
+	* inst/wkts, inst/wkts/sline1.wkt, inst/wkts/sline2.wkt,
+	  man/utility-functions.Rd: setScale example from Mao-Gui Hu
+
+2012-08-19 13:07  edzer
+
+	* NAMESPACE, R/labelpt.R, man/labelpt.Rd: update function name;
+	  cosmetics.
+
+2012-08-17 20:20  edzer
+
+	* DESCRIPTION, NAMESPACE, R/labelpt.R, man/labelpt.Rd: added first
+	  attempt to label points functions, that evolved from
+	  https://stat.ethz.ch/pipermail/r-sig-geo/2012-July/015693.html ;
+	  edited author@R section to DESCRIPTION.
+
+2012-06-24 14:41  rsbivand
+
+	* DESCRIPTION, src/rgeos.c, src/rgeos.h, src/rgeos_R2geosMP.c,
+	  src/rgeos_coord.c, src/rgeos_poly2nb.c: remove some -Wall
+	  warnings
+
+2012-06-24 13:28  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2012-06-24 13:27  rsbivand
 
 	* DESCRIPTION, src/dummy.cc, src/local_stubs.c: adding src/dummy.cc

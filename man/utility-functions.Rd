@@ -23,7 +23,7 @@
   \item{p4s}{Either a character string or an object of class \code{CRS}}
 }
 
-\details{getScale and setScale are used to get and set the scale option in the rgeos environment. This option is used to determine the precision of coordinates when translating to and from GEOS C objects. Precision is defined as 1 / scale.
+\details{getScale and setScale are used to get and set the scale option in the rgeos environment. This option is used to determine the precision of coordinates when translating to and from GEOS C objects. Precision is defined as 1 / scale. The final example is a use case reported by Mao-Gui Hu, who has also made the objects available, where the default scale defeats an intended line intersection operation; changing the scale temporarily resoves the issue.
 
 translate is a testing function which translates the sp object into a GEOS C object and then back into an sp object and is used extensively in the translation unit tests. In all cases it is expected that \code{spgeom} and \code{translate(spgeom)} should be identical.
 
@@ -57,6 +57,20 @@ version_GEOS returns the full runtime version string, and version_GEOS0 only the
 	translate( SpatialPoints(data.frame(x=1.5,y=1.5)) )
 	
 	setScale()
+
+        # added example of scale impact on intersection 120905
+sline1 <- readWKT(readLines(system.file("wkts/sline1.wkt", package="rgeos")))
+sline2 <- readWKT(readLines(system.file("wkts/sline2.wkt", package="rgeos")))
+rslt <- gIntersection(sline1, sline2)
+class(rslt)
+getScale()
+setScale(1e+6)
+rslt <- gIntersection(sline1, sline2)
+class(rslt)
+sapply(slot(rslt, "lines"), function(x) length(slot(x, "Lines")))
+rslt <- gLineMerge(rslt, byid=TRUE)
+sapply(slot(rslt, "lines"), function(x) length(slot(x, "Lines")))
+setScale()
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

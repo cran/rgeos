@@ -91,3 +91,4 @@ GEOSGeom rgeos_Lines2MP(SEXP env, SEXP obj) {
     UNPROTECT(pc);
     return(GC);
 }
+

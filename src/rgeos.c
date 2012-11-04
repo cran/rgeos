@@ -1,5 +1,6 @@
 #include <math.h>
 #include "rgeos.h"
+static void rgeos_finish_handle(SEXP ptr);
 
 SEXP rgeos_GEOSversion(void) {
 
