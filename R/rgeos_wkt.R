@@ -1,12 +1,17 @@
 
 readWKT = function( text, id = NULL, p4s = NULL) {
     
-    wkt = str_replace(text,"\n","")
+    #wkt = str_replace(text,"\n","")
+    wkt = gsub("\n", "", text)
 
     if (length(wkt) != 1) stop("WKT must have length 1")
     
-    m =  str_extract_all(wkt, "POINT|LINESTRING|LINEARRING|POLYGON|MULTIPOINT|MULTILINESTRING|MULTIPOLYGON")   
-    ngeoms =  length( m[[1]] )
+	pat = 
+	"POINT|LINESTRING|LINEARRING|POLYGON|MULTIPOINT|MULTILINESTRING|MULTIPOLYGON"
+    # m =  str_extract_all(wkt, pat)
+	m = strsplit(wkt, pat)
+    # ngeoms =  length( m[[1]] )
+    ngeoms =  length( m[[1]] ) - 1 # "" before first match is always the first
     if(is.null(ngeoms)) ngeoms = 0
     
     if(is.null(id)) {

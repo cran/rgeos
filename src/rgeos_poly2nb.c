@@ -93,7 +93,7 @@ SEXP rgeos_poly_findInBox(SEXP env, SEXP pls, SEXP as_points) {
 SEXP rgeos_binary_STRtree_query(SEXP env, SEXP obj1, SEXP obj2) {
 
     GEOSGeom *bbs2;
-    int nobj1, nobj2, i, j, jj, pc=0;
+    int nobj1, nobj2, i, j, pc=0;
     GEOSGeom GC, bb;
     SEXP pl, bblist;
     GEOSSTRtree *str;

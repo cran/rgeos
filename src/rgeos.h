@@ -28,7 +28,7 @@
 SEXP rgeos_GEOSversion(void);
 SEXP rgeos_Init(void);
 SEXP rgeos_finish(SEXP env);
-static void rgeos_finish_handle(SEXP ptr);
+//static void rgeos_finish_handle(SEXP ptr);
 GEOSContextHandle_t getContextHandle(SEXP env);
 
 double getScale(SEXP env);

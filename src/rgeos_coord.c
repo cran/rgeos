@@ -165,7 +165,7 @@ SEXP rgeos_geospoint2crdMat(SEXP env, GEOSGeom geom, SEXP idlist, int ntotal, in
     int k=0;
     double scale=getScale(env);
     
-    int curtype = type;
+/*    int curtype = type; RSB 120624 */
     
     for(int j = 0; j<m; j++) {
         
