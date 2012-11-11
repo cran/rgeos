@@ -1,3 +1,16 @@
+2012-11-12 08:00  rsbivand
+
+	* R/gpc_geos.R: adding conversion of a NULL to gpc.poly
+
+2012-11-11 19:01  rsbivand
+
+	* DESCRIPTION, R/Rgpc_funcs.R: adding conversion of a NULL to
+	  gpc.poly
+
+2012-11-05 17:30  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2012-11-05 17:30  rsbivand
 
 	* man/comment-functions.Rd: dontrun part of check holes example
