@@ -1,9 +1,9 @@
-30ccee2f832f73c766ea9c6ded049c1b *ChangeLog
-6ae06a2c565fee528f213a65f09a38ae *DESCRIPTION
+36eb386bc2f3aeec4e1ee309ee403f47 *ChangeLog
+45f9c32d139bc1053f5eea2d5d5bc6eb *DESCRIPTION
 ba1a7dd3488cd0218114a3a78801bf32 *NAMESPACE
 c415f28b334deb9f2af0d379bcd5310f *R/AAA.R
-cee0b8fd57d5e9505d028e019bc571f0 *R/Rgpc_funcs.R
-d1cbceb2ccbfc4f9bcf83f2856dbb9c1 *R/gpc_geos.R
+1bd3b1237229f36705fcd231dc32287a *R/Rgpc_funcs.R
+d97a5d4ab563a8c66bfd93dec1449adc *R/gpc_geos.R
 f425e39eea313becbf524dbfafabefa6 *R/labelpt.R
 0613f9643d8ac57f72c789f7c764c41a *R/over.R
 f2436c9d8fc0f1eaae1f12be4feda5e0 *R/rgeos_buffer.R
@@ -19,9 +19,9 @@ ac2eef6b8f4c6181968d155964e90998 *R/rgeos_util.R
 733461a912f90c324cb79c9f069384de *R/rgeos_wkt.R
 1a9f2f6144de01cc083e82e5cffe1072 *configure
 1b65d2266e869bf5d21b5683544e2751 *configure.ac
-30ccee2f832f73c766ea9c6ded049c1b *inst/ChangeLog
+36eb386bc2f3aeec4e1ee309ee403f47 *inst/ChangeLog
 b67cf3d7ef496900cd2157f98bfaef2b *inst/README.windows
-fb7b9ffa5462084c5f4e7e85a093e6d7 *inst/SVN_VERSION
+e7b24b112a44fdd9ee93bdf998c6ca0e *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt

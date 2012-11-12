@@ -84,6 +84,8 @@ setMethod("intersect", signature(x = "gpc.poly", y = "gpc.poly"),
 				spy = as(y,"SpatialPolygons")
 				spres = gIntersection(spx,spy)
 		
+                                if (is.null(spres))
+                                    return(new("gpc.poly"))
 				as(spres,"gpc.poly")
           	})
 
@@ -94,6 +96,8 @@ setMethod("setdiff", signature(x = "gpc.poly", y = "gpc.poly"),
 				spy = as(y,"SpatialPolygons")
 				spres = gDifference(spx,spy)
 		
+                                if (is.null(spres))
+                                    return(new("gpc.poly"))
 				as(spres,"gpc.poly")
           	})
 
@@ -103,6 +107,8 @@ setMethod("union", signature(x = "gpc.poly", y = "gpc.poly"),
 				spy = as(y,"SpatialPolygons")
 				spres = gUnion(spx,spy)
 		
+                                if (is.null(spres))
+                                    return(new("gpc.poly"))
 				as(spres,"gpc.poly")
           })
 
@@ -112,6 +118,8 @@ setMethod("symdiff", signature(x = "gpc.poly", y = "gpc.poly"),
 				spy = as(y,"SpatialPolygons")
 				spres = gSymdifference(spx,spy)
 
+                                if (is.null(spres))
+                                    return(new("gpc.poly"))
 				as(spres,"gpc.poly")
           })
 
