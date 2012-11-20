@@ -36,7 +36,8 @@ SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, S
     if (n == -1) error("rgeos_bintopofunc: invalid number of subgeometries in geometry 2");
 
     GEOSGeom *geoms = (GEOSGeom *) R_alloc((size_t) m*n, sizeof(GEOSGeom));
-    
+    GEOSGeom thisgeom;
+
     int k=0;
     for(int i=0; i<m; i++) {
 
@@ -44,19 +45,22 @@ SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, S
         if (curgeom1 == NULL) 
             error("rgeos_bintopofunc: unable to get subgeometries from geometry 1");
         
-        for(int j=0; j<n; j++, k++) {
+        for(int j=0; j<n; j++) {
         
             const GEOSGeometry *curgeom2 = (n > 1) ? GEOSGetGeometryN_r(GEOShandle, geom2, j) : geom2;
             if (curgeom2 == NULL) 
                 error("rgeos_bintopofunc: unable to get subgeometries from geometry 2");
             
-            geoms[k] = bintopofunc(GEOShandle, curgeom1, curgeom2);
-            if (geoms[k] == NULL)
+            thisgeom = bintopofunc(GEOShandle, curgeom1, curgeom2);
+            if (thisgeom == NULL)
                 error("rgeos_bintopofunc: topology function failed");
+            if (!GEOSisEmpty_r(GEOShandle, thisgeom)) {
+                geoms[k] = thisgeom;
+                SET_STRING_ELT(ids, k, STRING_ELT(ids, i*n+j));
+//            Rprintf("%d: %d %d %s %d\n", k, GEOSisEmpty_r(GEOShandle, geoms[k]), GEOSGeomTypeId_r(GEOShandle, geoms[k]), GEOSGeomType_r(GEOShandle, geoms[k]), GEOSGetNumGeometries_r(GEOShandle, geoms[k]));
+                k++;
+            }
             
-            SET_STRING_ELT(ids, k, STRING_ELT(ids, i*n+j));
-            
-            //Rprintf("%d: %d %d %s\n", k, GEOSisEmpty_r(GEOShandle, geomsk), GEOSGeomTypeId_r(GEOShandle, geomsk), GEOSGeomType_r(GEOShandle, geomsk));
             //if (GEOSisEmpty_r(GEOShandle, geomsk)) continue;
         }
     }

@@ -31,12 +31,12 @@ version_GEOS0 <- function() {
   assign("do_poly_check", TRUE, envir=.RGEOS_HANDLE)
   fn <- system.file("SVN_VERSION", package="rgeos")
   if (file.exists(fn)) {
-    svn_version <- scan(system.file("SVN_VERSION", package="rgeos"),
-      what=character(1), sep="\n", quiet=TRUE)
+    svn_version <- scan(fn, what=character(1), sep="\n", quiet=TRUE)
   } else {
     svn_version <- "(unknown)"
   }
-  Smess <- paste("rgeos: (SVN revision ", svn_version, ")\n", sep="")
+  Smess <- paste("rgeos version: ", utils::packageVersion("rgeos"),
+    ", (SVN revision ", svn_version, ")\n", sep="")
   Smess <- paste(Smess, "GEOS runtime version:",
     version_GEOS(), "\n")
   Smess <- paste(Smess, "Polygon checking:", get_do_poly_check(), "\n")
