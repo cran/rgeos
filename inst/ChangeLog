@@ -1,3 +1,37 @@
+2012-12-08 16:53  rsbivand
+
+	* R/AAA.R: versions in startup messages
+
+2012-12-08 16:50  rsbivand
+
+	* R/AAA.R: versions in startup messages
+
+2012-12-08 16:47  rsbivand
+
+	* configure, configure.ac: versions in configure
+
+2012-12-03 20:27  rsbivand
+
+	* R/AAA.R: tidy
+
+2012-11-20 20:13  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2012-11-20 20:09  rsbivand
+
+	* DESCRIPTION: cumulation change in rgeos_binarytopologyfunc to
+	  avoid collection in collection error
+
+2012-11-20 19:21  rsbivand
+
+	* src/rgeos_topology_binary.c: cumulation change in
+	  rgeos_binarytopologyfunc to avoid collection in collection error
+
+2012-11-12 09:30  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2012-11-12 08:00  rsbivand
 
 	* R/gpc_geos.R: adding conversion of a NULL to gpc.poly
