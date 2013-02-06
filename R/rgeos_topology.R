@@ -38,7 +38,7 @@ gPolygonize = function( splist, getCutEdges=FALSE) {
 	if (is.na(getCutEdges))
 		stop("Invalid value for getCutEdges, must be logical")
 	
-	nid = sum(sapply(list(splist),function(x) length(unlist(row.names(x)))))
+	nid = sum(sapply(splist,function(x) length(unlist(row.names(x)))))
     id = as.character(1:nid)
 
     return( .Call("rgeos_polygonize", .RGEOS_HANDLE, splist, id, p4s,

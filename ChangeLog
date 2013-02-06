@@ -1,3 +1,49 @@
+2013-02-06 09:18  rsbivand
+
+	* DESCRIPTION, R/rgeos_topology.R, man/topo-unary-gPolygonize.Rd:
+	  fix bug in gPolygonize for > 2 output objects
+
+2013-01-31 16:46  rsbivand
+
+	* inst/tests/testxml/general,
+	  inst/tests/testxml/general/TestBoundary.xml,
+	  inst/tests/testxml/general/TestCentroid.xml,
+	  inst/tests/testxml/general/TestConvexHull-big.xml,
+	  inst/tests/testxml/general/TestConvexHull.xml,
+	  inst/tests/testxml/general/TestFunctionAA.xml,
+	  inst/tests/testxml/general/TestFunctionAAPrec.xml,
+	  inst/tests/testxml/general/TestFunctionLA.xml,
+	  inst/tests/testxml/general/TestFunctionLAPrec.xml,
+	  inst/tests/testxml/general/TestFunctionLL.xml,
+	  inst/tests/testxml/general/TestFunctionLLPrec.xml,
+	  inst/tests/testxml/general/TestFunctionPA.xml,
+	  inst/tests/testxml/general/TestFunctionPL.xml,
+	  inst/tests/testxml/general/TestFunctionPLPrec.xml,
+	  inst/tests/testxml/general/TestFunctionPP.xml,
+	  inst/tests/testxml/general/TestInteriorPoint.xml,
+	  inst/tests/testxml/general/TestRectanglePredicate.xml,
+	  inst/tests/testxml/general/TestRelateAA.xml,
+	  inst/tests/testxml/general/TestRelateAC.xml,
+	  inst/tests/testxml/general/TestRelateLA.xml,
+	  inst/tests/testxml/general/TestRelateLC.xml,
+	  inst/tests/testxml/general/TestRelateLL.xml,
+	  inst/tests/testxml/general/TestRelatePA.xml,
+	  inst/tests/testxml/general/TestRelatePL.xml,
+	  inst/tests/testxml/general/TestRelatePP.xml,
+	  inst/tests/testxml/general/TestSimple.xml,
+	  inst/tests/testxml/general/TestValid.xml,
+	  inst/tests/testxml/general/TestValid2-big.xml,
+	  inst/tests/testxml/general/TestValid2.xml,
+	  inst/tests/testxml/general/TestWithinDistance.xml: tidy
+
+2013-01-31 16:45  rsbivand
+
+	* inst/tests/testxml/general: tidy
+
+2013-01-16 09:03  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2013-01-16 09:02  rsbivand
 
 	* DESCRIPTION, R/AAA.R: move startup message to .onAttach
