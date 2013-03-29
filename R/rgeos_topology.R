@@ -51,6 +51,7 @@ gPolygonize = function( splist, getCutEdges=FALSE) {
 
 TopologyFunc = function(spgeom, id, byid, func) {
     
+    stopifnot(is.logical(byid))
     byid = as.logical(byid)
     if (is.na(byid)) 
         stop("Invalid value for byid, must be logical")

@@ -1,4 +1,5 @@
 RGEOSUnaryPredFunc = function(spgeom, byid, func) {
+    stopifnot(is.logical(byid))
     byid = as.logical(byid)
     if (is.na(byid)) stop("Invalid value for byid, must be logical")
     if (inherits(spgeom, "SpatialPolygons") && get_do_poly_check() && notAllComments(spgeom)) 

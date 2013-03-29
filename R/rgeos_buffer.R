@@ -3,11 +3,13 @@
 gBuffer = function(spgeom, byid=FALSE, id=NULL, width=1.0, quadsegs=5, 
                      capStyle="ROUND", joinStyle="ROUND", mitreLimit=1.0) {
 
+    stopifnot(is.logical(byid))
     if (!is.na(is.projected(spgeom)) && !is.projected(spgeom))
      warning("Spatial object is not projected; GEOS expects planar coordinates")
 
     GEOSCapStyles = c("ROUND","FLAT","SQUARE")
     GEOSJoinStyles = c("ROUND","MITRE","BEVEL")
+
     
     curids = unique(row.names(spgeom))
     if (is.null(id)) {

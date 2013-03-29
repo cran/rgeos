@@ -50,6 +50,7 @@ readWKT = function( text, id = NULL, p4s = NULL) {
 
 writeWKT = function( spgeom, byid = FALSE) {
 
+    stopifnot(is.logical(byid))
     byid = as.logical(byid)
     
     res <- .Call("rgeos_writeWKT", .RGEOS_HANDLE, spgeom, byid)

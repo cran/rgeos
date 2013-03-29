@@ -1,4 +1,5 @@
 RGEOSMiscFunc = function(spgeom, byid, func) {
+    stopifnot(is.logical(byid))
     if (!is.na(is.projected(spgeom)) && !is.projected(spgeom))
      warning("Spatial object is not projected; GEOS expects planar coordinates")
     byid = as.logical(byid)
@@ -22,6 +23,7 @@ gLength = function(spgeom, byid=FALSE) {
 
 
 RGEOSDistanceFunc = function(spgeom1, spgeom2, byid, func, densifyFrac = 1) {
+    stopifnot(is.logical(byid))
     if (!is.na(is.projected(spgeom1)) && !is.projected(spgeom1))
      warning("Spatial object 1 is not projected; GEOS expects planar coordinates")
     if (!is.null(spgeom2) && !is.na(is.projected(spgeom2)) && 

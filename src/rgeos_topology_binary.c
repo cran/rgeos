@@ -35,7 +35,7 @@ SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, S
     if (m == -1) error("rgeos_bintopofunc: invalid number of subgeometries in geometry 1");
     if (n == -1) error("rgeos_bintopofunc: invalid number of subgeometries in geometry 2");
 
-    GEOSGeom *geoms = (GEOSGeom *) R_alloc((size_t) m*n, sizeof(GEOSGeom));
+    GEOSGeom *geoms = (GEOSGeom *) R_alloc((size_t) (m*n), sizeof(GEOSGeom));
     GEOSGeom thisgeom;
 
     int k=0;
@@ -70,7 +70,7 @@ SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, S
     
     if (k == 0)
         return(R_NilValue);
-    GEOSGeom res = (k > 1) ? GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, k)
+    GEOSGeom res = (k > 1) ? GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) k)
                              : geoms[0];
     
     return( rgeos_convert_geos2R(env, res, p4s, ids) );

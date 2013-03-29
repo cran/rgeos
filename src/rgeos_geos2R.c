@@ -17,7 +17,7 @@ SEXP rgeos_convert_geos2R(SEXP env, GEOSGeom geom, SEXP p4s, SEXP id) {
 
     int pc=0;
 
-    SEXP ans;
+    SEXP ans=NULL;
     switch(type) { // Determine appropriate conversion for the collection
         case -1:
             error("rgeos_convert_geos2R: unknown geometry type");
@@ -116,7 +116,7 @@ SEXP rgeos_convert_geos2R(SEXP env, GEOSGeom geom, SEXP p4s, SEXP id) {
                         error("rgeos_convert_geos2R: unable to retrieve subgeometry");
                     
                     int j = -1;
-                    SEXP cur_id;
+                    SEXP cur_id=NULL;
                     
                     if (types[i]==GEOS_POINT || types[i]==GEOS_MULTIPOINT) {
                         j=0;
@@ -147,19 +147,19 @@ SEXP rgeos_convert_geos2R(SEXP env, GEOSGeom geom, SEXP p4s, SEXP id) {
                 SEXP polys  = R_NilValue;
                 
                 if (isPoint) {
-                    GEOSGeom ptGC = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, GCS[0], isPoint);
+                    GEOSGeom ptGC = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, GCS[0], (unsigned int) isPoint);
                     PROTECT( points = rgeos_convert_geos2R(env, ptGC, p4s, ptID) ); pc++;
                 }
                 if (isLine) {
-                    GEOSGeom lGC = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, GCS[1], isLine);
+                    GEOSGeom lGC = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, GCS[1], (unsigned int) isLine);
                     PROTECT( lines = rgeos_convert_geos2R(env, lGC, p4s, lID) ); pc++;
                 }
                 if (isRing) {
-                    GEOSGeom rGC = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, GCS[2], isRing);
+                    GEOSGeom rGC = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, GCS[2], (unsigned int) isRing);
                     PROTECT( rings = rgeos_convert_geos2R(env, rGC, p4s, rID) ); pc++;
                 }
                 if (isPoly) {
-                    GEOSGeom pGC = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, GCS[3], isPoly);
+                    GEOSGeom pGC = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, GCS[3], (unsigned int) isPoly);
                     PROTECT( polys = rgeos_convert_geos2R(env, pGC, p4s, pID) ); pc++;
                 }
                 
@@ -384,7 +384,7 @@ SEXP rgeos_geospolygon2Polygons(SEXP env, GEOSGeom geom, SEXP ID) {
     char *buf;
     int nc;
 
-    nc = ceil(log10(npoly)+1)+1;
+    nc = (int) (ceil(log10(npoly)+1.0))+1;
     buf = (char *) R_alloc((size_t) (npoly*nc)+1, sizeof(char));
     SP_PREFIX(comm2comment)(buf, (npoly*nc)+1, comm, npoly);
     SET_STRING_ELT(comment, 0, mkChar((const char*) buf));
@@ -445,7 +445,7 @@ SEXP rgeos_geosring2Polygon(SEXP env, GEOSGeom lr, int hole) {
         yc = 0.0;
         for(int i=0; i != n; i++) {
             xc += NUMERIC_POINTER(crd)[i];
-            yc += NUMERIC_POINTER(crd)[n+i];
+            yc += NUMERIC_POINTER(crd)[(int) (n) +i];
         }
         
         xc /= n;

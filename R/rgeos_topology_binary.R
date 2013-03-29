@@ -1,4 +1,5 @@
 RGEOSBinTopoFunc = function(spgeom1, spgeom2, byid, ids=NULL, func) {
+    stopifnot(is.logical(byid))
     byid = as.logical(byid)
     if (any(is.na(byid)) ) 
         stop("Invalid value for byid, must be logical")
