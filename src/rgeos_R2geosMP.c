@@ -26,7 +26,7 @@ GEOSGeom rgeos_Polygons2MP(SEXP env, SEXP obj) {
             geoms[ii] = rgeos_xy2Pt(env, NUMERIC_POINTER(crdMat)[j],NUMERIC_POINTER(crdMat)[j+n]);
     }
 
-    GEOSGeom GC = GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOINT, geoms, nn);
+    GEOSGeom GC = GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOINT, geoms, (unsigned int) nn);
     if (GC == NULL)
         error("rgeos_Polygons2MP: collection not created");
 
@@ -48,7 +48,7 @@ GEOSGeom rgeos_Polygon2MP(SEXP env, SEXP obj) {
     for (int i=0; i<nn; i++)
         geoms[i] = rgeos_xy2Pt(env, NUMERIC_POINTER(crdMat)[i],NUMERIC_POINTER(crdMat)[i+nn]);
 
-    GEOSGeom GC = GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOINT, geoms, nn);
+    GEOSGeom GC = GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOINT, geoms, (unsigned int) nn);
     if (GC == NULL)
         error("rgeos_Polygon2MP: collection not created");
 
@@ -83,7 +83,7 @@ GEOSGeom rgeos_Lines2MP(SEXP env, SEXP obj) {
             geoms[ii] = rgeos_xy2Pt(env, NUMERIC_POINTER(crdMat)[j],NUMERIC_POINTER(crdMat)[j+n]);
     }
 
-    GEOSGeom GC = GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOINT, geoms, nn);
+    GEOSGeom GC = GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOINT, geoms, (unsigned int) nn);
     if (GC == NULL) {
         error("rgeos_Lines2MP: collection not created");
     }

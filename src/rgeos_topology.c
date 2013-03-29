@@ -71,7 +71,7 @@ SEXP rgeos_topologyfunc(SEXP env, SEXP obj, SEXP id, SEXP byid, p_topofunc topof
     GEOSGeom_destroy_r(GEOShandle, geom);
     
     GEOSGeom res = (n == 1) ? resgeoms[0]
-                    : GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, resgeoms, n);
+                    : GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, resgeoms, (unsigned int) n);
     
     return( rgeos_convert_geos2R(env, res, p4s, id) ); // releases res
 }
@@ -110,7 +110,7 @@ SEXP rgeos_simplify(SEXP env, SEXP obj, SEXP tol, SEXP id, SEXP byid, SEXP topPr
     GEOSGeom_destroy_r(GEOShandle, geom);
     
     GEOSGeom res = (n == 1) ? resgeoms[0] :
-                    GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, resgeoms, n);
+                    GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, resgeoms, (unsigned int) n);
     
     return( rgeos_convert_geos2R(env, res, p4s, id) );
 }

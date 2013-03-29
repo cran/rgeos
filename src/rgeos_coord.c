@@ -15,12 +15,12 @@ GEOSCoordSeq rgeos_crdMat2CoordSeq(SEXP env, SEXP mat, SEXP dim) {
     for(int i=0; i<n; i++) {
         double val;
         val = makePrecise( NUMERIC_POINTER(mat)[i], scale);
-        if (GEOSCoordSeq_setX_r(GEOShandle, s, i, val) == 0) {
+        if (GEOSCoordSeq_setX_r(GEOShandle, s, (unsigned int) i, val) == 0) {
             GEOSCoordSeq_destroy_r(GEOShandle, s);
             error("rgeos_crdMat2CoordSeq: X not set for %d", i);
         }
         val = makePrecise( NUMERIC_POINTER(mat)[i+n], scale);
-        if (GEOSCoordSeq_setY_r(GEOShandle, s, i, val) == 0) {
+        if (GEOSCoordSeq_setY_r(GEOShandle, s, (unsigned int) i, val) == 0) {
             GEOSCoordSeq_destroy_r(GEOShandle, s);
             error("rgeos_crdMat2CoordSeq: Y not set for %d", i);
         }
@@ -99,7 +99,7 @@ SEXP rgeos_crdMatFixDir(SEXP crd, int hole) {
             NUMERIC_POINTER(newcrd)[n+i] = NUMERIC_POINTER(crd)[n+n-i-1];
         }
         
-        PROTECT(crd = rgeos_formatcrdMat(newcrd,n));
+        PROTECT(crd = rgeos_formatcrdMat(newcrd, n));
     
         UNPROTECT(2);
     }
@@ -112,7 +112,7 @@ SEXP rgeos_CoordSeq2crdMat(SEXP env, const GEOSCoordSequence *s, int HasZ, int r
 
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
     
-    unsigned int n, m;
+    unsigned int n, m=0;
     if (GEOSCoordSeq_getSize_r(GEOShandle, s, &n) == 0 ||
         GEOSCoordSeq_getDimensions_r(GEOShandle, s, &m) == 0) {
         error("rgeos_CoordSeq2crdMat: unable to get size and or get dimension of Coord Seq");
@@ -127,19 +127,19 @@ SEXP rgeos_CoordSeq2crdMat(SEXP env, const GEOSCoordSequence *s, int HasZ, int r
     
     double scale = getScale(env);
     for (int i=0; i<n; i++){
-        int ii = (rev) ? (n-1)-i : i;
+        int ii = (rev) ? ((int) (n) -1)-i : i;
         
-        double x,y;
+        double x=0.0, y=0.0;
         if (GEOSCoordSeq_getX_r(GEOShandle, s, (unsigned int) i, &x) == 0 ||
             GEOSCoordSeq_getY_r(GEOShandle, s, (unsigned int) i, &y) == 0) {
             error("rgeos_CoordSeq2crdMat: unable to get X and or Y value from Coord Seq");
         }
         NUMERIC_POINTER(crd)[ii]    = makePrecise(x, scale);
-        NUMERIC_POINTER(crd)[ii+n]  = makePrecise(y, scale);
+        NUMERIC_POINTER(crd)[ii+ (int) n]  = makePrecise(y, scale);
     }
 
     SEXP ans;
-    PROTECT(ans = rgeos_formatcrdMat(crd,n));pc++;
+    PROTECT(ans = rgeos_formatcrdMat(crd, (int) n));pc++;
     
     UNPROTECT(pc);
     return(ans);

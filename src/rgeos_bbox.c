@@ -18,7 +18,7 @@ SEXP rgeos_geom2bbox(SEXP env, GEOSGeom geom) {
     if (s == NULL)
         error("rgeos_geom2bbox: envelope has empty coordinate sequence");
     
-    unsigned int n;
+    unsigned int i, n;
     GEOSCoordSeq_getSize_r(GEOShandle, s, &n);
     if (n == 0)
         return(R_NilValue);
@@ -35,7 +35,7 @@ SEXP rgeos_geom2bbox(SEXP env, GEOSGeom geom) {
     NUMERIC_POINTER(ans)[2] = -DBL_MAX;
     NUMERIC_POINTER(ans)[3] = -DBL_MAX;
     
-    for (int i=0; i<n; i++) {
+    for (i=0; i<n; i++) {
         NUMERIC_POINTER(ans)[0] = MIN(NUMERIC_POINTER(ans)[0], NUMERIC_POINTER(bbmat)[i]);
         NUMERIC_POINTER(ans)[1] = MIN(NUMERIC_POINTER(ans)[1], NUMERIC_POINTER(bbmat)[i+n]);
         NUMERIC_POINTER(ans)[2] = MAX(NUMERIC_POINTER(ans)[2], NUMERIC_POINTER(bbmat)[i]);

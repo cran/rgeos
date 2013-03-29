@@ -38,7 +38,7 @@ SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width, SEXP quads
     if (n == 1)
         res = geoms[0];
     else
-        res = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, n);
+        res = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) n);
 
     SEXP ans;
     PROTECT(ans = rgeos_convert_geos2R(env, res, p4s, id)); // releases res
