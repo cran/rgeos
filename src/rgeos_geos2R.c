@@ -209,6 +209,9 @@ SEXP rgeos_geospolygon2SpatialPolygons(SEXP env, GEOSGeom geom, SEXP p4s, SEXP I
     if (ng < 1) 
         error("rgeos_geospolygon2SpatialPolygons: invalid number of geometries");
     
+    if (ng > length(IDs))
+        error("rgeos_geospolygon2SpatialPolygons: ng > length(IDs)");
+
     SEXP pls;
     PROTECT(pls = NEW_LIST(ng)); pc++;
     
@@ -536,6 +539,10 @@ SEXP rgeos_geosline2SpatialLines(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
     if (nlines < 1) error("rgeos_geosline2SpatialLines: invalid number of geometries");
     
     int pc=0;
+
+    if (nlines > length(idlist))
+        error("rgeos_geosline2SpatialLines: nlines > length(idlist)");
+
     SEXP bbox, lines_list;
     PROTECT(bbox = rgeos_geom2bbox(env, geom)); pc++;
     PROTECT(lines_list = NEW_LIST(nlines)); pc++;

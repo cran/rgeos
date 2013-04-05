@@ -8,7 +8,7 @@
 }
 
 \arguments{
-  \item{splist}{a list of sp objects}
+  \item{splist}{a list of sp SpatialLines objects}
   \item{getCutEdges}{Logical vector indicating if cut edges should be returned}
 }
 

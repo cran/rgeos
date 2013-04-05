@@ -15,15 +15,17 @@ gPolygonize = function( splist, getCutEdges=FALSE) {
 	
 	if (!is.list(splist))
 		splist = list(splist)
+        if (!all(sapply(splist, inherits, "SpatialLines")))
+            stop("list of SpatialLines object required")
 
 	p4slist = lapply(splist,function(x) x@proj4string)
-        splist <- lapply(splist, function(s) {
-            if (inherits(s, "SpatialPolygons") && get_do_poly_check() && notAllComments(s)) {
-                createSPComment(s)
-            } else {
-                s
-            }
-        })
+#        splist <- lapply(splist, function(s) {
+#            if (inherits(s, "SpatialPolygons") && get_do_poly_check() && notAllComments(s)) {
+#                createSPComment(s)
+#            } else {
+#                s
+#            }
+#        })
 	
 	p4s = p4slist[[1]]
 	if (length(p4slist) != 1) {
@@ -38,7 +40,9 @@ gPolygonize = function( splist, getCutEdges=FALSE) {
 	if (is.na(getCutEdges))
 		stop("Invalid value for getCutEdges, must be logical")
 	
-	nid = sum(sapply(splist,function(x) length(unlist(row.names(x)))))
+	nid = sum(sapply(splist, function(x) sapply(slot(x, "lines"),
+            function(y) length(slot(y, "Lines")))))
+#           sum(sapply(splist,function(x) length(unlist(row.names(x)))))
     id = as.character(1:nid)
 
     return( .Call("rgeos_polygonize", .RGEOS_HANDLE, splist, id, p4s,
