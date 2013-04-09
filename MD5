@@ -1,5 +1,5 @@
-b361583f0bce3e55f63535c281431fe3 *ChangeLog
-22bdee36a29770a8fcb5e56ae6287b8c *DESCRIPTION
+25b163d299ac4f5fce15551c55003063 *ChangeLog
+a3c85dec13854882f36a22dbed4aece7 *DESCRIPTION
 ba1a7dd3488cd0218114a3a78801bf32 *NAMESPACE
 8d5e77734771593ff8712bb835f58994 *R/AAA.R
 1bd3b1237229f36705fcd231dc32287a *R/Rgpc_funcs.R
@@ -13,15 +13,15 @@ b8bf9a326a214ab765fcb22a8ebcf685 *R/rgeos_predicate_binary.R
 45fb64f08d62502855c8240f4786cff4 *R/rgeos_predicate_unary.R
 96f670127773380ac223dcc5580bd861 *R/rgeos_spExtensions_Classes.R
 337732ae897adf3217e126fee210f7d7 *R/rgeos_spExtensions_Methods.R
-074543ef9a92f7f64b439d598c78a77c *R/rgeos_topology.R
+7e1bdaf7e24e7c76b63be6c685faaeb3 *R/rgeos_topology.R
 c05c137e6148ce746fc09a3db9d2c17e *R/rgeos_topology_binary.R
 ac2eef6b8f4c6181968d155964e90998 *R/rgeos_util.R
 6d0eb1653d9c722481408f7ce9d33e3c *R/rgeos_wkt.R
-fb958bcf58d6f6323f56c5072a77c135 *configure
-ddf3aa47cdea6f3c41a750b9c84fe772 *configure.ac
-b361583f0bce3e55f63535c281431fe3 *inst/ChangeLog
+8da85c87b735f6c9c262875426c1ff13 *configure
+85bfd9fe51c18df80b2d24a305f7e32f *configure.ac
+25b163d299ac4f5fce15551c55003063 *inst/ChangeLog
 b67cf3d7ef496900cd2157f98bfaef2b *inst/README.windows
-2fcf3e5c3e3927e5bc91c2c084a929dd *inst/SVN_VERSION
+ad19d8aa6ff5618fb2f791b24fc6c62a *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -113,7 +113,7 @@ b05955696472d44437c45f50812907f0 *man/topo-unary-gBoundary.Rd
 96c36b56a3587b5af63c55bc7501a532 *man/topo-unary-gConvexHull.Rd
 b3db697ffafda249e5b874a6bdabc16f *man/topo-unary-gEnvelope.Rd
 2fa261de5fd02d335814e7438ccd1de1 *man/topo-unary-gPointOnSurface.Rd
-0f0bee09e07b196de7dea27dc8265afa *man/topo-unary-gPolygonize.Rd
+442ca7d43e3236c0938b953b136055f6 *man/topo-unary-gPolygonize.Rd
 6f05c2bb192a77bb3689cd09871f8e5f *man/topo-unary-gSimplify.Rd
 6b693ba5811ca4fa4146295c2d60d07a *man/utility-functions.Rd
 096a8a8b0815dd4f95b648dfff53bb53 *man/wkt-functions.Rd
@@ -130,7 +130,7 @@ ca133dbfc873d54d592c7aac00eedea4 *src/rgeos.h
 f75b33825e4ad8b1aa64d70d12fb25c4 *src/rgeos_bbox.c
 3b4758e44fbfcfb9a6ea5cf015813cd1 *src/rgeos_buffer.c
 6c41849bd5f0ad9be2869177386b98c3 *src/rgeos_coord.c
-35fbf6114364de59b19576375926d4e6 *src/rgeos_geos2R.c
+a91a330ab7a03b85b1d95588bcb1540f *src/rgeos_geos2R.c
 483e6828e808edc83e80e3a0b2f1979f *src/rgeos_misc.c
 13f830696bb7db81bda0978b7dd0918f *src/rgeos_poly2nb.c
 fe07be43ef847ab99cee81b32c6c28c0 *src/rgeos_predicate_binary.c

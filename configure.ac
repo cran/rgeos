@@ -12,10 +12,15 @@ RBIN="${R_HOME}/bin/R"
 
 # pick all flags for testing from R
 : ${CC=`"${RBIN}" CMD config CC`}
+: ${CXX=`"${RBIN}" CMD config CXX`}
 : ${CPP=`"${RBIN}" CMD config CPP`}
 : ${CFLAGS=`"${RBIN}" CMD config CFLAGS`}
 : ${CPPFLAGS=`"${RBIN}" CMD config CPPFLAGS`}
 : ${LDFLAGS=`"${RBIN}" CMD config LDFLAGS`}
+# AC_SUBST([CC],["clang"])
+# AC_SUBST([CXX],["clang++"])
+AC_MSG_NOTICE([CC: ${CC}])
+AC_MSG_NOTICE([CXX: ${CXX}])
 
 AC_MSG_NOTICE([${PACKAGE_NAME}: ${PACKAGE_VERSION}])
 
@@ -85,9 +90,53 @@ LIBS="${LIBS} ${PKG_LIBS}"
 
 geosok=yes
 AC_CHECK_HEADERS(geos_c.h,,geosok=no)
-AC_CHECK_LIB(geos_c,initGEOS_r,,geosok=no)
 if test "${geosok}" = no; then
-   AC_MSG_ERROR([libgeos_c and/or geos_c.h not found in given locations.])
+   AC_MSG_ERROR([geos_c.h not found in given locations.])
+fi
+
+#AC_CHECK_LIB(geos_c,initGEOS_r,,geosok=no)
+
+[cat > geos_test.cc <<_EOCONF
+#include <geos_c.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
+static void __errorHandler(const char *fmt, ...) {
+    return;
+}
+static void __warningHandler(const char *fmt, ...) {
+    return;
+}
+int main() {
+    GEOSContextHandle_t r = initGEOS_r((GEOSMessageHandler) __warningHandler, (GEOSMessageHandler) __errorHandler);
+    finishGEOS_r(r);
+}
+#ifdef __cplusplus
+}
+#endif
+_EOCONF]
+
+#echo "${CXX} ${CPPFLAGS} -o geos_test geos_test.cc ${LIBS}"
+AC_MSG_CHECKING(geos: linking with libgeos_c)
+${CXX} ${CPPFLAGS} -o geos_test geos_test.cc ${LIBS} 2> errors.txt
+if test `echo $?` -ne 0 ; then
+geosok=no
+AC_MSG_RESULT(no)
+else
+AC_MSG_RESULT(yes)
+fi
+
+if test "${geosok}" = no; then
+   cat errors.txt
+   AC_MSG_NOTICE([Install failure: compilation and/or linkage problems.])
+   AC_MSG_ERROR([initGEOS_r not found in libgeos_c.])
+fi
+
+rm -f geos_test errors.txt geos_test.cc
+
+
+if test "${geosok}" = no; then
+   AC_MSG_ERROR([libgeos_c not found in given locations.])
 fi
 
 AC_MSG_NOTICE([PKG_CPPFLAGS: ${PKG_CPPFLAGS}])
