@@ -61,10 +61,10 @@ fi
 
 AC_MSG_NOTICE([geos-config: ${GEOS_CONFIG}])
 AC_MSG_NOTICE([GEOS version: ${GEOS_VER}])
-AC_MSG_CHECKING([geos version over 3.2.1])
-if test ${GEOS_VER_DOT} -lt 322 ; then
+AC_MSG_CHECKING([geos version at least 3.2.0])
+if test ${GEOS_VER_DOT} -lt 320 ; then
         AC_MSG_RESULT(no)
-        AC_MSG_ERROR([Upgrade GEOS to at least 3.2.2])
+        AC_MSG_ERROR([Upgrade GEOS to at least 3.2.0])
 else
         AC_MSG_RESULT(yes)
 fi
