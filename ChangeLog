@@ -1,3 +1,16 @@
+2013-04-26 09:26  rsbivand
+
+	* DESCRIPTION: Kirill Müller's reversion to GEOS 3.2.0
+
+2013-04-26 09:25  rsbivand
+
+	* DESCRIPTION, configure, configure.ac: Kirill Müller's reversion
+	  to GEOS 3.2.0
+
+2013-04-09 16:47  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2013-04-09 13:47  rsbivand
 
 	* src/rgeos_geos2R.c: length of IDs guard
