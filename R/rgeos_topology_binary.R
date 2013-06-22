@@ -37,7 +37,15 @@ RGEOSBinTopoFunc = function(spgeom1, spgeom2, byid, ids=NULL, func) {
     if (idlen != length(ids))
         stop(paste("ids vector has incorrect length of",length(ids),"expected length of",idlen))
     
-    x <- .Call(func, .RGEOS_HANDLE, spgeom1, spgeom2, byid, ids, PACKAGE="rgeos")
+    if (func == "rgeos_difference")
+        x <- .Call("rgeos_difference", .RGEOS_HANDLE, spgeom1, spgeom2, byid, ids, PACKAGE="rgeos")
+    else if (func == "rgeos_symdifference")
+        x <- .Call("rgeos_symdifference", .RGEOS_HANDLE, spgeom1, spgeom2, byid, ids, PACKAGE="rgeos")
+    else if (func == "rgeos_intersection")
+        x <- .Call("rgeos_intersection", .RGEOS_HANDLE, spgeom1, spgeom2, byid, ids, PACKAGE="rgeos")
+    else if (func == "rgeos_union")
+        x <- .Call("rgeos_union", .RGEOS_HANDLE, spgeom1, spgeom2, byid, ids, PACKAGE="rgeos")
+    else stop("no such function:", func)
     return(x)
 }
 gDifference = function(spgeom1, spgeom2, byid=FALSE, id=NULL) {

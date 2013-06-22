@@ -8,8 +8,9 @@
 \title{Distance between geometries}
 \description{Calculates the distance between the given geometries}
 \usage{
-	gDistance(spgeom1, spgeom2=NULL, byid=FALSE, hausdorff=FALSE, densifyFrac = NULL)
-	gWithinDistance(spgeom1, spgeom2=NULL, dist, byid=FALSE, hausdorff=FALSE, densifyFrac=NULL)
+gDistance(spgeom1, spgeom2=NULL, byid=FALSE, hausdorff=FALSE, densifyFrac = NULL)
+gWithinDistance(spgeom1, spgeom2=NULL, dist, byid=FALSE,
+ hausdorff=FALSE, densifyFrac=NULL)
 }
 
 \arguments{

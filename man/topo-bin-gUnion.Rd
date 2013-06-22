@@ -41,7 +41,8 @@ gLineMerge is similar to gUnionCascaded but is written to work with lines, speci
 
 \examples{
 library(maptools)
-nc1 <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1], proj4string=CRS("+proj=longlat +datum=NAD27"))
+nc1 <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1],
+ proj4string=CRS("+proj=longlat +datum=NAD27"))
 lps <- coordinates(nc1)
 ID <- cut(lps[,1], quantile(lps[,1]), include.lowest=TRUE)
 if (version_GEOS0() < "3.3.0") {

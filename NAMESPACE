@@ -73,4 +73,4 @@ exportMethods("show", "get.bbox", "plot", "intersect", "union", "symdiff",
 
 export("read.polyfile", "write.polyfile")
 
-export(calc.labpt.strings, polygonsLabel)
+export(polygonsLabel)

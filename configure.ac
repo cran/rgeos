@@ -24,8 +24,12 @@ AC_MSG_NOTICE([CXX: ${CXX}])
 
 AC_MSG_NOTICE([${PACKAGE_NAME}: ${PACKAGE_VERSION}])
 
-SVN_VERSION=`svnversion -n '.'`
-if test "${?}" && test "${SVN_VERSION}" != "exported"; then
+AC_CHECK_FILE([/usr/bin/svnversion],
+ [SVN_VERSION=`svnversion -n '.'`],
+ [SVN_VERSION=""])
+
+#SVN_VERSION=`svnversion -n '.'`
+if test -n "${SVN_VERSION}" && test "${SVN_VERSION}" != "exported" && test "${SVN_VERSION}" != "Unversioned directory"; then
   echo "${SVN_VERSION}" > inst/SVN_VERSION
 else
   SVN_VERSION=`cat inst/SVN_VERSION | tr -d '\n'`

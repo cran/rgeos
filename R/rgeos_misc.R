@@ -6,8 +6,12 @@ RGEOSMiscFunc = function(spgeom, byid, func) {
     if (is.na(byid)) stop("Invalid value for byid, must be logical")
     if (inherits(spgeom, "SpatialPolygons") && get_do_poly_check() && notAllComments(spgeom)) 
         spgeom <- createSPComment(spgeom)
-    
-    x <- .Call(func, .RGEOS_HANDLE, spgeom, byid, PACKAGE="rgeos")
+    if (func == "rgeos_area")    
+        x <- .Call("rgeos_area", .RGEOS_HANDLE, spgeom, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_length")    
+        x <- .Call("rgeos_length", .RGEOS_HANDLE, spgeom, byid, PACKAGE="rgeos")
+    else stop("no such function:", func)
+
     if(byid) names(x) <- unique(row.names(spgeom))
     
     return(x)
@@ -43,11 +47,14 @@ RGEOSDistanceFunc = function(spgeom1, spgeom2, byid, func, densifyFrac = 1) {
             warning("spgeom1 and spgeom2 have different proj4 strings")
     }
 
-    if (func == "rgeos_hausdorffdistancedensify") {
-        x <- .Call(func, .RGEOS_HANDLE, spgeom1, spgeom2, densifyFrac, byid, PACKAGE="rgeos")
-    } else {
-        x <- .Call(func, .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
-    }
+    if (func == "rgeos_hausdorffdistancedensify")
+        x <- .Call("rgeos_hausdorffdistancedensify", .RGEOS_HANDLE, spgeom1, spgeom2, densifyFrac, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_hausdorffdistance")
+        x <- .Call("rgeos_hausdorffdistance", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_distance")
+        x <- .Call("rgeos_distance", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else stop("no such function:", func)
+
     
     if(any(byid)) {
         id1 = row.names(spgeom1) 
