@@ -6,7 +6,8 @@
 \description{ create object of class \code{SpatialCollections} }
 
 \usage{ 
-SpatialCollections( points=NULL, lines=NULL, rings=NULL, polygons=NULL,	plotOrder=c(4,3,2,1), proj4string=CRS(as.character(NA)))
+SpatialCollections(points=NULL, lines=NULL, rings=NULL, polygons=NULL,
+ plotOrder=c(4,3,2,1), proj4string=CRS(as.character(NA)))
 }
 
 \arguments{

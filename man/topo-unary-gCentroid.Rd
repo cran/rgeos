@@ -27,7 +27,8 @@ gCentroid(spgeom, byid=FALSE, id = NULL)
 
 \examples{
 
-x = readWKT("GEOMETRYCOLLECTION(POLYGON((0 0,10 0,10 10,0 10,0 0)),POLYGON((15 0,25 15,35 0,15 0)))")
+x = readWKT(paste("GEOMETRYCOLLECTION(POLYGON((0 0,10 0,10 10,0 10,0 0)),",
+ "POLYGON((15 0,25 15,35 0,15 0)))"))
 
 # Centroids of both the square and circle independently
 c1 = gCentroid(x,byid=TRUE) 

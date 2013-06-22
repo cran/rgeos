@@ -22,12 +22,37 @@ RGEOSBinPredFunc = function(spgeom1, spgeom2, byid, func, optparam=NULL) {
             spgeom2 <- createSPComment(spgeom2)
     }
 	
-    if ( func == "rgeos_equalsexact" | func == "rgeos_relatepattern" ) {
-        x <- .Call(func, .RGEOS_HANDLE, spgeom1, spgeom2, optparam, byid, PACKAGE="rgeos")
-    } else {
-        x <- .Call(func, .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
-    }
-    
+    if ( func == "rgeos_equalsexact" )         
+        x <- .Call("rgeos_equalsexact", .RGEOS_HANDLE, spgeom1, spgeom2, optparam, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_relatepattern")
+        x <- .Call("rgeos_relatepattern", .RGEOS_HANDLE, spgeom1, spgeom2, optparam, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_contains")
+        x <- .Call("rgeos_contains", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_contains_prepared")
+        x <- .Call("rgeos_contains_prepared", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_intersects")
+        x <- .Call("rgeos_intersects", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_intersects_prepared")
+        x <- .Call("rgeos_intersects_prepared", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_containsproperly_prepared")
+        x <- .Call("rgeos_containsproperly_prepared", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_covers_prepared")
+        x <- .Call("rgeos_covers_prepared", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_disjoint")
+        x <- .Call("rgeos_disjoint", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_touches")
+        x <- .Call("rgeos_touches", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_crosses")
+        x <- .Call("rgeos_crosses", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_within")
+        x <- .Call("rgeos_within", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_overlaps")
+        x <- .Call("rgeos_overlaps", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_equals")
+        x <- .Call("rgeos_equals", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_relate")
+        x <- .Call("rgeos_relate", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
+    else stop("No such function:", func)    
     if(any(byid)) {
         id1 = row.names(spgeom1) 
         if (is.null(spgeom2)) id2 = id1

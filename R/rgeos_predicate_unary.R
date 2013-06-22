@@ -5,7 +5,19 @@ RGEOSUnaryPredFunc = function(spgeom, byid, func) {
     if (inherits(spgeom, "SpatialPolygons") && get_do_poly_check() && notAllComments(spgeom)) 
         spgeom <- createSPComment(spgeom)
 
-    x <- .Call(func, .RGEOS_HANDLE, spgeom, byid, PACKAGE="rgeos")
+    if (func == "rgeos_isempty")
+        x <- .Call("rgeos_isempty", .RGEOS_HANDLE, spgeom, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_issimple")
+        x <- .Call("rgeos_issimple", .RGEOS_HANDLE, spgeom, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_isring")
+        x <- .Call("rgeos_isring", .RGEOS_HANDLE, spgeom, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_hasz")
+        x <- .Call("rgeos_hasz", .RGEOS_HANDLE, spgeom, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_isvalidreason")
+        x <- .Call("rgeos_isvalidreason", .RGEOS_HANDLE, spgeom, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_isvalid")
+        x <- .Call("rgeos_isvalid", .RGEOS_HANDLE, spgeom, byid, PACKAGE="rgeos")
+    else stop("no such function:", func)
     
     if(byid) {
         id <- unique(row.names(spgeom))

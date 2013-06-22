@@ -1,3 +1,46 @@
+2013-06-22 14:16  rsbivand
+
+	* DESCRIPTION, NAMESPACE, R/labelpt.R, man/labelpt.Rd: update
+	  patched to polygonsLabel
+
+2013-06-22 13:40  rsbivand
+
+	* ChangeLog, inst/ChangeLog: more symbol check issues
+
+2013-06-22 13:39  rsbivand
+
+	* R/AAA.R, R/rgeos_misc.R, R/rgeos_predicate_binary.R,
+	  R/rgeos_predicate_unary.R, R/rgeos_topology.R,
+	  R/rgeos_topology_binary.R: tidy
+
+2013-06-22 12:23  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2013-06-22 12:23  rsbivand
+
+	* man/comment-functions.Rd, man/constructor-SpatialCollections.Rd,
+	  man/misc-gBuffer.Rd, man/misc-gDistance.Rd,
+	  man/pred-binary-gIntersects.Rd, man/pred-binary-gRelate.Rd,
+	  man/pred-unary-gIsValid.Rd, man/topo-bin-gIntersection.Rd,
+	  man/topo-bin-gUnion.Rd, man/topo-unary-gCentroid.Rd,
+	  man/topo-unary-gConvexHull.Rd, man/topo-unary-gEnvelope.Rd,
+	  man/topo-unary-gPointOnSurface.Rd, man/topo-unary-gSimplify.Rd:
+	  more symbol check issues
+
+2013-06-21 11:44  rsbivand
+
+	* DESCRIPTION, R/AAA.R: tidy
+
+2013-05-05 08:03  rsbivand
+
+	* configure, configure.ac: add Unversioned directory to svn
+	  revision
+
+2013-04-26 09:26  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2013-04-26 09:26  rsbivand
 
 	* DESCRIPTION: Kirill Müller's reversion to GEOS 3.2.0

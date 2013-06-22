@@ -1333,8 +1333,32 @@ echo "$as_me: CXX: ${CXX}" >&6;}
 { echo "$as_me:$LINENO: ${PACKAGE_NAME}: ${PACKAGE_VERSION}" >&5
 echo "$as_me: ${PACKAGE_NAME}: ${PACKAGE_VERSION}" >&6;}
 
-SVN_VERSION=`svnversion -n '.'`
-if test "${?}" && test "${SVN_VERSION}" != "exported"; then
+echo "$as_me:$LINENO: checking for /usr/bin/svnversion" >&5
+echo $ECHO_N "checking for /usr/bin/svnversion... $ECHO_C" >&6
+if test "${ac_cv_file__usr_bin_svnversion+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  test "$cross_compiling" = yes &&
+  { { echo "$as_me:$LINENO: error: cannot check for file existence when cross compiling" >&5
+echo "$as_me: error: cannot check for file existence when cross compiling" >&2;}
+   { (exit 1); exit 1; }; }
+if test -r "/usr/bin/svnversion"; then
+  ac_cv_file__usr_bin_svnversion=yes
+else
+  ac_cv_file__usr_bin_svnversion=no
+fi
+fi
+echo "$as_me:$LINENO: result: $ac_cv_file__usr_bin_svnversion" >&5
+echo "${ECHO_T}$ac_cv_file__usr_bin_svnversion" >&6
+if test $ac_cv_file__usr_bin_svnversion = yes; then
+  SVN_VERSION=`svnversion -n '.'`
+else
+  SVN_VERSION=""
+fi
+
+
+#SVN_VERSION=`svnversion -n '.'`
+if test -n "${SVN_VERSION}" && test "${SVN_VERSION}" != "exported" && test "${SVN_VERSION}" != "Unversioned directory"; then
   echo "${SVN_VERSION}" > inst/SVN_VERSION
 else
   SVN_VERSION=`cat inst/SVN_VERSION | tr -d '\n'`

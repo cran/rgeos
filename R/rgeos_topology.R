@@ -74,8 +74,22 @@ TopologyFunc = function(spgeom, id, byid, func) {
     
     if ( !(!byid && length(id) == 1) && !(byid && length(id) == length(curids)) )
         stop("Invalid number of values in id" ) 
-    
-    return( .Call(func, .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos") )
+    if (func == "rgeos_envelope")
+        x <- .Call("rgeos_envelope", .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_convexhull")
+        x <- .Call("rgeos_convexhull", .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_boundary")
+        x <- .Call("rgeos_boundary", .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_getcentroid")
+        x <- .Call("rgeos_getcentroid", .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_pointonsurface")
+        x <- .Call("rgeos_pointonsurface", .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_unioncascaded")
+        x <- .Call("rgeos_unioncascaded", .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos")
+    else stop("no such function:", func)
+
+
+    return( x )
 }
 
 gEnvelope = function(spgeom, byid=FALSE, id = NULL) {

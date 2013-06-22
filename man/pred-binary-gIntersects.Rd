@@ -69,11 +69,13 @@
 	title(paste("Intersects:",gIntersects(l1,pt2),
 				"\nDisjoint:",gDisjoint(l1,pt2)))
 	
-	plot(p1,col='blue',border='blue',xlim=c(-0.5,2),ylim=c(0,2.5));plot(l3,lwd=2,col='black',add=TRUE)
+	plot(p1,col='blue',border='blue',xlim=c(-0.5,2),ylim=c(0,2.5))
+	plot(l3,lwd=2,col='black',add=TRUE)
 	title(paste("Intersects:",gIntersects(p1,l3),
 				"\nDisjoint:",gDisjoint(p1,l3)))
 	
-	plot(p1,col='blue',border='blue',xlim=c(-0.5,2),ylim=c(-0.5,2));plot(pt3,pch=16,col='black',add=TRUE)
+	plot(p1,col='blue',border='blue',xlim=c(-0.5,2),ylim=c(-0.5,2))
+	plot(pt3,pch=16,col='black',add=TRUE)
 	title(paste("Intersects:",gIntersects(p1,pt3),
 				"\nDisjoint:",gDisjoint(p1,pt3)))
 }

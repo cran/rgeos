@@ -89,17 +89,26 @@ Documentation of Intersection Matrix Patterns:
 	patchars = strsplit(pat,"")[[1]]
 	
 	par(mfrow=c(3,3))
-	defaultplot(); plot(gIntersection(x.inter,y.inter),add=TRUE,col='black');title(paste("dim:",patchars[1]))
-	defaultplot(); plot(gIntersection(x.bound,y.inter),add=TRUE,col='black',lwd=2);title(paste("dim:",patchars[2]))
-	defaultplot(); plot(gIntersection(x.exter,y.inter),add=TRUE,col='black');title(paste("dim:",patchars[3]))
+	defaultplot(); plot(gIntersection(x.inter,y.inter),add=TRUE,col='black')
+	title(paste("dim:",patchars[1]))
+	defaultplot(); plot(gIntersection(x.bound,y.inter),add=TRUE,col='black',lwd=2)
+	title(paste("dim:",patchars[2]))
+	defaultplot(); plot(gIntersection(x.exter,y.inter),add=TRUE,col='black')
+	title(paste("dim:",patchars[3]))
 	
-	defaultplot(); plot(gIntersection(x.inter,y.bound),add=TRUE,col='black',lwd=2);title(paste("dim:",patchars[4]))
-	defaultplot(); plot(gIntersection(x.bound,y.bound),add=TRUE,col='black',pch=16);title(paste("dim:",patchars[5]))
-	defaultplot(); plot(gIntersection(x.exter,y.bound),add=TRUE,col='black',lwd=2);title(paste("dim:",patchars[6]))
+	defaultplot(); plot(gIntersection(x.inter,y.bound),add=TRUE,col='black',lwd=2)
+	title(paste("dim:",patchars[4]))
+	defaultplot(); plot(gIntersection(x.bound,y.bound),add=TRUE,col='black',pch=16)
+	title(paste("dim:",patchars[5]))
+	defaultplot(); plot(gIntersection(x.exter,y.bound),add=TRUE,col='black',lwd=2)
+	title(paste("dim:",patchars[6]))
 	
-	defaultplot(); plot(gIntersection(x.inter,y.exter),add=TRUE,col='black');title(paste("dim:",patchars[7]))
-	defaultplot(); plot(gIntersection(x.bound,y.exter),add=TRUE,col='black',lwd=2);title(paste("dim:",patchars[8]))
-	defaultplot(); plot(gIntersection(x.exter,y.exter),add=TRUE,col='black');title(paste("dim:",patchars[9]))
+	defaultplot(); plot(gIntersection(x.inter,y.exter),add=TRUE,col='black')
+	title(paste("dim:",patchars[7]))
+	defaultplot(); plot(gIntersection(x.bound,y.exter),add=TRUE,col='black',lwd=2)
+	title(paste("dim:",patchars[8]))
+	defaultplot(); plot(gIntersection(x.exter,y.exter),add=TRUE,col='black')
+	title(paste("dim:",patchars[9]))
 	
 }
 \keyword{spatial}
