@@ -132,6 +132,7 @@ x = c(0, 1.8, 1.8, 1, 1, 3, 3, 2.2, 2.2, 4,
 y = c(0, 0, -2, -2, -10, -10, -2, -2, 0, 0,
       1.8, 1.8, 1, 1, 3, 3, 2.2, 2.2, 4, 4, 0)
 xy = data.frame(x,y)
+library(sp)
 xy.sp = SpatialPolygons(list(Polygons(list(Polygon(xy)), ID = "test")))
 plot(xy.sp, col = "khaki")
 polygonsLabel(xy.sp, "Hi!")

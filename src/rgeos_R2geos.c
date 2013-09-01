@@ -306,8 +306,14 @@ GEOSGeom rgeos_Polygons2geospolygon(SEXP env, SEXP obj) {
               : GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOLYGON, geoms, (unsigned int) n);
         
     } else {
-        
+
         int nErings = length(comm);
+        int ncomm = 0;
+        for (int i=0; i<nErings; i++) ncomm += length(VECTOR_ELT(comm, i));
+// Rprintf("npls %d, ncomm %d\n", npls, ncomm);
+        if (npls != ncomm)
+            error("lengths of comment and Polygons slot differ");
+
         GEOSGeom *geoms = (GEOSGeom *) R_alloc((size_t) nErings, sizeof(GEOSGeom));
         
         for (int i=0; i<nErings; i++)
@@ -328,7 +334,6 @@ GEOSGeom rgeos_Polygons_i_2Polygon(SEXP env, SEXP pls, SEXP vec) {
 
     int n = length(vec);
     int i = INTEGER_POINTER(vec)[0]-R_OFFSET;
-
     GEOSGeom pol;
     SEXP mat = GET_SLOT(VECTOR_ELT(pls, i), install("coords"));
     if (mat == R_NilValue) {

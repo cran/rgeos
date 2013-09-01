@@ -78,7 +78,7 @@ Helpful information on the subtle differences between these functions:
 	
 	plot(p1,col='blue',border='blue');plot(pt3,add=TRUE,pch=16)
 	title(paste("Contains:",gContains(p1,pt3),
-				"\nContainsProperly:",gContainsProperly(p1,pt2),
+				"\nContainsProperly:",gContainsProperly(p1,pt3),
 				"\nCovers:",gCovers(p1,pt3)))
 	
 	plot(p1,col='blue',border='blue');plot(l2,lwd=2,add=TRUE,pch=16)

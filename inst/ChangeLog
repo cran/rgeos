@@ -1,3 +1,67 @@
+2013-09-02 12:28  rsbivand
+
+	* inst/tests/testxml/general/TestInteriorPoint.xml: revert xml
+	  tests to pass GEOS 3.2.0
+
+2013-09-01 17:47  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2013-09-01 17:22  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2013-09-01 17:20  rsbivand
+
+	* DESCRIPTION, cleanup, man/topo-unary-gPointOnSurface.Rd: add
+	  cleanup
+
+2013-09-01 16:40  rsbivand
+
+	* inst/tests/testxml/general/TestInteriorPoint.xml: revert two
+	  changes in gPointOnSurface test to match GEOS 3.4.* to suit < 3.4
+
+2013-09-01 10:31  rsbivand
+
+	* inst/tests/testxml/general/TestInteriorPoint.xml,
+	  man/topo-unary-gPointOnSurface.Rd: change gPointOnSurface test to
+	  match GEOS 3.4.*
+
+2013-08-30 16:52  edzer
+
+	* DESCRIPTION, R/over.R, man/comment-functions.Rd, man/labelpt.Rd,
+	  man/topo-unary-gPolygonize.Rd, man/utility-functions.Rd: moved sp
+	  and methods from Depends: to Imports:
+	  added library(sp) to the examples, where needed
+	  removed the ::: using the exported overDF_for_rgeos from sp
+	  1.0-12
+	  increased sp dependency to 1.0-12
+
+2013-07-18 10:30  rsbivand
+
+	* DESCRIPTION, src/rgeos_R2geos.c: check comment length against
+	  Polygons slot
+
+2013-07-17 13:57  rsbivand
+
+	* man/pred-binary-gContains.Rd: tidy
+
+2013-07-02 20:17  rhijmans
+
+	* R/rgeos_buffer.R:
+
+2013-07-02 20:15  rhijmans
+
+	* man/misc-gBuffer.Rd:
+
+2013-07-02 20:12  rhijmans
+
+	* R/rgeos_buffer.R:
+
+2013-06-22 14:17  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2013-06-22 14:16  rsbivand
 
 	* DESCRIPTION, NAMESPACE, R/labelpt.R, man/labelpt.Rd: update

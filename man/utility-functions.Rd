@@ -53,6 +53,7 @@ version_GEOS returns the full runtime version string, and version_GEOS0 only the
 	
 	# scale option only affect objects when they are translated through rgeos
 	setScale(1)
+	library(sp)
 	SpatialPoints(data.frame(x=1.5,y=1.5))
 	translate( SpatialPoints(data.frame(x=1.5,y=1.5)) )
 	

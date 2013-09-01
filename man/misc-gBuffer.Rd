@@ -20,7 +20,7 @@ gBuffer(spgeom, byid=FALSE, id=NULL, width=1.0, quadsegs=5, capStyle="ROUND",
   \item{mitreLimit}{Numerical value that specifies how far a joint can extend if a mitre join style is used.}
 }
 
-\value{Returns a [MULTI]POLYGON that is a dilation (or errosion) of the original geometry.}
+\value{SpatialPolygons (or a SpatialPolygonsDataFrame if byid=TRUE and spgeom has a data.frame)}
 
 \author{Roger Bivand & Colin Rundel}
 

@@ -48,7 +48,13 @@ gBuffer = function(spgeom, byid=FALSE, id=NULL, width=1.0, quadsegs=5,
 
     ans = .Call("rgeos_buffer", .RGEOS_HANDLE, spgeom, byid, id, width, quadsegs,
                                 capStyle, joinStyle, mitreLimit, PACKAGE="rgeos")
-    
+ 
+	if (byid) {
+		if (.hasSlot(spgeom, 'data')) {
+			ans <- SpatialPolygonsDataFrame(ans, spgeom@data, FALSE)
+		}	
+	}
+ 
     return(ans)
 }
 
