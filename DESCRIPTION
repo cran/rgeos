@@ -1,20 +1,20 @@
 Package: rgeos
 Title: Interface to Geometry Engine - Open Source (GEOS)
-Version: 0.2-19
-Date: 2013-06-22
-Depends: R (>= 2.10.0), methods, sp (>= 1.0-8)
+Version: 0.2-20
+Date: 2013-09-01
+Depends: R (>= 2.10.0)
+Imports: methods, sp (>= 1.0-12)
 LinkingTo: sp
 Suggests: maptools (>= 0.8-5), testthat, XML
 LazyLoad: yes
-Description: Interface to Geometry Engine - Open Source (GEOS) using
-        the C API for topology operations on geometries. The GEOS
-        library is external to the package, and, when installing the
-        package from source, must be correctly installed first. Windows
-        and Mac Intel OS X binaries are provided on CRAN.
-Authors@R: c( person("Roger", "Bivand", role = c("cre", "aut"), email =
-        "Roger.Bivand@nhh.no"), person("Colin", "Rundel", role =
-        "aut"), person("Edzer", "Pebesma", role = "ctb"), person("Karl
-        Ove", "Hufthammer", role = "ctb"))
+Description: Interface to Geometry Engine - Open Source (GEOS) using the C API for topology operations on geometries. The GEOS library is external to the package, and, when installing the package from source, must be correctly installed first. Windows and Mac Intel OS X binaries are provided on CRAN.
+Authors@R: c(
+	person("Roger", "Bivand", role = c("cre", "aut"), email = "Roger.Bivand@nhh.no"),
+	person("Colin", "Rundel", role = "aut"),
+	person("Edzer", "Pebesma", role = "ctb"),
+	person("Karl Ove", "Hufthammer", role = "ctb"))
+Author: Colin Rundel and Roger Bivand
+Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
 License: GPL (>= 2)
 URL: https://r-forge.r-project.org/projects/rgeos/
         http://trac.osgeo.org/geos/
@@ -22,10 +22,7 @@ SystemRequirements: GEOS (>= 3.2.0); for building from source: GEOS
         from http://trac.osgeo.org/geos/; GEOS OSX frameworks built by
         William Kyngesburye at http://www.kyngchaos.com/ may be used
         for source installs on OSX.
-Packaged: 2013-06-22 14:17:28 UTC; rsb
-Author: Roger Bivand [cre, aut], Colin Rundel [aut], Edzer Pebesma
-        [ctb], Karl Ove Hufthammer [ctb]
-Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
+Packaged: 2013-09-02 12:39:20 UTC; rsb
 NeedsCompilation: yes
 Repository: CRAN
-Date/Publication: 2013-06-22 17:27:39
+Date/Publication: 2013-09-02 14:51:25

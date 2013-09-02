@@ -22,6 +22,7 @@
 
 
 \examples{
+library(sp)
 linelist = list(readWKT("LINESTRING (0 0 , 10 10)"),
 				readWKT("LINESTRING (185 221, 100 100)"),
 				readWKT("LINESTRING (185 221, 88 275, 180 316)"),

@@ -20,7 +20,8 @@ overGeomGeom = function(x, y, returnList = FALSE, fn = NULL, ...) {
 # if modified here, consider modifying there as well!
 overGeomGeomDF = function(x, y, returnList = FALSE, fn = NULL, ...) {
     r = overGeomGeom(x, y, returnList = TRUE)
-    ret = sp:::.overDF(r, y@data, length(x), returnList, fn, ...)
+    #ret = sp:::.overDF(r, y@data, length(x), returnList, fn, ...)
+    ret = overDF_for_rgeos(r, y@data, length(x), returnList, fn, ...)
     if (!returnList)
         row.names(ret) = row.names(x)
     ret
