@@ -177,6 +177,24 @@ gUnaryUnion = function(spgeom, id = NULL) {
     res
 }
 
+gDelaunayTriangulation <- function(spgeom, tolerance=0.0, onlyEdges=FALSE) {
+
+    if (version_GEOS0() < "3.4.0")
+        stop("No DelaunayTriangulation in this version of GEOS")
+
+    if (!inherits(spgeom, "SpatialPoints"))
+        stop("Invalid geometry, may only be applied to points")
+    if (nrow(zerodist(spgeom)) > 0)
+        stop("duplicate points not permitted")
+    stopifnot(is.numeric(tolerance))
+    stopifnot(length(tolerance) == 1)
+    stopifnot(is.logical(onlyEdges))
+    stopifnot(length(onlyEdges) == 1)
+
+    .Call("rgeos_delaunaytriangulation", .RGEOS_HANDLE,
+        spgeom, tolerance, onlyEdges, PACKAGE="rgeos")
+    
+}
 
 RGEOSEnvelope = function(spgeom, byid=FALSE, id = NULL) {
     .Deprecated("gEnvelope")
