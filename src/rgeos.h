@@ -16,6 +16,15 @@
 #endif
 #endif
 
+#if GEOS_VERSION_MAJOR > 3
+#define  HAVE_DELAUNAY 1
+#endif
+#if GEOS_VERSION_MAJOR == 3
+#if GEOS_VERSION_MINOR >= 4
+#define  HAVE_DELAUNAY 1
+#endif
+#endif
+
 
 
 /* use same define in package's local_stubs.c file */
@@ -103,6 +112,10 @@ SEXP rgeos_linemerge(SEXP env, SEXP obj, SEXP id, SEXP byid);
 SEXP rgeos_unioncascaded(SEXP env, SEXP obj, SEXP id, SEXP byid );
 #ifdef HAVE_UNARYUNION
 SEXP rgeos_unaryunion(SEXP env, SEXP obj, SEXP id, SEXP byid );
+#endif
+#ifdef HAVE_DELAUNAY
+SEXP rgeos_delaunaytriangulation(SEXP env, SEXP obj, SEXP tol,
+ SEXP onlyEdges);
 #endif
 
 typedef GEOSGeometry* (*p_topofunc)(GEOSContextHandle_t, const GEOSGeometry*);

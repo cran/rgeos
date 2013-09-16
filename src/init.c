@@ -35,7 +35,11 @@ static R_CallMethodDef CallEntries[] = {
 #ifdef HAVE_UNARYUNION
     {"rgeos_unaryunion", (DL_FUNC) &rgeos_unaryunion, 4},
 #endif
-	{"rgeos_simplify", (DL_FUNC) &rgeos_simplify, 6},
+#ifdef HAVE_DELAUNAY
+    {"rgeos_delaunaytriangulation", (DL_FUNC) &rgeos_delaunaytriangulation, 4},
+#endif
+
+    {"rgeos_simplify", (DL_FUNC) &rgeos_simplify, 6},
     {"rgeos_polygonize", (DL_FUNC) &rgeos_polygonize, 5},
 
     //Binary Topology Functions

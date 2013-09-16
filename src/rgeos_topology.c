@@ -35,6 +35,51 @@ SEXP rgeos_unaryunion(SEXP env, SEXP obj, SEXP id, SEXP byid ) {
 }
 #endif
 
+#ifdef HAVE_DELAUNAY
+SEXP rgeos_delaunaytriangulation(SEXP env, SEXP obj, SEXP tol,
+  SEXP onlyEdges) {
+
+    GEOSContextHandle_t GEOShandle = getContextHandle(env);
+    double tolerance = NUMERIC_POINTER(tol)[0];
+    int oE = INTEGER_POINTER(onlyEdges)[0];
+    int pc=0;
+
+    SEXP ans, id;
+    
+    SEXP p4s = GET_SLOT(obj, install("proj4string"));
+
+    GEOSGeom geom = rgeos_convert_R2geos(env, obj);
+
+    GEOSGeom resgeom = GEOSDelaunayTriangulation_r(GEOShandle, geom,
+        tolerance, oE);
+    if (resgeom == NULL)
+            error("rgeos_delaunaytriangulation: unable to compute");
+
+    GEOSGeom_destroy_r(GEOShandle, geom);
+
+    int type = GEOSGeomTypeId_r(GEOShandle, resgeom);
+
+    int ng = GEOSGetNumGeometries_r(GEOShandle, resgeom);
+
+//Rprintf("ng: %d, type: %d, %s\n", ng, type, GEOSGeomType_r(GEOShandle, resgeom));
+// FIXME convert type 5 to type 7
+
+    char buf[BUFSIZ];
+
+    PROTECT(id = NEW_CHARACTER(ng)); pc++;
+    for (int i=0; i<ng; i++) {
+        sprintf(buf, "%d", i);
+        SET_STRING_ELT(id, i, COPY_TO_USER_STRING(buf));
+    }
+
+    ans = rgeos_convert_geos2R(env, resgeom, p4s, id); 
+
+    UNPROTECT(pc);
+    return(ans);
+
+}
+#endif
+
 SEXP rgeos_topologyfunc(SEXP env, SEXP obj, SEXP id, SEXP byid, p_topofunc topofunc) {
 
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
