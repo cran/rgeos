@@ -210,11 +210,6 @@
         (120 160, 140 160, 140 140, 120 160)))
   </op>
 </test>
-<test>
-  <op name="intersection" pattern="FFFFFFFFF" arg1="A" arg2="B">
-    GEOMETRYCOLLECTION EMPTY
-  </op>
-</test>
 </case>
 
 <case>

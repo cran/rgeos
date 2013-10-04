@@ -333,6 +333,10 @@ SEXP rgeos_geospolygon2Polygons(SEXP env, GEOSGeom geom, SEXP ID) {
             comm[k] = 0;
             areas[k] = 0;
             po[k] = k + R_OFFSET;
+// modified 131004 RSB 
+// https://stat.ethz.ch/pipermail/r-sig-geo/2013-October/019470.html
+//            warning("rgeos_geospolygon2Polygons: empty Polygons object");
+            error("rgeos_geospolygon2Polygons: empty Polygons object");
             
             k++;
         } else {
@@ -503,7 +507,8 @@ SEXP rgeos_geospoint2SpatialPoints(SEXP env, GEOSGeom geom, SEXP p4s, SEXP id, i
     
     int pc=0;
     SEXP bbox, crdmat;
-    
+    if (GEOSisEmpty_r(GEOShandle, geom))
+        error("rgeos_geospoint2SpatialPoints: empty point found");
     //if (GEOSisEmpty_r(GEOShandle, geom)==0) {
         PROTECT(bbox = rgeos_geom2bbox(env, geom)); pc++;
         PROTECT(crdmat = rgeos_geospoint2crdMat(env, geom, id, n, type)); pc++;
@@ -577,7 +582,8 @@ SEXP rgeos_geosline2SpatialLines(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
 
                 PROTECT( crdmat = rgeos_CoordSeq2crdMat(env, s, FALSE, FALSE));
             } else {
-                PROTECT( crdmat = R_NilValue);
+                error("rgeos_geosline2SpatialLines: empty line found");
+//                PROTECT( crdmat = R_NilValue);
             }
 
             SEXP line;

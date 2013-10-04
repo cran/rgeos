@@ -13,6 +13,8 @@ gIsEmpty(spgeom, byid = FALSE)
   \item{byid}{Logical determining if the function should be applied across subgeometries (TRUE) or the entire object (FALSE)}
 }
 
+\details{Because no sp Spatial object may be empty, the function exists but cannot work, as \code{readWKT} is not permitted to create an empty object.}
+
 \value{Returns TRUE if the given geometry is empty, FALSE otherwise.}
 
 \author{Roger Bivand & Colin Rundel}
@@ -24,11 +26,11 @@ gIsEmpty(spgeom, byid = FALSE)
 }
 
 \examples{
-gIsEmpty(readWKT("POINT EMPTY"))
+try(gIsEmpty(readWKT("POINT EMPTY")))
 gIsEmpty(readWKT("POINT(1 1)"))
-gIsEmpty(readWKT("LINESTRING EMPTY"))
+try(gIsEmpty(readWKT("LINESTRING EMPTY")))
 gIsEmpty(readWKT("LINESTRING(0 0,1 1)"))
-gIsEmpty(readWKT("POLYGON EMPTY"))
+try(gIsEmpty(readWKT("POLYGON EMPTY")))
 gIsEmpty(readWKT("POLYGON((0 0,1 0,1 1,0 1,0 0))"))
 }
 

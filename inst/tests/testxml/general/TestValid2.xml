@@ -5111,13 +5111,6 @@
   <test> <op name="isValid" arg1="A"> true </op> </test>
 </case>
 <case>
-  <desc>Test 733</desc>
-  <a>
-    MULTIPOINT EMPTY
-  </a>
-  <test> <op name="isValid" arg1="A"> true </op> </test>
-</case>
-<case>
   <desc>Test 734</desc>
   <a>
     LINESTRING (20 60, 160 60, 80 160, 80 20)
@@ -5156,13 +5149,6 @@
   <desc>Test 739</desc>
   <a>
     LINESTRING (80 80, 20 20, 20 80, 140 80, 140 140, 80 80)
-  </a>
-  <test> <op name="isValid" arg1="A"> true </op> </test>
-</case>
-<case>
-  <desc>Test 740</desc>
-  <a>
-    LINESTRING EMPTY
   </a>
   <test> <op name="isValid" arg1="A"> true </op> </test>
 </case>
@@ -5219,13 +5205,6 @@
   <desc>Test 748</desc>
   <a>
     POLYGON ((180 260, 80 300, 40 180, 160 120, 180 260))
-  </a>
-  <test> <op name="isValid" arg1="A"> true </op> </test>
-</case>
-<case>
-  <desc>Test 749</desc>
-  <a>
-    POLYGON EMPTY
   </a>
   <test> <op name="isValid" arg1="A"> true </op> </test>
 </case>
