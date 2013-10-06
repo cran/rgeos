@@ -15,33 +15,49 @@ SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width, SEXP quads
         n = 1;
     
     GEOSGeometry** geoms = (GEOSGeometry**) R_alloc((size_t) n, sizeof(GEOSGeometry*));
+    SEXP newids;
+    PROTECT(newids = NEW_CHARACTER(n));
     
     GEOSGeometry* curgeom = geom;
-    for(i=0; i<n; i++) {
+    GEOSGeometry* thisgeom;
+    int k = 0;
+    for(i=0, k=0; i<n; i++) {
         if ( n > 1) {
             curgeom = (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, geom, i);
             if (curgeom == NULL) error("rgeos_buffer: unable to get subgeometries");
         }
         
-        geoms[i] = GEOSBufferWithStyle_r(GEOShandle, curgeom, 
-                                         NUMERIC_POINTER(width)[0], 
+        thisgeom = GEOSBufferWithStyle_r(GEOShandle, curgeom, 
+                                         NUMERIC_POINTER(width)[i], 
                                          INTEGER_POINTER(quadsegs)[0], 
                                          INTEGER_POINTER(capStyle)[0], 
                                          INTEGER_POINTER(joinStyle)[0],  
                                          NUMERIC_POINTER(mitreLimit)[0]);
-        //if (n > 1)
-		//	GEOSGeom_destroy_r(GEOShandle, curgeom);
+// modified 131004 RSB 
+// https://stat.ethz.ch/pipermail/r-sig-geo/2013-October/019470.html
+        if (!GEOSisEmpty_r(GEOShandle, thisgeom)) {
+            geoms[k] = thisgeom;
+            SET_STRING_ELT(newids, k, STRING_ELT(id, i));
+            k++;
+        }
+
     }
-	GEOSGeom_destroy_r(GEOShandle, geom);
-    
+
+    GEOSGeom_destroy_r(GEOShandle, geom);
+
+    if (k == 0) {
+        UNPROTECT(1);
+        return(R_NilValue);
+    }
+
     GEOSGeometry* res;
-    if (n == 1)
+    if (k == 1)
         res = geoms[0];
     else
-        res = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) n);
+        res = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) k);
 
     SEXP ans;
-    PROTECT(ans = rgeos_convert_geos2R(env, res, p4s, id)); // releases res
-    UNPROTECT(1);
+    PROTECT(ans = rgeos_convert_geos2R(env, res, p4s, newids)); // releases res
+    UNPROTECT(2);
     return(ans);
 }

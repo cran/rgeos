@@ -38,18 +38,6 @@
 </case>
 
 <case>
-  <desc>mP - empty</desc>
-  <a>
-    MULTIPOINT EMPTY
-  </a>
-<test>
-  <op name="isSimple" arg1="A">
-    true
-  </op>
-</test>
-</case>
-
-<case>
   <desc>L - simple line</desc>
   <a>
     LINESTRING(10 10, 20 20)
@@ -132,19 +120,6 @@
   </op>
 </test>
 </case>
-
-<case>
-  <desc>L - empty</desc>
-  <a>
-    LINESTRING EMPTY
-  </a>
-<test>
-  <op name="isSimple" arg1="A">
-    true
-  </op>
-</test>
-</case>
-
 
 <case>
   <desc>mL - intersection between elements at non-vertex</desc>
@@ -245,18 +220,6 @@
   <desc>A</desc>
   <a>
     POLYGON ((180 260, 80 300, 40 180, 160 120, 180 260))
-  </a>
-<test>
-  <op name="isSimple" arg1="A">
-    true
-  </op>
-</test>
-</case>
-
-<case>
-  <desc>A - empty</desc>
-  <a>
-    POLYGON EMPTY
   </a>
 <test>
   <op name="isSimple" arg1="A">

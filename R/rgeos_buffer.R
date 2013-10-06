@@ -24,6 +24,13 @@ gBuffer = function(spgeom, byid=FALSE, id=NULL, width=1.0, quadsegs=5,
     
     id = as.character(id)
     width = as.numeric(width)
+    n <- length(curids)
+    if (byid) {
+        if (length(width) == 1) width <- rep(width, n)
+        stopifnot(length(width) == n)
+    } else {
+        stopifnot(length(width) == 1)
+    }
     quadsegs = as.integer(quadsegs)
     byid = as.logical(byid)
     mitreLimit=as.numeric(mitreLimit)
@@ -50,8 +57,11 @@ gBuffer = function(spgeom, byid=FALSE, id=NULL, width=1.0, quadsegs=5,
                                 capStyle, joinStyle, mitreLimit, PACKAGE="rgeos")
  
 	if (byid) {
-		if (.hasSlot(spgeom, 'data')) {
-			ans <- SpatialPolygonsDataFrame(ans, spgeom@data, FALSE)
+	    if (.hasSlot(spgeom, 'data')) {
+                m1 <- match(row.names(ans), id)
+                df1 <- spgeom@data[m1, , drop=FALSE]
+                row.names(df1) <- id[m1]
+	        ans <- SpatialPolygonsDataFrame(ans, df1)
 		}	
 	}
  
