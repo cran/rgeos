@@ -83,7 +83,7 @@ GEOSGeom rgeos_crdMat2Polygon(SEXP env, SEXP mat, SEXP dim) {
 SEXP rgeos_crdMatFixDir(SEXP crd, int hole) {
     
     double area = 0.0;
-    int n = length(crd)/2;
+    int n = length(crd)/2, pc=0;
     for(int i=1; i<n;i++) {
         area += (NUMERIC_POINTER(crd)[i] - NUMERIC_POINTER(crd)[i-1])*
                 (NUMERIC_POINTER(crd)[i+n] + NUMERIC_POINTER(crd)[i+n-1]);
@@ -93,15 +93,15 @@ SEXP rgeos_crdMatFixDir(SEXP crd, int hole) {
     
     if ( (hole && cw) || (!hole && !cw) ) {
         SEXP newcrd;
-        PROTECT( newcrd = NEW_NUMERIC(n*2) );
+        PROTECT( newcrd = NEW_NUMERIC(n*2) ); pc++;
         for(int i=0; i<n;i++) {
             NUMERIC_POINTER(newcrd)[i] = NUMERIC_POINTER(crd)[n-i-1];
             NUMERIC_POINTER(newcrd)[n+i] = NUMERIC_POINTER(crd)[n+n-i-1];
         }
         
-        PROTECT(crd = rgeos_formatcrdMat(newcrd, n));
+        PROTECT(crd = rgeos_formatcrdMat(newcrd, n)); pc++;
     
-        UNPROTECT(2);
+        UNPROTECT(pc);
     }
     
     //Rprintf("HERE cw:%d hole:%d\n",cw,hole);

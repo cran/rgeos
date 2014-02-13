@@ -1,19 +1,21 @@
 #include "rgeos.h"
+// symmetric intersects_prepared 
+// not symmetric contains_prepared containsproperly_prepared covers_prepared
 
 SEXP rgeos_intersects_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
-    return( rgeos_binpredfunc_prepared(env,spgeom1,spgeom2,byid, &GEOSPreparedIntersects_r) );
+    return( rgeos_binpredfunc_prepared(env,spgeom1,spgeom2,byid, &GEOSPreparedIntersects_r, TRUE) );
 }
 SEXP rgeos_contains_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
-    return( rgeos_binpredfunc_prepared(env,spgeom1,spgeom2,byid, &GEOSPreparedContains_r) );
+    return( rgeos_binpredfunc_prepared(env,spgeom1,spgeom2,byid, &GEOSPreparedContains_r, FALSE) );
 }
 SEXP rgeos_containsproperly_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
-    return( rgeos_binpredfunc_prepared(env,spgeom1,spgeom2,byid, &GEOSPreparedContainsProperly_r) );
+    return( rgeos_binpredfunc_prepared(env,spgeom1,spgeom2,byid, &GEOSPreparedContainsProperly_r, FALSE) );
 }
 SEXP rgeos_covers_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
-    return( rgeos_binpredfunc_prepared(env,spgeom1,spgeom2,byid, &GEOSPreparedCovers_r) );
+    return( rgeos_binpredfunc_prepared(env,spgeom1,spgeom2,byid, &GEOSPreparedCovers_r, FALSE) );
 }
 
-SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpredfunc_prepared binpredfunc_prepared) {
+SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpredfunc_prepared binpredfunc_prepared, int canSym) {
 
     GEOSContextHandle_t GEOShandle = getContextHandle(env);    
     
@@ -23,7 +25,7 @@ SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid,
     GEOSGeom geom2 = (spgeom2 == R_NilValue) ? geom1 : rgeos_convert_R2geos(env, spgeom2);
     int type2 = GEOSGeomTypeId_r(GEOShandle, geom2);
     
-    int sym_ans = (spgeom2 == R_NilValue);
+    int S1isS2 = (spgeom2 == R_NilValue);
     
     int m = (LOGICAL_POINTER(byid)[0] && type1 == GEOS_GEOMETRYCOLLECTION) ? 
                 GEOSGetNumGeometries_r(GEOShandle, geom1) : 1;
@@ -46,7 +48,7 @@ SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid,
         const GEOSPreparedGeometry *prepgeom = GEOSPrepare_r(GEOShandle, curgeom1);
 
         for(int j=0; j<n; j++) {
-            if(sym_ans && j > i)
+            if(S1isS2 && j > i && canSym)
                 break;
             
             const GEOSGeometry *curgeom2 = (n > 1) ? GEOSGetGeometryN_r(GEOShandle, geom2, j) : geom2;
@@ -58,7 +60,7 @@ SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid,
                 error("rgeos_binpredfunc: comparison failed");
 
             LOGICAL_POINTER(ans)[n*i+j] = val;
-            if (sym_ans)
+            if (S1isS2 && canSym)
                 LOGICAL_POINTER(ans)[n*j+i] = val;
         
         }
@@ -75,44 +77,46 @@ SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid,
     }
     
     GEOSGeom_destroy_r(GEOShandle, geom1);
-    if (!sym_ans)
+    if (!S1isS2)
         GEOSGeom_destroy_r(GEOShandle, geom2);
     
     UNPROTECT(pc);
     return(ans);
 }
 
+// symmetric intersects disjoint touches crosses overlaps equals
+// not symmetric contains within relate
 
 
 SEXP rgeos_intersects(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
-    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSIntersects_r) );
+    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSIntersects_r, TRUE) );
 }
 SEXP rgeos_contains(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
-    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSContains_r) );
+    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSContains_r, FALSE) );
 }
 SEXP rgeos_disjoint(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
-    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSDisjoint_r) );
+    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSDisjoint_r, TRUE) );
 }
 SEXP rgeos_touches(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
-    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSTouches_r) );
+    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSTouches_r, TRUE) );
 }
 SEXP rgeos_crosses(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
-    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSCrosses_r) );
+    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSCrosses_r, TRUE) );
 }
 SEXP rgeos_within(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
-    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSWithin_r) );
+    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSWithin_r, FALSE) );
 }
 SEXP rgeos_overlaps(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
-    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSOverlaps_r) );
+    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSOverlaps_r, TRUE) );
 }
 SEXP rgeos_equals(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
-    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSEquals_r) );
+    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, &GEOSEquals_r, TRUE) );
 }
 SEXP rgeos_relate(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid) {
-    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, (p_binpredfunc) &GEOSRelate_r) );
+    return( rgeos_binpredfunc(env,spgeom1,spgeom2,byid, (p_binpredfunc) &GEOSRelate_r, FALSE) );
 }
 
-SEXP rgeos_binpredfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpredfunc binpredfunc) {
+SEXP rgeos_binpredfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpredfunc binpredfunc, int canSym) {
 
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
     int pc = 0;
@@ -123,7 +127,7 @@ SEXP rgeos_binpredfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpre
     GEOSGeom geom2 = (spgeom2 == R_NilValue) ? geom1 : rgeos_convert_R2geos(env, spgeom2);
     int type2 = GEOSGeomTypeId_r(GEOShandle, geom2);
     
-    int sym_ans = (spgeom2 == R_NilValue);
+    int S1isS2 = (spgeom2 == R_NilValue);
     
     int m = (LOGICAL_POINTER(byid)[0] && type1 == GEOS_GEOMETRYCOLLECTION) ? 
                 GEOSGetNumGeometries_r(GEOShandle, geom1) : 1;
@@ -146,7 +150,7 @@ SEXP rgeos_binpredfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpre
             error("rgeos_binpredfunc: unable to get subgeometries from geometry 1");
 
         for(int j=0; j<n; j++) {
-            if(sym_ans && j > i)
+            if(S1isS2 && j > i && canSym)
                 break;
             
             const GEOSGeometry *curgeom2 = (n > 1) ? GEOSGetGeometryN_r(GEOShandle, geom2, j) : geom2;
@@ -159,7 +163,7 @@ SEXP rgeos_binpredfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpre
                     error("rgeos_isvalidreason: test failed");
 
                 SET_STRING_ELT(ans, n*i+j, COPY_TO_USER_STRING(buf));
-                if (sym_ans)
+                if (S1isS2 && canSym)
                     SET_STRING_ELT(ans, n*j+i, COPY_TO_USER_STRING(buf));
 
                 GEOSFree_r(GEOShandle, buf);
@@ -169,7 +173,7 @@ SEXP rgeos_binpredfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpre
                     error("rgeos_binpredfunc: comparison failed");
 
                 LOGICAL_POINTER(ans)[n*i+j] = val;
-                if (sym_ans)
+                if (S1isS2 && canSym)
                     LOGICAL_POINTER(ans)[n*j+i] = val;
             }
         }
@@ -184,23 +188,25 @@ SEXP rgeos_binpredfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpre
     }
     
     GEOSGeom_destroy_r(GEOShandle, geom1);
-    if (!sym_ans)
+    if (!S1isS2)
         GEOSGeom_destroy_r(GEOShandle, geom2);
     
     UNPROTECT(pc);
     return(ans);
 }
 
+// symmetric equalsexact
+// not symmetric relatepattern
 
 SEXP rgeos_equalsexact(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP tol, SEXP byid) {
-    return( rgeos_binpredfunc_opt(env, spgeom1, spgeom2, tol, byid, FALSE) );
+    return( rgeos_binpredfunc_opt(env, spgeom1, spgeom2, tol, byid, FALSE, TRUE) );
 }
 
 SEXP rgeos_relatepattern(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP pattern, SEXP byid) {
-    return( rgeos_binpredfunc_opt(env, spgeom1, spgeom2, pattern, byid, 1) );
+    return( rgeos_binpredfunc_opt(env, spgeom1, spgeom2, pattern, byid, 1, FALSE) );
 }
 
-SEXP rgeos_binpredfunc_opt(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP opt, SEXP byid, int relpat) {
+SEXP rgeos_binpredfunc_opt(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP opt, SEXP byid, int relpat, int canSym) {
     
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
     
@@ -215,7 +221,7 @@ SEXP rgeos_binpredfunc_opt(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP opt, SEXP 
     int n = (LOGICAL_POINTER(byid)[1] && type2 == GEOS_GEOMETRYCOLLECTION) ?
                 GEOSGetNumGeometries_r(GEOShandle, geom2) : 1;
     
-    int sym_ans = (spgeom2 == R_NilValue);
+    int S1isS2 = (spgeom2 == R_NilValue);
          
     
     if (m == -1) error("rgeos_equalsexact: invalid number of subgeometries in geometry 1");
@@ -232,7 +238,7 @@ SEXP rgeos_binpredfunc_opt(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP opt, SEXP 
             error("rgeos_equalsexact: unable to get subgeometries from geometry 1");
         
         for(int j=0; j<n; j++) {
-            if(sym_ans && j > i)
+            if(S1isS2 && j > i && canSym)
                 break;
             
             const GEOSGeometry *curgeom2 = (n > 1) ? (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, geom2, j) : geom2;
@@ -252,7 +258,7 @@ SEXP rgeos_binpredfunc_opt(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP opt, SEXP 
                 error("rgeos_equalsexact: comparison failed");
 
             LOGICAL_POINTER(ans)[n*i+j] = val;
-            if (sym_ans)
+            if (S1isS2 && canSym)
                 LOGICAL_POINTER(ans)[n*j+i] = val;
         }
     }
@@ -266,7 +272,7 @@ SEXP rgeos_binpredfunc_opt(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP opt, SEXP 
     }
     
     GEOSGeom_destroy_r(GEOShandle, geom1);
-    if (!sym_ans)
+    if (!S1isS2)
         GEOSGeom_destroy_r(GEOShandle, geom2);
     
     UNPROTECT(pc);
