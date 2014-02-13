@@ -54,9 +54,9 @@ RGEOSBinPredFunc = function(spgeom1, spgeom2, byid, func, optparam=NULL) {
         x <- .Call("rgeos_relate", .RGEOS_HANDLE, spgeom1, spgeom2, byid, PACKAGE="rgeos")
     else stop("No such function:", func)    
     if(any(byid)) {
-        id1 = row.names(spgeom1) 
+        id1 = unique(row.names(spgeom1))
         if (is.null(spgeom2)) id2 = id1
-        else id2 = row.names(spgeom2)
+        else id2 = unique(row.names(spgeom2))
 
         colnames(x) <- id1
         rownames(x) <- id2

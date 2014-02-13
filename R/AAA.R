@@ -29,6 +29,8 @@ version_GEOS0 <- function() {
   set_RGEOS_HANDLE(init_RGEOS())
   assign("scale", 100000000, envir=.RGEOS_HANDLE)
   assign("do_poly_check", TRUE, envir=.RGEOS_HANDLE)
+  assign("both_poly", FALSE, envir=.RGEOS_HANDLE)
+  assign("drop_not_poly", FALSE, envir=.RGEOS_HANDLE)
 
 }
 

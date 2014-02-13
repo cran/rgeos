@@ -61,8 +61,15 @@ SEXP rgeos_convert_geos2R(SEXP env, GEOSGeom geom, SEXP p4s, SEXP id) {
                 n += ns;
                 
                 types[i] = GEOSGeomTypeId_r(GEOShandle, subgeom);
-                if (types[i] == GEOS_GEOMETRYCOLLECTION)
+                if (types[i] == GEOS_GEOMETRYCOLLECTION) {
+                    Rprintf("output subgeometry %d, row.name: %s\n", i,
+                        CHAR(STRING_ELT(id, i)));
+                    for (int ii=0; ii<ns; ii++)
+                        Rprintf("subsubgeometry %d: %s\n", ii,
+                            GEOSGeomType_r(GEOShandle,
+                            GEOSGetGeometryN_r(GEOShandle, subgeom, ii)));
                     error("Geometry collections may not contain other geometry collections");
+                }
                 
                 gctypes[ types[i] ] += 1; 
                 gctypen[ types[i] ] += ns;
@@ -425,7 +432,7 @@ SEXP rgeos_geosring2Polygon(SEXP env, GEOSGeom lr, int hole) {
     
     // Get coordinates
     SEXP crd;
-    PROTECT(crd = rgeos_crdMatFixDir(rgeos_CoordSeq2crdMat(env, s, FALSE, hole), hole)); pc++;
+    PROTECT(crd = rgeos_crdMatFixDir(PROTECT(rgeos_CoordSeq2crdMat(env, s, FALSE, hole)), hole)); pc += 2;
     
     // Calculate area
     GEOSGeom p = GEOSGeom_createPolygon_r(GEOShandle,GEOSGeom_clone_r(GEOShandle,lr),NULL,0);
@@ -652,17 +659,17 @@ SEXP rgeos_geosring2SpatialRings(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
             if (s == NULL) 
                 error("rgeos_geosring2SpatialRings: unable to generate coordinate sequence");
 
-            PROTECT(crdmat = rgeos_crdMatFixDir(rgeos_CoordSeq2crdMat(env, s, FALSE, FALSE), FALSE));
+            PROTECT(crdmat = rgeos_crdMatFixDir(PROTECT(rgeos_CoordSeq2crdMat(env, s, FALSE, FALSE)), FALSE)); pc += 2;
         } else {
-            PROTECT( crdmat = R_NilValue);
+            PROTECT( crdmat = R_NilValue); pc++;
         }
         
         SEXP ring;
-        PROTECT(ring = NEW_OBJECT(MAKE_CLASS("Ring")));   
+        PROTECT(ring = NEW_OBJECT(MAKE_CLASS("Ring"))); pc++;   
         SET_SLOT(ring, install("coords"), crdmat);
         
         SEXP id;
-        PROTECT( id = NEW_CHARACTER(1) );
+        PROTECT( id = NEW_CHARACTER(1) ); pc++;
         char idbuf[BUFSIZ];
         strcpy(idbuf, CHAR( STRING_ELT(idlist, j) ));
         SET_STRING_ELT(id, 0, COPY_TO_USER_STRING(idbuf));
@@ -672,7 +679,7 @@ SEXP rgeos_geosring2SpatialRings(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
         SET_VECTOR_ELT(rings_list, j, ring );
         
         
-        UNPROTECT(3);
+        UNPROTECT(pc);
     }
     
     SEXP ans;    

@@ -1,3 +1,61 @@
+2014-02-13 15:28  rsbivand
+
+	* src/rgeos_topology_binary.c:
+	  cast to remove warnings
+
+2014-02-13 08:52  rsbivand
+
+	* ChangeLog,
+	  inst/ChangeLog: tidy
+
+2014-02-13 08:51  rsbivand
+
+	* DESCRIPTION,
+	  src/rgeos_coord.c, src/rgeos_geos2R.c: changed PROTECT code
+	  for crdMAT
+
+2014-02-08 15:50  rsbivand
+
+	* DESCRIPTION,
+	  R/AAA.R, R/rgeos_topology_binary.R, man/topo-bin-gDifference.Rd,
+	  man/topo-bin-gIntersection.Rd, man/topo-bin-gSymdifference.Rd,
+	  man/topo-bin-gUnion.Rd, src/rgeos_topology_binary.c: drop not
+	  poly intersections if both poly
+
+2014-01-27 19:35  rsbivand
+
+	* src/rgeos_geos2R.c:
+	  added id report on GC in GC
+
+2014-01-27 19:06  rsbivand
+
+	* src/rgeos_geos2R.c,
+	  src/rgeos_topology_binary.c: added id report on GC in GC
+
+2014-01-22 12:13  rsbivand
+
+	* src/rgeos_predicate_binary.c:
+	  fix over-generous symmetry in binar predicates
+
+2014-01-22 12:09  rsbivand
+
+	* DESCRIPTION,
+	  src/rgeos.h, src/rgeos_predicate_binary.c: fix over-generous
+	  symmetry in binar predicates
+
+2013-12-06 23:34  crundel
+
+	* R/rgeos_predicate_binary.R:
+	  Fix for an edge case of predicates with multipoint geometries
+	  There is an issue if some points share in a SpatialPoints
+	  object share an ID since there will be a mismatch between the
+	  number of output IDs
+
+2013-10-06 13:29  rsbivand
+
+	* ChangeLog,
+	  inst/ChangeLog: tidy
+
 2013-10-06 13:28  rsbivand
 
 	* R/rgeos_buffer.R,

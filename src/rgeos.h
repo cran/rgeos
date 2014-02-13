@@ -143,7 +143,7 @@ SEXP rgeos_containsproperly_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP 
 SEXP rgeos_covers_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
 
 typedef char (*p_binpredfunc_prepared)(GEOSContextHandle_t, const GEOSPreparedGeometry*, const GEOSGeometry*);
-SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpredfunc_prepared);
+SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpredfunc_prepared, int canSym);
 
 SEXP rgeos_disjoint(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
 SEXP rgeos_touches(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
@@ -156,11 +156,11 @@ SEXP rgeos_equals(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
 SEXP rgeos_relate(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid);
 
 typedef char (*p_binpredfunc)(GEOSContextHandle_t, const GEOSGeometry*, const GEOSGeometry*);
-SEXP rgeos_binpredfunc( SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpredfunc);
+SEXP rgeos_binpredfunc( SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpredfunc, int canSym);
 
 SEXP rgeos_equalsexact(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP tol, SEXP byid);
 SEXP rgeos_relatepattern(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP pattern, SEXP byid);
-SEXP rgeos_binpredfunc_opt(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP opt, SEXP byid, int relpat);
+SEXP rgeos_binpredfunc_opt(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP opt, SEXP byid, int relpat, int canSym);
 
 
 // Unary Predicate Functions - rgeos_predicate_unary.c
