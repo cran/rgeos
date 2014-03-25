@@ -2,7 +2,7 @@
 \alias{gPolygonize}
 
 \title{Linestring Polygonizer}
-\description{Function attempts to polygonize the given list of linestrings}
+\description{Function attempts to polygonize the given list of linestrings. If the linestrings are not noded (coordinates inserted at intersection points), the function may fail. \code{\link{gNode}} may be tried to insert such missing points}
 \usage{
 	gPolygonize( splist, getCutEdges=FALSE);
 }
@@ -19,7 +19,7 @@
 
 \author{Roger Bivand & Colin Rundel}
 
-
+\seealso{\code{\link{gNode}}}
 
 \examples{
 library(sp)

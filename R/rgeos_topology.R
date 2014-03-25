@@ -196,6 +196,18 @@ gDelaunayTriangulation <- function(spgeom, tolerance=0.0, onlyEdges=FALSE) {
     
 }
 
+gNode <- function(spgeom){
+
+    if (version_GEOS0() < "3.4.0")
+        stop("No noding in this version of GEOS")
+
+    if (!inherits(spgeom, "SpatialLines"))
+        stop("Invalid geometry, may only be applied to lines")
+
+    .Call("rgeos_node", .RGEOS_HANDLE, spgeom, PACKAGE="rgeos")
+
+}
+
 RGEOSEnvelope = function(spgeom, byid=FALSE, id = NULL) {
     .Deprecated("gEnvelope")
     return( gEnvelope(spgeom, id, byid) )

@@ -50,7 +50,7 @@ export( RGEOSEnvelope, RGEOSConvexHull, RGEOSBoundary, RGEOSGetCentroid,
 export( gEnvelope, gConvexHull, gBoundary, gCentroid, 
 		gPointOnSurface, gLineMerge, gUnionCascaded, gUnaryUnion)
 
-export(	gSimplify, gPolygonize, gDelaunayTriangulation)
+export(	gSimplify, gPolygonize, gDelaunayTriangulation, gNode)
 		
 # GEOS binary topology functions
 export( gDifference, gSymdifference, gIntersection, gUnion)# RSB FIXME

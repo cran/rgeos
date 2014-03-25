@@ -41,6 +41,9 @@ static R_CallMethodDef CallEntries[] = {
 
     {"rgeos_simplify", (DL_FUNC) &rgeos_simplify, 6},
     {"rgeos_polygonize", (DL_FUNC) &rgeos_polygonize, 5},
+#ifdef HAVE_NODE
+    {"rgeos_node", (DL_FUNC) &rgeos_node, 2},
+#endif
 
     //Binary Topology Functions
     {"rgeos_difference", (DL_FUNC) &rgeos_difference, 5},

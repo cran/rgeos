@@ -315,7 +315,7 @@ setAs("gpc.poly", "matrix",
 
 setAs("list", "gpc.poly",
       function(from) {
-              if(!(names(from) %in% c("x", "y")))
+              if(!(all(c("x", "y") %in% names(from))))
                       stop("list should have names 'x' and 'y'")
               if(length(from$x) != length(from$y))
                       stop("'x' and 'y' elements should have the same length")

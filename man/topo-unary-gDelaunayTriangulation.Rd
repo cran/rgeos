@@ -2,7 +2,7 @@
 \alias{gDelaunayTriangulation}
 
 \title{Compute Delaunay triangulation between points}
-\description{Function to compute the Delaunay triangulation between points}
+\description{Function to compute the Delaunay triangulation between points; only available for GEOS >= 3.4.0.}
 \usage{
 	gDelaunayTriangulation(spgeom, tolerance=0.0, onlyEdges=FALSE)
 }

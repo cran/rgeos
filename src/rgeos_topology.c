@@ -178,3 +178,42 @@ SEXP rgeos_polygonize(SEXP env, SEXP obj, SEXP id, SEXP p4s, SEXP cutEdges) {
     
     return( rgeos_convert_geos2R(env, res, p4s, id) );
 }
+
+#ifdef HAVE_NODE
+SEXP rgeos_node(SEXP env, SEXP obj) {
+
+    SEXP ans, id;
+    int pc=0;
+    
+    GEOSContextHandle_t GEOShandle = getContextHandle(env);
+    SEXP p4s = GET_SLOT(obj, install("proj4string"));
+    GEOSGeom geom = rgeos_convert_R2geos(env, obj);
+    int type = GEOSGeomTypeId_r(GEOShandle, geom);
+//Rprintf("type: %d, %s\n", type, GEOSGeomType_r(GEOShandle, geom));
+    
+    GEOSGeom res = GEOSNode_r(GEOShandle, geom);
+    
+    type = GEOSGeomTypeId_r(GEOShandle, res);
+
+    int ng = GEOSGetNumGeometries_r(GEOShandle, res);
+
+//Rprintf("ng: %d, type: %d, %s\n", ng, type, GEOSGeomType_r(GEOShandle, res));
+
+    char buf[BUFSIZ];
+
+    PROTECT(id = NEW_CHARACTER(ng)); pc++;
+    for (int i=0; i<ng; i++) {
+        sprintf(buf, "%d", i);
+        SET_STRING_ELT(id, i, COPY_TO_USER_STRING(buf));
+    }
+
+    GEOSGeom_destroy_r(GEOShandle, geom);
+
+    ans = rgeos_convert_geos2R(env, res, p4s, id); 
+
+    UNPROTECT(pc);
+    return(ans);
+
+}
+#endif
+
