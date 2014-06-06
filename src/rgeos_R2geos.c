@@ -120,7 +120,7 @@ GEOSGeom rgeos_SpatialPoints2geospoint(SEXP env, SEXP obj) {
             //for (int j=1; j<n; j++) 
             //    GEOSGeom_destroy_r(GEOShandle, geoms[j]);
             if (GC == NULL) error("rgeos_SpatialPoints2geospoint: collection not created");
-            
+         
         } else {
             
             int *unique  = (int *) R_alloc((size_t) n, sizeof(int));
@@ -180,6 +180,7 @@ GEOSGeom rgeos_SpatialPoints2geospoint(SEXP env, SEXP obj) {
     } else {
         error("rgeos_SpatialPoints2geospoint: invalid dim");
     }
+// Rprintf("n: %d, GC %s\n", n, GEOSGeomType_r(GEOShandle, GC));
     
     UNPROTECT(pc);
     return(GC);

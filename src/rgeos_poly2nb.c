@@ -90,11 +90,14 @@ SEXP rgeos_poly_findInBox(SEXP env, SEXP pls, SEXP as_points) {
     return(bblist);
 }
 
+/*GEOSSTRtree *rgeos_geom2tree(GEOSContextHandle_t GEOShandle, ) {
+}*/
+
 SEXP rgeos_binary_STRtree_query(SEXP env, SEXP obj1, SEXP obj2) {
 
     GEOSGeom *bbs2;
-    int nobj1, nobj2, i, j, pc=0;
-    GEOSGeom GC, bb;
+    int nobj1, nobj2, i, j, pc=0, isPts=FALSE;
+    GEOSGeom GC, GCpts, bb;
     SEXP pl, bblist;
     GEOSSTRtree *str;
     int *icard, *ids, *oids;
@@ -114,7 +117,19 @@ SEXP rgeos_binary_STRtree_query(SEXP env, SEXP obj1, SEXP obj2) {
     str = (GEOSSTRtree *) GEOSSTRtree_create_r(GEOShandle, (size_t) 10);
 
     nobj1 = length(obj1);
-    nobj2 = length(obj2);
+
+    SEXP cl2 = GET_CLASS(obj2);
+    if (cl2 == R_NilValue) strcpy(classbuf2, "\0");
+    else strcpy(classbuf2, CHAR(STRING_ELT(cl2, 0)));
+    if ( !strcmp( classbuf2, "SpatialPoints") || 
+        !strcmp(classbuf2, "SpatialPointsDataFrame")) {
+        isPts = TRUE;
+        SEXP crds = GET_SLOT(obj2, install("coords")); 
+        SEXP dim = getAttrib(crds, install("dim")); 
+        nobj2 = INTEGER_POINTER(dim)[0];
+    } else {
+        nobj2 = length(obj2);
+    }
     bbs2 = (GEOSGeom *) R_alloc((size_t) nobj2, sizeof(GEOSGeom));
     ids = (int *) R_alloc((size_t) nobj1, sizeof(int));
 
@@ -135,28 +150,36 @@ SEXP rgeos_binary_STRtree_query(SEXP env, SEXP obj1, SEXP obj2) {
         GEOSSTRtree_insert_r(GEOShandle, str, bb, &(ids[i]));
     }
 
-    strcpy(classbuf2, CHAR(STRING_ELT(GET_CLASS(VECTOR_ELT(obj2, 0)), 0)));
-    if (!strncmp(classbuf2, "Polygons", 8)) 
-        rgeos_xx2MP = rgeos_Polygons2MP;
-    else if (!strncmp(classbuf2, "Lines", 5)) 
-        rgeos_xx2MP = rgeos_Lines2MP;
-    else
-        error("rgeos_binary_STRtree_query: object class %s unknown", classbuf2);
+    if (isPts) {
+        GCpts = rgeos_SpatialPoints2geospoint(env, obj2);
+    } else {
+        strcpy(classbuf2, CHAR(STRING_ELT(GET_CLASS(VECTOR_ELT(obj2, 0)), 0)));
+        if (!strncmp(classbuf2, "Polygons", 8)) 
+            rgeos_xx2MP = rgeos_Polygons2MP;
+        else if (!strncmp(classbuf2, "Lines", 5)) 
+            rgeos_xx2MP = rgeos_Lines2MP;
+        else
+            error("rgeos_binary_STRtree_query: object class %s unknown",
+                classbuf2);
+    }
 
     for (i=0; i<nobj2; i++) {
-        pl = VECTOR_ELT(obj2, i);
-        GC = rgeos_xx2MP(env, pl);
+        if (isPts) {
+            GC = (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, GCpts, i);
+        } else {
+            pl = VECTOR_ELT(obj2, i);
+            GC = rgeos_xx2MP(env, pl);
+        }
         if (GC == NULL) {
-            error("rgeos_binary_STRtree_query: MP GC[%d] not created", i);
+            error("rgeos_binary_STRtree_query: GC[%d] not created", i);
         }
         if ((bb = GEOSEnvelope_r(GEOShandle, GC)) == NULL) {
             error("rgeos_binary_STRtree_query: envelope [%d] not created", i);
         }
         GEOSGeom_destroy_r(GEOShandle, GC);
+// Rprintf("i: %d, bb %s\n", i, GEOSGeomType_r(GEOShandle, bb));
         bbs2[i] = bb;
     }
-
-//     GEOSGeom_destroy_r(GEOShandle, bb); // EJP, try
 // 110904 EJP
     icard = (int *) R_alloc((size_t) nobj2, sizeof(int));
     PROTECT(bblist = NEW_LIST(nobj2)); pc++;
@@ -183,9 +206,8 @@ SEXP rgeos_binary_STRtree_query(SEXP env, SEXP obj1, SEXP obj2) {
 
     GEOSSTRtree_destroy_r(GEOShandle, str);
     for (i=0; i<nobj2; i++) {
-        GEOSGeom_destroy(bbs2[i]);
+        GEOSGeom_destroy_r(GEOShandle, bbs2[i]);
     }
-//    GEOSGeom_destroy_r(GEOShandle, bb);
 
     UNPROTECT(pc);
     return(bblist);

@@ -7,14 +7,15 @@
 \title{Geometry Relationships - Intersects and Disjoint}
 \description{Function for testing if the geometries have at least one point in common or no points in common}
 \usage{
-	gIntersects(spgeom1, spgeom2 = NULL, byid = FALSE, prepared=TRUE)
-	gDisjoint(spgeom1, spgeom2 = NULL, byid = FALSE)
+gIntersects(spgeom1, spgeom2 = NULL, byid = FALSE, prepared=TRUE, returnDense=TRUE)
+gDisjoint(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE)
 }
 	
 \arguments{
   \item{spgeom1, spgeom2}{sp objects as defined in package sp. If spgeom2 is NULL then spgeom1 is compared to itself.}
   \item{byid}{Logical vector determining if the function should be applied across ids (TRUE) or the entire object (FALSE) for spgeom1 and spgeom2}
   \item{prepared}{Logical determining if prepared geometry (spatially indexed) version of the GEOS function should be used. In general prepared geometries should be faster than the alternative.}
+  \item{returnDense}{default TRUE, if false returns a list of the length of spgeom1 of integer vectors listing the \code{1:length(spgeom2)} indices which would be TRUE in the dense logical matrix representation; useful when the sizes of the byid=TRUE returned matrix is very large and it is sparse}
 }
 
 \value{\code{gIntersects} returns TRUE if \code{spgeom1} and \code{spgeom2} have at least one point in common.

@@ -1,3 +1,45 @@
+2014-06-05 18:33  rsbivand
+
+	* ChangeLog,
+	  inst/ChangeLog: tidy
+
+2014-06-05 18:32  rsbivand
+
+	* DESCRIPTION,
+	  R/AAA.R, R/rgeos_predicate_binary.R, src/rgeos_poly2nb.c,
+	  src/rgeos_predicate_binary.c: tidy
+
+2014-03-31 19:58  rsbivand
+
+	* src/rgeos_predicate_binary.c:
+	  permit binary predicates to return lists
+
+2014-03-31 19:46  rsbivand
+
+	* src/rgeos_predicate_binary.c:
+	  permit binary predicates to return lists
+
+2014-03-31 17:15  rsbivand
+
+	* DESCRIPTION,
+	  R/AAA.R, R/rgeos_predicate_binary.R, R/rgeos_util.R,
+	  man/experimental-functions.Rd, man/pred-binary-gContains.Rd,
+	  man/pred-binary-gCrosses.Rd, man/pred-binary-gEquals.Rd,
+	  man/pred-binary-gIntersects.Rd, man/pred-binary-gTouches.Rd,
+	  src/rgeos_R2geos.c, src/rgeos_poly2nb.c,
+	  src/rgeos_predicate_binary.c: permit binary predicates to
+	  return lists
+
+2014-03-25 14:00  rsbivand
+
+	* configure:
+	  tidy
+
+2014-03-25 13:55  rsbivand
+
+	* ChangeLog,
+	  inst/ChangeLog: tidy
+
 2014-03-23 09:22  rsbivand
 
 	* DESCRIPTION,

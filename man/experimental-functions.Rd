@@ -12,7 +12,7 @@
 }
 
 \arguments{
-  \item{obj, obj1, obj2}{Objects inheriting from either \code{SpatialPolygons} or \code{SpatialLines}}
+  \item{obj, obj1, obj2}{Objects inheriting from either \code{SpatialPolygons} or \code{SpatialLines}, obj2 may also inherit from \code{SpatialPoints}}
   \item{spl}{Object that inherits from the \code{SpatialPolygons} class}
   \item{as_points}{Logical value indicating if the polygon should be treated as points}
 }
@@ -49,4 +49,7 @@ obj1 <- as(as(SG, "SpatialPixels"), "SpatialPolygons")
 a4 <- gBinarySTRtreeQuery(nc1, obj1)
 plot(nc1, col="orange", border="yellow")
 plot(obj1, angle=sapply(a4, is.null)*45, density=20, lwd=0.5, add=TRUE)
+set.seed(1)
+pts <- spsample(nc1, n=10, type="random")
+res <- gBinarySTRtreeQuery(nc1, pts)
 }

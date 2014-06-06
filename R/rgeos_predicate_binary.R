@@ -55,11 +55,15 @@ RGEOSBinPredFunc = function(spgeom1, spgeom2, byid, func, optparam=NULL) {
     else stop("No such function:", func)    
     if(any(byid)) {
         id1 = unique(row.names(spgeom1))
-        if (is.null(spgeom2)) id2 = id1
-        else id2 = unique(row.names(spgeom2))
+        if (!get_RGEOS_DENSE()) {
+            if (length(id1) == length(x)) names(x) <- id1
+        } else {
+            if (is.null(spgeom2)) id2 = id1
+            else id2 = unique(row.names(spgeom2))
 
-        colnames(x) <- id1
-        rownames(x) <- id2
+            colnames(x) <- id1
+            rownames(x) <- id2
+        }
     }
     
     return(x)
@@ -67,56 +71,142 @@ RGEOSBinPredFunc = function(spgeom1, spgeom2, byid, func, optparam=NULL) {
 
 
 
-gContains = function(spgeom1, spgeom2 = NULL, byid = FALSE, prepared=TRUE) {
+gContains = function(spgeom1, spgeom2 = NULL, byid = FALSE, prepared=TRUE, returnDense=TRUE, STRsubset=FALSE) {
+    stopifnot(is.logical(STRsubset))
+    stopifnot(length(STRsubset)==1)
+    oSTRsubset <- get_RGEOS_STR()
+    set_RGEOS_STR(STRsubset)
+    if (STRsubset) returnDense=FALSE
+    stopifnot(is.logical(returnDense))
+    stopifnot(length(returnDense)==1)
+    oreturnDense <- get_RGEOS_DENSE()
+    set_RGEOS_DENSE(returnDense)
     func = "rgeos_contains"
-	if (prepared)
+    if (prepared)
 		func = paste(func,"_prepared",sep="")
 
-	return( RGEOSBinPredFunc(spgeom1,spgeom2,byid,func) )
+    res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,func)
+    set_RGEOS_DENSE(oreturnDense)
+    set_RGEOS_STR(oSTRsubset)
+    res
 }
-gIntersects = function(spgeom1, spgeom2 = NULL, byid = FALSE,prepared=TRUE) {
-	func = "rgeos_intersects"
-	if (prepared)
+gIntersects = function(spgeom1, spgeom2 = NULL, byid = FALSE, prepared=TRUE, returnDense=TRUE) {
+    stopifnot(is.logical(returnDense))
+    stopifnot(length(returnDense)==1)
+    oreturnDense <- get_RGEOS_DENSE()
+    set_RGEOS_DENSE(returnDense)
+    func = "rgeos_intersects"
+    if (prepared)
 		func = paste(func,"_prepared",sep="")
 
-	return( RGEOSBinPredFunc(spgeom1,spgeom2,byid,func) )
+    res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,func)
+    set_RGEOS_DENSE(oreturnDense)
+    res
 }
 
-gContainsProperly = function(spgeom1, spgeom2 = NULL, byid = FALSE) {
-    return( RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_containsproperly_prepared") )
+gContainsProperly = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+    stopifnot(is.logical(returnDense))
+    stopifnot(length(returnDense)==1)
+    oreturnDense <- get_RGEOS_DENSE()
+    set_RGEOS_DENSE(returnDense)
+    res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_containsproperly_prepared")
+    set_RGEOS_DENSE(oreturnDense)
+    res
 }
-gCovers = function(spgeom1, spgeom2 = NULL, byid = FALSE) {
-    return( RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_covers_prepared") )
+
+gCovers = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+    stopifnot(is.logical(returnDense))
+    stopifnot(length(returnDense)==1)
+    oreturnDense <- get_RGEOS_DENSE()
+    set_RGEOS_DENSE(returnDense)
+    res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_covers_prepared")
+    set_RGEOS_DENSE(oreturnDense)
+    res
 }
-gCoveredBy = function(spgeom1, spgeom2 = NULL, byid = FALSE) {
-    return( RGEOSBinPredFunc(spgeom2,spgeom1,rev(byid),"rgeos_covers_prepared") )
+
+gCoveredBy = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+    stopifnot(is.logical(returnDense))
+    stopifnot(length(returnDense)==1)
+    oreturnDense <- get_RGEOS_DENSE()
+    set_RGEOS_DENSE(returnDense)
+    res <- RGEOSBinPredFunc(spgeom2,spgeom1,rev(byid),"rgeos_covers_prepared")
+    set_RGEOS_DENSE(oreturnDense)
+    res
 }
 
 
-gDisjoint = function(spgeom1, spgeom2 = NULL, byid = FALSE) {
-    return( RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_disjoint") )
+gDisjoint = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+    stopifnot(is.logical(returnDense))
+    stopifnot(length(returnDense)==1)
+    oreturnDense <- get_RGEOS_DENSE()
+    set_RGEOS_DENSE(returnDense)
+    res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_disjoint")
+    set_RGEOS_DENSE(oreturnDense)
+    res
 }
-gTouches = function(spgeom1, spgeom2 = NULL, byid = FALSE) {
-    return( RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_touches") )
+
+gTouches = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+    stopifnot(is.logical(returnDense))
+    stopifnot(length(returnDense)==1)
+    oreturnDense <- get_RGEOS_DENSE()
+    set_RGEOS_DENSE(returnDense)
+    res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_touches")
+    set_RGEOS_DENSE(oreturnDense)
+    res
 }
-gCrosses = function(spgeom1, spgeom2 = NULL, byid = FALSE) {
-    return( RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_crosses") )
+
+gCrosses = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+    stopifnot(is.logical(returnDense))
+    stopifnot(length(returnDense)==1)
+    oreturnDense <- get_RGEOS_DENSE()
+    set_RGEOS_DENSE(returnDense)
+    res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_crosses")
+    set_RGEOS_DENSE(oreturnDense)
+    res
 }
-gWithin = function(spgeom1, spgeom2 = NULL, byid = FALSE) {
-    return( RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_within") )
+
+gWithin = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+    stopifnot(is.logical(returnDense))
+    stopifnot(length(returnDense)==1)
+    oreturnDense <- get_RGEOS_DENSE()
+    set_RGEOS_DENSE(returnDense)
+    res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_within")
+    set_RGEOS_DENSE(oreturnDense)
+    res
 }
-gOverlaps = function(spgeom1, spgeom2 = NULL, byid = FALSE) {
-    return( RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_overlaps") )
+
+gOverlaps = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+    stopifnot(is.logical(returnDense))
+    stopifnot(length(returnDense)==1)
+    oreturnDense <- get_RGEOS_DENSE()
+    set_RGEOS_DENSE(returnDense)
+    res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_overlaps")
+    set_RGEOS_DENSE(oreturnDense)
+    res
 }
-gEquals = function(spgeom1, spgeom2 = NULL, byid = FALSE) {
-    return( RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_equals") )
+
+gEquals = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+    stopifnot(is.logical(returnDense))
+    stopifnot(length(returnDense)==1)
+    oreturnDense <- get_RGEOS_DENSE()
+    set_RGEOS_DENSE(returnDense)
+    res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_equals")
+    set_RGEOS_DENSE(oreturnDense)
+    res
 }
-gEqualsExact = function(spgeom1, spgeom2 = NULL, tol=0.0, byid = FALSE) {
+
+gEqualsExact = function(spgeom1, spgeom2 = NULL, tol=0.0, byid = FALSE, returnDense=TRUE) {
+    stopifnot(is.logical(returnDense))
+    stopifnot(length(returnDense)==1)
+    oreturnDense <- get_RGEOS_DENSE()
+    set_RGEOS_DENSE(returnDense)
     tol <- as.numeric(tol)
     if ( is.na(tol) ) 
         stop("Invalid value for tolerance, must be numeric")
 
-    return( RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_equalsexact", tol) )
+    res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_equalsexact", tol)
+    set_RGEOS_DENSE(oreturnDense)
+    res
 }
 
 gRelate = function(spgeom1, spgeom2 = NULL, pattern = NULL, byid = FALSE) {

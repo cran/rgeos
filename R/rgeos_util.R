@@ -26,11 +26,13 @@ gBinarySTRtreeQuery <- function(obj1, obj2) {
     else if(inherits(obj1, "SpatialPolygons")) type1 <- "poly"
     else stop(paste("unsupported class:", class(obj1)))
     if(inherits(obj2, "SpatialLines")) type2 <- "line"
+    else if(inherits(obj2, "SpatialPoints")) type2 <- "pts"
     else if(inherits(obj2, "SpatialPolygons")) type2 <- "poly"
     else stop(paste("unsupported class:", class(obj2)))
     if (type1 == "line") lst1 <- slot(obj1, "lines")
     else lst1 <- slot(obj1, "polygons")
     if (type2 == "line") lst2 <- slot(obj2, "lines")
+    else if (type2 == "pts") lst2 <- as(obj2, "SpatialPoints")
     else lst2 <- slot(obj2, "polygons")
     res <- .Call("rgeos_binary_STRtree_query", .RGEOS_HANDLE, lst1, lst2,
         PACKAGE="rgeos")
