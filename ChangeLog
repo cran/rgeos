@@ -1,3 +1,23 @@
+2014-07-07 22:26  rsbivand
+
+	* DESCRIPTION,
+	  R/Rgpc_funcs.R: constrain gpc to polygons
+
+2014-06-05 19:08  rsbivand
+
+	* ChangeLog,
+	  inst/ChangeLog: tidy
+
+2014-06-05 19:01  rsbivand
+
+	* ChangeLog,
+	  inst/ChangeLog: tidy
+
+2014-06-05 18:59  rsbivand
+
+	* man/pred-binary-gContains.Rd,
+	  man/pred-binary-gIntersects.Rd, src/rgeos_poly2nb.c: tidt
+
 2014-06-05 18:33  rsbivand
 
 	* ChangeLog,
