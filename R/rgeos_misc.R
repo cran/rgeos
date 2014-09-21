@@ -94,6 +94,16 @@ gWithinDistance = function(spgeom1, spgeom2=NULL, dist, byid=FALSE, hausdorff=FA
 }
 
 
+gTopoDim <- function(obj) {
+    td <- NULL
+    if (inherits(obj, "SpatialPolygons")) td <- 2L
+    if (inherits(obj, "SpatialRings")) td <- 2L
+    if (inherits(obj, "SpatialLines")) td <- 1L
+    if (inherits(obj, "SpatialPoints")) td <- 0L
+    if (is.null(td)) stop("class not supported:", class(obj))
+    td
+}
+
 #Deprecated function names
 RGEOSArea = function(spgeom, byid=FALSE) {
     .Deprecated("gArea")

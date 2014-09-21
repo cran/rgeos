@@ -13,14 +13,25 @@ SEXP rgeos_union(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, SEXP ids) {
     return( rgeos_binarytopologyfunc(env, spgeom1, spgeom2, byid, ids, &GEOSUnion_r) );
 }
 
+int GEOSTopologicalDimension_r(GEOSContextHandle_t extHandle,
+    const GEOSGeometry* g) {
+    int gType, res=-1;
+    gType = GEOSGeomTypeId_r(extHandle, g);
+    if (gType == GEOS_POINT || gType == GEOS_MULTIPOINT) res = 0;
+    else if (gType == GEOS_LINESTRING || gType == GEOS_MULTILINESTRING) res = 1;
+    else if (gType == GEOS_POLYGON || gType == GEOS_MULTIPOLYGON) res = 2;
+    return(res);
+}
+
 SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, SEXP ids, p_bintopofunc bintopofunc) {
     
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
-    int both_poly = LOGICAL_POINTER(findVarInFrame(env,
-        install("both_poly")))[0];
-    int drop_not_poly = LOGICAL_POINTER(findVarInFrame(env,
-        install("drop_not_poly")))[0];
+    int min_tds = INTEGER_POINTER(getAttrib(byid,
+        install("min_tds")))[0];
+    int drop_lower_td = LOGICAL_POINTER(getAttrib(byid,
+        install("drop_lower_td")))[0];
     int drop_me = FALSE, k_type, k_empty;
+    int thistd=-1;
 
     
     // Default to using spgeom1's proj4string
@@ -66,50 +77,63 @@ SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, S
             if (thisgeom == NULL)
                 error("rgeos_bintopofunc: topology function failed");
             if (!GEOSisEmpty_r(GEOShandle, thisgeom)) {
- // conditionally drop non-polygon returned objects
+ // conditionally drop returned objects with lower topological dimension
+ // than minimum TD of input objects
                drop_me = FALSE;
-               if (both_poly && drop_not_poly) {
-                    if (GEOSGeomTypeId_r(GEOShandle, thisgeom)
-                        == GEOS_POINT) {
-                        drop_me = TRUE;
-                    } else if (GEOSGeomTypeId_r(GEOShandle, thisgeom)
-                        == GEOS_MULTIPOINT) {
-                        drop_me = TRUE;
-                    } else if (GEOSGeomTypeId_r(GEOShandle, thisgeom)
-                        == GEOS_LINESTRING) {
-                        drop_me = TRUE;
-                    } else if (GEOSGeomTypeId_r(GEOShandle, thisgeom)
-                        == GEOS_MULTILINESTRING) {
-                        drop_me = TRUE;
-                    } else if (GEOSGeomTypeId_r(GEOShandle, thisgeom)
-                        == GEOS_GEOMETRYCOLLECTION) {
-                        int nsGC = GEOSGetNumGeometries_r(GEOShandle, thisgeom);
-                        GEOSGeom *kgeoms = (GEOSGeom *) R_alloc(
-                            (size_t) nsGC, sizeof(GEOSGeom));
-                        for (k1=0, kk=0; k1<nsGC; k1++) {
-                            kgeom = (GEOSGeom) GEOSGetGeometryN_r(GEOShandle,
+               if (drop_lower_td) {
+                   thistd = GEOSTopologicalDimension_r(GEOShandle, thisgeom);
+                   if (thistd >= 0) {
+                       if (thistd < min_tds) drop_me = TRUE;
+                   } else {
+                       if (GEOSGeomTypeId_r(GEOShandle, thisgeom)
+                            == GEOS_GEOMETRYCOLLECTION) {
+                            int nsGC = GEOSGetNumGeometries_r(GEOShandle,
+                                thisgeom);
+                            GEOSGeom *kgeoms = (GEOSGeom *) R_alloc(
+                                (size_t) nsGC, sizeof(GEOSGeom));
+                            for (k1=0, kk=0; k1<nsGC; k1++) {
+                              kgeom = (GEOSGeom) GEOSGetGeometryN_r(GEOShandle,
                                 thisgeom, k1);
-                            k_type = GEOSGeomTypeId_r(GEOShandle, kgeom);
-                            k_empty = GEOSisEmpty_r(GEOShandle, kgeom);
-                            if (!k_empty && (k_type == GEOS_POLYGON ||
-                                k_type == GEOS_MULTIPOLYGON)) {
+                              thistd = GEOSTopologicalDimension_r(GEOShandle,
+                                thisgeom);
+                              k_empty = GEOSisEmpty_r(GEOShandle, kgeom);
+                              if (!k_empty && thistd == min_tds) {
                                 kgeoms[kk] = kgeom;
+//Rprintf("%d %d %d %s\n", k1, kk, GEOSGeomTypeId_r(GEOShandle, kgeom), GEOSGeomType_r(GEOShandle, kgeom));
                                 kk++;
                             }
                         }
                         if (kk == 0) {
                             drop_me = TRUE;
                         } else {
-                            thisgeom = (kk > 1) ? GEOSGeom_createCollection_r(
-                                GEOShandle, GEOS_GEOMETRYCOLLECTION, 
-                                kgeoms, (unsigned int) kk) : kgeoms[0];
+                            if (kk > 1) {
+                                if (min_tds == 0) {
+                                    thisgeom = GEOSGeom_createCollection_r(
+                                      GEOShandle, GEOS_MULTIPOINT, 
+                                      kgeoms, (unsigned int) kk);
+                                } else if (min_tds == 1) {
+                                    thisgeom = GEOSGeom_createCollection_r(
+                                      GEOShandle, GEOS_MULTILINESTRING, 
+                                      kgeoms, (unsigned int) kk);
+                                } else if (min_tds == 2) {
+                                    thisgeom = GEOSGeom_createCollection_r(
+                                      GEOShandle, GEOS_MULTIPOLYGON, 
+                                      kgeoms, (unsigned int) kk);
+                                }
+                            } else {
+                                thisgeom = kgeoms[0];
+                            }
                         }
-                    }
+
+                       } else {
+                           drop_me = TRUE;
+                       }
+                   }
                 }
                 if (!drop_me) {
                     geoms[k] = thisgeom;
                     SET_STRING_ELT(ids, k, STRING_ELT(ids, i*n+j));
-//            Rprintf("%d: %d %d %s %d\n", k, GEOSisEmpty_r(GEOShandle, geoms[k]), GEOSGeomTypeId_r(GEOShandle, geoms[k]), GEOSGeomType_r(GEOShandle, geoms[k]), GEOSGetNumGeometries_r(GEOShandle, geoms[k]));
+//Rprintf("%d: %d %d %s %d\n", k, GEOSisEmpty_r(GEOShandle, geoms[k]), GEOSGeomTypeId_r(GEOShandle, geoms[k]), GEOSGeomType_r(GEOShandle, geoms[k]), GEOSGetNumGeometries_r(GEOShandle, geoms[k]));
                     k++;
                 }
             }

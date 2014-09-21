@@ -21,6 +21,8 @@ exportMethods(row.names)
 # Utility Functions
 export(getScale,setScale,translate,checkP4S) #,groupID)
 export(version_GEOS, version_GEOS0)
+export(set_RGEOS_dropSlivers, get_RGEOS_dropSlivers, set_RGEOS_warnSlivers,
+ get_RGEOS_warnSlivers, set_RGEOS_polyThreshold, get_RGEOS_polyThreshold)
 
 # WKT Functions
 export(readWKT, writeWKT)

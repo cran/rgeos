@@ -9,7 +9,7 @@
 \title{Geometry Union}
 \description{Functions for joining intersecting geometries.}
 \usage{
-gUnion(spgeom1, spgeom2, byid=FALSE, id=NULL, drop_not_poly=FALSE)
+gUnion(spgeom1, spgeom2, byid=FALSE, id=NULL, drop_lower_td=FALSE)
 gUnionCascaded(spgeom, id = NULL)
 gUnaryUnion(spgeom, id = NULL)
 gLineMerge(spgeom, byid=FALSE, id = NULL)
@@ -19,7 +19,7 @@ gLineMerge(spgeom, byid=FALSE, id = NULL)
   \item{spgeom1, spgeom2}{sp objects as defined in package sp}
   \item{byid}{Logical vector determining if the function should be applied across ids (TRUE) or the entire object (FALSE) for spgeom1 and spgeom2}
   \item{id}{Character vector defining id labels for the resulting geometries, if unspecified returned geometries will be labeled based on their parent geometries' labels; it may contain NA values for input objects not included in the union; it should define the memberships of the output Polygons objects}
-  \item{drop_not_poly}{default FALSE, if TRUE and spgeom1, spgeom2 both inherit from SpatialPolygons, POINT and LINESTRING objects will be dropped from output GEOMETRYCOLLECTION objects to simplify output.}
+  \item{drop_lower_td}{default FALSE; if TRUE, objects will be dropped from output GEOMETRYCOLLECTION objects to simplify output if their topological dinension is less than the minimum topological dinension of the input objects.}
   \item{spgeom}{sp Polygon(s) or Line(s) depending on the function used}
 }
 

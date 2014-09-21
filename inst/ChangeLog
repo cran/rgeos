@@ -1,3 +1,60 @@
+2014-09-21 14:09  rsbivand
+
+	* DESCRIPTION,
+	  R/rgeos_topology_binary.R, man/topo-bin-gIntersection.Rd:
+	  deprecate drop_not_poly
+
+2014-09-21 11:19  rsbivand
+
+	* ChangeLog,
+	  inst/ChangeLog: tidy
+
+2014-09-21 11:18  rsbivand
+
+	* DESCRIPTION,
+	  NAMESPACE, R/AAA.R, man/topo-bin-gIntersection.Rd,
+	  man/utility-functions.Rd, src/rgeos_geos2R.c: conditionally
+	  drop slivers
+
+2014-09-20 18:50  rsbivand
+
+	* inst/test_cases,
+	  inst/test_cases/polys.RData: drop topological dimension
+
+2014-09-20 18:35  rsbivand
+
+	* src/rgeos_geos2R.c:
+	  drop topological dimension
+
+2014-09-19 20:17  rsbivand
+
+	* R/Rgpc_funcs.R,
+	  R/rgeos_misc.R, R/rgeos_topology_binary.R,
+	  man/topo-bin-gDifference.Rd, man/topo-bin-gIntersection.Rd,
+	  man/topo-bin-gSymdifference.Rd, man/topo-bin-gUnion.Rd,
+	  src/rgeos_topology_binary.c: drop topological dimension
+
+2014-09-11 13:08  rsbivand
+
+	* src/rgeos_geos2R.c:
+	  slivers
+
+2014-09-06 22:07  rsbivand
+
+	* R/AAA.R,
+	  src/rgeos_geos2R.c: drop_not_poly adjustment
+
+2014-09-04 18:30  rsbivand
+
+	* DESCRIPTION,
+	  R/AAA.R, R/rgeos_topology_binary.R, src/rgeos_topology_binary.c:
+	  drop_not_poly adjustment
+
+2014-07-08 08:53  rsbivand
+
+	* ChangeLog,
+	  inst/ChangeLog: tidy
+
 2014-07-07 22:26  rsbivand
 
 	* DESCRIPTION,
