@@ -71,6 +71,10 @@ version_GEOS0 <- function() {
     substring(version_GEOS(), 1, 5)
 }
 
+version_sp_linkingTo <- function() {
+    .Call("rgeos_sp_linkingTo_version")
+}
+
 .onLoad <- function(lib, pkg) {
 #  require(methods, quietly = TRUE, warn.conflicts = FALSE)
 #  require("sp")
@@ -100,6 +104,7 @@ version_GEOS0 <- function() {
     ", (SVN revision ", svn_version, ")\n", sep="")
   Smess <- paste(Smess, "GEOS runtime version:",
     version_GEOS(), "\n")
+  Smess <- paste(Smess, "Linking to sp version:", version_sp_linkingTo(), "\n")
   Smess <- paste(Smess, "Polygon checking:", get_do_poly_check(), "\n")
   packageStartupMessage(Smess, appendLF = TRUE)
 }

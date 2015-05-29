@@ -30,7 +30,8 @@ SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, S
         install("min_tds")))[0];
     int drop_lower_td = LOGICAL_POINTER(getAttrib(byid,
         install("drop_lower_td")))[0];
-    int drop_me = FALSE, k_type, k_empty;
+    int drop_me = FALSE,// k_type, 
+        k_empty;
     int thistd=-1;
 
     

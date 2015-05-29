@@ -37,6 +37,7 @@
 
 // Utility functions
 SEXP rgeos_GEOSversion(void);
+SEXP rgeos_sp_linkingTo_version(void);
 SEXP rgeos_Init(void);
 SEXP rgeos_finish(SEXP env);
 //static void rgeos_finish_handle(SEXP ptr);

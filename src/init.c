@@ -19,6 +19,8 @@ static R_CallMethodDef CallEntries[] = {
     {"rgeos_GEOSversion", (DL_FUNC) &rgeos_GEOSversion, 0},
     {"rgeos_double_translate", (DL_FUNC) &rgeos_double_translate, 4},
     {"rgeos_PolyCreateComment", (DL_FUNC) &rgeos_PolyCreateComment, 2},
+    {"rgeos_sp_linkingTo_version", (DL_FUNC) &rgeos_sp_linkingTo_version, 0},
+
     
     //WKT Functions
     {"rgeos_readWKT", (DL_FUNC) &rgeos_readWKT,4}, 

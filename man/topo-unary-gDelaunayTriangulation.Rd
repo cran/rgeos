@@ -43,12 +43,13 @@ out4 <- out3[o,]
 out5 <- data.frame(from=out4[,1], to=out4[,2], weight=1)
 head(out5)
 \dontrun{
-library(spdep)
+if (require(spdep)) {
 class(out5) <- c("spatial.neighbour", class(out5))
 attr(out5, "n") <- length(meuse)
 attr(out5, "region.id") <- as.character(1:length(meuse))
 nb1 <- sn2listw(out5)$neighbours
 nb2 <- make.sym.nb(nb1)
+}
 }
 }
 }

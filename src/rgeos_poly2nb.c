@@ -97,7 +97,7 @@ SEXP rgeos_binary_STRtree_query(SEXP env, SEXP obj1, SEXP obj2) {
 
     GEOSGeom *bbs2;
     int nobj1, nobj2, i, j, pc=0, isPts=FALSE;
-    GEOSGeom GC, GCpts, bb;
+    GEOSGeom GC, GCpts=NULL, bb;
     SEXP pl, bblist;
     GEOSSTRtree *str;
     int *icard, *ids, *oids;

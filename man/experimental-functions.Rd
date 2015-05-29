@@ -25,7 +25,7 @@
 \keyword{spatial}
 
 \examples{
-library(maptools)
+if (require(maptools)) {
 xx <- readShapeSpatial(system.file("shapes/fylk-val-ll.shp",
  package="maptools")[1], proj4string=CRS("+proj=longlat +datum=WGS84"))
 a0 <- gUnarySTRtreeQuery(xx)
@@ -52,4 +52,5 @@ plot(obj1, angle=sapply(a4, is.null)*45, density=20, lwd=0.5, add=TRUE)
 set.seed(1)
 pts <- spsample(nc1, n=10, type="random")
 res <- gBinarySTRtreeQuery(nc1, pts)
+}
 }

@@ -41,7 +41,7 @@ gLineMerge is similar to gUnionCascaded but is written to work with lines, speci
 }
 
 \examples{
-library(maptools)
+if (require(maptools)) {
 nc1 <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1],
  proj4string=CRS("+proj=longlat +datum=NAD27"))
 lps <- coordinates(nc1)
@@ -55,8 +55,8 @@ row.names(reg4)
 par(mfrow=c(2,1))
 plot(nc1)
 plot(reg4)
-
 par(mfrow=c(1,1))
+}
 gt <- GridTopology(c(0.05,0.05), c(0.1,0.1), c(2,2))
 set.seed(1)
 xv <- rnorm(length(coordinates(gt)[,1]))

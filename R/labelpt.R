@@ -1,7 +1,7 @@
-# Calculate the coordinate inside ‘pol’ where a rectangle 
-# of width ‘labw’ and height ‘labh’ centred on the coordinate
+# Calculate the coordinate inside "pol" where a rectangle 
+# of width "labw" and height "labh" centred on the coordinate
 # has the largest possible distance from the polygon boundary.
-# Uses a grid search with ‘gridpoints’ coordinate pairs for the
+# Uses a grid search with "gridpoints" coordinate pairs for the
 # initial search, and refines the result using numerical 
 # optimisation (the Nelder-Mead algorithm).
 labpos.maxdist = function(pol, labw, labh, gridpoints) {
@@ -20,7 +20,7 @@ labpos.maxdist = function(pol, labw, labh, gridpoints) {
                             function(i) makerect(co[i,1], co[i,2], labw, labh, i)),
                             proj4string=CRS(proj4string(pol)))
 
-    # Check each rectangle to see if it’s inside the polygon
+    # Check each rectangle to see if it"s inside the polygon
     inside = apply(gContains(pol, rects, byid = TRUE), 1, any)
 
     # Calculate and return the distance to the polygon boundary for
@@ -47,7 +47,7 @@ labpos.maxdist = function(pol, labw, labh, gridpoints) {
   
   # Use numerical optimisation to zero in on the optimal position,
   # with the coordinate found by grid search as initial values.
-  # Unfortunately, the Nelder-Mead algorithm in ‘optim’ has some
+  # Unfortunately, the Nelder-Mead algorithm in "optim" has some
   # strange heuristics for the step size (size of the initial 
   # simplex) which is not possible to override, so, as a workaround, 
   # we do our own affine transformation inside a wrapper function.
@@ -60,7 +60,7 @@ labpos.maxdist = function(pol, labw, labh, gridpoints) {
   optres = optim(c(0,0), getDistsScaled, method = "Nelder-Mead", 
                control = list(trace = FALSE, reltol = .001),
                origin = origin, stepsize = stepsize)
-  optval = optres$par*stepsize + origin # ‘Optimal’ label position
+  optval = optres$par*stepsize + origin # "Optimal" label position
   
   # Only return the calculated position if the numerical optimisation succeeded
   if(optres$convergence != 0) {
@@ -68,7 +68,7 @@ labpos.maxdist = function(pol, labw, labh, gridpoints) {
     optval = origin
   }
   
-  # Return the ‘optimal’ label position
+  # Return the "optimal" label position
   optval
 }
 
@@ -83,18 +83,22 @@ labpos.buffer = function(pol, getLargestPolyPart) {
     init = 0                       # Initial amount to shrink
     estep = sqrt(gArea(pol)/pi)/10 # Additional amount to shrink for each step
     
-    # Try repeatedly shrinking the polygon until we’re left
+    # Try repeatedly shrinking the polygon until we"re left
     # with a polygon whose convex hull fits inside the
     # original polygon.
     repeat {
       repeat {
         r = init + estep                 # Amount to shrink
         pol.b = gBuffer(pol, width = -r) # Shrink the polygon
-        if( gArea(pol.b) <= 0 )          # If the shrunken polygon is empty ...
-          estep = estep/2 else break     # ... try again with a smaller value
+        if (is.null(pol.b)) {
+          estep = estep/2
+        } else {
+          if( gArea(pol.b) <= 0 )        # If the shrunken polygon is empty ...
+            estep = estep/2 else break   # ... try again with a smaller value
+        }
       }
       
-      # If we’re left with more than one polygon, choose the largest one
+      # If we"re left with more than one polygon, choose the largest one
       polb = getLargestPolyPart(pol.b)
       
       # Calculate the convex hull of the inner polygon.
@@ -109,7 +113,7 @@ labpos.buffer = function(pol, getLargestPolyPart) {
 
 # Generate a random position inside the polygon
 labpos.random = function(pol) {
-  # Note that the ‘spsample’ function sometimes fail to
+  # Note that the "spsample" function sometimes fail to
   # find a random point inside the polygon (on the first try),
   # so we may need repeated sampling. Eventually a point is found.
   repeat {
@@ -125,16 +129,16 @@ labpos.random = function(pol) {
 #   labels: The labels to apply to each polygon.
 #           If NULL, the positition is calculated as if the
 #           label is a square with one line long sides
-#           (given the current value of ‘cex’).
+#           (given the current value of "cex").
 #   method: The method(s) used to calculate label positions.
 #           Possible values: maxdist, buffer, centroid,
 #                            random, pointonsurface
-# polypart: Which parts each multipolygon to use (‘all’ or ‘largest’).
-#           Note that ‘largest’ also removes any holes before
+# polypart: Which parts each multipolygon to use ("all" or "largest").
+#           Note that "largest" also removes any holes before
 #           calculating the label position, so the labels are
 #           no longer guaranteed not to overlap a hole.
 #   doplot: Should the labels be plotted on the current graphics device?
-#      ...: Additional arguments sent to ‘text’
+#      ...: Additional arguments sent to "text"
 polygonsLabel = function(pols, labels = NULL, method = c("maxdist",
                          "buffer", "centroid", "random", "inpolygon")[1],
                          gridpoints = 60, polypart = c("all", "largest")[1],
@@ -202,12 +206,12 @@ polygonsLabel = function(pols, labels = NULL, method = c("maxdist",
 # TODO:
 #
 #   Automatic reprojection for unprojected maps
-#     (simple quirectangular, to match what ‘plot’ does).
+#     (simple quirectangular, to match what "plot" does).
 #
-#   Option to auto-rotate labels (default < ±30 degrees)
+#   Option to auto-rotate labels (default < +/-30 degrees)
 #     to make them fit (better).
 #
 #   Better error handling (option to stop or to use
 #   centroids when no valid label positions are found).
 #
-#   A ‘removeholes’ option?
+#   A "removeholes" option?

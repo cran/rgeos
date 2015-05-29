@@ -28,7 +28,6 @@ AC_CHECK_FILE([/usr/bin/svnversion],
  [SVN_VERSION=`svnversion -n '.'`],
  [SVN_VERSION=""])
 
-#SVN_VERSION=`svnversion -n '.'`
 if test -n "${SVN_VERSION}" && test "${SVN_VERSION}" != "exported" && test "${SVN_VERSION}" != "Unversioned directory"; then
   echo "${SVN_VERSION}" > inst/SVN_VERSION
 else
@@ -38,12 +37,39 @@ AC_MSG_NOTICE([svn revision: ${SVN_VERSION}])
 
 GEOS_CONFIG="geos-config"
 
+GEOS_CONFIG_SET="no"
+
 AC_ARG_WITH([geos-config],
     AC_HELP_STRING([--with-geos-config=GEOS_CONFIG],
            [the location of geos-config]),
            [geos_config=$withval])
 if test [ -n "$geos_config" ] ; then
+    GEOS_CONFIG_SET="yes"
     AC_SUBST([GEOS_CONFIG],["${geos_config}"])
+    AC_MSG_NOTICE(geos-config set to $GEOS_CONFIG)
+fi
+
+if test ["$GEOS_CONFIG_SET" = "no"] ; then
+  AC_PATH_PROG([GEOS_CONFIG], ["$GEOS_CONFIG"],["no"])
+  if test ["$GEOS_CONFIG" = "no"] ; then
+    AC_MSG_RESULT(no)
+    AC_MSG_ERROR([geos-config not found or not executable.])
+  fi
+else
+  AC_MSG_CHECKING(geos-config exists)
+  if test -r "${GEOS_CONFIG}"; then
+    AC_MSG_RESULT(yes)
+  else
+    AC_MSG_RESULT(no)
+    AC_MSG_ERROR([geos-config not found - configure argument error.])
+  fi
+  AC_MSG_CHECKING(geos-config executable)
+  if test -x "${GEOS_CONFIG}"; then
+    AC_MSG_RESULT(yes)
+  else
+    AC_MSG_RESULT(no)
+    AC_MSG_ERROR([geos-config not executable.])
+  fi
 fi
 
 
@@ -63,7 +89,6 @@ else
         AC_MSG_ERROR([${GEOS_CONFIG} not usable])
 fi
 
-AC_MSG_NOTICE([geos-config: ${GEOS_CONFIG}])
 AC_MSG_NOTICE([GEOS version: ${GEOS_VER}])
 AC_MSG_CHECKING([geos version at least 3.2.0])
 if test ${GEOS_VER_DOT} -lt 320 ; then

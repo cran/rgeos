@@ -209,7 +209,7 @@ SEXP rgeos_geospolygon2SpatialPolygons(SEXP env, GEOSGeom geom, SEXP p4s, SEXP I
 
     int pc=0;
     int nng = ng;
-    SEXP bbox, comment;
+    SEXP bbox=R_NilValue, comment;
     GEOSGeom bb;
 
     
@@ -455,7 +455,7 @@ SEXP rgeos_geospolygon2Polygons(SEXP env, GEOSGeom geom, SEXP ID) {
     
     totalarea = 0.0;
     int k = 0;
-    int ownerk;
+    int ownerk=0;
     if (polyT > 0.0 && dropSlivers) {
         int kk = 0;
         for (int i=0; i<ngeom; i++) {

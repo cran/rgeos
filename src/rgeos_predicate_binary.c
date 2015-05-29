@@ -20,9 +20,9 @@ SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid,
     GEOSContextHandle_t GEOShandle = getContextHandle(env);  
     SEXP returnDense = findVarInFrame(env, install("returnDense"));
     int retDen = LOGICAL_POINTER(returnDense)[0];
-    SEXP STRsubset = findVarInFrame(env, install("STRsubset"));
-    int STRsub = LOGICAL_POINTER(STRsubset)[0];
-    int *listvec, vecn=0;
+//    SEXP STRsubset = findVarInFrame(env, install("STRsubset"));
+//    int STRsub = LOGICAL_POINTER(STRsubset)[0];
+    int *listvec=NULL, vecn=0;
   
     
     GEOSGeom geom1 = rgeos_convert_R2geos(env, spgeom1);
@@ -147,7 +147,7 @@ SEXP rgeos_binpredfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpre
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
     SEXP returnDense = findVarInFrame(env, install("returnDense"));
     int retDen = LOGICAL_POINTER(returnDense)[0];
-    int *listvec, vecn=0;
+    int *listvec=NULL, vecn=0;
     int pc = 0;
     
     GEOSGeom geom1 = rgeos_convert_R2geos(env, spgeom1);

@@ -7,10 +7,12 @@ overGeomGeom = function(x, y, returnList = FALSE, fn = NULL, ...) {
 	gI = gIntersects(y, x, byid = TRUE)
 	if (returnList) {
 		ret = apply(gI, 1, which)
-		if (!is.list(ret)) {
-			ret = lapply(1:ncol(ret), function(x) ret[,x])
-			names(ret) = names(x)
+		if (! is.list(ret)) {
+			if (! is.matrix(ret)) # apply returned vector
+				ret = matrix(ret, length(y), length(x)) 
+			ret = lapply(1:ncol(ret), function(i) ret[,i])
 		}
+		names(ret) = names(x)
 	} else
 		ret = apply(gI, 1, function(x) which(x)[1])
 	ret
@@ -73,7 +75,7 @@ setMethod("over",
 	        overGeomGeomDF)
 setMethod("over",
     signature(x = "SpatialPolygons", y = "SpatialPolygonsDataFrame"),
-	        overGeomGeom)
+	        overGeomGeomDF)
 setMethod("over",
     signature(x = "SpatialLines", y = "SpatialPointsDataFrame"),
 	        overGeomGeomDF)

@@ -1,6 +1,6 @@
 #include "rgeos.h"
 
-SEXP rgeos_PolyCreateComment(SEXP env, SEXP pls) {
+SEXP rgeos_PolyCreateComment(const SEXP env, const SEXP pls) {
     
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
     
@@ -99,7 +99,7 @@ SEXP rgeos_PolyCreateComment(SEXP env, SEXP pls) {
     return(commentvec);
 }
 
-SEXP GC_Contains(SEXP env, GEOSGeom GC) {
+SEXP GC_Contains(const SEXP env, const GEOSGeom GC) {
 
     SEXP ans, dim;
     int pc=0;
@@ -163,7 +163,7 @@ SEXP GC_Contains(SEXP env, GEOSGeom GC) {
     return(ans);
 }
 
-SEXP rgeos_PolygonsContain(SEXP env, SEXP obj) {
+SEXP rgeos_PolygonsContain(const SEXP env, const SEXP obj) {
 
     GEOSGeom GC = rgeos_convert_R2geos(env, obj);
 

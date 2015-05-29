@@ -157,7 +157,7 @@ SEXP rgeos_geospoint2crdMat(SEXP env, GEOSGeom geom, SEXP idlist, int ntotal, in
     SEXP mat;
     PROTECT(mat = NEW_NUMERIC(ntotal*2)); pc++;
 
-    SEXP ids;
+    SEXP ids = R_NilValue;
     if (idlist != R_NilValue) {/* FIXME RSB */
         PROTECT(ids = NEW_CHARACTER(ntotal)); pc++;
     }

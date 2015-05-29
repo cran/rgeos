@@ -10,6 +10,10 @@ SEXP rgeos_GEOSversion(void) {
     return(ans);
 }
 
+SEXP rgeos_sp_linkingTo_version(void) {
+    return(SP_PREFIX(sp_linkingTo_version)());
+}
+
 static void __errorHandler(const char *fmt, ...) {
 
     char buf[BUFSIZ], *p;

@@ -85,7 +85,7 @@ plot(SpatialPolygons(list(pls)), col="magenta", pbg="cyan")
  title(xlab="Hole slot values before checking")
 \dontrun{
 # running this illustration may be time-consuming
-require(maptools)
+if (require(maptools)) {
 data(wrld_simpl)
 usa <- wrld_simpl[wrld_simpl$ISO3=="USA",]
 lapply(slot(usa, "polygons"), comment)
@@ -111,6 +111,7 @@ Pls1 <- lapply(Pls, checkPolygonsHoles)
 slot(usa1, "polygons") <- Pls1
 lapply(slot(usa1, "polygons"), comment)
 gIsValid(usa1, reason=TRUE)
+}
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

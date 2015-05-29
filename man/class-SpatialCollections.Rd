@@ -1,6 +1,10 @@
 \name{SpatialCollections-class}
 \docType{class}
 \alias{SpatialCollections-class}
+\alias{SpatialLinesNULL-class}
+\alias{SpatialRingsNULL-class}
+\alias{SpatialPolygonsNULL-class}
+\alias{SpatialPointsNULL-class}
 \alias{row.names,SpatialCollections-method}
 \alias{plot,SpatialCollections,missing-method}
 

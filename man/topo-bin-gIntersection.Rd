@@ -11,7 +11,7 @@ gIntersection(spgeom1, spgeom2, byid=FALSE, id=NULL, drop_not_poly, drop_lower_t
   \item{byid}{Logical vector determining if the function should be applied across ids (TRUE) or the entire object (FALSE) for spgeom1 and spgeom2}
   \item{id}{Character vector defining id labels for the resulting geometries, if unspecified returned geometries will be labeled based on their parent geometries' labels.}
   \item{drop_not_poly}{deprecated argument, use drop_lower_td}
-  \item{drop_lower_td}{default FALSE; if TRUE, objects will be dropped from output GEOMETRYCOLLECTION objects to simplify output if their topological dinension is less than the minimum topological dinension of the input objects.}
+  \item{drop_lower_td}{default FALSE; if TRUE, objects will be dropped from output GEOMETRYCOLLECTION objects to simplify output if their topological dimension is less than the minimum topological dinension of the input objects.}
 }
 
 \details{Returns all spatial intersections as sp objects of the appropriate class. If the geometries do not intersect then an empty geometry is returned.}
@@ -25,7 +25,7 @@ gIntersection(spgeom1, spgeom2, byid=FALSE, id=NULL, drop_not_poly, drop_lower_t
 }
 
 \examples{
-library(maptools)
+if (require(maptools)) {
 xx <- readShapeSpatial(system.file("shapes/fylk-val-ll.shp", package="maptools")[1],
  proj4string=CRS("+proj=longlat +datum=WGS84"))
 bbxx <- bbox(xx)
@@ -35,6 +35,7 @@ res <-gIntersection(xx, xxx)
 plot(xx, axes=TRUE)
 plot(xxx, lty=2, add=TRUE)
 plot(res, add=TRUE, pch=16,col='red')
+}
 pol <- readWKT(paste("POLYGON((-180 -20, -140 55, 10 0, -140 -60, -180 -20),",
  "(-150 -20, -100 -10, -110 20, -150 -20))"))
 library(sp)

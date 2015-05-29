@@ -33,7 +33,7 @@ Many of the functions in rgeos expect simple/valid geometries and may exhibit un
 
 \references{
 Validity Details:
-\url{http://postgis.refractions.net/docs/ch04.html#OGC_Validity}
+\url{http://postgis.net/docs/manual-2.0/using_postgis_dbmanagement.html#OGC_Validity}
 }
 
 

@@ -171,9 +171,7 @@ polygonsLabel(xy.sp, labels, cex=.8,
 ## position can be on real maps.
 
 # Needed libraries
-library(maps)
-library(maptools)
-library(rgdal)
+if (require(maps) && require(maptools) && require(rgdal)) {
 
 # Load map data and convert to spatial object
 nmap = map("world", c("Norway", "Sweden", "Finland"),
@@ -189,6 +187,7 @@ nmap.centroids = polygonsLabel(nmap.pol, names(nmap.pol),
                                method = "centroid", doPlot = FALSE)
 points(nmap.centroids, col = "red", pch=19)
 polygonsLabel(nmap.pol, names(nmap.pol), method = "buffer", cex=.8)
+}
 }
 }
 

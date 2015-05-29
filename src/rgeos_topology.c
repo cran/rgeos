@@ -57,7 +57,7 @@ SEXP rgeos_delaunaytriangulation(SEXP env, SEXP obj, SEXP tol,
 
     GEOSGeom_destroy_r(GEOShandle, geom);
 
-    int type = GEOSGeomTypeId_r(GEOShandle, resgeom);
+//    int type = GEOSGeomTypeId_r(GEOShandle, resgeom);
 
     int ng = GEOSGetNumGeometries_r(GEOShandle, resgeom);
 
@@ -188,12 +188,12 @@ SEXP rgeos_node(SEXP env, SEXP obj) {
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
     SEXP p4s = GET_SLOT(obj, install("proj4string"));
     GEOSGeom geom = rgeos_convert_R2geos(env, obj);
-    int type = GEOSGeomTypeId_r(GEOShandle, geom);
+//    int type = GEOSGeomTypeId_r(GEOShandle, geom);
 //Rprintf("type: %d, %s\n", type, GEOSGeomType_r(GEOShandle, geom));
     
     GEOSGeom res = GEOSNode_r(GEOShandle, geom);
     
-    type = GEOSGeomTypeId_r(GEOShandle, res);
+//    type = GEOSGeomTypeId_r(GEOShandle, res);
 
     int ng = GEOSGetNumGeometries_r(GEOShandle, res);
 

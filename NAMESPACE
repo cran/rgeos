@@ -13,6 +13,7 @@ export(poly_findInBoxGEOS, gUnarySTRtreeQuery, gBinarySTRtreeQuery)
 exportClasses(Ring,SpatialRings, SpatialRingsDataFrame)
 export(Ring,SpatialRings,SpatialRingsDataFrame)
 
+exportClasses(SpatialLinesNULL, SpatialPointsNULL, SpatialPolygonsNULL, SpatialRingsNULL)
 exportClasses(SpatialCollections)
 export(SpatialCollections)
 

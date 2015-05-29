@@ -21,6 +21,8 @@ gDisjoint(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE)
 \value{\code{gIntersects} returns TRUE if \code{spgeom1} and \code{spgeom2} have at least one point in common.
 
 \code{gDisjoint} returns TRUE if \code{spgeom1} and \code{spgeom2} have no points in common.
+
+Both return a conforming logical matrix if \code{byid = TRUE}.
 }
 
 \author{Roger Bivand & Colin Rundel}
