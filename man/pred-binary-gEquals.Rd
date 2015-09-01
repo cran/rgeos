@@ -15,7 +15,7 @@
   \item{spgeom1, spgeom2}{sp objects as defined in package sp. If spgeom2 is NULL then spgeom1 is compared to itself.}
   \item{byid}{Logical vector determining if the function should be applied across ids (TRUE) or the entire object (FALSE) for spgeom1 and spgeom2}
   \item{tol}{Numerical value of tolerance to use when assessing equivalence}
-  \item{returnDense}{default TRUE, if false returns a list of the length of spgeom1 of integer vectors listing the \code{1:length(spgeom2)} indices which would be TRUE in the dense logical matrix representation; useful when the sizes of the byid=TRUE returned matrix is very large and it is sparse}
+  \item{returnDense}{default TRUE, if false returns a list of the length of spgeom1 of integer vectors listing the \code{1:length(spgeom2)} indices which would be TRUE in the dense logical matrix representation; useful when the sizes of the byid=TRUE returned matrix is very large and it is sparse; essential when the returned matrix would be too large}
 }
 
 \value{\code{gEquals} returns TRUE if geometries are "spatially equivalent" which requires that \code{spgeom1} is within \code{spgeom2} and \code{spgeom2} is within \code{spgeom1}, this ignores ordering of points within the geometries. Note that it is possible for geometries with different coordinates to be "spatially equivalent".

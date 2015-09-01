@@ -2,6 +2,9 @@ useDynLib(rgeos)
 
 import(methods)
 import(sp)
+importFrom(utils, packageVersion)
+importFrom(stats, optim)
+importFrom(graphics, par, lines, strwidth, strheight, text)
 
 export(createPolygonsComment, createSPComment, set_do_poly_check, get_do_poly_check)
 
@@ -77,3 +80,6 @@ exportMethods("show", "get.bbox", "plot", "intersect", "union", "symdiff",
 export("read.polyfile", "write.polyfile")
 
 export(polygonsLabel)
+
+export(overGeomGeom) # needed by sp::overMultiPoints
+export(overGeomGeomDF) # needed by sp::overMultiPoints

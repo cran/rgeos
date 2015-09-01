@@ -104,7 +104,13 @@ version_sp_linkingTo <- function() {
     ", (SVN revision ", svn_version, ")\n", sep="")
   Smess <- paste(Smess, "GEOS runtime version:",
     version_GEOS(), "\n")
-  Smess <- paste(Smess, "Linking to sp version:", version_sp_linkingTo(), "\n")
+  splVersion <- version_sp_linkingTo()
+  Smess <- paste(Smess, "Linking to sp version:", splVersion, "\n")
+  spVcheck <- NULL
+  if("sp" %in% .packages()) spVcheck <- utils::packageVersion("sp") == splVersion
+  if (!is.null(spVcheck) && !spVcheck) paste(Smess, 
+    "sp version used to install rgeos and loaded sp version differ\n")
+
   Smess <- paste(Smess, "Polygon checking:", get_do_poly_check(), "\n")
   packageStartupMessage(Smess, appendLF = TRUE)
 }

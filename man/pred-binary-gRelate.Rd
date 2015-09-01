@@ -27,7 +27,7 @@ See references for additional details.
 
 \references{
 Documentation of Intersection Matrix Patterns:
-\url{http://docs.codehaus.org/display/GEOTDOC/Point+Set+Theory+and+the+DE-9IM+Matrix#PointSetTheoryandtheDE-9IMMatrix-9IntersectionMatrix}
+\url{http://docs.geotools.org/stable/userguide/library/jts/dim9.html}
 }
 
 \author{Roger Bivand & Colin Rundel}

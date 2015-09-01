@@ -102,9 +102,9 @@ GEOSGeom rgeos_SpatialPoints2geospoint(SEXP env, SEXP obj) {
     int n = INTEGER_POINTER(dim)[0];
     
     GEOSGeom GC = NULL;
-    if ( n == 1 ){ 
+    if ( n == 1 )
         GC = rgeos_xy2Pt(env, NUMERIC_POINTER(crds)[0], NUMERIC_POINTER(crds)[1]);
-    } else if ( n != 1 ) {
+    else {
         SEXP ids;
         PROTECT(ids = VECTOR_ELT( getAttrib(crds, R_DimNamesSymbol), 0 ));pc++;
         
@@ -112,14 +112,16 @@ GEOSGeom rgeos_SpatialPoints2geospoint(SEXP env, SEXP obj) {
             GEOSGeom *geoms = (GEOSGeom *) R_alloc((size_t) n, sizeof(GEOSGeom));
             for (int j=0; j<n; j++) {
                 geoms[j] = rgeos_xy2Pt(env, NUMERIC_POINTER(crds)[j], NUMERIC_POINTER(crds)[j+n]);            
-                if (geoms[j] == NULL) error("rgeos_SpatialPoints2geospoint: collection not created");
+                if (geoms[j] == NULL) 
+					error("rgeos_SpatialPoints2geospoint: collection not created");
             }
         
-            GC = (n == 1) ? geoms[0] : GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) n);   
+            GC = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) n);   
             //EJP, uncommented; loop now starting at 1; passes check:
             //for (int j=1; j<n; j++) 
             //    GEOSGeom_destroy_r(GEOShandle, geoms[j]);
-            if (GC == NULL) error("rgeos_SpatialPoints2geospoint: collection not created");
+            if (GC == NULL) 
+				error("rgeos_SpatialPoints2geospoint: collection not created");
          
         } else {
             
@@ -177,9 +179,7 @@ GEOSGeom rgeos_SpatialPoints2geospoint(SEXP env, SEXP obj) {
             if (GC == NULL)
                 error("rgeos_SpatialPoints2geospoint: collection not created");
         }
-    } else {
-        error("rgeos_SpatialPoints2geospoint: invalid dim");
-    }
+    } 
 // Rprintf("n: %d, GC %s\n", n, GEOSGeomType_r(GEOShandle, GC));
     
     UNPROTECT(pc);

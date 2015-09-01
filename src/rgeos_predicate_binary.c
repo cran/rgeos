@@ -38,12 +38,14 @@ SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid,
     int n = (LOGICAL_POINTER(byid)[1] && type2 == GEOS_GEOMETRYCOLLECTION) ?
                 GEOSGetNumGeometries_r(GEOShandle, geom2) : 1;
     
-    if (m == -1) error("rgeos_binpredfunc: invalid number of subgeometries in geometry 1");
-    if (n == -1) error("rgeos_binpredfunc: invalid number of subgeometries in geometry 2");
+    if (m == -1) error("rgeos_binpredfunc_prepared: invalid number of subgeometries in geometry 1");
+    if (n == -1) error("rgeos_binpredfunc_prepared: invalid number of subgeometries in geometry 2");
     
     int pc = 0;
     SEXP ans;
     if (retDen) {
+        if (((double) n * (double) m) >= INT_MAX)
+            error("rgeos_binpredfunc_prepared: maximum returned dense matrix size exceeded");
         PROTECT(ans = NEW_LOGICAL(m*n)); pc++;
     } else {
         PROTECT(ans = NEW_LIST(m)); pc++;
@@ -55,7 +57,7 @@ SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid,
         
         const GEOSGeometry *curgeom1 = (m > 1) ? GEOSGetGeometryN_r(GEOShandle, geom1, i) : geom1;
         if (curgeom1 == NULL) 
-            error("rgeos_binpredfunc: unable to get subgeometries from geometry 1");
+            error("rgeos_binpredfunc_prepared: unable to get subgeometries from geometry 1");
         
         const GEOSPreparedGeometry *prepgeom = GEOSPrepare_r(GEOShandle, curgeom1);
 
@@ -65,11 +67,11 @@ SEXP rgeos_binpredfunc_prepared(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid,
             
             const GEOSGeometry *curgeom2 = (n > 1) ? GEOSGetGeometryN_r(GEOShandle, geom2, j) : geom2;
             if (curgeom2 == NULL) 
-                error("rgeos_binpredfunc: unable to get subgeometries from geometry 2");
+                error("rgeos_binpredfunc_prepared: unable to get subgeometries from geometry 2");
             
             int val = (int) binpredfunc_prepared(GEOShandle, prepgeom, curgeom2);
             if (val == 2)
-                error("rgeos_binpredfunc: comparison failed");
+                error("rgeos_binpredfunc_prepared: comparison failed");
 
             if (retDen) {
                 LOGICAL_POINTER(ans)[n*i+j] = val;
@@ -164,9 +166,11 @@ SEXP rgeos_binpredfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpre
                 GEOSGetNumGeometries_r(GEOShandle, geom2) : 1;
     if (m == -1) error("rgeos_binpredfunc: invalid number of subgeometries in geometry 1");
     if (n == -1) error("rgeos_binpredfunc: invalid number of subgeometries in geometry 2");
-    
+
     SEXP ans;
     if (retDen) {
+        if (((double) n * (double) m) >= INT_MAX)
+            error("rgeos_binpredfunc: maximum returned dense matrix size exceeded");
         if (binpredfunc == (p_binpredfunc) GEOSRelate_r) {
             PROTECT(ans = NEW_CHARACTER(m*n)); pc++;
         } else {

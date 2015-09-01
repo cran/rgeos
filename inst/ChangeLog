@@ -1,3 +1,89 @@
+2015-08-31 19:59  edzer
+
+	* R/over.R: pass on colnames(x) if x is matrix
+
+2015-08-31 16:49  edzer
+
+	* R/over.R: pass names on to returned list
+
+2015-08-31 16:13  edzer
+
+	* R/over.R, man/misc-over.Rd: complete documentation, clean up
+	  code.
+
+2015-08-31 11:49  rsbivand
+
+	* configure, configure.ac: strip dev from version
+
+2015-08-25 11:48  rsbivand
+
+	* DESCRIPTION, man/pred-binary-gContains.Rd,
+	  man/pred-binary-gCrosses.Rd, man/pred-binary-gEquals.Rd,
+	  man/pred-binary-gIntersects.Rd, man/pred-binary-gTouches.Rd,
+	  src/rgeos_predicate_binary.c: block assigning too large matrix
+
+2015-08-25 09:15  edzer
+
+	* R/over.R: default to gIntersects(), because of the performance
+	  penalty
+
+2015-08-22 13:33  edzer
+
+	* R/over.R: move constant check outside loop
+
+2015-08-21 22:13  edzer
+
+	* R/over.R: increase over sanity
+
+2015-08-21 15:03  edzer
+
+	* R/over.R: catch omission on unrealistic dimension requirements
+
+2015-08-20 20:45  edzer
+
+	* R/over.R: clean up over stuff, order by dimension from gRelate
+
+2015-08-20 09:23  edzer
+
+	* R/over.R: some more tweeks for SpatialMultiPoints
+
+2015-08-19 14:52  edzer
+
+	* man/misc-over.Rd: add overGeomGeom doc
+
+2015-08-19 14:11  edzer
+
+	* NAMESPACE: export overGeomGeomDF and overGeomGeom
+
+2015-08-13 09:22  edzer
+
+	* src/rgeos_R2geos.c: clean up
+
+2015-06-28 20:36  rsbivand
+
+	* DESCRIPTION, NAMESPACE, R/AAA.R, man/pred-binary-gRelate.Rd: CRAN
+	  _R_CHECK_CODE_USAGE_WITH_ONLY_BASE_ATTACHED_=true NAMESPACE tidy
+
+2015-06-23 07:56  rsbivand
+
+	* R/AAA.R: add utils:: to packageVersion()
+
+2015-06-05 07:54  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2015-06-05 07:53  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2015-06-05 07:52  rsbivand
+
+	* DESCRIPTION: tidy
+
+2015-05-29 13:49  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2015-05-29 13:47  rsbivand
 
 	* DESCRIPTION: tidy
