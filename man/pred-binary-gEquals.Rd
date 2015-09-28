@@ -7,8 +7,10 @@
 \title{Geometry Relationships - Equality}
 \description{Function for testing equivalence of the given geometries}
 \usage{
-	gEquals(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE)
-	gEqualsExact(spgeom1, spgeom2 = NULL, tol=0.0, byid = FALSE, returnDense=TRUE)
+	gEquals(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE,
+ checkValidity=FALSE)
+	gEqualsExact(spgeom1, spgeom2 = NULL, tol=0.0, byid = FALSE,
+ returnDense=TRUE, checkValidity=FALSE)
 }
 
 \arguments{
@@ -16,12 +18,15 @@
   \item{byid}{Logical vector determining if the function should be applied across ids (TRUE) or the entire object (FALSE) for spgeom1 and spgeom2}
   \item{tol}{Numerical value of tolerance to use when assessing equivalence}
   \item{returnDense}{default TRUE, if false returns a list of the length of spgeom1 of integer vectors listing the \code{1:length(spgeom2)} indices which would be TRUE in the dense logical matrix representation; useful when the sizes of the byid=TRUE returned matrix is very large and it is sparse; essential when the returned matrix would be too large}
+  \item{checkValidity}{default FALSE; error meesages from GEOS do not say clearly which object fails if a topology exception is encountered. If this argument is TRUE, \code{gIsValid} is run on each in turn in an environment in which object names are available. If objects are invalid, this is reported and those affected are named}
 }
 
 \value{\code{gEquals} returns TRUE if geometries are "spatially equivalent" which requires that \code{spgeom1} is within \code{spgeom2} and \code{spgeom2} is within \code{spgeom1}, this ignores ordering of points within the geometries. Note that it is possible for geometries with different coordinates to be "spatially equivalent".
 
 \code{gEqualsExact} returns TRUE if geometries are "exactly equivalent" which requires that \code{spgeom1} and \code{spgeom1} are "spatially equivalent" and that their constituent points are in the same order.
 }
+
+\note{Error messages from GEOS, in particular topology exceptions, report 0-based object order, so geom 0 is spgeom1, and geom 1 is spgeom2.}
 
 \author{Roger Bivand & Colin Rundel}
 

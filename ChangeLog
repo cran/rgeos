@@ -1,3 +1,70 @@
+2015-09-28 15:51  rsbivand
+
+	* ChangeLog, configure,
+	  inst/tests/testxml/general/TestFunctionLLPrec.xml,
+	  inst/tests/testxml/validate/TestRelateLL.xml,
+	  inst/tests/testxml/validate/TestRelatePA.xml,
+	  inst/tests/testxml/validate/TestRelatePL.xml,
+	  inst/tests/testxml/validate/TestRelatePP.xml: tidy
+
+2015-09-28 09:49  rsbivand
+
+	* src/rgeos_geos2R.c: SpatialRings stack unbalance
+
+2015-09-26 17:45  rsbivand
+
+	* man/labelpt.Rd, man/pred-binary-gContains.Rd,
+	  man/pred-binary-gCrosses.Rd, man/pred-binary-gEquals.Rd,
+	  man/pred-binary-gIntersects.Rd, man/pred-binary-gRelate.Rd,
+	  man/pred-binary-gTouches.Rd, man/topo-bin-gDifference.Rd,
+	  man/topo-bin-gIntersection.Rd, man/topo-bin-gSymdifference.Rd,
+	  man/topo-bin-gUnion.Rd: tidy
+
+2015-09-26 17:27  rsbivand
+
+	* DESCRIPTION: adding unaryUnion to topo-bin if FALSE byid
+
+2015-09-26 17:27  rsbivand
+
+	* R/rgeos_topology_binary.R, man/topo-bin-gDifference.Rd,
+	  man/topo-bin-gIntersection.Rd, man/topo-bin-gSymdifference.Rd,
+	  man/topo-bin-gUnion.Rd, src/rgeos_topology_binary.c: adding
+	  unaryUnion to topo-bin if FALSE byid
+
+2015-09-20 21:23  rsbivand
+
+	* man/pred-binary-gContains.Rd, man/pred-binary-gCrosses.Rd,
+	  man/pred-binary-gEquals.Rd, man/pred-binary-gIntersects.Rd,
+	  man/pred-binary-gRelate.Rd, man/pred-binary-gTouches.Rd,
+	  man/topo-bin-gDifference.Rd, man/topo-bin-gIntersection.Rd,
+	  man/topo-bin-gSymdifference.Rd, man/topo-bin-gUnion.Rd: note on
+	  0-based indices
+
+2015-09-18 12:13  rsbivand
+
+	* R/rgeos_predicate_binary.R, R/rgeos_topology_binary.R: add
+	  optional validity checking to binary predicates and operations
+
+2015-09-18 12:09  rsbivand
+
+	* DESCRIPTION, R/rgeos_predicate_binary.R,
+	  R/rgeos_topology_binary.R, man/misc-over.Rd,
+	  man/pred-binary-gContains.Rd, man/pred-binary-gCrosses.Rd,
+	  man/pred-binary-gEquals.Rd, man/pred-binary-gIntersects.Rd,
+	  man/pred-binary-gRelate.Rd, man/pred-binary-gTouches.Rd,
+	  man/topo-bin-gDifference.Rd, man/topo-bin-gIntersection.Rd,
+	  man/topo-bin-gSymdifference.Rd, man/topo-bin-gUnion.Rd: add
+	  optional validity checking to binary predicates and operations
+
+2015-09-10 14:06  edzer
+
+	* DESCRIPTION, R/over.R: version bump; let overGeomGeomDF absorb &
+	  pass on minDimension to overGeomGeom
+
+2015-09-01 10:27  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2015-08-31 19:59  edzer
 
 	* R/over.R: pass on colnames(x) if x is matrix

@@ -7,20 +7,25 @@
 \title{Geometry Relationships - Crosses and Overlaps}
 \description{Functions for testing whether geometries share some but not all interior points}
 \usage{
-	gCrosses(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE)
-	gOverlaps(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE)
+	gCrosses(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE,
+ checkValidity=FALSE)
+	gOverlaps(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE,
+ checkValidity=FALSE)
 }
 	
 \arguments{
   \item{spgeom1, spgeom2}{sp objects as defined in package sp. If spgeom2 is NULL then spgeom1 is compared to itself.}
   \item{byid}{Logical vector determining if the function should be applied across ids (TRUE) or the entire object (FALSE) for spgeom1 and spgeom2}
   \item{returnDense}{default TRUE, if false returns a list of the length of spgeom1 of integer vectors listing the \code{1:length(spgeom2)} indices which would be TRUE in the dense logical matrix representation; useful when the sizes of the byid=TRUE returned matrix is very large and it is sparse; essential when the returned matrix would be too large}
+  \item{checkValidity}{default FALSE; error meesages from GEOS do not say clearly which object fails if a topology exception is encountered. If this argument is TRUE, \code{gIsValid} is run on each in turn in an environment in which object names are available. If objects are invalid, this is reported and those affected are named}
 }
 
 \value{\code{gCrosses} returns TRUE when the geometries share some but not all interior points, and the dimension of the intersection is less than that of at least one of the geometries.
 
 \code{gOverlaps} returns TRUE when the geometries share some but not all interior points, and the intersection has the same dimension as the geometries themselves.
 }
+
+\note{Error messages from GEOS, in particular topology exceptions, report 0-based object order, so geom 0 is spgeom1, and geom 1 is spgeom2.}
 
 \author{Roger Bivand & Colin Rundel}
 

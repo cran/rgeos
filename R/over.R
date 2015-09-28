@@ -50,8 +50,8 @@ overGeomGeom = function(x, y, returnList = FALSE, fn = NULL, ..., minDimension =
 
 # taken from: overDFGeneric in sp; 
 # if modified here, consider modifying there as well!
-overGeomGeomDF = function(x, y, returnList = FALSE, fn = NULL, ...) {
-    r = overGeomGeom(x, y, returnList = TRUE)
+overGeomGeomDF = function(x, y, returnList = FALSE, fn = NULL, ..., minDimension = -1) {
+    r = overGeomGeom(x, y, returnList = TRUE, minDimension = minDimension)
     #ret = sp:::.overDF(r, y@data, length(x), returnList, fn, ...)
 	#  length(x) differs from length(r) in case of SpatialMultiPoints!!!
 	#  reason to change is sp::overMultiPoints

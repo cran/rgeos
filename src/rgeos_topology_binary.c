@@ -30,6 +30,8 @@ SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, S
         install("min_tds")))[0];
     int drop_lower_td = LOGICAL_POINTER(getAttrib(byid,
         install("drop_lower_td")))[0];
+    int uU = LOGICAL_POINTER(getAttrib(byid,
+        install("unaryUnion_if_byid_false")))[0];
     int drop_me = FALSE,// k_type, 
         k_empty;
     int thistd=-1;
@@ -39,9 +41,19 @@ SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, S
     SEXP p4s = GET_SLOT(spgeom1, install("proj4string"));
     
     GEOSGeom geom1 = rgeos_convert_R2geos(env, spgeom1);
+#ifdef HAVE_UNARYUNION
+    if (!LOGICAL_POINTER(byid)[0] && uU) {
+        geom1 = GEOSUnaryUnion_r(GEOShandle, geom1);
+    }
+#endif
     int type1 = GEOSGeomTypeId_r(GEOShandle, geom1);
 
     GEOSGeom geom2 = rgeos_convert_R2geos(env, spgeom2);
+#ifdef HAVE_UNARYUNION
+    if (!LOGICAL_POINTER(byid)[1] && uU) {
+        geom2 = GEOSUnaryUnion_r(GEOShandle, geom2);
+    }
+#endif
     int type2 = GEOSGeomTypeId_r(GEOShandle, geom2);
 
     int m = (LOGICAL_POINTER(byid)[0] && type1 == GEOS_GEOMETRYCOLLECTION) ? 

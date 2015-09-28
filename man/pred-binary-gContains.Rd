@@ -11,11 +11,12 @@
 \description{Functions for testing whether one geometry contains or is contained within another geometry}
 \usage{
 gContains(spgeom1, spgeom2 = NULL, byid = FALSE, prepared=TRUE,
- returnDense=TRUE, STRsubset=FALSE)
-gContainsProperly(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE)
-gCovers(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE)
-gCoveredBy(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE)
-gWithin(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE)
+ returnDense=TRUE, STRsubset=FALSE, checkValidity=FALSE)
+gContainsProperly(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE,
+ checkValidity=FALSE)
+gCovers(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE, checkValidity=FALSE)
+gCoveredBy(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE, checkValidity=FALSE)
+gWithin(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE, checkValidity=FALSE)
 }
 	
 \arguments{
@@ -23,6 +24,7 @@ gWithin(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE)
   \item{byid}{Logical vector determining if the function should be applied across ids (TRUE) or the entire object (FALSE) for spgeom1 and spgeom2}
   \item{prepared}{Logical determining if prepared geometry (spatially indexed) version of the GEOS function should be used. In general prepared geometries should be faster than the alternative.}
   \item{returnDense}{default TRUE, if false returns a list of the length of spgeom1 of integer vectors listing the \code{1:length(spgeom2)} indices which would be TRUE in the dense logical matrix representation; useful when the sizes of the byid=TRUE returned matrix is very large and it is sparse; essential when the returned matrix would be too large}
+  \item{checkValidity}{default FALSE; error meesages from GEOS do not say clearly which object fails if a topology exception is encountered. If this argument is TRUE, \code{gIsValid} is run on each in turn in an environment in which object names are available. If objects are invalid, this is reported and those affected are named}
   \item{STRsubset}{logical argument for future use}
 }
 
@@ -37,6 +39,8 @@ gWithin(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE)
 
 \code{gWithin} is the converse of \code{gContains} and is equivalent to swapping \code{spgeom1} and \code{spgeom2}. 
 }
+
+\note{Error messages from GEOS, in particular topology exceptions, report 0-based object order, so geom 0 is spgeom1, and geom 1 is spgeom2.}
 
 \references{
 Helpful information on the subtle differences between these functions:

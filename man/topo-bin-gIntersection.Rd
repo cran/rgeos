@@ -3,7 +3,8 @@
 \title{Geometry Intersections}
 \description{Function for determining the intersection between the two given geometries}
 \usage{
-gIntersection(spgeom1, spgeom2, byid=FALSE, id=NULL, drop_not_poly, drop_lower_td=FALSE)
+gIntersection(spgeom1, spgeom2, byid=FALSE, id=NULL, drop_not_poly,
+ drop_lower_td=FALSE, unaryUnion_if_byid_false=TRUE, checkValidity=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -12,9 +13,13 @@ gIntersection(spgeom1, spgeom2, byid=FALSE, id=NULL, drop_not_poly, drop_lower_t
   \item{id}{Character vector defining id labels for the resulting geometries, if unspecified returned geometries will be labeled based on their parent geometries' labels.}
   \item{drop_not_poly}{deprecated argument, use drop_lower_td}
   \item{drop_lower_td}{default FALSE; if TRUE, objects will be dropped from output GEOMETRYCOLLECTION objects to simplify output if their topological dimension is less than the minimum topological dinension of the input objects.}
+  \item{unaryUnion_if_byid_false}{default TRUE; if \code{byid} takes a FALSE in either position, the subgeometries are combined first to avoid possible topology exceptions (change in 0.3-13, previous behaviour did not combine subgeometries, and may be achieved by setting this argument FALSE}
+  \item{checkValidity}{default FALSE; error meesages from GEOS do not say clearly which object fails if a topology exception is encountered. If this argument is TRUE, \code{gIsValid} is run on each in turn in an environment in which object names are available. If objects are invalid, this is reported and those affected are named}
 }
 
 \details{Returns all spatial intersections as sp objects of the appropriate class. If the geometries do not intersect then an empty geometry is returned.}
+
+\note{Error messages from GEOS, in particular topology exceptions, report 0-based object order, so geom 0 is spgeom1, and geom 1 is spgeom2.}
 
 \author{Roger Bivand & Colin Rundel}
 
@@ -71,6 +76,29 @@ unlist(sapply(slot(ooo, "polygons"), function(p) sapply(slot(p, "Polygons"), slo
 set_RGEOS_polyThreshold(oT)
 set_RGEOS_warnSlivers(oW)
 set_RGEOS_dropSlivers(oD)
+# see thread https://stat.ethz.ch/pipermail/r-sig-geo/2015-September/023468.html
+Pol1=rbind(c(0,0),c(0,1),c(1,1),c(1,0),c(0,0))
+Pol2=rbind(c(0,0),c(1,0),c(1,-1),c(0,-1),c(0,0))
+Pols1=Polygons(list(Polygon(Pol1)),"Pols1")
+Pols2=Polygons(list(Polygon(Pol2)),"Pols2")
+MyLay=SpatialPolygons(list(Pols1,Pols2))
+Pol1l=Pol1+0.1
+Pol2l=Pol2+0.1
+Pols1l=Polygons(list(Polygon(Pol1l)),"Pols1l")
+Pols2l=Polygons(list(Polygon(Pol2l)),"Pols2l")
+MyLayl=SpatialPolygons(list(Pols1l,Pols2l))
+inter=gIntersection(MyLay, MyLayl, unaryUnion_if_byid_false=FALSE)
+gEquals(inter, MyLay)
+inter1=gIntersection(MyLay, MyLayl, unaryUnion_if_byid_false=TRUE)
+gEquals(inter1, MyLay)
+gEquals(inter, inter1)
+plot(MyLay, ylim=c(-1, 1.1))
+plot(MyLayl, add=TRUE)
+plot(inter, angle=45, density=10, add=TRUE)
+plot(inter1, angle=135, density=10, add=TRUE)
+inter2=gIntersection(MyLay, MyLayl)
+gEquals(inter2, MyLay)
+gEquals(inter1, inter2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

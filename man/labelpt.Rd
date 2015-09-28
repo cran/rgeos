@@ -123,7 +123,8 @@ graphics device, with the given value of \code{cex}
 (but is slightly different from) the algorithm described
 in the paper \cite{Using Shape Analyses for Placement of Polygon Labels}
 by Hoseok Kang and Shoreh Elhami, available at
-\url{http://proceedings.esri.com/library/userconf/proc01/professional/papers/pap388/p388.htm}.}
+\url{http://training.esri.com/bibliography/index.cfm?event=general.recordDetail&ID=13608}
+.}
 
 \examples{
 # Simple example with a single polygon

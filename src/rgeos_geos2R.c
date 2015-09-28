@@ -820,31 +820,34 @@ SEXP rgeos_geosring2SpatialRings(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
     PROTECT(bbox = rgeos_geom2bbox(env, geom)); pc++;
     PROTECT(rings_list = NEW_LIST(nrings)); pc++;
     
-    for(int j = 0; j < nrings; j++) {
+    for(int j = 0, lpc=0; j < nrings; j++) {
         
         GEOSGeom curgeom = (type == GEOS_GEOMETRYCOLLECTION) ?
                                 (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, geom, j) :
                                 geom;
-        if (curgeom == NULL) 
+        if (curgeom == NULL) {
+            UNPROTECT(pc);
             error("rgeos_geosring2SpatialRings: unable to get geometry collection geometry");
+        }
         
         SEXP crdmat;
         if (GEOSisEmpty_r(GEOShandle, curgeom) == 0) {
             GEOSCoordSeq s = (GEOSCoordSeq) GEOSGeom_getCoordSeq_r(GEOShandle, curgeom);
-            if (s == NULL) 
+            if (s == NULL) {
+                UNPROTECT(pc);
                 error("rgeos_geosring2SpatialRings: unable to generate coordinate sequence");
-
-            PROTECT(crdmat = rgeos_crdMatFixDir(PROTECT(rgeos_CoordSeq2crdMat(env, s, FALSE, FALSE)), FALSE)); pc += 2;
+            }
+            PROTECT(crdmat = rgeos_crdMatFixDir(PROTECT(rgeos_CoordSeq2crdMat(env, s, FALSE, FALSE)), FALSE)); lpc += 2;
         } else {
-            PROTECT( crdmat = R_NilValue); pc++;
+            PROTECT( crdmat = R_NilValue); lpc++;
         }
         
         SEXP ring;
-        PROTECT(ring = NEW_OBJECT(MAKE_CLASS("Ring"))); pc++;   
+        PROTECT(ring = NEW_OBJECT(MAKE_CLASS("Ring"))); lpc++;   
         SET_SLOT(ring, install("coords"), crdmat);
         
         SEXP id;
-        PROTECT( id = NEW_CHARACTER(1) ); pc++;
+        PROTECT( id = NEW_CHARACTER(1) ); lpc++;
         char idbuf[BUFSIZ];
         strcpy(idbuf, CHAR( STRING_ELT(idlist, j) ));
         SET_STRING_ELT(id, 0, COPY_TO_USER_STRING(idbuf));
@@ -854,7 +857,7 @@ SEXP rgeos_geosring2SpatialRings(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
         SET_VECTOR_ELT(rings_list, j, ring );
         
         
-        UNPROTECT(pc);
+        UNPROTECT(lpc);
     }
     
     SEXP ans;    

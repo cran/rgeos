@@ -71,7 +71,7 @@ RGEOSBinPredFunc = function(spgeom1, spgeom2, byid, func, optparam=NULL) {
 
 
 
-gContains = function(spgeom1, spgeom2 = NULL, byid = FALSE, prepared=TRUE, returnDense=TRUE, STRsubset=FALSE) {
+gContains = function(spgeom1, spgeom2 = NULL, byid = FALSE, prepared=TRUE, returnDense=TRUE, STRsubset=FALSE, checkValidity=FALSE) {
     stopifnot(is.logical(STRsubset))
     stopifnot(length(STRsubset)==1)
     oSTRsubset <- get_RGEOS_STR()
@@ -85,12 +85,20 @@ gContains = function(spgeom1, spgeom2 = NULL, byid = FALSE, prepared=TRUE, retur
     if (prepared)
 		func = paste(func,"_prepared",sep="")
 
+    if(checkValidity) {
+        val1 <- gIsValid(spgeom1)
+        val2 <- gIsValid(spgeom2)
+        if (!val1) message(deparse(substitute(spgeom1)), " is invalid")
+        if (!val2) message(deparse(substitute(spgeom2))," is invalid")
+        if (!all(c(val1, val2))) stop("Invalid objects found")
+    }
+    
     res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,func)
     set_RGEOS_DENSE(oreturnDense)
     set_RGEOS_STR(oSTRsubset)
     res
 }
-gIntersects = function(spgeom1, spgeom2 = NULL, byid = FALSE, prepared=TRUE, returnDense=TRUE) {
+gIntersects = function(spgeom1, spgeom2 = NULL, byid = FALSE, prepared=TRUE, returnDense=TRUE, checkValidity=FALSE) {
     stopifnot(is.logical(returnDense))
     stopifnot(length(returnDense)==1)
     oreturnDense <- get_RGEOS_DENSE()
@@ -99,103 +107,183 @@ gIntersects = function(spgeom1, spgeom2 = NULL, byid = FALSE, prepared=TRUE, ret
     if (prepared)
 		func = paste(func,"_prepared",sep="")
 
+    if(checkValidity) {
+        val1 <- gIsValid(spgeom1)
+        val2 <- gIsValid(spgeom2)
+        if (!val1) message(deparse(substitute(spgeom1)), " is invalid")
+        if (!val2) message(deparse(substitute(spgeom2))," is invalid")
+        if (!all(c(val1, val2))) stop("Invalid objects found")
+    }
+    
     res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,func)
     set_RGEOS_DENSE(oreturnDense)
     res
 }
 
-gContainsProperly = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+gContainsProperly = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE, checkValidity=FALSE) {
     stopifnot(is.logical(returnDense))
     stopifnot(length(returnDense)==1)
     oreturnDense <- get_RGEOS_DENSE()
     set_RGEOS_DENSE(returnDense)
+    if(checkValidity) {
+        val1 <- gIsValid(spgeom1)
+        val2 <- gIsValid(spgeom2)
+        if (!val1) message(deparse(substitute(spgeom1)), " is invalid")
+        if (!val2) message(deparse(substitute(spgeom2))," is invalid")
+        if (!all(c(val1, val2))) stop("Invalid objects found")
+    }
+    
     res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_containsproperly_prepared")
     set_RGEOS_DENSE(oreturnDense)
     res
 }
 
-gCovers = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+gCovers = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE, checkValidity=FALSE) {
     stopifnot(is.logical(returnDense))
     stopifnot(length(returnDense)==1)
     oreturnDense <- get_RGEOS_DENSE()
     set_RGEOS_DENSE(returnDense)
+    if(checkValidity) {
+        val1 <- gIsValid(spgeom1)
+        val2 <- gIsValid(spgeom2)
+        if (!val1) message(deparse(substitute(spgeom1)), " is invalid")
+        if (!val2) message(deparse(substitute(spgeom2))," is invalid")
+        if (!all(c(val1, val2))) stop("Invalid objects found")
+    }
+    
     res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_covers_prepared")
     set_RGEOS_DENSE(oreturnDense)
     res
 }
 
-gCoveredBy = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+gCoveredBy = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE, checkValidity=FALSE) {
     stopifnot(is.logical(returnDense))
     stopifnot(length(returnDense)==1)
     oreturnDense <- get_RGEOS_DENSE()
     set_RGEOS_DENSE(returnDense)
+    if(checkValidity) {
+        val1 <- gIsValid(spgeom1)
+        val2 <- gIsValid(spgeom2)
+        if (!val1) message(deparse(substitute(spgeom1)), " is invalid")
+        if (!val2) message(deparse(substitute(spgeom2))," is invalid")
+        if (!all(c(val1, val2))) stop("Invalid objects found")
+    }
+    
     res <- RGEOSBinPredFunc(spgeom2,spgeom1,rev(byid),"rgeos_covers_prepared")
     set_RGEOS_DENSE(oreturnDense)
     res
 }
 
 
-gDisjoint = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+gDisjoint = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE, checkValidity=FALSE) {
     stopifnot(is.logical(returnDense))
     stopifnot(length(returnDense)==1)
     oreturnDense <- get_RGEOS_DENSE()
     set_RGEOS_DENSE(returnDense)
+    if(checkValidity) {
+        val1 <- gIsValid(spgeom1)
+        val2 <- gIsValid(spgeom2)
+        if (!val1) message(deparse(substitute(spgeom1)), " is invalid")
+        if (!val2) message(deparse(substitute(spgeom2))," is invalid")
+        if (!all(c(val1, val2))) stop("Invalid objects found")
+    }
+    
     res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_disjoint")
     set_RGEOS_DENSE(oreturnDense)
     res
 }
 
-gTouches = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+gTouches = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE, checkValidity=FALSE) {
     stopifnot(is.logical(returnDense))
     stopifnot(length(returnDense)==1)
     oreturnDense <- get_RGEOS_DENSE()
     set_RGEOS_DENSE(returnDense)
+    if(checkValidity) {
+        val1 <- gIsValid(spgeom1)
+        val2 <- gIsValid(spgeom2)
+        if (!val1) message(deparse(substitute(spgeom1)), " is invalid")
+        if (!val2) message(deparse(substitute(spgeom2))," is invalid")
+        if (!all(c(val1, val2))) stop("Invalid objects found")
+    }
+    
     res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_touches")
     set_RGEOS_DENSE(oreturnDense)
     res
 }
 
-gCrosses = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+gCrosses = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE, checkValidity=FALSE) {
     stopifnot(is.logical(returnDense))
     stopifnot(length(returnDense)==1)
     oreturnDense <- get_RGEOS_DENSE()
     set_RGEOS_DENSE(returnDense)
+    if(checkValidity) {
+        val1 <- gIsValid(spgeom1)
+        val2 <- gIsValid(spgeom2)
+        if (!val1) message(deparse(substitute(spgeom1)), " is invalid")
+        if (!val2) message(deparse(substitute(spgeom2))," is invalid")
+        if (!all(c(val1, val2))) stop("Invalid objects found")
+    }
+    
     res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_crosses")
     set_RGEOS_DENSE(oreturnDense)
     res
 }
 
-gWithin = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+gWithin = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE, checkValidity=FALSE) {
     stopifnot(is.logical(returnDense))
     stopifnot(length(returnDense)==1)
     oreturnDense <- get_RGEOS_DENSE()
     set_RGEOS_DENSE(returnDense)
+    if(checkValidity) {
+        val1 <- gIsValid(spgeom1)
+        val2 <- gIsValid(spgeom2)
+        if (!val1) message(deparse(substitute(spgeom1)), " is invalid")
+        if (!val2) message(deparse(substitute(spgeom2))," is invalid")
+        if (!all(c(val1, val2))) stop("Invalid objects found")
+    }
+    
     res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_within")
     set_RGEOS_DENSE(oreturnDense)
     res
 }
 
-gOverlaps = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+gOverlaps = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE, checkValidity=FALSE) {
     stopifnot(is.logical(returnDense))
     stopifnot(length(returnDense)==1)
     oreturnDense <- get_RGEOS_DENSE()
     set_RGEOS_DENSE(returnDense)
+    if(checkValidity) {
+        val1 <- gIsValid(spgeom1)
+        val2 <- gIsValid(spgeom2)
+        if (!val1) message(deparse(substitute(spgeom1)), " is invalid")
+        if (!val2) message(deparse(substitute(spgeom2))," is invalid")
+        if (!all(c(val1, val2))) stop("Invalid objects found")
+    }
+    
     res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_overlaps")
     set_RGEOS_DENSE(oreturnDense)
     res
 }
 
-gEquals = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE) {
+gEquals = function(spgeom1, spgeom2 = NULL, byid = FALSE, returnDense=TRUE, checkValidity=FALSE) {
     stopifnot(is.logical(returnDense))
     stopifnot(length(returnDense)==1)
     oreturnDense <- get_RGEOS_DENSE()
     set_RGEOS_DENSE(returnDense)
+    if(checkValidity) {
+        val1 <- gIsValid(spgeom1)
+        val2 <- gIsValid(spgeom2)
+        if (!val1) message(deparse(substitute(spgeom1)), " is invalid")
+        if (!val2) message(deparse(substitute(spgeom2))," is invalid")
+        if (!all(c(val1, val2))) stop("Invalid objects found")
+    }
+    
     res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_equals")
     set_RGEOS_DENSE(oreturnDense)
     res
 }
 
-gEqualsExact = function(spgeom1, spgeom2 = NULL, tol=0.0, byid = FALSE, returnDense=TRUE) {
+gEqualsExact = function(spgeom1, spgeom2 = NULL, tol=0.0, byid = FALSE, returnDense=TRUE, checkValidity=FALSE) {
     stopifnot(is.logical(returnDense))
     stopifnot(length(returnDense)==1)
     oreturnDense <- get_RGEOS_DENSE()
@@ -204,12 +292,28 @@ gEqualsExact = function(spgeom1, spgeom2 = NULL, tol=0.0, byid = FALSE, returnDe
     if ( is.na(tol) ) 
         stop("Invalid value for tolerance, must be numeric")
 
+    if(checkValidity) {
+        val1 <- gIsValid(spgeom1)
+        val2 <- gIsValid(spgeom2)
+        if (!val1) message(deparse(substitute(spgeom1)), " is invalid")
+        if (!val2) message(deparse(substitute(spgeom2))," is invalid")
+        if (!all(c(val1, val2))) stop("Invalid objects found")
+    }
+    
     res <- RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_equalsexact", tol)
     set_RGEOS_DENSE(oreturnDense)
     res
 }
 
-gRelate = function(spgeom1, spgeom2 = NULL, pattern = NULL, byid = FALSE) {
+gRelate = function(spgeom1, spgeom2 = NULL, pattern = NULL, byid = FALSE, checkValidity=FALSE) {
+    
+    if(checkValidity) {
+        val1 <- gIsValid(spgeom1)
+        val2 <- gIsValid(spgeom2)
+        if (!val1) message(deparse(substitute(spgeom1)), " is invalid")
+        if (!val2) message(deparse(substitute(spgeom2))," is invalid")
+        if (!all(c(val1, val2))) stop("Invalid objects found")
+    }
     
 	if (is.null(pattern)) {
 		return( RGEOSBinPredFunc(spgeom1,spgeom2,byid,"rgeos_relate") )

@@ -6,7 +6,7 @@
 \description{Find spatial join or intersections}
 \usage{
 overGeomGeom(x, y, returnList = FALSE, fn = NULL, ..., minDimension = -1)
-overGeomGeomDF(x, y, returnList = FALSE, fn = NULL, ...)
+overGeomGeomDF(x, y, returnList = FALSE, fn = NULL, ..., minDimension = -1)
 }
 
 \arguments{

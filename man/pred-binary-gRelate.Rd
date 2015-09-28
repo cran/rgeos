@@ -5,13 +5,15 @@
 \title{Geometry Relationships - Intersection Matrix Pattern (DE-9IM)}
 \description{Determines the relationships between two geometries by comparing the intersection of Interior, Boundary and Exterior  of both geometries to each other. The results are summarized by the Dimensionally Extended 9-Intersection Matrix or DE-9IM.}
 \usage{
-	gRelate(spgeom1, spgeom2 = NULL, pattern = NULL, byid = FALSE)
+	gRelate(spgeom1, spgeom2 = NULL, pattern = NULL, byid = FALSE,
+ checkValidity=FALSE)
 }
 	
 \arguments{
   \item{spgeom1, spgeom2}{sp objects as defined in package sp. If spgeom2 is NULL then spgeom1 is compared to itself.}
   \item{byid}{Logical vector determining if the function should be applied across ids (TRUE) or the entire object (FALSE) for spgeom1 and spgeom2}
   \item{pattern}{Character string containing intersection matrix pattern to match against DE-9IM for given geometries. Wild card \code{*} or \code{*} characters allowed.}
+  \item{checkValidity}{default FALSE; error meesages from GEOS do not say clearly which object fails if a topology exception is encountered. If this argument is TRUE, \code{gIsValid} is run on each in turn in an environment in which object names are available. If objects are invalid, this is reported and those affected are named}
 }
 
 \value{By default returns a 9 character string that represents the DE-9IM.
@@ -24,6 +26,8 @@ If a pattern is specified then limited matching with wildcards is possible, \cod
 
 See references for additional details.
 } 
+
+\note{Error messages from GEOS, in particular topology exceptions, report 0-based object order, so geom 0 is spgeom1, and geom 1 is spgeom2.}
 
 \references{
 Documentation of Intersection Matrix Patterns:

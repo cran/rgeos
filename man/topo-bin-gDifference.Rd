@@ -3,7 +3,8 @@
 \title{Geometry Difference}
 \description{Function for determining the difference between the two given geometries.}
 \usage{
-gDifference(spgeom1, spgeom2, byid=FALSE, id=NULL, drop_lower_td=FALSE)
+gDifference(spgeom1, spgeom2, byid=FALSE, id=NULL, drop_lower_td=FALSE,
+ unaryUnion_if_byid_false=TRUE, checkValidity=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -11,10 +12,13 @@ gDifference(spgeom1, spgeom2, byid=FALSE, id=NULL, drop_lower_td=FALSE)
   \item{byid}{Logical vector determining if the function should be applied across ids (TRUE) or the entire object (FALSE) for spgeom1 and spgeom2}
   \item{id}{Character vector defining id labels for the resulting geometries, if unspecified returned geometries will be labeled based on their parent geometries' labels.}
   \item{drop_lower_td}{default FALSE; if TRUE, objects will be dropped from output GEOMETRYCOLLECTION objects to simplify output if their topological dinension is less than the minimum topological dinension of the input objects.}
+  \item{unaryUnion_if_byid_false}{default TRUE; if \code{byid} takes a FALSE in either position, the subgeometries are combined first to avoid possible topology exceptions (change in 0.3-13, previous behaviour did not combine subgeometries, and may be achieved by setting this argument FALSE}
+  \item{checkValidity}{default FALSE; error meesages from GEOS do not say clearly which object fails if a topology exception is encountered. If this argument is TRUE, \code{gIsValid} is run on each in turn in an environment in which object names are available. If objects are invalid, this is reported and those affected are named}
 }
 
 \details{Returns the regions of spgeom1 that are not within spgeom2. If the geometries do not intersect then the result is just spgeom1. Note that the function is not symmetric for spgeom1 and spgeom2.}
 
+\note{Error messages from GEOS, in particular topology exceptions, report 0-based object order, so geom 0 is spgeom1, and geom 1 is spgeom2.}
 
 \author{Roger Bivand & Colin Rundel}
 
