@@ -1,5 +1,5 @@
-28d8e7fa5a3dc7d48144cd0287acfb54 *ChangeLog
-0282879958808bd4c9a30920a48233c8 *DESCRIPTION
+f4ab05cc5eee49a42852bc5fdf601130 *ChangeLog
+130923a841f391e8072eb2e755df02b5 *DESCRIPTION
 de4789c70afdab64d1749b65992d4448 *NAMESPACE
 19ac4f661f34e4c345b8638901930208 *R/AAA.R
 437f4edbd6c67d561783af7960575283 *R/Rgpc_funcs.R
@@ -20,9 +20,9 @@ da9424ec7cecda9d474e22226c0471a5 *R/rgeos_topology_binary.R
 c3cded853a2388ad53569a7105d1c1e3 *cleanup
 19678ea227e94da97927db64b04e0a8d *configure
 826d2242dc28268a6c3261d81340a35e *configure.ac
-28d8e7fa5a3dc7d48144cd0287acfb54 *inst/ChangeLog
+f4ab05cc5eee49a42852bc5fdf601130 *inst/ChangeLog
 3c570969cc1bcbc2fc4a3753b140a0d1 *inst/README
-6e1f135fa7b2942117bbe9104c685d5d *inst/SVN_VERSION
+6ff4f4b3bdba7872a9d6dd9dc8d74ea0 *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -109,7 +109,7 @@ d56a8bd17039002543dbcc021de23189 *man/pred-unary-gIsEmpty.Rd
 14522b6206db0c56b0bb8f0e61af4fdb *man/pred-unary-gIsSimple.Rd
 c88180a2558016d7a543c52db48522b4 *man/pred-unary-gIsValid.Rd
 2f752b5a292a2224e0a9f8f5e3466cd1 *man/topo-bin-gDifference.Rd
-47189e0bf16705a1bc40322c193d63b2 *man/topo-bin-gIntersection.Rd
+6685c25b560758b3f4f31ccb9e14364e *man/topo-bin-gIntersection.Rd
 f6389cbe332a986cfefc9e4e5541e152 *man/topo-bin-gSymdifference.Rd
 cfa54e2492061aa9b7522c6100eb869d *man/topo-bin-gUnion.Rd
 b05955696472d44437c45f50812907f0 *man/topo-unary-gBoundary.Rd
@@ -141,7 +141,7 @@ a4c6eb9cb34af95e49a3dbc039cba355 *src/rgeos_buffer.c
 89d3dda31dbbdd43fa28de009e603676 *src/rgeos_predicate_binary.c
 4f39ba7f07b85f29216673dc7d9be3b6 *src/rgeos_predicate_unary.c
 4d2b0095f689b0b7370a6f55735f707e *src/rgeos_topology.c
-7039c60e451e92166819c1b9d27eace4 *src/rgeos_topology_binary.c
+56018dab15bce19dd04bad4145637101 *src/rgeos_topology_binary.c
 2f55f9260e4f08eadf605d4c8192b984 *src/rgeos_validate.c
 7401713afd055d3652fd0d7dbc296637 *src/rgeos_wkt.c
 ae6812f145768aacaa29b9128a8c3f8f *tests/test-all.R

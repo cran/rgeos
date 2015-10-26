@@ -1,3 +1,17 @@
+2015-10-25 10:38  rsbivand
+
+	* man/topo-bin-gIntersection.Rd: fix td bug
+
+2015-10-25 10:28  rsbivand
+
+	* ChangeLog, DESCRIPTION, inst/ChangeLog,
+	  man/topo-bin-gIntersection.Rd, src/rgeos_topology_binary.c: fix
+	  td bug
+
+2015-09-29 07:07  rsbivand
+
+	* man/topo-bin-gIntersection.Rd: extra intersection example
+
 2015-09-28 15:51  rsbivand
 
 	* ChangeLog, configure,

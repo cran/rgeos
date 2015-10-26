@@ -108,7 +108,7 @@ SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, S
                               kgeom = (GEOSGeom) GEOSGetGeometryN_r(GEOShandle,
                                 thisgeom, k1);
                               thistd = GEOSTopologicalDimension_r(GEOShandle,
-                                thisgeom);
+                                kgeom);
                               k_empty = GEOSisEmpty_r(GEOShandle, kgeom);
                               if (!k_empty && thistd == min_tds) {
                                 kgeoms[kk] = kgeom;
@@ -118,9 +118,9 @@ SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, S
                         }
                         if (kk == 0) {
                             drop_me = TRUE;
-                        } else {
-                            if (kk > 1) {
-                                if (min_tds == 0) {
+                       } else {
+                              if (kk > 1) {
+                                  if (min_tds == 0) {
                                     thisgeom = GEOSGeom_createCollection_r(
                                       GEOShandle, GEOS_MULTIPOINT, 
                                       kgeoms, (unsigned int) kk);
