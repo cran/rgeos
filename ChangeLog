@@ -1,3 +1,11 @@
+2015-11-04 11:10  rsbivand
+
+	* DESCRIPTION, src/rgeos_buffer.c: rgeos_buffer id overrun bug fix
+
+2015-10-26 14:28  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2015-10-25 10:38  rsbivand
 
 	* man/topo-bin-gIntersection.Rd: fix td bug

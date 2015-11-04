@@ -1,27 +1,49 @@
 #include "rgeos.h"
 
-SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width, SEXP quadsegs, 
-                  SEXP capStyle, SEXP joinStyle, SEXP mitreLimit) {
-    int i;
+SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width,
+    SEXP quadsegs, SEXP capStyle, SEXP joinStyle, SEXP mitreLimit) {
+    int i, pc=0;
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
     
     GEOSGeometry* geom = rgeos_convert_R2geos(env, obj);
     SEXP p4s = GET_SLOT(obj, install("proj4string"));
+    SEXP n_id;
     
     int n;
-    if (LOGICAL_POINTER(byid)[0])
+    if (LOGICAL_POINTER(byid)[0]) {
         n = GEOSGetNumGeometries_r(GEOShandle, geom);
-    else
+//Rprintf("n %d, length(id) %d\n", n, length(id));
+// sanity check 151104 RSB
+        if (n > length(id)) {
+            PROTECT(n_id = NEW_CHARACTER(n)); pc++;
+            char str[15];
+            for (i=0; i < n; i++) {
+                sprintf(str, "%d", i+R_OFFSET);
+//Rprintf("i %d, str %s\n", i, str);
+                SET_STRING_ELT(n_id, i, COPY_TO_USER_STRING(str));
+            }
+            warning("rgeos_buffer: geometry count/id count mismatch - id changed");
+        } else {
+            PROTECT(n_id = NEW_CHARACTER(length(id))); pc++;
+            for (i=0; i < length(id); i++)
+                SET_STRING_ELT(n_id, i, STRING_ELT(id, i));
+        }
+    } else {
         n = 1;
+        PROTECT(n_id = NEW_CHARACTER(length(id))); pc++;
+        for (i=0; i < length(id); i++)
+            SET_STRING_ELT(n_id, i, STRING_ELT(id, i));
+    }
     
     GEOSGeometry** geoms = (GEOSGeometry**) R_alloc((size_t) n, sizeof(GEOSGeometry*));
     SEXP newids;
-    PROTECT(newids = NEW_CHARACTER(n));
+    PROTECT(newids = NEW_CHARACTER(n)); pc++;
     
     GEOSGeometry* curgeom = geom;
     GEOSGeometry* thisgeom;
     int k = 0;
     for(i=0, k=0; i<n; i++) {
+//Rprintf("i %d, k %d, n %d\n", i, k, n);
         if ( n > 1) {
             curgeom = (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, geom, i);
             if (curgeom == NULL) error("rgeos_buffer: unable to get subgeometries");
@@ -37,7 +59,8 @@ SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width, SEXP quads
 // https://stat.ethz.ch/pipermail/r-sig-geo/2013-October/019470.html
         if (!GEOSisEmpty_r(GEOShandle, thisgeom)) {
             geoms[k] = thisgeom;
-            SET_STRING_ELT(newids, k, STRING_ELT(id, i));
+//Rprintf("n_id %s\n", CHAR(STRING_ELT(n_id, i)));
+            SET_STRING_ELT(newids, k, STRING_ELT(n_id, i));
             k++;
         }
 
@@ -46,7 +69,7 @@ SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width, SEXP quads
     GEOSGeom_destroy_r(GEOShandle, geom);
 
     if (k == 0) {
-        UNPROTECT(1);
+        UNPROTECT(pc);
         return(R_NilValue);
     }
 
@@ -57,7 +80,7 @@ SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width, SEXP quads
         res = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) k);
 
     SEXP ans;
-    PROTECT(ans = rgeos_convert_geos2R(env, res, p4s, newids)); // releases res
-    UNPROTECT(2);
+    PROTECT(ans = rgeos_convert_geos2R(env, res, p4s, newids)); pc++; // releases res
+    UNPROTECT(pc);
     return(ans);
 }
