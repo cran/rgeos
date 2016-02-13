@@ -1,3 +1,33 @@
+2016-02-12 20:31  rsbivand
+
+	* DESCRIPTION, R/rgeos_buffer.R: buffer byid to FALSE if single
+	  feature
+
+2016-02-12 18:58  rsbivand
+
+	* R/rgeos_buffer.R: buffer byid to FALSE if single feature
+
+2016-02-09 12:53  rsbivand
+
+	* ChangeLog, inst/ChangeLog: buffer byid to FALSE if single feature
+
+2016-02-09 12:52  rsbivand
+
+	* DESCRIPTION, R/rgeos_buffer.R, configure, src/rgeos_buffer.c:
+	  buffer byid to FALSE if single feature
+
+2016-01-23 19:12  rsbivand
+
+	* DESCRIPTION, R/rgeos_misc.R: rev 66 oddity partial workaround
+
+2015-11-04 12:46  rsbivand
+
+	* configure: tidy
+
+2015-11-04 12:43  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2015-11-04 11:10  rsbivand
 
 	* DESCRIPTION, src/rgeos_buffer.c: rgeos_buffer id overrun bug fix
