@@ -2,5 +2,8 @@ GEOS_INC_DIR=${GEOS_HOME}/include
 GEOS_LIB_DIR=${GEOS_HOME}/lib
 
 PKG_CPPFLAGS=-I${GEOS_INC_DIR}
-PKG_LIBS=-L${GEOS_LIB_DIR} -lgeos_c -lgeos -lstdc++
-
+ifeq "$(WIN)" "64"
+PKG_LIBS=-L${GEOS_LIB_DIR}/x64 -lgeos_c -lgeos -lstdc++
+else
+PKG_LIBS=-L${GEOS_LIB_DIR}/i386 -lgeos_c -lgeos -lstdc++
+endif

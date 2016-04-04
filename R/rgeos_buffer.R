@@ -63,7 +63,7 @@ gBuffer = function(spgeom, byid=FALSE, id=NULL, width=1.0, quadsegs=5,
     ans = .Call("rgeos_buffer", .RGEOS_HANDLE, spgeom, byid, id, width, quadsegs,
                                 capStyle, joinStyle, mitreLimit, PACKAGE="rgeos")
  
-	if (byid_status) {
+	if (!is.null(ans) && byid_status) {
 	    if (.hasSlot(spgeom, 'data')) {
                 m1 <- match(row.names(ans), id)
                 df1 <- spgeom@data[m1, , drop=FALSE]

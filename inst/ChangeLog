@@ -1,3 +1,15 @@
+2016-04-04 11:35  rsbivand
+
+	* DESCRIPTION, src/Makevars.win: update to win-4.9.3
+
+2016-02-15 07:38  rsbivand
+
+	* DESCRIPTION, R/rgeos_buffer.R: gBuffer NULL case
+
+2016-02-13 11:26  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2016-02-12 20:31  rsbivand
 
 	* DESCRIPTION, R/rgeos_buffer.R: buffer byid to FALSE if single
