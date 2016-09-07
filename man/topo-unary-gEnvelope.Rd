@@ -14,7 +14,7 @@ gEnvelope(spgeom, byid=FALSE, id = NULL)
   \item{id}{Character vector defining id labels for the resulting geometries, if unspecified returned geometries will be labeled based on their parent geometries' labels.}
 }
 
-\details{Returns the rectangular bounding box as a SpatailPolygons object. If spgeom is a degenerate case (horizontal/vertical line, single point) then the function may return an object with lower dimension (SpatialLines or SpatialPoints) or an invalid polygon.}
+\details{Returns the rectangular bounding box as a SpatialPolygons object. If spgeom is a degenerate case (horizontal/vertical line, single point) then the function may return an object with lower dimension (SpatialLines or SpatialPoints) or an invalid polygon.}
 
 \author{Roger Bivand & Colin Rundel}
 

@@ -65,7 +65,7 @@ export( gDifference, gSymdifference, gIntersection, gUnion)# RSB FIXME
 export( RGEOSBuffer, gBuffer )
 
 # GEOS linearref functions
-#export( gProject, gInterpolate)
+export(gProject, gInterpolate)
 
 
 # gpclib shadows

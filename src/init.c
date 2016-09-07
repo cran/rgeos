@@ -81,7 +81,11 @@ static R_CallMethodDef CallEntries[] = {
     
     //Buffer Functions
     {"rgeos_buffer", (DL_FUNC) &rgeos_buffer, 9},
-    
+
+    //Linear referencing functions
+    {"rgeos_interpolate", (DL_FUNC) &rgeos_interpolate, 4},
+    {"rgeos_project", (DL_FUNC) &rgeos_project, 4},
+
     //Misc functions
     {"rgeos_area", (DL_FUNC) &rgeos_area, 3},
     {"rgeos_length", (DL_FUNC) &rgeos_length, 3},

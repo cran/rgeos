@@ -1,3 +1,53 @@
+2016-09-07 13:09  rsbivand
+
+	* src/rgeos_predicate_binary.c: block list output from gRelate
+
+2016-09-07 10:03  rsbivand
+
+	* inst/ChangeLog: tidy
+
+2016-09-07 09:50  rcs
+
+	* ChangeLog, man/topo-unary-gEnvelope.Rd: fix typo
+
+2016-09-07 09:48  rcs
+
+	* ChangeLog, src/rgeos_geos2R.c: fix stack imbalance in
+	  rgeos_geosring2SpatialRings()
+
+2016-09-06 13:13  rcs
+
+	* ChangeLog, R/rgeos_linearref.R, man/linref-gProject.Rd,
+	  src/rgeos_linearref.c: update Rd; fix typo
+
+2016-09-06 11:41  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2016-09-06 11:40  rsbivand
+
+	* configure: tidy
+
+2016-09-06 11:38  rsbivand
+
+	* inst/tests, tests/test-all.R, tests/testthat: moved tests folder
+
+2016-09-06 10:50  rcs
+
+	* ChangeLog, DESCRIPTION, NAMESPACE, R/rgeos_linearref.R,
+	  inst/tests/test-linearref.R, man/linref-gInterpolate.Rd,
+	  man/linref-gProject.Rd, src/init.c, src/rgeos.h,
+	  src/rgeos_linearref.c: added linear referencing functions
+	  (gInterpolate/gProject)
+
+2016-08-30 17:36  rsbivand
+
+	* DESCRIPTION, src/rgeos_coord.c: protect s in src/rgeos_coord.c
+
+2016-04-04 11:37  rsbivand
+
+	* ChangeLog, configure, inst/ChangeLog: tidy
+
 2016-04-04 11:35  rsbivand
 
 	* DESCRIPTION, src/Makevars.win: update to win-4.9.3

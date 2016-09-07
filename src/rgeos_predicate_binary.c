@@ -168,6 +168,10 @@ SEXP rgeos_binpredfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_binpre
     if (n == -1) error("rgeos_binpredfunc: invalid number of subgeometries in geometry 2");
 
     SEXP ans;
+    if (!retDen && binpredfunc == (p_binpredfunc) GEOSRelate_r) {
+        retDen = TRUE;
+        warning("rgeos_binpredfunc: gRelate always returns a dense character matrix");
+    }
     if (retDen) {
         if (((double) n * (double) m) >= INT_MAX)
             error("rgeos_binpredfunc: maximum returned dense matrix size exceeded");

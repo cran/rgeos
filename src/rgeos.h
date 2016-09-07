@@ -185,8 +185,11 @@ SEXP rgeos_unarypredfunc(SEXP env, SEXP spgeom, SEXP byid, p_unarypredfunc);
 SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width, SEXP quadsegs, 
                   SEXP capStyle, SEXP joinStyle, SEXP mitreLimit);
 
+// Linear referencing functions
+SEXP rgeos_project(SEXP env, SEXP spgeom, SEXP sppoint, SEXP normalized);
+SEXP rgeos_interpolate(SEXP env, SEXP spgeom, SEXP d, SEXP normalized);
 
-// Miscelaneous functions - rgeos_misc.c
+// Miscellaneous functions - rgeos_misc.c
 
 SEXP rgeos_area(SEXP env, SEXP obj, SEXP byid);
 SEXP rgeos_length(SEXP env, SEXP obj, SEXP byid);

@@ -819,9 +819,11 @@ SEXP rgeos_geosring2SpatialRings(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
     SEXP bbox, rings_list;
     PROTECT(bbox = rgeos_geom2bbox(env, geom)); pc++;
     PROTECT(rings_list = NEW_LIST(nrings)); pc++;
-    
-    for(int j = 0, lpc=0; j < nrings; j++) {
-        
+
+    for(int j = 0; j < nrings; j++) {
+
+        int lpc = 0;
+
         GEOSGeom curgeom = (type == GEOS_GEOMETRYCOLLECTION) ?
                                 (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, geom, j) :
                                 geom;

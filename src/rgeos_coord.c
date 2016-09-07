@@ -10,6 +10,7 @@ GEOSCoordSeq rgeos_crdMat2CoordSeq(SEXP env, SEXP mat, SEXP dim) {
     if (m != 2) error("Only 2D geometries permitted");
 
     GEOSCoordSeq s = GEOSCoordSeq_create_r(GEOShandle, (unsigned int) n, (unsigned int) m);
+    if (s == NULL) error("rgeos_crdMat2CoordSeq: NULL GEOSCoordSeq");
 
     double scale = getScale(env);
     for(int i=0; i<n; i++) {
@@ -255,6 +256,7 @@ GEOSGeom rgeos_xy2Pt(SEXP env, double x, double y) {
         gl = GEOSGeom_createPoint_r(GEOShandle, NULL);
     } else {
         s = GEOSCoordSeq_create_r(GEOShandle, (unsigned int) 1, (unsigned int) 2);
+        if (s == NULL) error("rgeos_xy2Pt: NULL GEOSCoordSeq");
 
         if (GEOSCoordSeq_setX_r(GEOShandle, s, 0, x) == 0) {
             GEOSCoordSeq_destroy_r(GEOShandle, s);
