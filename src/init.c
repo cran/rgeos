@@ -92,7 +92,8 @@ static R_CallMethodDef CallEntries[] = {
     {"rgeos_distance", (DL_FUNC) &rgeos_distance, 4},
     {"rgeos_hausdorffdistance", (DL_FUNC) &rgeos_hausdorffdistance, 4},
     {"rgeos_hausdorffdistancedensify", (DL_FUNC) &rgeos_hausdorffdistancedensify, 5},
-    
+    {"rgeos_nearestpoints", (DL_FUNC) &rgeos_nearestpoints, 3},
+
     {"rgeos_PolygonsContain", (DL_FUNC) &rgeos_PolygonsContain, 2},
     {"rgeos_poly_findInBox", (DL_FUNC) &rgeos_poly_findInBox, 3}, 
     {"rgeos_binary_STRtree_query", (DL_FUNC) &rgeos_binary_STRtree_query, 3}, 

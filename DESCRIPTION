@@ -1,7 +1,7 @@
 Package: rgeos
 Title: Interface to Geometry Engine - Open Source (GEOS)
-Version: 0.3-20
-Date: 2016-09-06
+Version: 0.3-21
+Date: 2016-10-10
 Depends: R (>= 2.14.0)
 Imports: methods, sp (>= 1.1-0), utils, stats, graphics
 LinkingTo: sp
@@ -12,8 +12,8 @@ Authors@R: c(
 	person("Roger", "Bivand", role = c("cre", "aut"), email = "Roger.Bivand@nhh.no"),
 	person("Colin", "Rundel", role = "aut"),
 	person("Edzer", "Pebesma", role = "ctb"),
-	person("Karl Ove", "Hufthammer", role = "ctb"),
-	person("Rainer", "Stuetz", role = "ctb"))
+	person("Rainer", "Stuetz", role = "ctb"),
+	person("Karl Ove", "Hufthammer", role = "ctb"))
 License: GPL (>= 2)
 URL: https://r-forge.r-project.org/projects/rgeos/
         http://trac.osgeo.org/geos/
@@ -22,12 +22,12 @@ SystemRequirements: GEOS (>= 3.2.0); for building from source: GEOS
         William Kyngesburye at http://www.kyngchaos.com/ may be used
         for source installs on OSX.
 NeedsCompilation: yes
-Packaged: 2016-09-07 13:09:03 UTC; rsb
+Packaged: 2016-10-19 11:44:08 UTC; rsb
 Author: Roger Bivand [cre, aut],
   Colin Rundel [aut],
   Edzer Pebesma [ctb],
-  Karl Ove Hufthammer [ctb],
-  Rainer Stuetz [ctb]
+  Rainer Stuetz [ctb],
+  Karl Ove Hufthammer [ctb]
 Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
 Repository: CRAN
-Date/Publication: 2016-09-07 15:54:23
+Date/Publication: 2016-10-20 10:52:30

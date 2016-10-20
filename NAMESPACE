@@ -47,7 +47,7 @@ export( gRelate, gDisjoint, gTouches, gIntersects, gCrosses,
 # GEOS misc functions
 export( RGEOSArea, RGEOSLength, RGEOSDistance, RGEOSisWithinDistance, 
 		RGEOSHausdorffDistance)
-export( gArea, gLength, gDistance, gWithinDistance)
+export( gArea, gLength, gDistance, gWithinDistance, gNearestPoints)
 
 
 # GEOS topology functions

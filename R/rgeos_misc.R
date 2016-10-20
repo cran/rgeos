@@ -104,6 +104,46 @@ gTopoDim <- function(obj) {
     td
 }
 
+
+#' Closest Points of two Geometries
+#'
+#' Return closest points of two geometries.
+#'
+#' @param spgeom1,spgeom2 sp objects as defined in package sp.
+#' @return The closest points of the two geometries or NULL on exception.
+#'   The first point comes from spgeom1 geometry and the second point comes
+#'   from spgeom2.
+#' @seealso gDistance
+#' @rdname misc-gNearestPoints
+#' @author Rainer Stuetz
+#' @keywords spatial
+#' @examples
+#' g1 <- readWKT("MULTILINESTRING((34 54, 60 34), (0 10, 50 10, 100 50))")
+#' g2 <- readWKT("MULTIPOINT(30 0, 100 30)")
+#' plot(g1, pch=4, axes=TRUE)
+#' plot(g2, add=TRUE)
+#' plot(gNearestPoints(g1, g2), add=TRUE, col="red", pch=7)
+#' gDistance(g1, g2)
+#' @export
+gNearestPoints <- function(spgeom1, spgeom2) {
+
+
+    if (version_GEOS0() < "3.4.0")
+        stop("No NearestPoints in this version of GEOS")
+
+  stopifnot(identical(proj4string(spgeom1), proj4string(spgeom2)))
+
+  x <- .Call("rgeos_nearestpoints", .RGEOS_HANDLE, spgeom1, spgeom2,
+             PACKAGE="rgeos")
+  if (!is.null(x)) {
+    rownames(x) <- seq_len(nrow(x))
+    SpatialPoints(x, proj4string=CRS(proj4string(spgeom1)))
+  } else {
+    x
+  }
+}
+
+
 #Deprecated function names
 RGEOSArea = function(spgeom, byid=FALSE) {
     .Deprecated("gArea")
@@ -125,3 +165,4 @@ RGEOSHausdorffDistance = function(spgeom1, spgeom2=NULL, byid=FALSE) {
     .Deprecated("gDistance")
     return( gDistance(spgeom1, spgeom2, byid, TRUE) )
 }
+

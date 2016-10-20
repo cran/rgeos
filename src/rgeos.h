@@ -19,11 +19,13 @@
 #if GEOS_VERSION_MAJOR > 3
 #define  HAVE_DELAUNAY 1
 #define HAVE_NODE 1
+#define HAVE_NEARESTPOINTS 1
 #endif
 #if GEOS_VERSION_MAJOR == 3
 #if GEOS_VERSION_MINOR >= 4
 #define  HAVE_DELAUNAY 1
 #define HAVE_NODE 1
+#define HAVE_NEARESTPOINTS 1
 #endif
 #endif
 
@@ -205,7 +207,7 @@ SEXP rgeos_distancefunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, p_distf
 SEXP rgeos_hausdorffdistancedensify(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP densifyFrac, SEXP byid);
 typedef int (*p_distdenfunc)(GEOSContextHandle_t,const GEOSGeometry*,const GEOSGeometry*, double, double *);
 SEXP rgeos_distancedensifyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP densifyFrac, SEXP byid, p_distdenfunc);
-
+SEXP rgeos_nearestpoints(SEXP env, SEXP spgeom1, SEXP spgeom2);
 
 // Needs to be classified
 SEXP rgeos_PolygonsContain(SEXP env, SEXP obj);

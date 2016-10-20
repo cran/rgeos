@@ -211,3 +211,29 @@ SEXP rgeos_distancedensifyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP densif
     UNPROTECT(pc);
     return(ans);
 }
+
+#ifdef HAVE_NEARESTPOINTS
+SEXP rgeos_nearestpoints(SEXP env, SEXP spgeom1, SEXP spgeom2) {
+
+    GEOSContextHandle_t GEOShandle = getContextHandle(env);
+    GEOSGeom geom1 = rgeos_convert_R2geos(env, spgeom1);
+    GEOSGeom geom2 = rgeos_convert_R2geos(env, spgeom2);
+
+
+    // Returns the closest points of the two geometries, 0 on exception.
+    // The first point comes from geom1 geometry and
+    // the second point comes from geom2.
+    GEOSCoordSequence* s = GEOSNearestPoints_r(GEOShandle, geom1, geom2);
+
+    SEXP coordmat;
+    if (s == 0) {
+        coordmat = R_NilValue;
+    } else {
+        coordmat = rgeos_CoordSeq2crdMat(env, s, 0, 0);
+    }
+
+    GEOSCoordSeq_destroy_r(GEOShandle, s);
+
+    return(coordmat);
+}
+#endif

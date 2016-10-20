@@ -62,7 +62,7 @@ plotSpatialRings <- function(SR, xlim = NULL, ylim = NULL,
     if (length(lty) != length(lst)) 
         lty <- rep(lty[1], length(lst))
 
-    for (i in seq(along=lst)) {
+    for (i in seq(along.with=lst)) {
         crds <- coordinates(lst[[i]])
         lines(crds, col = col[i], lwd = lwd[i], lty = lty[i], ...)
     }

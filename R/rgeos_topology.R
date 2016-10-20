@@ -119,7 +119,7 @@ gLineMerge = function(spgeom, byid=FALSE, id = NULL) {
 
     ids <- split(1:length(id), id)
     out <- vector(mode="list", length=length(ids))
-    for (i in seq(along=ids)) {
+    for (i in seq(along.with=ids)) {
         out[[i]] <- .Call("rgeos_linemerge", .RGEOS_HANDLE,
         spgeom[ids[[i]]], names(ids)[i], FALSE, PACKAGE="rgeos") 
     }
@@ -143,7 +143,7 @@ gUnionCascaded = function(spgeom, id = NULL) {
     ids <- split(1:length(id), id)
     sl <- sapply(ids, length)
     out <- vector(mode="list", length=length(ids))
-    for (i in seq(along=ids)) {
+    for (i in seq(along.with=ids)) {
         out[[i]] <- TopologyFunc(groupID(spgeom[ids[[i]]], id[ids[[i]]]),
             names(ids)[i], TRUE, "rgeos_unioncascaded")
     }
@@ -169,7 +169,7 @@ gUnaryUnion = function(spgeom, id = NULL) {
 
     ids <- split(1:length(id), id)
     out <- vector(mode="list", length=length(ids))
-    for (i in seq(along=ids)) {
+    for (i in seq(along.with=ids)) {
         out[[i]] <- .Call("rgeos_unaryunion", .RGEOS_HANDLE,
         spgeom[ids[[i]]], names(ids)[i], FALSE, PACKAGE="rgeos") 
     }

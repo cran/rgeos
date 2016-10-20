@@ -5,11 +5,13 @@ library("sp")
 
 context("Linear Referencing")
 
+coord <- function(x) unname(coordinates(x))
+
 
 test_that("zero-length input arguments fail with error", {
 
   dat <- data.frame(x = 1)
-  p <- SpatialPointsDataFrame(rgeos::readWKT("POINT(0 0)"), dat)
+  p <- SpatialPointsDataFrame(readWKT("POINT(0 0)"), dat)
   l <- SpatialLinesDataFrame(readWKT("LINESTRING (-1 0, 1 0)"), dat)
 
   expect_error(gProject(l, subset(p, x > 1)))
@@ -24,8 +26,9 @@ test_that("zero-length input arguments fail with error", {
 test_that("interpolation works with zero length line", {
 
   l <- readWKT("LINESTRING (10 0, 10 0)")
-  expect_equivalent(gInterpolate(readWKT("LINESTRING (10 0, 10 0)"), d = 0.5),
-                    head(as(l, "SpatialPoints"), 1))
+  expect_identical(coord(gInterpolate(readWKT("LINESTRING (10 0, 10 0)"),
+                                      d = 0.5)),
+                   coord(head(as(l, "SpatialPoints"), 1)))
 })
 
 
@@ -49,7 +52,7 @@ test_that("functions work with MultiLineStrings", {
   p <- readWKT("MULTIPOINT(2 1.9, 2 2.1)")
   res <- readWKT("MULTIPOINT(2 0, 0 2)")
 
-  expect_equivalent(gInterpolate(l, gProject(l, p)), res)
+  expect_identical(coord(gInterpolate(l, gProject(l, p))), coord(res))
 })
 
 
@@ -67,9 +70,11 @@ test_that("interpolation is correct at endpoints", {
   l <- readWKT("LINESTRING(25 50, 100 125, 150 190)")
   p <- as(l, "SpatialPoints")
 
-  expect_equivalent(gInterpolate(l, 0, TRUE), p[1, ])
-  expect_equivalent(gInterpolate(l, 0, FALSE), p[1, ])
+  expect_identical(coord(gInterpolate(l, 0, TRUE)), coord(p[1, ]))
+  expect_identical(coord(gInterpolate(l, 0, FALSE)), coord(p[1, ]))
 
-  expect_equivalent(gInterpolate(l, 1, TRUE), p[length(p), ])
-  expect_equivalent(gInterpolate(l, gLength(l), FALSE), p[length(p), ])
+  expect_identical(coord(gInterpolate(l, 1, TRUE)),
+                   coord(p[length(p), ]))
+  expect_identical(coord(gInterpolate(l, gLength(l), FALSE)),
+                   coord(p[length(p), ]))
 })

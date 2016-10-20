@@ -1,3 +1,33 @@
+2016-10-11 03:24  rsbivand
+
+	* ChangeLog, R/rgeos_misc.R, man/misc-gNearestPoints.Rd,
+	  src/rgeos.h, src/rgeos_misc.c: checking NearestPoint dependency
+	  on >= 3.4
+
+2016-10-10 07:28  rcs
+
+	* ChangeLog, DESCRIPTION, NAMESPACE, R/rgeos_misc.R, configure,
+	  inst/ChangeLog, man/misc-gNearestPoints.Rd, src/init.c,
+	  src/rgeos.h, src/rgeos_misc.c, tests/testthat/test-misc.R: add
+	  gNearestPoints
+
+2016-10-08 08:14  rcs
+
+	* tests/testthat/test-linearref.R: fix linearref tests
+
+2016-10-07 21:53  rcs
+
+	* tests/testthat/test-linearref.R: fix linearref tests
+
+2016-09-14 11:18  rcs
+
+	* R/rgeos_spExtensions_Methods.R, R/rgeos_topology.R: fix partial
+	  argument match
+
+2016-09-07 13:10  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2016-09-07 13:09  rsbivand
 
 	* src/rgeos_predicate_binary.c: block list output from gRelate
