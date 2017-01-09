@@ -1,5 +1,5 @@
-d41c69819624e0d1a8b59dad886cdce9 *ChangeLog
-1285c4cb62fdcc47ddf2c7e56160e77d *DESCRIPTION
+4d01c549b3491c9a3b3f33916615352e *ChangeLog
+f302867896df4a37a03e3def34fe6f35 *DESCRIPTION
 cdf9781828088b3eb7860fcd7ff3405c *NAMESPACE
 19ac4f661f34e4c345b8638901930208 *R/AAA.R
 437f4edbd6c67d561783af7960575283 *R/Rgpc_funcs.R
@@ -18,11 +18,11 @@ da9424ec7cecda9d474e22226c0471a5 *R/rgeos_topology_binary.R
 1ecebecc4c34c067203d5bf91a01e5d0 *R/rgeos_util.R
 6d0eb1653d9c722481408f7ce9d33e3c *R/rgeos_wkt.R
 c3cded853a2388ad53569a7105d1c1e3 *cleanup
-120ea8bf1857ff4a0f88c11d1db9ace2 *configure
+cadb02e74d8740acb93a77e1dbd38f22 *configure
 826d2242dc28268a6c3261d81340a35e *configure.ac
-d41c69819624e0d1a8b59dad886cdce9 *inst/ChangeLog
+4d01c549b3491c9a3b3f33916615352e *inst/ChangeLog
 3c570969cc1bcbc2fc4a3753b140a0d1 *inst/README
-8c2b89a5e8946eb7e9b104e498e8f0c4 *inst/SVN_VERSION
+07616c9131df4c422a852ee1a2d01eb6 *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -79,7 +79,7 @@ d1fcd30b8888bf8cc5f7efdd63abf4ff *man/wkt-functions.Rd
 b9d869d125e18d6f05c1de7ff4e95d9b *src/Makevars.in
 8536bc4ffb356c1a0cb1129771310ba7 *src/Makevars.win
 d41d8cd98f00b204e9800998ecf8427e *src/dummy.cc
-5e6c3fd4068508bdb50238a50a33d1db *src/init.c
+6a494ae37ab4fb1f260686bfbfa8bc47 *src/init.c
 22487056d51247176401a6afff9f3eba *src/local_stubs.c
 e3a51e234efe64c9c5d1a1922ecfbad4 *src/rgeos.c
 102bd190068f9851640515ad0bd2ec85 *src/rgeos.h

@@ -1,3 +1,15 @@
+2016-12-10 10:02  rsbivand
+
+	* configure: omitted trap in init.c
+
+2016-12-10 10:00  rsbivand
+
+	* DESCRIPTION, src/init.c: omitted trap in init.c
+
+2016-10-19 11:45  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2016-10-11 03:24  rsbivand
 
 	* ChangeLog, R/rgeos_misc.R, man/misc-gNearestPoints.Rd,

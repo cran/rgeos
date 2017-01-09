@@ -1,7 +1,7 @@
 Package: rgeos
 Title: Interface to Geometry Engine - Open Source (GEOS)
-Version: 0.3-21
-Date: 2016-10-10
+Version: 0.3-22
+Date: 2016-12-10
 Depends: R (>= 2.14.0)
 Imports: methods, sp (>= 1.1-0), utils, stats, graphics
 LinkingTo: sp
@@ -22,7 +22,7 @@ SystemRequirements: GEOS (>= 3.2.0); for building from source: GEOS
         William Kyngesburye at http://www.kyngchaos.com/ may be used
         for source installs on OSX.
 NeedsCompilation: yes
-Packaged: 2016-10-19 11:44:08 UTC; rsb
+Packaged: 2017-01-08 19:12:36 UTC; rsb
 Author: Roger Bivand [cre, aut],
   Colin Rundel [aut],
   Edzer Pebesma [ctb],
@@ -30,4 +30,4 @@ Author: Roger Bivand [cre, aut],
   Karl Ove Hufthammer [ctb]
 Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
 Repository: CRAN
-Date/Publication: 2016-10-20 10:52:30
+Date/Publication: 2017-01-09 09:50:02
