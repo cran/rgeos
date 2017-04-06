@@ -1,5 +1,5 @@
-4d01c549b3491c9a3b3f33916615352e *ChangeLog
-f302867896df4a37a03e3def34fe6f35 *DESCRIPTION
+9a1f51ff3e2c57d86a47f88ab058d6c2 *ChangeLog
+96cf88e52a424a049ab7534d6c9b6ef4 *DESCRIPTION
 cdf9781828088b3eb7860fcd7ff3405c *NAMESPACE
 19ac4f661f34e4c345b8638901930208 *R/AAA.R
 437f4edbd6c67d561783af7960575283 *R/Rgpc_funcs.R
@@ -18,11 +18,11 @@ da9424ec7cecda9d474e22226c0471a5 *R/rgeos_topology_binary.R
 1ecebecc4c34c067203d5bf91a01e5d0 *R/rgeos_util.R
 6d0eb1653d9c722481408f7ce9d33e3c *R/rgeos_wkt.R
 c3cded853a2388ad53569a7105d1c1e3 *cleanup
-cadb02e74d8740acb93a77e1dbd38f22 *configure
+dd58e8275bf94a0d74ec53ad79263bd6 *configure
 826d2242dc28268a6c3261d81340a35e *configure.ac
-4d01c549b3491c9a3b3f33916615352e *inst/ChangeLog
+9a1f51ff3e2c57d86a47f88ab058d6c2 *inst/ChangeLog
 3c570969cc1bcbc2fc4a3753b140a0d1 *inst/README
-07616c9131df4c422a852ee1a2d01eb6 *inst/SVN_VERSION
+b32a808aa0c2f6bd8fe0cf55cae64d8c *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -81,7 +81,7 @@ b9d869d125e18d6f05c1de7ff4e95d9b *src/Makevars.in
 d41d8cd98f00b204e9800998ecf8427e *src/dummy.cc
 6a494ae37ab4fb1f260686bfbfa8bc47 *src/init.c
 22487056d51247176401a6afff9f3eba *src/local_stubs.c
-e3a51e234efe64c9c5d1a1922ecfbad4 *src/rgeos.c
+ca569746a0219912bf327fdded1c2e26 *src/rgeos.c
 102bd190068f9851640515ad0bd2ec85 *src/rgeos.h
 d9ff4caf83fabee96983f102be4ede4e *src/rgeos_R2geos.c
 3045f89eab62e6e0d1022c84c9e63ba1 *src/rgeos_R2geosMP.c
@@ -96,7 +96,7 @@ aedf7a4a37315a6fc8f50220832dfa45 *src/rgeos_misc.c
 4f39ba7f07b85f29216673dc7d9be3b6 *src/rgeos_predicate_unary.c
 4d2b0095f689b0b7370a6f55735f707e *src/rgeos_topology.c
 56018dab15bce19dd04bad4145637101 *src/rgeos_topology_binary.c
-2f55f9260e4f08eadf605d4c8192b984 *src/rgeos_validate.c
+138e939bb40e8757a7119e9b6d90212b *src/rgeos_validate.c
 7401713afd055d3652fd0d7dbc296637 *src/rgeos_wkt.c
 768a54afc9389fb1b01d6b3973e81f33 *tests/test-all.R
 f28048eb32f3fc4ffdbd2f750b31e535 *tests/testthat/process_testxml.R

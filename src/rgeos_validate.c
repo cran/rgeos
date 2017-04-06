@@ -117,8 +117,8 @@ SEXP GC_Contains(const SEXP env, const GEOSGeom GC) {
 
     n = (unsigned int) GEOSGetNumGeometries_r(GEOShandle, GC);
     PROTECT(ans = NEW_LIST(2)); pc++;
-    PROTECT(SET_VECTOR_ELT(ans, 0, NEW_LOGICAL((int) (n*n)))); pc++;
-    PROTECT(SET_VECTOR_ELT(ans, 1, NEW_LOGICAL((int) (n*n)))); pc++;
+    SET_VECTOR_ELT(ans, 0, NEW_LOGICAL((int) (n*n)));
+    SET_VECTOR_ELT(ans, 1, NEW_LOGICAL((int) (n*n)));
     PROTECT(dim = NEW_INTEGER(2)); pc++;
     INTEGER_POINTER(dim)[0] = (int) n;
     INTEGER_POINTER(dim)[1] = (int) n;

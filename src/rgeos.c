@@ -4,9 +4,10 @@ static void rgeos_finish_handle(SEXP ptr);
 
 SEXP rgeos_GEOSversion(void) {
 
-    SEXP ans = NEW_CHARACTER(1);
+    SEXP ans;
+    PROTECT(ans = NEW_CHARACTER(1));
     SET_STRING_ELT(ans, 0, COPY_TO_USER_STRING(GEOSversion()));
-
+    UNPROTECT(1);
     return(ans);
 }
 
