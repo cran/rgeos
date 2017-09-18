@@ -1,13 +1,13 @@
 Package: rgeos
-Title: Interface to Geometry Engine - Open Source (GEOS)
-Version: 0.3-23
-Date: 2017-04-05
-Depends: R (>= 2.14.0)
+Title: Interface to Geometry Engine - Open Source ('GEOS')
+Version: 0.3-24
+Date: 2017-09-18
+Depends: R (>= 3.3.0)
 Imports: methods, sp (>= 1.1-0), utils, stats, graphics
 LinkingTo: sp
 Suggests: maptools (>= 0.8-5), testthat, XML, maps, rgdal
 LazyLoad: yes
-Description: Interface to Geometry Engine - Open Source (GEOS) using the C API for topology operations on geometries. The GEOS library is external to the package, and, when installing the package from source, must be correctly installed first. Windows and Mac Intel OS X binaries are provided on CRAN.
+Description: Interface to Geometry Engine - Open Source ('GEOS') using the C 'API' for topology operations on geometries. The 'GEOS' library is external to the package, and, when installing the package from source, must be correctly installed first. Windows and Mac Intel OS X binaries are provided on 'CRAN'.
 Authors@R: c(
 	person("Roger", "Bivand", role = c("cre", "aut"), email = "Roger.Bivand@nhh.no"),
 	person("Colin", "Rundel", role = "aut"),
@@ -22,7 +22,7 @@ SystemRequirements: GEOS (>= 3.2.0); for building from source: GEOS
         William Kyngesburye at http://www.kyngchaos.com/ may be used
         for source installs on OSX.
 NeedsCompilation: yes
-Packaged: 2017-04-05 12:06:04 UTC; rsb
+Packaged: 2017-09-18 08:58:32 UTC; rsb
 Author: Roger Bivand [cre, aut],
   Colin Rundel [aut],
   Edzer Pebesma [ctb],
@@ -30,4 +30,4 @@ Author: Roger Bivand [cre, aut],
   Karl Ove Hufthammer [ctb]
 Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
 Repository: CRAN
-Date/Publication: 2017-04-06 06:54:21 UTC
+Date/Publication: 2017-09-19 00:28:07 UTC

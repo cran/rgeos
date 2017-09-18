@@ -1,9 +1,22 @@
-GEOS_INC_DIR=${GEOS_HOME}/include
-GEOS_LIB_DIR=${GEOS_HOME}/lib
+COMPILED_BY ?= gcc-4.6.3
+RWINLIB = lib${subst gcc,,${COMPILED_BY}}${R_ARCH}
 
-PKG_CPPFLAGS=-I${GEOS_INC_DIR}
-ifeq "$(WIN)" "64"
-PKG_LIBS=-L${GEOS_LIB_DIR}/x64 -lgeos_c -lgeos -lstdc++
-else
-PKG_LIBS=-L${GEOS_LIB_DIR}/i386 -lgeos_c -lgeos -lstdc++
-endif
+PKG_CPPFLAGS =\
+	-I../windows/gdal2-2.2.0/include/geos \
+
+PKG_LIBS = \
+	-L../windows/gdal2-2.2.0/${RWINLIB} \
+	-lgeos_c -lgeos  
+
+all: clean winlibs
+
+CXX_STD=CXX11
+
+winlibs:
+	mkdir -p ../inst
+	"${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" --vanilla "../tools/winlibs.R"
+
+clean:
+	rm -f $(SHLIB) $(OBJECTS)
+
+.PHONY: all winlibs clean

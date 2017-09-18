@@ -1,3 +1,15 @@
+2017-09-18 08:26  rsbivand
+
+	* DESCRIPTION, tools, tools/winlibs.R: transition to winlibs
+
+2017-09-15 13:09  rsbivand
+
+	* DESCRIPTION, src/Makevars.win: migrate to winlib/gdal
+
+2017-04-05 12:05  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2017-04-05 12:04  rsbivand
 
 	* configure: tidy

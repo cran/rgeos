@@ -1,5 +1,5 @@
-9a1f51ff3e2c57d86a47f88ab058d6c2 *ChangeLog
-96cf88e52a424a049ab7534d6c9b6ef4 *DESCRIPTION
+e117c3db524c187800c114d4480efb1c *ChangeLog
+c67917772ab5883cf85548a43eda2c1a *DESCRIPTION
 cdf9781828088b3eb7860fcd7ff3405c *NAMESPACE
 19ac4f661f34e4c345b8638901930208 *R/AAA.R
 437f4edbd6c67d561783af7960575283 *R/Rgpc_funcs.R
@@ -18,11 +18,11 @@ da9424ec7cecda9d474e22226c0471a5 *R/rgeos_topology_binary.R
 1ecebecc4c34c067203d5bf91a01e5d0 *R/rgeos_util.R
 6d0eb1653d9c722481408f7ce9d33e3c *R/rgeos_wkt.R
 c3cded853a2388ad53569a7105d1c1e3 *cleanup
-dd58e8275bf94a0d74ec53ad79263bd6 *configure
+de60fe641385d46fc218992b44513a82 *configure
 826d2242dc28268a6c3261d81340a35e *configure.ac
-9a1f51ff3e2c57d86a47f88ab058d6c2 *inst/ChangeLog
+e117c3db524c187800c114d4480efb1c *inst/ChangeLog
 3c570969cc1bcbc2fc4a3753b140a0d1 *inst/README
-b32a808aa0c2f6bd8fe0cf55cae64d8c *inst/SVN_VERSION
+1898d02a1b2472652040ae59f3ab515e *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -77,7 +77,7 @@ af69c6b122c56ea7d908307f3a2bcd5f *man/topo-unary-gPolygonize.Rd
 6a0015d88433f5e6b3f79eb6d387dc6b *man/utility-functions.Rd
 d1fcd30b8888bf8cc5f7efdd63abf4ff *man/wkt-functions.Rd
 b9d869d125e18d6f05c1de7ff4e95d9b *src/Makevars.in
-8536bc4ffb356c1a0cb1129771310ba7 *src/Makevars.win
+0bd09ef21071443122ff15340542b01b *src/Makevars.win
 d41d8cd98f00b204e9800998ecf8427e *src/dummy.cc
 6a494ae37ab4fb1f260686bfbfa8bc47 *src/init.c
 22487056d51247176401a6afff9f3eba *src/local_stubs.c
@@ -151,3 +151,4 @@ d50e2e9f8163c89143e9fd4a3856a8b5 *tests/testthat/testxml/robust/TestRobustOverla
 b9f04df2e44980fc3fab61abef5a1ad3 *tests/testthat/testxml/validate/TestRelatePA.xml
 ec950a450f3334e687d31c54394d9721 *tests/testthat/testxml/validate/TestRelatePL.xml
 6acf466871a08776af9e3fde8b2b7998 *tests/testthat/testxml/validate/TestRelatePP.xml
+86647dbb5cb8d95cbb27010acd325588 *tools/winlibs.R
