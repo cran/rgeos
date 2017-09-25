@@ -117,11 +117,32 @@ AC_SUBST([PKG_LIBS],["${PKG_LIBS} ${GEOS_LIBS} ${GEOS_CLIBS}"])
 CPPFLAGS="${CPPFLAGS} ${PKG_CPPFLAGS}"
 LIBS="${LIBS} ${PKG_LIBS}"
 
-geosok=yes
-AC_CHECK_HEADERS(geos_c.h,,geosok=no)
-if test "${geosok}" = no; then
-   AC_MSG_ERROR([geos_c.h not found in given locations.])
+#geosok=yes
+#AC_CHECK_HEADERS(geos_c.h,,geosok=no)
+#if test "${geosok}" = no; then
+#   AC_MSG_ERROR([geos_c.h not found in given locations.])
+#fi
+
+AC_MSG_CHECKING(geos_c.h  presence and usability)
+[cat > geos_test.c << _EOCONF
+#include <stdio.h>
+#include <geos_c.h>
+
+int main() {
+    printf("%d\n", GEOS_CAPI_VERSION);
+    exit(0);
+}
+_EOCONF]
+
+if test `${CC} ${CPPFLAGS} -o geos_test geos_test.c 2> /dev/null; echo $?` = 0; then
+  AC_MSG_RESULT(yes)
+else
+  AC_MSG_RESULT(no)
+  AC_MSG_ERROR([geos_c.h not found in standard or given locations.])
 fi
+
+rm -f geos_test geos_test.c
+
 
 #AC_CHECK_LIB(geos_c,initGEOS_r,,geosok=no)
 

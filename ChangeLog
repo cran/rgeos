@@ -1,3 +1,27 @@
+2017-09-25 10:51  rsbivand
+
+	* configure: updating for stricter autoconf
+
+2017-09-25 10:50  rsbivand
+
+	* DESCRIPTION: updating for stricter autoconf
+
+2017-09-25 10:49  rsbivand
+
+	* configure, configure.ac: updating for stricter autoconf
+
+2017-09-25 10:46  rsbivand
+
+	* configure, configure.ac: updating for stricter autoconf
+
+2017-09-18 08:59  rsbivand
+
+	* DESCRIPTION: tidy
+
+2017-09-18 08:27  rsbivand
+
+	* ChangeLog, configure, inst/ChangeLog: tidy
+
 2017-09-18 08:26  rsbivand
 
 	* DESCRIPTION, tools, tools/winlibs.R: transition to winlibs
