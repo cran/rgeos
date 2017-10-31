@@ -118,3 +118,8 @@ version_sp_linkingTo <- function() {
 .onUnload <- function(libpath) {
   invisible(finish_RGEOS())
 }
+
+rgeos_extSoftVersion <- function() {
+  res <- c("GEOS"=strsplit(version_GEOS(), "-")[[1]][1], "sp"=version_sp_linkingTo())
+  res
+}

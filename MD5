@@ -1,7 +1,7 @@
 468be36d97f37dd5cf6a5e78bea95098 *ChangeLog
-eb255384faf7ea2c96b75403651e43e3 *DESCRIPTION
-cdf9781828088b3eb7860fcd7ff3405c *NAMESPACE
-19ac4f661f34e4c345b8638901930208 *R/AAA.R
+69431b4704735ee5fc3aee47c6b5bbc5 *DESCRIPTION
+cfc07ae7edc4272904837709c84a2747 *NAMESPACE
+6e64a784e89f9929510544c06a7e4d8a *R/AAA.R
 437f4edbd6c67d561783af7960575283 *R/Rgpc_funcs.R
 d97a5d4ab563a8c66bfd93dec1449adc *R/gpc_geos.R
 601561f1ad8ff5ebff33a0f4ff7b7c2a *R/labelpt.R
@@ -18,11 +18,11 @@ da9424ec7cecda9d474e22226c0471a5 *R/rgeos_topology_binary.R
 1ecebecc4c34c067203d5bf91a01e5d0 *R/rgeos_util.R
 6d0eb1653d9c722481408f7ce9d33e3c *R/rgeos_wkt.R
 c3cded853a2388ad53569a7105d1c1e3 *cleanup
-a9836647114dcadcde8a3d0c9f4e8084 *configure
+b54692ba395f729fef8b074c81da68eb *configure
 65399e404cf5ea293aa51f4134d0b515 *configure.ac
 468be36d97f37dd5cf6a5e78bea95098 *inst/ChangeLog
 3c570969cc1bcbc2fc4a3753b140a0d1 *inst/README
-41d9737bc75ae8fa57b7a84a44fba01c *inst/SVN_VERSION
+93c1029f9b6765de0c7147f2bbd2a3be *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -74,7 +74,7 @@ f0a13d81ff81d5ac827a757823251922 *man/topo-unary-gNode.Rd
 8f3b6b63cea10321eb3c6e9f5bc275ac *man/topo-unary-gPointOnSurface.Rd
 af69c6b122c56ea7d908307f3a2bcd5f *man/topo-unary-gPolygonize.Rd
 8d36eb44b9dca782ea8c9ac8c9d9c8cf *man/topo-unary-gSimplify.Rd
-6a0015d88433f5e6b3f79eb6d387dc6b *man/utility-functions.Rd
+c06d61dd3315b64648b74f4df85badab *man/utility-functions.Rd
 d1fcd30b8888bf8cc5f7efdd63abf4ff *man/wkt-functions.Rd
 b9d869d125e18d6f05c1de7ff4e95d9b *src/Makevars.in
 0bd09ef21071443122ff15340542b01b *src/Makevars.win

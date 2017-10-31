@@ -11,6 +11,7 @@
 \alias{get_RGEOS_warnSlivers}
 \alias{set_RGEOS_dropSlivers}
 \alias{get_RGEOS_dropSlivers}
+\alias{rgeos_extSoftVersion}
 
 \title{RGEOS Utility Functions}
 \description{Utility functions for the RGEOS package}
@@ -20,6 +21,7 @@
 	translate(spgeom)
 	checkP4S(p4s)
         version_GEOS()
+        rgeos_extSoftVersion()
         version_GEOS0()
         set_RGEOS_polyThreshold(value)
         get_RGEOS_polyThreshold()

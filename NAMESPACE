@@ -7,7 +7,7 @@ importFrom(stats, optim)
 importFrom(graphics, par, lines, strwidth, strheight, text)
 
 export(createPolygonsComment, createSPComment, set_do_poly_check, get_do_poly_check)
-
+export(rgeos_extSoftVersion)
 #export(checkPolygonsGEOS)
 #export(checkHolesGPC)
 export(poly_findInBoxGEOS, gUnarySTRtreeQuery, gBinarySTRtreeQuery)
