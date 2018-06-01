@@ -1,6 +1,6 @@
 #include <math.h>
 #include "rgeos.h"
-static void rgeos_finish_handle(SEXP ptr);
+//static void rgeos_finish_handle(SEXP ptr);
 
 SEXP rgeos_GEOSversion(void) {
 
@@ -18,7 +18,7 @@ SEXP rgeos_sp_linkingTo_version(void) {
 static void __errorHandler(const char *fmt, ...) {
 
     char buf[BUFSIZ], *p;
-    va_list(ap);
+    va_list ap;
     va_start(ap, fmt);
     vsprintf(buf, fmt, ap);
     va_end(ap);
@@ -33,7 +33,7 @@ static void __errorHandler(const char *fmt, ...) {
 static void __warningHandler(const char *fmt, ...) {
 
     char buf[BUFSIZ], *p;
-    va_list(ap);
+    va_list ap;
     va_start(ap, fmt);
     vsprintf(buf, fmt, ap);
     va_end(ap);
@@ -58,16 +58,16 @@ SEXP rgeos_Init(void) {
     GEOSContextHandle_t r = initGEOS_r((GEOSMessageHandler) __warningHandler, (GEOSMessageHandler) __errorHandler);
 
     SEXP sxpHandle = R_MakeExternalPtr((void *) r, mkChar("GEOSContextHandle"), R_NilValue);
-    R_RegisterCFinalizerEx(sxpHandle, rgeos_finish_handle, TRUE);
+//    R_RegisterCFinalizerEx(sxpHandle, rgeos_finish_handle, TRUE);
  
     return(sxpHandle);
 }
 
-static void rgeos_finish_handle(SEXP ptr) {
-
-    if(!R_ExternalPtrAddr(ptr)) return;
-    R_ClearExternalPtr(ptr);
-}
+//static void rgeos_finish_handle(SEXP ptr) {
+//
+//    if(!R_ExternalPtrAddr(ptr)) return;
+//    R_ClearExternalPtr(ptr);
+//}
 
 
 SEXP rgeos_finish(SEXP env) {
@@ -76,7 +76,9 @@ SEXP rgeos_finish(SEXP env) {
     finishGEOS_r(r);
 
     SEXP sxpHandle = findVarInFrame(env, install("GEOSptr"));
-    rgeos_finish_handle(sxpHandle);
+//    rgeos_finish_handle(sxpHandle);
+    if(!R_ExternalPtrAddr(sxpHandle)) return(R_NilValue);
+    R_ClearExternalPtr(sxpHandle);
 
     return(R_NilValue);
 }

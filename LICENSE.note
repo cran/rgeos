@@ -1,0 +1,15 @@
+The rgeos source package is licensed GPL (>= 2).
+
+Because the CRAN Windows and OSX binaries are static linked to GEOS 
+binaries, this file is included to record the GEOS license conditions.
+
+Martin Davis (JTS) and Sandro Santilli (GEOS, OSGeo GEOS PSC chair) are 
+included in DESCRIPTION as copyright holders and contributors to rgeos.
+
+JTS (Java Topology Suite http://www.tsusiatsoftware.net/jts/main.html) is 
+provided under LGPL 2.1 found at: 
+https://sourceforge.net/p/jts-topo-suite/code/HEAD/tree/trunk/doc/LICENSE.txt.
+
+GEOS is available under the terms of GNU Lesser General Public License (LGPL), 
+with roles described in https://github.com/OSGeo/geos/blob/master/AUTHORS.
+

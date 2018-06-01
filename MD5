@@ -1,8 +1,10 @@
 468be36d97f37dd5cf6a5e78bea95098 *ChangeLog
-69431b4704735ee5fc3aee47c6b5bbc5 *DESCRIPTION
-cfc07ae7edc4272904837709c84a2747 *NAMESPACE
+076dbe2165289a6443c146e42c1cf48c *DESCRIPTION
+63fee8598b58d43d08a6201feafd58b7 *LICENSE.note
+ab0870687c64803a3491d4ff6d5da2e8 *NAMESPACE
 6e64a784e89f9929510544c06a7e4d8a *R/AAA.R
 437f4edbd6c67d561783af7960575283 *R/Rgpc_funcs.R
+fa1203778e80f3a61090cd1e34b24c4b *R/bbox2SP.R
 d97a5d4ab563a8c66bfd93dec1449adc *R/gpc_geos.R
 601561f1ad8ff5ebff33a0f4ff7b7c2a *R/labelpt.R
 c27f2fc905f25676fc213d233195cc11 *R/over.R
@@ -18,7 +20,7 @@ da9424ec7cecda9d474e22226c0471a5 *R/rgeos_topology_binary.R
 1ecebecc4c34c067203d5bf91a01e5d0 *R/rgeos_util.R
 6d0eb1653d9c722481408f7ce9d33e3c *R/rgeos_wkt.R
 c3cded853a2388ad53569a7105d1c1e3 *cleanup
-b54692ba395f729fef8b074c81da68eb *configure
+07bbb3e0a39777c50f077e5a37fb910c *configure
 65399e404cf5ea293aa51f4134d0b515 *configure.ac
 468be36d97f37dd5cf6a5e78bea95098 *inst/ChangeLog
 3c570969cc1bcbc2fc4a3753b140a0d1 *inst/README
@@ -30,6 +32,7 @@ bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
 0f2b2d0f90111d9403b5fe5c85662146 *inst/wkts/sline1.wkt
 41d7dd100f0ee42d2355c8c81feacfe0 *inst/wkts/sline2.wkt
 4aba44c750973f85620ccbd38813a607 *inst/wkts/sppsp.wkt
+3f3434eac9c9eb4feecaec3d6788dbcc *man/bbox2SP.rd
 edd0206902db37fe3814a0876db8fa93 *man/class-Ring.Rd
 ebe0caae74361b2ffed802ccead3e473 *man/class-SpatialCollections.Rd
 e1d6338ae1c8959e7d81fe1810cbe6b7 *man/class-SpatialRings.Rd
@@ -81,7 +84,7 @@ b9d869d125e18d6f05c1de7ff4e95d9b *src/Makevars.in
 d41d8cd98f00b204e9800998ecf8427e *src/dummy.cc
 6a494ae37ab4fb1f260686bfbfa8bc47 *src/init.c
 22487056d51247176401a6afff9f3eba *src/local_stubs.c
-ca569746a0219912bf327fdded1c2e26 *src/rgeos.c
+eca260869b01184fb589f0e30cbc3586 *src/rgeos.c
 102bd190068f9851640515ad0bd2ec85 *src/rgeos.h
 d9ff4caf83fabee96983f102be4ede4e *src/rgeos_R2geos.c
 3045f89eab62e6e0d1022c84c9e63ba1 *src/rgeos_R2geosMP.c
@@ -96,7 +99,7 @@ aedf7a4a37315a6fc8f50220832dfa45 *src/rgeos_misc.c
 4f39ba7f07b85f29216673dc7d9be3b6 *src/rgeos_predicate_unary.c
 4d2b0095f689b0b7370a6f55735f707e *src/rgeos_topology.c
 56018dab15bce19dd04bad4145637101 *src/rgeos_topology_binary.c
-138e939bb40e8757a7119e9b6d90212b *src/rgeos_validate.c
+95d0a09c70aacd9a2af8ceef7ded83f9 *src/rgeos_validate.c
 7401713afd055d3652fd0d7dbc296637 *src/rgeos_wkt.c
 768a54afc9389fb1b01d6b3973e81f33 *tests/test-all.R
 f28048eb32f3fc4ffdbd2f750b31e535 *tests/testthat/process_testxml.R

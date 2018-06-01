@@ -128,11 +128,13 @@ SEXP GC_Contains(const SEXP env, const GEOSGeom GC) {
     for (i=0; i<n; i++) {
         if ((Pi = (GEOSGeometry *) GEOSGetGeometryN_r(GEOShandle, GC, (int) i)) == NULL) {
             GEOSGeom_destroy_r(GEOShandle, GC);
+            UNPROTECT(pc);
             return(R_NilValue);
         } // Pi invalid
             for (j=0; j<n; j++) {
                 if ((Pj = (GEOSGeometry *) GEOSGetGeometryN_r(GEOShandle, GC, (int) j)) == NULL) {
                     GEOSGeom_destroy_r(GEOShandle, GC);
+                    UNPROTECT(pc);
                     return(R_NilValue);
                 } // Pj invalid
                 if (i == j) {
