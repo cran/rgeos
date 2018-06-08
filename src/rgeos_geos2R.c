@@ -17,7 +17,7 @@ SEXP rgeos_convert_geos2R(SEXP env, GEOSGeom geom, SEXP p4s, SEXP id) {
 
     int pc=0;
 
-    SEXP ans=NULL;
+    SEXP ans=NULL, cls;
     switch(type) { // Determine appropriate conversion for the collection
         case -1:
             error("rgeos_convert_geos2R: unknown geometry type");
@@ -169,8 +169,9 @@ SEXP rgeos_convert_geos2R(SEXP env, GEOSGeom geom, SEXP p4s, SEXP id) {
                     GEOSGeom pGC = GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, GCS[3], (unsigned int) isPoly);
                     PROTECT( polys = rgeos_convert_geos2R(env, pGC, p4s, pID) ); pc++;
                 }
-                
-                PROTECT(ans = NEW_OBJECT(MAKE_CLASS("SpatialCollections"))); pc++;
+// rchk PROTECT MAKE_CLASS RSB 180602
+                PROTECT(cls = MAKE_CLASS("SpatialCollections")); pc++;
+                PROTECT(ans = NEW_OBJECT(cls)); pc++;
                 SET_SLOT(ans, install("proj4string"), p4s);
                 
                 SET_SLOT(ans, install("pointobj"), points);
@@ -328,8 +329,10 @@ SEXP rgeos_geospolygon2SpatialPolygons(SEXP env, GEOSGeom geom, SEXP p4s, SEXP I
     for (int i=0; i<nng; i++) 
         INTEGER_POINTER(plotOrder)[i] = po[i];
     
-    SEXP ans;
-    PROTECT(ans = NEW_OBJECT(MAKE_CLASS("SpatialPolygons"))); pc++;
+    SEXP ans, cls;
+// rchk PROTECT MAKE_CLASS RSB 180602
+    PROTECT(cls = MAKE_CLASS("SpatialPolygons")); pc++;
+    PROTECT(ans = NEW_OBJECT(cls)); pc++;
     SET_SLOT(ans, install("polygons"), pls);
     SET_SLOT(ans, install("proj4string"), p4s);
     SET_SLOT(ans, install("plotOrder"), plotOrder);
@@ -578,8 +581,10 @@ SEXP rgeos_geospolygon2Polygons(SEXP env, GEOSGeom geom, SEXP ID) {
     SP_PREFIX(comm2comment)(buf, (npoly*nc)+1, comm, npoly);
     SET_STRING_ELT(comment, 0, mkChar((const char*) buf));
 
-    SEXP ans;
-    PROTECT(ans = NEW_OBJECT(MAKE_CLASS("Polygons"))); pc++;    
+    SEXP ans, cls;
+// rchk PROTECT MAKE_CLASS RSB 180602
+    PROTECT(cls = MAKE_CLASS("Polygons")); pc++;
+    PROTECT(ans = NEW_OBJECT(cls)); pc++;    
     SET_SLOT(ans, install("Polygons"), polys);
     SET_SLOT(ans, install("plotOrder"), plotOrder);
     SET_SLOT(ans, install("labpt"), labpt);
@@ -657,8 +662,10 @@ SEXP rgeos_geosring2Polygon(SEXP env, GEOSGeom lr, int hole) {
     PROTECT(Hole = NEW_LOGICAL(1)); pc++;
     LOGICAL_POINTER(Hole)[0] = hole;
     
-    SEXP ans;
-    PROTECT(ans = NEW_OBJECT(MAKE_CLASS("Polygon"))); pc++;    
+    SEXP ans, cls;
+// rchk PROTECT MAKE_CLASS RSB 180602
+    PROTECT(cls = MAKE_CLASS("Polygon")); pc++;
+    PROTECT(ans = NEW_OBJECT(cls)); pc++;    
     SET_SLOT(ans, install("ringDir"), ringDir);
     SET_SLOT(ans, install("labpt"), labpt);
     SET_SLOT(ans, install("area"), area);
@@ -699,8 +706,10 @@ SEXP rgeos_geospoint2SpatialPoints(SEXP env, GEOSGeom geom, SEXP p4s, SEXP id, i
     //    crdmat = R_NilValue;
     //}
     
-    SEXP ans;
-    PROTECT(ans = NEW_OBJECT(MAKE_CLASS("SpatialPoints"))); pc++;    
+    SEXP ans, cls;
+// rchk PROTECT MAKE_CLASS RSB 180602
+    PROTECT(cls = MAKE_CLASS("SpatialPoints")); pc++;
+    PROTECT(ans = NEW_OBJECT(cls)); pc++;    
     SET_SLOT(ans, install("coords"), crdmat);
     SET_SLOT(ans, install("bbox"), bbox);
     SET_SLOT(ans, install("proj4string"), p4s);
@@ -730,11 +739,16 @@ SEXP rgeos_geosline2SpatialLines(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
     if (nlines > length(idlist))
         error("rgeos_geosline2SpatialLines: nlines > length(idlist)");
 
-    SEXP bbox, lines_list;
+    SEXP bbox, lines_list, cls_Line, cls_Lines;
     PROTECT(bbox = rgeos_geom2bbox(env, geom)); pc++;
     PROTECT(lines_list = NEW_LIST(nlines)); pc++;
+    PROTECT(cls_Line = MAKE_CLASS("Line")); pc++;
+    PROTECT(cls_Lines = MAKE_CLASS("Lines")); pc++;
+
     
     for(int j = 0; j < nlines; j++) {
+
+        int jpc = 0;
         
         curgeom = (type == GEOS_GEOMETRYCOLLECTION) ?
                                 (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, geom, j) :
@@ -748,9 +762,12 @@ SEXP rgeos_geosline2SpatialLines(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
         n = n ? n : 1;
         
         SEXP line_list;
-        PROTECT(line_list = NEW_LIST(n));
+        PROTECT(line_list = NEW_LIST(n)); jpc++;
         
         for(int i = 0; i < n; i++) {
+
+            int ipc = 0;
+
             subgeom = (curtype == GEOS_MULTILINESTRING && !GEOSisEmpty_r(GEOShandle, curgeom)) ?
                                     (GEOSGeom) GEOSGetGeometryN_r(GEOShandle, curgeom, i) :
                                     curgeom;
@@ -762,35 +779,37 @@ SEXP rgeos_geosline2SpatialLines(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
                 if (s == NULL) 
                     error("rgeos_geosline2SpatialLines: unable to generate coordinate sequence");
 
-                PROTECT( crdmat = rgeos_CoordSeq2crdMat(env, s, FALSE, FALSE));
+                PROTECT( crdmat = rgeos_CoordSeq2crdMat(env, s, FALSE, FALSE)); ipc++;
             } else {
                 error("rgeos_geosline2SpatialLines: empty line found");
 //                PROTECT( crdmat = R_NilValue);
             }
 
             SEXP line;
-            PROTECT(line = NEW_OBJECT(MAKE_CLASS("Line")));   
+// rchk PROTECT MAKE_CLASS RSB 180602
+            PROTECT(line = NEW_OBJECT(cls_Line)); ipc++;
             SET_SLOT(line, install("coords"), crdmat);
             SET_VECTOR_ELT(line_list, i, line );
         
-            UNPROTECT(2);
+            UNPROTECT(ipc);
         }
 
         SEXP lines;
-        PROTECT( lines = NEW_OBJECT(MAKE_CLASS("Lines")) );
+// rchk PROTECT MAKE_CLASS RSB 180602
+        PROTECT( lines = NEW_OBJECT(cls_Lines) ); jpc++;
         SET_SLOT(lines, install("Lines"), line_list);
         
         char idbuf[BUFSIZ];
         strcpy(idbuf, CHAR( STRING_ELT(idlist, j) ));
         
         SEXP id;
-        PROTECT( id = NEW_CHARACTER(1) );
+        PROTECT( id = NEW_CHARACTER(1) ); jpc++;
         SET_STRING_ELT(id, 0, COPY_TO_USER_STRING(idbuf));
         SET_SLOT(lines, install("ID"), id);
 
         SET_VECTOR_ELT( lines_list, j, lines );
         
-        UNPROTECT(3);
+        UNPROTECT(jpc);
     }
     
     SEXP ans;    
@@ -816,9 +835,10 @@ SEXP rgeos_geosring2SpatialRings(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
     if (nrings < 1) error("rgeos_geosring2SpatialRings: invalid number of geometries");
     
     int pc=0;
-    SEXP bbox, rings_list;
+    SEXP bbox, rings_list, cls_Ring;
     PROTECT(bbox = rgeos_geom2bbox(env, geom)); pc++;
     PROTECT(rings_list = NEW_LIST(nrings)); pc++;
+    PROTECT(cls_Ring = MAKE_CLASS("Ring")); pc++;
 
     for(int j = 0; j < nrings; j++) {
 
@@ -845,7 +865,7 @@ SEXP rgeos_geosring2SpatialRings(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
         }
         
         SEXP ring;
-        PROTECT(ring = NEW_OBJECT(MAKE_CLASS("Ring"))); lpc++;   
+        PROTECT(ring = NEW_OBJECT(cls_Ring)); lpc++;   
         SET_SLOT(ring, install("coords"), crdmat);
         
         SEXP id;
@@ -862,8 +882,9 @@ SEXP rgeos_geosring2SpatialRings(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
         UNPROTECT(lpc);
     }
     
-    SEXP ans;    
-    PROTECT(ans = NEW_OBJECT(MAKE_CLASS("SpatialRings"))); pc++;    
+    SEXP ans, cls;
+    PROTECT(cls = MAKE_CLASS("SpatialRings")); pc++;
+    PROTECT(ans = NEW_OBJECT(cls)); pc++;    
     SET_SLOT(ans, install("rings"), rings_list);
     SET_SLOT(ans, install("bbox"), bbox);
     SET_SLOT(ans, install("proj4string"), p4s);
@@ -871,3 +892,4 @@ SEXP rgeos_geosring2SpatialRings(SEXP env, GEOSGeom geom, SEXP p4s, SEXP idlist,
     UNPROTECT(pc);
     return(ans);
 }
+

@@ -56,8 +56,8 @@ GEOSContextHandle_t getContextHandle(SEXP env) {
 SEXP rgeos_Init(void) {
 
     GEOSContextHandle_t r = initGEOS_r((GEOSMessageHandler) __warningHandler, (GEOSMessageHandler) __errorHandler);
-
-    SEXP sxpHandle = R_MakeExternalPtr((void *) r, mkChar("GEOSContextHandle"), R_NilValue);
+// rchk replace mkChar with install RSB 180602
+    SEXP sxpHandle = R_MakeExternalPtr((void *) r, install("GEOSContextHandle"), R_NilValue);
 //    R_RegisterCFinalizerEx(sxpHandle, rgeos_finish_handle, TRUE);
  
     return(sxpHandle);
