@@ -1,3 +1,27 @@
+2018-09-13 11:00  rsbivand
+
+	* R/AAA.R, src/init.c, src/rgeos.c, src/rgeos.h: attempted version
+	  check
+
+2018-09-12 18:16  rsbivand
+
+	* src/rgeos.c, src/rgeos_R2geos.c: tidy after -Wall
+
+2018-09-12 08:49  rsbivand
+
+	* configure, configure.ac: switch geos-config to cclibs from libs
+
+2018-08-30 15:48  rsbivand
+
+	* DESCRIPTION, configure, configure.ac, src/rgeos.c, src/rgeos.h,
+	  src/rgeos_R2geos.c, src/rgeos_coord.c, src/rgeos_topology.c,
+	  src/rgeos_topology_binary.c, tests/leak_by_exception.R,
+	  tests/leak_by_exception.Rout.save: testing leaks by exceptions
+
+2018-06-08 06:48  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2018-06-08 06:47  rsbivand
 
 	* ChangeLog, configure: tidy

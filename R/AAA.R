@@ -63,8 +63,14 @@ finish_RGEOS <- function() {
     .Call('rgeos_finish', .RGEOS_HANDLE, PACKAGE="rgeos")
 }
 
-version_GEOS <- function() {
-    .Call("rgeos_GEOSversion", PACKAGE="rgeos")
+version_GEOS <- function(runtime=TRUE) {
+    stopifnot(is.logical(runtime))
+    stopifnot(length(runtime) == 1L)
+    res0 <- .Call("rgeos_GEOSversion", runtime, PACKAGE="rgeos")
+    res1 <- strsplit(res0, " ")[[1]]
+    res <- res1[1]
+    if (length(res1) > 1) attr(res, "rev") <- res1[2]
+    res
 }
 
 version_GEOS0 <- function() {
@@ -82,6 +88,11 @@ version_sp_linkingTo <- function() {
 #  library.dynam('rgeos', pkg, lib)
 
   set_RGEOS_HANDLE(init_RGEOS())
+  if (!isTRUE(all.equal(version_GEOS(TRUE), version_GEOS(FALSE),
+    check.attributes=FALSE))) {
+    warning("rgeos: versions of GEOS runtime ", c(version_GEOS(TRUE)),
+    "\nand GEOS at installation ", version_GEOS(FALSE), "differ")
+  }
   assign("scale", 100000000, envir=.RGEOS_HANDLE)
   assign("do_poly_check", TRUE, envir=.RGEOS_HANDLE)
 #  assign("both_poly", FALSE, envir=.RGEOS_HANDLE)

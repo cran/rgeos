@@ -20,7 +20,7 @@
 	setScale(scale=100000000)
 	translate(spgeom)
 	checkP4S(p4s)
-        version_GEOS()
+        version_GEOS(runtime = TRUE)
         rgeos_extSoftVersion()
         version_GEOS0()
         set_RGEOS_polyThreshold(value)
@@ -35,6 +35,7 @@
   \item{scale}{Numeric value determining the precision of translated geometries}
   \item{spgeom}{sp object as defined in package sp}
   \item{p4s}{Either a character string or an object of class \code{CRS}}
+  \item{runtime}{default TRUE; if FALSE, installation GEOS version}
   \item{value}{the value to be passed to an RGEOS option in its environment}
 }
 

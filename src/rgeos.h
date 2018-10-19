@@ -38,7 +38,7 @@
 #define R_OFFSET 1
 
 // Utility functions
-SEXP rgeos_GEOSversion(void);
+SEXP rgeos_GEOSversion(SEXP runtime);
 SEXP rgeos_sp_linkingTo_version(void);
 SEXP rgeos_Init(void);
 SEXP rgeos_finish(SEXP env);
@@ -51,6 +51,9 @@ double sym_round(double val);
 double java_math_round(double val);
 double rint_vc(double val);
 double rgeos_round(double val); // Based on geos rounding methods, use just one global round function
+char* get_errbuf(void);
+void unset_errbuf(void);
+int is_errbuf_set(void);
 
 SEXP rgeos_double_translate(SEXP env, SEXP obj, SEXP id);
 SEXP rgeos_PolyCreateComment(SEXP env, SEXP pls);

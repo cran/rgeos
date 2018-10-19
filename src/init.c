@@ -16,7 +16,7 @@ static R_CallMethodDef CallEntries[] = {
     //Utility Functions
     {"rgeos_Init", (DL_FUNC) &rgeos_Init, 0},
     {"rgeos_finish", (DL_FUNC) &rgeos_finish, 1},
-    {"rgeos_GEOSversion", (DL_FUNC) &rgeos_GEOSversion, 0},
+    {"rgeos_GEOSversion", (DL_FUNC) &rgeos_GEOSversion, 1},
     {"rgeos_double_translate", (DL_FUNC) &rgeos_double_translate, 4},
     {"rgeos_PolyCreateComment", (DL_FUNC) &rgeos_PolyCreateComment, 2},
     {"rgeos_sp_linkingTo_version", (DL_FUNC) &rgeos_sp_linkingTo_version, 0},

@@ -206,6 +206,11 @@ GEOSGeom rgeos_SpatialLines2geosline(SEXP env, SEXP obj) {
     // If there is only one line collection return multiline not GC
     GEOSGeom GC = (nlines == 1) ? geoms[0]
                     : GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) nlines);
+    if (GC == NULL) {
+            GEOSGeom_destroy_r(GEOShandle, GC);
+            char* buf = get_errbuf();
+            error(buf);
+    }
     
     UNPROTECT(pc);
     return(GC);
@@ -236,6 +241,11 @@ GEOSGeom rgeos_Lines2geosline(SEXP env, SEXP obj) {
     
     GEOSGeom GC = (nlns == 1) ? geoms[0]
                     : GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTILINESTRING, geoms, (unsigned int) nlns);
+    if (GC == NULL) {
+            GEOSGeom_destroy_r(GEOShandle, GC);
+            char* buf = get_errbuf();
+            error(buf);
+    }
     
     UNPROTECT(pc);
     return(GC);
@@ -323,6 +333,11 @@ GEOSGeom rgeos_Polygons2geospolygon(SEXP env, SEXP obj) {
         GC = (nErings == 1) ? geoms[0]
                : GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOLYGON, geoms, (unsigned int) nErings);
     }
+    if (GC == NULL) {
+            GEOSGeom_destroy_r(GEOShandle, GC);
+            char* buf = get_errbuf();
+            error(buf);
+    }
     
     UNPROTECT(pc);
     return(GC);
@@ -343,11 +358,25 @@ GEOSGeom rgeos_Polygons_i_2Polygon(SEXP env, SEXP pls, SEXP vec) {
     } else {
         pol = rgeos_crdMat2LinearRing(env, mat, getAttrib(mat, R_DimSymbol));
     }
+    if (pol == NULL) {
+        GEOSGeom_destroy_r(GEOShandle, pol);
+        char* buf = get_errbuf();
+        error(buf);
+    }
     
-    GEOSGeom res;
+    GEOSGeom res = NULL;
+//Rprintf("rgeos_Polygons_i_2Polygon: n: %d\n", n);
     if (n == 1) {
+//Rprintf("in n==1 branch\n");
         res = GEOSGeom_createPolygon_r(GEOShandle, pol, NULL, (unsigned int) 0);
-    } else {
+        if (res == NULL) {
+            GEOSGeom_destroy_r(GEOShandle, pol);
+            GEOSGeom_destroy_r(GEOShandle, res);
+            char* buf = get_errbuf();
+            error(buf);
+        }
+    } else if (n > 1) {
+//Rprintf("in n>1 branch\n");
         GEOSGeom *holes = (GEOSGeom *) R_alloc((size_t) (n-1), sizeof(GEOSGeom));
         for (int j=1; j<n; j++) {
             i = INTEGER_POINTER(vec)[j]-R_OFFSET;
@@ -359,7 +388,14 @@ GEOSGeom rgeos_Polygons_i_2Polygon(SEXP env, SEXP pls, SEXP vec) {
                 holes[j-1] = rgeos_crdMat2LinearRing(env, mat, getAttrib(mat, R_DimSymbol));
             }
         }
-        res = GEOSGeom_createPolygon_r(GEOShandle, pol, holes,(unsigned int) (n-1));
+        res = GEOSGeom_createPolygon_r(GEOShandle, pol, holes,
+            (unsigned int) (n-1)); //FIXME not in branch but throws leak
+        if (res == NULL) {
+            GEOSGeom_destroy_r(GEOShandle, pol);
+            GEOSGeom_destroy_r(GEOShandle, res);
+            char* buf = get_errbuf();
+            error(buf);
+        }
     }
     
     if (res == NULL)

@@ -86,9 +86,13 @@ SEXP rgeos_binarytopologyfunc(SEXP env, SEXP spgeom1, SEXP spgeom2, SEXP byid, S
             if (curgeom2 == NULL) 
                 error("rgeos_bintopofunc: unable to get subgeometries from geometry 2");
             
-            thisgeom = bintopofunc(GEOShandle, curgeom1, curgeom2);
-            if (thisgeom == NULL)
-                error("rgeos_bintopofunc: topology function failed");
+            thisgeom = bintopofunc(GEOShandle, curgeom1, curgeom2);//FIXME
+            if (thisgeom == NULL) {
+                GEOSGeom_destroy_r(GEOShandle, geom1);
+                GEOSGeom_destroy_r(GEOShandle, geom2);
+                char* buf = get_errbuf();
+                error(buf);
+            }
             if (!GEOSisEmpty_r(GEOShandle, thisgeom)) {
  // conditionally drop returned objects with lower topological dimension
  // than minimum TD of input objects

@@ -108,8 +108,12 @@ SEXP rgeos_topologyfunc(SEXP env, SEXP obj, SEXP id, SEXP byid, p_topofunc topof
             resgeoms[i] = GEOSGeom_clone_r(GEOShandle, curgeom);
         } else {
             resgeoms[i] = topofunc(GEOShandle, curgeom);
-            if (resgeoms[i] == NULL)
-                error("rgeos_topologyfunc: unable to calculate");
+            if (resgeoms[i] == NULL) {
+                GEOSGeom_destroy_r(GEOShandle, geom);
+                char* errbuf = get_errbuf();
+                error(errbuf);
+            }
+//                error("rgeos_topologyfunc: unable to calculate");
         }
     }
     

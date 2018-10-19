@@ -39,7 +39,9 @@ GEOSGeom rgeos_crdMat2LineString(SEXP env, SEXP mat, SEXP dim) {
     
     if (gl == NULL) {
         GEOSGeom_destroy_r(GEOShandle, gl);
-        error("rgeos_crdMat2LineString: lineString not created");
+        char* buf = get_errbuf();
+        error(buf);
+//        error("rgeos_crdMat2LineString: lineString not created");
     }
     return(gl);
 }
