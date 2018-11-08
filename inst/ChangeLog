@@ -1,3 +1,20 @@
+2018-10-22 07:10  rsbivand
+
+	* DESCRIPTION, configure, configure.ac: Debian stretch GEOS version
+	  configure issue
+
+2018-10-18 11:38  rsbivand
+
+	* man/utility-functions.Rd: tidy
+
+2018-10-18 11:34  rsbivand
+
+	* DESCRIPTION: tidy
+
+2018-10-18 11:30  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2018-09-13 11:00  rsbivand
 
 	* R/AAA.R, src/init.c, src/rgeos.c, src/rgeos.h: attempted version

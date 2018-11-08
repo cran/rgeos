@@ -80,7 +80,11 @@ then
         GEOS_VER=`${GEOS_CONFIG} --version`
         GEOS_VER_DOT=`echo $GEOS_VER | tr -d "." | cut -c1-3`
 	GEOS_CPPFLAGS=`${GEOS_CONFIG} --cflags`
-	GEOS_LIBS=`${GEOS_CONFIG} --cclibs`
+        if test ${GEOS_VER_DOT} -lt 370 ; then
+	    GEOS_LIBS=`${GEOS_CONFIG} --libs`
+        else
+	    GEOS_LIBS=`${GEOS_CONFIG} --cclibs`
+        fi
         AC_MSG_RESULT(yes)
 
 else
