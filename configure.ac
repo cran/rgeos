@@ -83,8 +83,9 @@ then
         if test ${GEOS_VER_DOT} -lt 370 ; then
 	    GEOS_LIBS=`${GEOS_CONFIG} --libs`
         else
-	    GEOS_LIBS=`${GEOS_CONFIG} --cclibs`
+	    GEOS_LIBS=`${GEOS_CONFIG} --clibs`
         fi
+        GEOS_DEP_CLIBS=`${GEOS_CONFIG} --static-clibs | sed 's/-m/-lm/g'`
         AC_MSG_RESULT(yes)
 
 else
@@ -101,6 +102,14 @@ if test ${GEOS_VER_DOT} -lt 320 ; then
 else
         AC_MSG_RESULT(yes)
 fi
+AC_MSG_CHECKING([geos version not more than 3.8.0])
+if test ${GEOS_VER_DOT} -gt 380 ; then
+        AC_MSG_RESULT(no)
+        AC_MSG_ERROR([GEOS version number too high])
+else
+        AC_MSG_RESULT(yes)
+fi
+
 
 AC_MSG_CHECKING(geos-config clibs)
 if test ${GEOS_VER_DOT} -lt 332 ; then
@@ -113,7 +122,8 @@ fi
 
 
 AC_SUBST([PKG_CPPFLAGS],["${PKG_CPPFLAGS} ${GEOS_CPPFLAGS}"])
-AC_SUBST([PKG_LIBS],["${PKG_LIBS} ${GEOS_LIBS} ${GEOS_CLIBS}"])
+#AC_SUBST([PKG_LIBS],["${PKG_LIBS} ${GEOS_LIBS} ${GEOS_CLIBS}"])
+AC_SUBST([PKG_LIBS],["${PKG_LIBS} ${GEOS_CLIBS}"])
 
 # honor PKG_xx overrides
 # for CPPFLAGS we will superfluously double R's flags
@@ -181,13 +191,29 @@ AC_MSG_RESULT(yes)
 fi
 
 if test "${geosok}" = no; then
+  AC_MSG_CHECKING(geos: linking with ${GEOS_DEP_CLIBS})
+  ${CXX} ${CPPFLAGS} -o geos_test geos_test.cc ${GEOS_DEP_CLIBS} 2> errors.txt
+  if test `echo $?` -ne 0 ; then
+    geosok=no
+    AC_MSG_RESULT(no)
+    cat errors.txt
+    AC_MSG_NOTICE([Install failure: compilation and/or linkage problems.])
+    AC_MSG_ERROR([initGEOS_r not found in libgeos_c.])
+  else
+    geosok=yes
+    AC_SUBST([PKG_LIBS], ["${PKG_LIBS} ${GEOS_DEP_CLIBS}"])
+    AC_MSG_RESULT(yes)
+  fi
+fi
+
+
+if test "${geosok}" = no; then
    cat errors.txt
    AC_MSG_NOTICE([Install failure: compilation and/or linkage problems.])
    AC_MSG_ERROR([initGEOS_r not found in libgeos_c.])
 fi
 
 rm -f geos_test errors.txt geos_test.cc
-
 
 if test "${geosok}" = no; then
    AC_MSG_ERROR([libgeos_c not found in given locations.])

@@ -18,7 +18,6 @@ The closest points of the two geometries or NULL on exception.
 Return closest points of two geometries.
 }
 \examples{
-if (version_GEOS0() > "3.4.0") {
 g1 <- readWKT("MULTILINESTRING((34 54, 60 34), (0 10, 50 10, 100 50))")
 g2 <- readWKT("MULTIPOINT(30 0, 100 30)")
 plot(g1, pch=4, axes=TRUE)
@@ -26,12 +25,10 @@ plot(g2, add=TRUE)
 plot(gNearestPoints(g1, g2), add=TRUE, col="red", pch=7)
 gDistance(g1, g2)
 }
+\seealso{
+gDistance
 }
 \author{
 Rainer Stuetz
 }
-\seealso{
-\link{gDistance}
-}
 \keyword{spatial}
-

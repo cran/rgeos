@@ -1,3 +1,65 @@
+2019-04-24 09:16  rsbivand
+
+	* man/misc-gBuffer.Rd: tidy
+
+2019-04-24 09:09  rsbivand
+
+	* DESCRIPTION, man/bbox2SP.Rd, man/bbox2SP.rd: tidy
+
+2019-04-23 13:15  rsbivand
+
+	* .Rbuildignore, DESCRIPTION, _pkgdown.yml, man/bbox2SP.rd,
+	  man/linref-gInterpolate.Rd, man/linref-gProject.Rd,
+	  man/misc-gBuffer.Rd, man/misc-gNearestPoints.Rd,
+	  man/pred-unary-gIsValid.Rd: start pkgdown
+
+2019-04-23 12:12  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2019-04-23 12:11  rsbivand
+
+	* DESCRIPTION, R/rgeos_buffer.R: tidy
+
+2019-03-06 15:02  rsbivand
+
+	* src/Makevars.win, tools/winlibs.R: update Makevars.win and
+	  winlibs.R
+
+2018-12-21 12:35  rsbivand
+
+	* DESCRIPTION, configure, configure.ac: guard against invalid
+	  versions
+
+2018-12-15 12:36  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2018-12-15 12:36  rsbivand
+
+	* configure: tidy
+
+2018-12-15 00:30  edzer
+
+	* configure, configure.ac: configure stuff for OSX
+
+2018-12-15 00:04  edzer
+
+	* configure, configure.ac: try with static libs
+
+2018-12-13 11:18  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2018-12-13 11:17  rsbivand
+
+	* DESCRIPTION, configure, configure.ac: ubuntu mess - changes in
+	  ./configure
+
+2018-11-07 13:31  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2018-10-22 07:10  rsbivand
 
 	* DESCRIPTION, configure, configure.ac: Debian stretch GEOS version

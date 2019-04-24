@@ -42,7 +42,7 @@ Validity Details:
 }
 
 \examples{
-
+library(sp)
 #LINEARRING Example
 l = readWKT("LINEARRING(0 0, 100 100, 100 0, 0 100, 0 0)")
 plot(l);title(paste("Valid:",gIsValid(l),"\n",gIsValid(l,reason=TRUE)))

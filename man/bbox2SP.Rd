@@ -26,23 +26,26 @@ An object of \code{\link[sp]{SpatialPolygons}} class.
 
 \examples{
 
-
-if (require(rgdal)) {
+library(sp)
+run <- FALSE
+if (require(rgdal, quietly=TRUE)) run <- TRUE
+if (run) {
 cities <- readOGR(dsn=system.file("vectors", package = "rgdal")[1], layer="cities")
 n<-75
 s<-30
 w<--40
 e<-32
 myPoly<-bbox2SP(n,s,e,w)
+}
+if (run) {
 plot(cities)
 plot(myPoly,border="red",add=TRUE)
-
+}
+if (run) {
 bb<-bbox(cities)
 myPoly<-bbox2SP(bbox=bb,proj4string=CRS(proj4string(cities)))
 plot(myPoly,add=TRUE,border="blue")
 }
-
-
 }
 
 

@@ -1,11 +1,12 @@
 Package: rgeos
 Title: Interface to Geometry Engine - Open Source ('GEOS')
-Version: 0.4-2
-Date: 2018-10-22
-Depends: R (>= 3.3.0)
-Imports: methods, sp (>= 1.1-0), utils, stats, graphics
+Version: 0.4-3
+Date: 2019-04-23
+Depends: R (>= 3.3.0), methods, sp (>= 1.1-0)
+Imports: utils, stats, graphics
 LinkingTo: sp
 Suggests: maptools (>= 0.8-5), testthat, XML, maps, rgdal
+NeedsCompilation: yes
 LazyLoad: yes
 Description: Interface to Geometry Engine - Open Source ('GEOS') using the C 'API' for topology operations on geometries. The 'GEOS' library is external to the package, and, when installing the package from source, must be correctly installed first. Windows and Mac Intel OS X binaries are provided on 'CRAN'.
 Authors@R: c(
@@ -24,8 +25,8 @@ SystemRequirements: GEOS (>= 3.2.0); for building from source: GEOS
         from http://trac.osgeo.org/geos/; GEOS OSX frameworks built by
         William Kyngesburye at http://www.kyngchaos.com/ may be used
         for source installs on OSX.
-NeedsCompilation: yes
-Packaged: 2018-11-07 13:45:00 UTC; rsb
+RoxygenNote: 6.1.1
+Packaged: 2019-04-24 09:18:17 UTC; rsb
 Author: Roger Bivand [cre, aut] (<https://orcid.org/0000-0003-2392-6140>),
   Colin Rundel [aut],
   Edzer Pebesma [ctb],
@@ -36,4 +37,4 @@ Author: Roger Bivand [cre, aut] (<https://orcid.org/0000-0003-2392-6140>),
   Sandro Santilli [cph, ctb]
 Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
 Repository: CRAN
-Date/Publication: 2018-11-08 16:20:02 UTC
+Date/Publication: 2019-04-24 10:00:03 UTC

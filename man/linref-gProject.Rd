@@ -34,11 +34,10 @@ plot(l, axes=TRUE)
 plot(p1, col = "blue", add = TRUE)
 plot(p2, col = "red", add = TRUE)
 }
-\author{
-Rainer Stuetz
-}
 \seealso{
 gInterpolate
 }
+\author{
+Rainer Stuetz
+}
 \keyword{spatial}
-

@@ -1,5 +1,5 @@
-4ac3c8a67c3d04ee4a9573023888ece2 *ChangeLog
-7f6cde819f617e476de417e544875935 *DESCRIPTION
+7c4980b1e443344be4ccc0bf7b894be1 *ChangeLog
+86ddd4bc41ecfce0bf3fc65f68b131e3 *DESCRIPTION
 63fee8598b58d43d08a6201feafd58b7 *LICENSE.note
 ab0870687c64803a3491d4ff6d5da2e8 *NAMESPACE
 7be54766ebbb5bd23c2b18e3f781f8b2 *R/AAA.R
@@ -8,7 +8,7 @@ fa1203778e80f3a61090cd1e34b24c4b *R/bbox2SP.R
 d97a5d4ab563a8c66bfd93dec1449adc *R/gpc_geos.R
 601561f1ad8ff5ebff33a0f4ff7b7c2a *R/labelpt.R
 c27f2fc905f25676fc213d233195cc11 *R/over.R
-5ed94ad254c2dbb32fe47f2b73ff4fbd *R/rgeos_buffer.R
+b5b55e2da65fd1b147f4fa9adb59e6c4 *R/rgeos_buffer.R
 99fa6584f7894147aeaa10054f43dff7 *R/rgeos_linearref.R
 a3403cf524417af5eb4d0654a596f018 *R/rgeos_misc.R
 22104e5e851b176ed73f2df7a49e54f2 *R/rgeos_predicate_binary.R
@@ -20,11 +20,11 @@ da9424ec7cecda9d474e22226c0471a5 *R/rgeos_topology_binary.R
 1ecebecc4c34c067203d5bf91a01e5d0 *R/rgeos_util.R
 6d0eb1653d9c722481408f7ce9d33e3c *R/rgeos_wkt.R
 c3cded853a2388ad53569a7105d1c1e3 *cleanup
-5d957758c7ee55c67b49736effcf9a09 *configure
-934b24968bcc43f1c1271273b1acdb45 *configure.ac
-4ac3c8a67c3d04ee4a9573023888ece2 *inst/ChangeLog
+8db26c28929a4ee729bfc486eb01ddf6 *configure
+6a3bee36e10ff59d6e72da5061ceae68 *configure.ac
+7c4980b1e443344be4ccc0bf7b894be1 *inst/ChangeLog
 3c570969cc1bcbc2fc4a3753b140a0d1 *inst/README
-6470b76ec3928ef4ade5839b7b994735 *inst/SVN_VERSION
+8c3353a1d563a3e4b4dcc7c72a59745b *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -32,7 +32,7 @@ bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
 0f2b2d0f90111d9403b5fe5c85662146 *inst/wkts/sline1.wkt
 41d7dd100f0ee42d2355c8c81feacfe0 *inst/wkts/sline2.wkt
 4aba44c750973f85620ccbd38813a607 *inst/wkts/sppsp.wkt
-3f3434eac9c9eb4feecaec3d6788dbcc *man/bbox2SP.rd
+dafa7c9cefa8677e904b2bd18dc99743 *man/bbox2SP.Rd
 edd0206902db37fe3814a0876db8fa93 *man/class-Ring.Rd
 ebe0caae74361b2ffed802ccead3e473 *man/class-SpatialCollections.Rd
 e1d6338ae1c8959e7d81fe1810cbe6b7 *man/class-SpatialRings.Rd
@@ -46,13 +46,13 @@ a4f8b6f11e2595120e19822213c04368 *man/constructor-SpatialRings.Rd
 9b8dad2cab20bd54dd7bf27f1383f7ca *man/gpc-new-generics.Rd
 9daa96192eadb9b1f430ff76cf9b795f *man/gpc-polyfile.Rd
 ffbd1daaa2634b3ac7dd40d101ee7ecb *man/labelpt.Rd
-b2d76d2092995e7972870e082c3170c7 *man/linref-gInterpolate.Rd
-a266bc872ccfb4c1c7f7faf5f116368d *man/linref-gProject.Rd
+a0deadc4e922c628e3143da44746a4cf *man/linref-gInterpolate.Rd
+e25c98a04bbf01c43a663f385aac4799 *man/linref-gProject.Rd
 fef7af694fc71c476e43cc35f1f2fa5b *man/misc-gArea.Rd
-273d48e54827be3c52346ff46ed5c914 *man/misc-gBuffer.Rd
+2fea68bc951e3cbe1d3d7be6f72e8ead *man/misc-gBuffer.Rd
 263a55b2427e297af210945d94363f1d *man/misc-gDistance.Rd
 9c8503de153718dcc77c6bd80a9e2b4b *man/misc-gLength.Rd
-24ce7da69d4b337442bbe34e59057bd8 *man/misc-gNearestPoints.Rd
+ee480ccf057332c2024f55456afc1ee1 *man/misc-gNearestPoints.Rd
 ce5ce9f0e391809912a54812e96f3f89 *man/misc-over.Rd
 03273d4e8ec82269218c3d1f3b377f32 *man/pred-binary-gContains.Rd
 37700662cd67af8ae88f0870c0d41f3e *man/pred-binary-gCrosses.Rd
@@ -63,7 +63,7 @@ fdb49a3cf3ccc518911e95ecaaf4a2f3 *man/pred-binary-gEquals.Rd
 d56a8bd17039002543dbcc021de23189 *man/pred-unary-gIsEmpty.Rd
 47f95df67ce2465ec0635518f9a5cc6a *man/pred-unary-gIsRing.Rd
 14522b6206db0c56b0bb8f0e61af4fdb *man/pred-unary-gIsSimple.Rd
-c88180a2558016d7a543c52db48522b4 *man/pred-unary-gIsValid.Rd
+38a68cd3e2aca689b69c3a51622df5da *man/pred-unary-gIsValid.Rd
 2f752b5a292a2224e0a9f8f5e3466cd1 *man/topo-bin-gDifference.Rd
 6685c25b560758b3f4f31ccb9e14364e *man/topo-bin-gIntersection.Rd
 f6389cbe332a986cfefc9e4e5541e152 *man/topo-bin-gSymdifference.Rd
@@ -80,7 +80,7 @@ af69c6b122c56ea7d908307f3a2bcd5f *man/topo-unary-gPolygonize.Rd
 bf2816145fb5cc66a6398b465f9364d7 *man/utility-functions.Rd
 d1fcd30b8888bf8cc5f7efdd63abf4ff *man/wkt-functions.Rd
 b9d869d125e18d6f05c1de7ff4e95d9b *src/Makevars.in
-0bd09ef21071443122ff15340542b01b *src/Makevars.win
+aa4d65f51f73db4615dae38e37f322bb *src/Makevars.win
 d41d8cd98f00b204e9800998ecf8427e *src/dummy.cc
 171b06793e414470819ee27d9eda326d *src/init.c
 22487056d51247176401a6afff9f3eba *src/local_stubs.c
@@ -156,4 +156,4 @@ d50e2e9f8163c89143e9fd4a3856a8b5 *tests/testthat/testxml/robust/TestRobustOverla
 b9f04df2e44980fc3fab61abef5a1ad3 *tests/testthat/testxml/validate/TestRelatePA.xml
 ec950a450f3334e687d31c54394d9721 *tests/testthat/testxml/validate/TestRelatePL.xml
 6acf466871a08776af9e3fde8b2b7998 *tests/testthat/testxml/validate/TestRelatePP.xml
-86647dbb5cb8d95cbb27010acd325588 *tools/winlibs.R
+2201bcf756320a400c093c1bcf63fee8 *tools/winlibs.R

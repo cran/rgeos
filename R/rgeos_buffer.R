@@ -57,7 +57,7 @@ gBuffer = function(spgeom, byid=FALSE, id=NULL, width=1.0, quadsegs=5,
         stop("mitreLimit must be greater than 0")
     if (capStyle == 2 && inherits(spgeom,"SpatialPoints")) 
         stop("Flat capstyle is incompatible with SpatialPoints geometries")
-    if (width < 0 && !inherits(spgeom,"SpatialPolygons")) 
+    if (any(width < 0) && !inherits(spgeom,"SpatialPolygons")) 
         stop("Negative width values may only be used with SpatialPolygons geometries")
 
     ans = .Call("rgeos_buffer", .RGEOS_HANDLE, spgeom, byid, id, width, quadsegs,

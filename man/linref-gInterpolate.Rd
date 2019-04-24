@@ -28,11 +28,10 @@ If \code{normalized=TRUE}, the distances will be interpreted
 gInterpolate(readWKT("LINESTRING(25 50, 100 125, 150 190)"),
              d=seq(0, 1, by = 0.2), normalized = TRUE)
 }
-\author{
-Rainer Stuetz
-}
 \seealso{
 gInterpolate
 }
+\author{
+Rainer Stuetz
+}
 \keyword{spatial}
-
