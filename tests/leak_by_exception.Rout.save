@@ -1,6 +1,6 @@
 
-R version 3.5.1 (2018-07-02) -- "Feather Spray"
-Copyright (C) 2018 The R Foundation for Statistical Computing
+R version 3.6.1 (2019-07-05) -- "Action of the Toes"
+Copyright (C) 2019 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -22,17 +22,41 @@ Type 'q()' to quit R.
 > 
 > # binary operators
 > try(g3 <- gUnion(g1, g2))
+g1 is invalid
 Error in RGEOSBinTopoFunc(spgeom1, spgeom2, byid, id, drop_lower_td, unaryUnion_if_byid_false,  : 
   TopologyException: Input geom 0 is invalid: Self-intersection at or near point 5 5 at 5 5
+In addition: Warning messages:
+1: In RGEOSUnaryPredFunc(spgeom, byid, "rgeos_isvalid") :
+  Self-intersection at or near point 5 5
+2: In gUnion(g1, g2) :
+  Invalid objects found; consider using set_RGEOS_CheckValidity(2L)
 > try(g3 <- gDifference(g1, g2))
+g1 is invalid
 Error in RGEOSBinTopoFunc(spgeom1, spgeom2, byid, id, drop_lower_td, unaryUnion_if_byid_false,  : 
   TopologyException: Input geom 0 is invalid: Self-intersection at or near point 5 5 at 5 5
+In addition: Warning messages:
+1: In RGEOSUnaryPredFunc(spgeom, byid, "rgeos_isvalid") :
+  Self-intersection at or near point 5 5
+2: In gDifference(g1, g2) :
+  Invalid objects found; consider using set_RGEOS_CheckValidity(2L)
 > try(g3 <- gIntersection(g1, g2))
+g1 is invalid
 Error in RGEOSBinTopoFunc(spgeom1, spgeom2, byid, id, drop_lower_td, unaryUnion_if_byid_false,  : 
   TopologyException: Input geom 0 is invalid: Self-intersection at or near point 5 5 at 5 5
+In addition: Warning messages:
+1: In RGEOSUnaryPredFunc(spgeom, byid, "rgeos_isvalid") :
+  Self-intersection at or near point 5 5
+2: In gIntersection(g1, g2) :
+  Invalid objects found; consider using set_RGEOS_CheckValidity(2L)
 > try(g3 <- gSymdifference(g1, g2))
+g1 is invalid
 Error in RGEOSBinTopoFunc(spgeom1, spgeom2, byid, id, drop_lower_td, unaryUnion_if_byid_false,  : 
   TopologyException: Input geom 0 is invalid: Self-intersection at or near point 5 5 at 5 5
+In addition: Warning messages:
+1: In RGEOSUnaryPredFunc(spgeom, byid, "rgeos_isvalid") :
+  Self-intersection at or near point 5 5
+2: In gSymdifference(g1, g2) :
+  Invalid objects found; consider using set_RGEOS_CheckValidity(2L)
 > 
 > # unary operators
 > try(g3 <- gSimplify(g1, tol=0.1))
@@ -73,4 +97,4 @@ In RGEOSUnaryPredFunc(spgeom, byid, "rgeos_isvalid") :
 > 
 > proc.time()
    user  system elapsed 
-  0.328   0.019   0.343 
+  0.279   0.023   0.297 

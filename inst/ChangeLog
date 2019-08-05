@@ -1,3 +1,88 @@
+2019-08-05 08:21  rsbivand
+
+	* DESCRIPTION: tidy
+
+2019-08-05 07:47  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2019-08-05 07:35  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2019-08-05 07:34  rsbivand
+
+	* DESCRIPTION: tidy
+
+2019-08-05 06:55  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2019-08-05 06:55  rsbivand
+
+	* man/topo-bin-gUnion.Rd: tidy
+
+2019-08-04 15:37  rsbivand
+
+	* ChangeLog, inst/ChangeLog: changing checkValidity for GEOS >
+	  3.7.1
+
+2019-08-04 15:35  rsbivand
+
+	* tests/leak_by_exception.Rout.save: changing checkValidity for
+	  GEOS > 3.7.1
+
+2019-08-04 14:55  rsbivand
+
+	* R/rgeos_topology.R, R/rgeos_topology_binary.R,
+	  src/rgeos_R2geos.c: changing checkValidity for GEOS > 3.7.1
+
+2019-08-03 16:06  rsbivand
+
+	* R/rgeos_topology.R, man/topo-bin-gIntersection.Rd,
+	  man/topo-bin-gUnion.Rd, man/utility-functions.Rd: changing
+	  checkValidity for GEOS > 3.7.1
+
+2019-08-03 15:37  rsbivand
+
+	* R/rgeos_topology_binary.R: changing checkValidity for GEOS >
+	  3.7.1
+
+2019-08-03 15:28  rsbivand
+
+	* R/rgeos_topology_binary.R: changing checkValidity for GEOS >
+	  3.7.1
+
+2019-08-03 15:18  rsbivand
+
+	* NAMESPACE, man/utility-functions.Rd: changing checkValidity for
+	  GEOS > 3.7.1
+
+2019-08-03 15:02  rsbivand
+
+	* configure: changing checkValidity for GEOS > 3.7.1
+
+2019-08-03 15:01  rsbivand
+
+	* ChangeLog, inst/ChangeLog: changing checkValidity for GEOS >
+	  3.7.1
+
+2019-08-03 14:59  rsbivand
+
+	* DESCRIPTION, R/AAA.R, R/rgeos_topology_binary.R,
+	  man/topo-bin-gDifference.Rd, man/topo-bin-gIntersection.Rd,
+	  man/topo-bin-gSymdifference.Rd, man/topo-bin-gUnion.Rd,
+	  man/utility-functions.Rd, tests/leak_by_exception.Rout.save:
+	  changing checkValidity for GEOS > 3.7.1
+
+2019-07-31 18:28  rsbivand
+
+	* DESCRIPTION: add pkgdown link
+
+2019-04-24 09:17  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2019-04-24 09:16  rsbivand
 
 	* man/misc-gBuffer.Rd: tidy

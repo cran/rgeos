@@ -87,7 +87,7 @@ GEOSGeom rgeos_convert_R2geos(SEXP env, SEXP obj) {
         return( GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) ng) );
     }
     
-    error("rgeos_convert_R2geos: invalid R class, unable to convert");
+    error("rgeos_convert_R2geos: invalid R class %s, unable to convert", classbuf);
     return(NULL); //should never get here, clears up warning
 } 
 

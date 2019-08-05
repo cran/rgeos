@@ -152,13 +152,29 @@ gUnionCascaded = function(spgeom, id = NULL) {
     res
 }
 
-gUnaryUnion = function(spgeom, id = NULL) {
+gUnaryUnion = function(spgeom, id = NULL, checkValidity=NULL) {
 
     if (version_GEOS0() < "3.3.0")
         stop("No UnaryUnion in this version of GEOS")
     
     if (!inherits(spgeom,"SpatialPolygons"))
         stop("Invalid geometry, may only be applied to polygons")
+
+    if (is.null(checkValidity)) checkValidity <- get_RGEOS_CheckValidity()
+    if(checkValidity > 0L) {
+        val1 <- isTRUE(all(gIsValid(spgeom, byid=TRUE)))
+        nm_1 <- deparse(substitute(spgeom))
+        if (!val1) message(nm_1, " is invalid")
+        if (checkValidity == 1L && !all(val1)) warning("Invalid objects found; consider using set_RGEOS_CheckValidity(2L)")
+        if (checkValidity == 2L) {
+            if (!val1) {
+                spgeom <- gBuffer(spgeom, byid=TRUE, width=0.0)
+                message("Attempting to make ", nm_1, " valid by zero-width buffering")
+                if (!isTRUE(all(gIsValid(spgeom, byid=TRUE)))) stop("Zero width buffer repair of spgeom1 failed")
+            }
+        }
+    }
+
     spgeom <- as(spgeom, "SpatialPolygons")
     if (is.null(id))
         id = rep("1",length(row.names(spgeom)))

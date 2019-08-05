@@ -10,9 +10,9 @@
 \description{Functions for joining intersecting geometries.}
 \usage{
 gUnion(spgeom1, spgeom2, byid=FALSE, id=NULL, drop_lower_td=FALSE,
- unaryUnion_if_byid_false=TRUE, checkValidity=FALSE)
+ unaryUnion_if_byid_false=TRUE, checkValidity=NULL)
 gUnionCascaded(spgeom, id = NULL)
-gUnaryUnion(spgeom, id = NULL)
+gUnaryUnion(spgeom, id = NULL, checkValidity=NULL)
 gLineMerge(spgeom, byid=FALSE, id = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -23,7 +23,7 @@ gLineMerge(spgeom, byid=FALSE, id = NULL)
   \item{drop_lower_td}{default FALSE; if TRUE, objects will be dropped from output GEOMETRYCOLLECTION objects to simplify output if their topological dinension is less than the minimum topological dinension of the input objects.}
   \item{spgeom}{sp Polygon(s) or Line(s) depending on the function used}
   \item{unaryUnion_if_byid_false}{default TRUE; if \code{byid} takes a FALSE in either position, the subgeometries are combined first to avoid possible topology exceptions (change in 0.3-13, previous behaviour did not combine subgeometries, and may be achieved by setting this argument FALSE}
-  \item{checkValidity}{default FALSE; error meesages from GEOS do not say clearly which object fails if a topology exception is encountered. If this argument is TRUE, \code{gIsValid} is run on each in turn in an environment in which object names are available. If objects are invalid, this is reported and those affected are named}
+  \item{checkValidity}{default NULL, integer 0L (no action), 1L (check), 2L (check and try to buffer by zero distance to repair). If NULL, a value set to 0L for GEOS < 3.7.2, 1L for GEOS >= 3.7.2 is read from values assigned on load. Error meesages from GEOS do not say clearly which object fails if a topology exception is encountered. If this argument is > 0L, \code{gIsValid} is run on each in turn}
 }
 
 \details{Returns an sp object with intersecting geometries merged. If geometries do not intersect then both are returned as distinct subgeometries.
@@ -80,5 +80,5 @@ plot(spol1, add=TRUE)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{spatial,union}
+\keyword{spatial}
 

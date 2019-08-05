@@ -45,6 +45,17 @@ get_RGEOS_polyThreshold <- function() {
     get("polyThreshold", envir=.RGEOS_HANDLE)
 }
 
+set_RGEOS_CheckValidity <- function(value) {
+    stopifnot(is.integer(value))
+    stopifnot(length(value) == 1)
+    stopifnot(value >= 0L && value < 3L)
+    assign("CheckValidity", value, envir=.RGEOS_HANDLE)
+}
+
+get_RGEOS_CheckValidity <- function() {
+    get("CheckValidity", envir=.RGEOS_HANDLE)
+}
+
 set_RGEOS_STR <- function(value) {
     stopifnot(is.logical(value))
     stopifnot(length(value) == 1)
@@ -102,6 +113,8 @@ version_sp_linkingTo <- function() {
   assign("warnSlivers", TRUE, envir=.RGEOS_HANDLE)
   assign("returnDense", TRUE, envir=.RGEOS_HANDLE)
   assign("STRsubset", FALSE, envir=.RGEOS_HANDLE)
+  cV <- ifelse(c(version_GEOS0()) < "3.7.2", 0L, 1L)
+  assign("CheckValidity", cV, envir=.RGEOS_HANDLE)
 }
 
 .onAttach <- function(lib, pkg) {

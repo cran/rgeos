@@ -4,7 +4,7 @@
 \description{Function for determining the intersection between the two given geometries}
 \usage{
 gIntersection(spgeom1, spgeom2, byid=FALSE, id=NULL, drop_not_poly,
- drop_lower_td=FALSE, unaryUnion_if_byid_false=TRUE, checkValidity=FALSE)
+ drop_lower_td=FALSE, unaryUnion_if_byid_false=TRUE, checkValidity=NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -14,7 +14,7 @@ gIntersection(spgeom1, spgeom2, byid=FALSE, id=NULL, drop_not_poly,
   \item{drop_not_poly}{deprecated argument, use drop_lower_td}
   \item{drop_lower_td}{default FALSE; if TRUE, objects will be dropped from output GEOMETRYCOLLECTION objects to simplify output if their topological dimension is less than the minimum topological dinension of the input objects.}
   \item{unaryUnion_if_byid_false}{default TRUE; if \code{byid} takes a FALSE in either position, the subgeometries are combined first to avoid possible topology exceptions (change in 0.3-13, previous behaviour did not combine subgeometries, and may be achieved by setting this argument FALSE}
-  \item{checkValidity}{default FALSE; error meesages from GEOS do not say clearly which object fails if a topology exception is encountered. If this argument is TRUE, \code{gIsValid} is run on each in turn in an environment in which object names are available. If objects are invalid, this is reported and those affected are named}
+  \item{checkValidity}{default NULL, integer 0L (no action), 1L (check), 2L (check and try to buffer by zero distance to repair). If NULL, a value set to 0L for GEOS < 3.7.2, 1L for GEOS >= 3.7.2 is read from values assigned on load. Error meesages from GEOS do not say clearly which object fails if a topology exception is encountered. If this argument is > 0L, \code{gIsValid} is run on each in turn}
 }
 
 \details{Returns all spatial intersections as sp objects of the appropriate class. If the geometries do not intersect then an empty geometry is returned.}
@@ -74,13 +74,13 @@ set_RGEOS_dropSlivers(TRUE)
 res2 <- gIntersection(a, b, byid=TRUE, drop_lower_td=TRUE)
 unlist(sapply(slot(res2, "polygons"), function(p) sapply(slot(p, "Polygons"), slot, "area")))
 set_RGEOS_dropSlivers(FALSE)
-oo <- gUnaryUnion(res1, c(rep("1", 3), "2", "3", "4"))
+oo <- gUnaryUnion(res1, c(rep("1", 3), "2", "3", "4"), checkValidity=2L)
 unlist(sapply(slot(oo, "polygons"), function(p) sapply(slot(p, "Polygons"), slot, "area")))
-ooo <- gIntersection(b, oo, byid=TRUE)
+ooo <- gIntersection(b, oo, byid=TRUE, checkValidity=2L)
 gArea(ooo, byid=TRUE)
 unlist(sapply(slot(ooo, "polygons"), function(p) sapply(slot(p, "Polygons"), slot, "area")))
 set_RGEOS_dropSlivers(TRUE)
-ooo <- gIntersection(b, oo, byid=TRUE)
+ooo <- gIntersection(b, oo, byid=TRUE, checkValidity=2L)
 gArea(ooo, byid=TRUE)
 unlist(sapply(slot(ooo, "polygons"), function(p) sapply(slot(p, "Polygons"), slot, "area")))
 set_RGEOS_polyThreshold(oT)
