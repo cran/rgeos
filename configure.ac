@@ -13,7 +13,7 @@ RBIN="${R_HOME}/bin/R"
 # pick all flags for testing from R
 : ${CC=`"${RBIN}" CMD config CC`}
 : ${CXX=`"${RBIN}" CMD config CXX`}
-: ${CPP=`"${RBIN}" CMD config CPP`}
+#: ${CPP=`"${RBIN}" CMD config CPP`}
 : ${CFLAGS=`"${RBIN}" CMD config CFLAGS`}
 : ${CPPFLAGS=`"${RBIN}" CMD config CPPFLAGS`}
 : ${LDFLAGS=`"${RBIN}" CMD config LDFLAGS`}
@@ -102,13 +102,13 @@ if test ${GEOS_VER_DOT} -lt 320 ; then
 else
         AC_MSG_RESULT(yes)
 fi
-AC_MSG_CHECKING([geos version not more than 3.8.0])
-if test ${GEOS_VER_DOT} -gt 380 ; then
-        AC_MSG_RESULT(no)
-        AC_MSG_ERROR([GEOS version number too high])
-else
-        AC_MSG_RESULT(yes)
-fi
+#AC_MSG_CHECKING([geos version not more than 3.8.0])
+#if test ${GEOS_VER_DOT} -gt 380 ; then
+#        AC_MSG_RESULT(no)
+#        AC_MSG_ERROR([GEOS version number too high])
+#else
+#        AC_MSG_RESULT(yes)
+#fi
 
 
 AC_MSG_CHECKING(geos-config clibs)

@@ -58,11 +58,18 @@ RGEOSBinPredFunc = function(spgeom1, spgeom2, byid, func, optparam=NULL) {
         if (!get_RGEOS_DENSE()) {
             if (length(id1) == length(x)) names(x) <- id1
         } else {
-            if (is.null(spgeom2)) id2 = id1
-            else id2 = unique(row.names(spgeom2))
-
-            colnames(x) <- id1
-            rownames(x) <- id2
+# Michael Chirico bug report and fix 2019-08-16
+            if (byid[1L]) colnames(x) <- id1
+            if (byid[2L]) {
+                if (is.null(spgeom2)) id2 <- id1
+                else id2 <- unique(row.names(spgeom2))
+                rownames(x) <- id2
+            } 
+            
+#            if (is.null(spgeom2)) id2 = id1
+#            else id2 = unique(row.names(spgeom2))
+#            colnames(x) <- id1
+#            rownames(x) <- id2
         }
     }
     

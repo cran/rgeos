@@ -1,3 +1,21 @@
+2019-10-02 10:41  rsbivand
+
+	* DESCRIPTION: tidy
+
+2019-09-03 11:41  rsbivand
+
+	* configure, configure.ac: remove R CMD config CPP
+
+2019-08-16 09:49  rsbivand
+
+	* DESCRIPTION, R/rgeos_predicate_binary.R,
+	  man/pred-binary-gIntersects.Rd: bug in dense binary predicate
+	  matrix row names
+
+2019-08-05 08:42  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2019-08-05 08:21  rsbivand
 
 	* DESCRIPTION: tidy

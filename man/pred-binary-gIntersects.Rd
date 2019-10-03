@@ -86,6 +86,20 @@ Both return a conforming logical matrix if \code{byid = TRUE}.
 	plot(pt3,pch=16,col='black',add=TRUE)
 	title(paste("Intersects:",gIntersects(p1,pt3),
 				"\nDisjoint:",gDisjoint(p1,pt3)))
+
+# Michael Chirico bug report and fix 2019-08-16
+	SP1 = SpatialPoints(
+	  cbind(c(.25, .75), c(.75, .25))	)
+	SP2 = SpatialPolygons(list(
+	  Polygons(list(Polygon(cbind(c(0, 0, 1, 1), c(0, 1, 1, 0)))), ID = 'a'),
+	  Polygons(list(Polygon(cbind(c(1, 1, 2, 2), c(1, 2, 2, 1)))), ID = 'b')
+	))
+
+	gIntersects(SP1, SP2, byid = c(TRUE, FALSE))
+	gIntersects(SP1, SP2, byid = c(TRUE, TRUE))
+        gIntersects(SP1, SP2, byid = c(FALSE, TRUE))
+        gIntersects(SP1, SP2, byid = c(FALSE, FALSE))
+        
 }
 \keyword{spatial}
 

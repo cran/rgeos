@@ -1,5 +1,5 @@
-0d53d0a1a4b4fe266814449a80a94abf *ChangeLog
-1ace1cacae069b70cb8cfc8f38cc78d3 *DESCRIPTION
+35dd2570449a09f7d3fb241b46cf6058 *ChangeLog
+230094221bb3110e8f8e294a420097b5 *DESCRIPTION
 63fee8598b58d43d08a6201feafd58b7 *LICENSE.note
 7f551348ffe75b596776c32153c9e4f7 *NAMESPACE
 6970a2845309ee34a4cdc4c6b9a1f5dc *R/AAA.R
@@ -11,7 +11,7 @@ c27f2fc905f25676fc213d233195cc11 *R/over.R
 b5b55e2da65fd1b147f4fa9adb59e6c4 *R/rgeos_buffer.R
 99fa6584f7894147aeaa10054f43dff7 *R/rgeos_linearref.R
 a3403cf524417af5eb4d0654a596f018 *R/rgeos_misc.R
-22104e5e851b176ed73f2df7a49e54f2 *R/rgeos_predicate_binary.R
+150a6cb1c586fb68bf93a37ce3eb2911 *R/rgeos_predicate_binary.R
 05075c9e2bc204db30af7f741884abd5 *R/rgeos_predicate_unary.R
 96f670127773380ac223dcc5580bd861 *R/rgeos_spExtensions_Classes.R
 fa0bb60e604db6d2c4288c8476e76ce9 *R/rgeos_spExtensions_Methods.R
@@ -20,11 +20,11 @@ f37a3eea852cac68636deb934a054bfc *R/rgeos_topology_binary.R
 1ecebecc4c34c067203d5bf91a01e5d0 *R/rgeos_util.R
 6d0eb1653d9c722481408f7ce9d33e3c *R/rgeos_wkt.R
 c3cded853a2388ad53569a7105d1c1e3 *cleanup
-aab451f0bae0a876e29acc67bb1389e2 *configure
-6a3bee36e10ff59d6e72da5061ceae68 *configure.ac
-0d53d0a1a4b4fe266814449a80a94abf *inst/ChangeLog
+6814687614ba81b7d56774003ff78a2a *configure
+f96f27a83cee35dbb1713d9098eb249c *configure.ac
+35dd2570449a09f7d3fb241b46cf6058 *inst/ChangeLog
 3c570969cc1bcbc2fc4a3753b140a0d1 *inst/README
-d901ba605694c84daa9cd1b6fe542076 *inst/SVN_VERSION
+f26db5792fcffb1db9b8759f757c52bf *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -57,7 +57,7 @@ ce5ce9f0e391809912a54812e96f3f89 *man/misc-over.Rd
 03273d4e8ec82269218c3d1f3b377f32 *man/pred-binary-gContains.Rd
 37700662cd67af8ae88f0870c0d41f3e *man/pred-binary-gCrosses.Rd
 fdb49a3cf3ccc518911e95ecaaf4a2f3 *man/pred-binary-gEquals.Rd
-34a32a57b8ed977f52855a6c12849b6c *man/pred-binary-gIntersects.Rd
+507ee97b47863b48cf74d48252cd4144 *man/pred-binary-gIntersects.Rd
 5c5a77bcf4b71c7bc6c30e65e67b82f3 *man/pred-binary-gRelate.Rd
 44672cd00f092a5d6ead274004b6ad01 *man/pred-binary-gTouches.Rd
 d56a8bd17039002543dbcc021de23189 *man/pred-unary-gIsEmpty.Rd
