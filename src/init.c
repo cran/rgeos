@@ -40,6 +40,9 @@ static R_CallMethodDef CallEntries[] = {
 #ifdef HAVE_DELAUNAY
     {"rgeos_delaunaytriangulation", (DL_FUNC) &rgeos_delaunaytriangulation, 4},
 #endif
+#ifdef HAVE_MAKEVALID
+    {"rgeos_makevalid", (DL_FUNC) &rgeos_makevalid, 4},
+#endif
 
     {"rgeos_simplify", (DL_FUNC) &rgeos_simplify, 6},
     {"rgeos_polygonize", (DL_FUNC) &rgeos_polygonize, 5},

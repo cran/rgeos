@@ -80,6 +80,12 @@ SEXP rgeos_delaunaytriangulation(SEXP env, SEXP obj, SEXP tol,
 }
 #endif
 
+#ifdef HAVE_MAKEVALID
+SEXP rgeos_makevalid(SEXP env, SEXP obj, SEXP id, SEXP byid ) {
+    return( rgeos_topologyfunc(env, obj, id, byid, &GEOSMakeValid_r) ); 
+}
+#endif
+
 SEXP rgeos_topologyfunc(SEXP env, SEXP obj, SEXP id, SEXP byid, p_topofunc topofunc) {
 
     GEOSContextHandle_t GEOShandle = getContextHandle(env);

@@ -38,10 +38,12 @@ Under the current implementation this comment is a text string of numbers separa
 
 \code{createPolygonsComment} attempts to create a valid comment for a \code{Polygons} object by assessing which polygons contain a given hole (using \code{\link{gContains}}). Ownership is assigned to the smallest polygon (by area) that contains the given hole. This is not guaranteed to generate valid polygons, always check the resulting objects for validity.
 
-\code{createSPComment} attempts to create valid comments for all or a subset of polygons within a \code{SpatialPolygons} object.
+\code{createSPComment} attempts to create valid comments for all or a subset of polygons within a \code{SpatialPolygons} object. Refer to Bivand et al. (2013), pages 47-48 and 132-133 for a further discussion and \code{\link[sp]{SpatialPolygons}}
 }
 
 \author{Roger Bivand & Colin Rundel}
+
+\references{Roger Bivand, Edzer Pebesma and Virgilio Gomez-Rubio, 2013. Applied spatial data analysis with R, Second edition. Springer, NY. \url{https://asdar-book.org/}}
 
 
 \examples{

@@ -1,6 +1,6 @@
 
-R version 3.6.1 (2019-07-05) -- "Action of the Toes"
-Copyright (C) 2019 The R Foundation for Statistical Computing
+R version 4.0.0 (2020-04-24) -- "Arbor Day"
+Copyright (C) 2020 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -66,8 +66,6 @@ In addition: Warning messages:
 > try(g3 <- gBoundary(g1))
 > try(g3 <- gCentroid(g1))
 > try(g3 <- gPointOnSurface(g1))
-Error in TopologyFunc(spgeom, id, byid, "rgeos_pointonsurface") : 
-  TopologyException: Input geom 1 is invalid: Self-intersection at or near point 5 5 at 5 5
 > 
 > # binary predicates
 > try(res <- gContains(g1, g2))
@@ -97,4 +95,4 @@ In RGEOSUnaryPredFunc(spgeom, byid, "rgeos_isvalid") :
 > 
 > proc.time()
    user  system elapsed 
-  0.279   0.023   0.297 
+  0.348   0.023   0.366 

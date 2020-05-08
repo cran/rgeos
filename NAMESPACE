@@ -58,6 +58,8 @@ export( gEnvelope, gConvexHull, gBoundary, gCentroid,
 		gPointOnSurface, gLineMerge, gUnionCascaded, gUnaryUnion)
 
 export(	gSimplify, gPolygonize, gDelaunayTriangulation, gNode)
+
+export( gMakeValid)
 		
 # GEOS binary topology functions
 export( gDifference, gSymdifference, gIntersection, gUnion)# RSB FIXME

@@ -1,3 +1,61 @@
+2020-05-08 13:17  rsbivand
+
+	* DESCRIPTION: tidy
+
+2020-05-08 13:04  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2020-05-08 13:03  rsbivand
+
+	* src/Makevars.win, tools/winlibs.R: shift Windows binary to GEOS
+	  3.8
+
+2020-05-08 12:44  rsbivand
+
+	* inst/ChangeLog: tidy
+
+2020-05-08 12:44  rsbivand
+
+	* ChangeLog: tidy
+
+2020-05-08 12:43  rsbivand
+
+	* man/topo-unary-gMakeValid.Rd: add gMakeValid for GEOS >= 3.8.0
+
+2020-05-08 12:17  rsbivand
+
+	* ChangeLog, inst/ChangeLog, man/topo-unary-gMakeValid.Rd: tidy
+
+2020-05-08 12:13  rsbivand
+
+	* DESCRIPTION, NAMESPACE, R/rgeos_linearref.R, R/rgeos_topology.R,
+	  configure, man/linref-gInterpolate.Rd, man/linref-gProject.Rd,
+	  src/init.c, src/rgeos.h, src/rgeos_topology.c,
+	  tests/leak_by_exception.Rout.save: add gMakeValid for GEOS >=
+	  3.8.0
+
+2020-03-28 10:46  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2019-11-13 08:04  rsbivand
+
+	* DESCRIPTION, man/comment-functions.Rd: add page number to comment
+	  help page
+
+2019-10-03 07:49  rsbivand
+
+	* configure, configure.ac: tidy
+
+2019-10-03 07:39  rsbivand
+
+	* DESCRIPTION: tidy
+
+2019-10-02 10:42  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2019-10-02 10:41  rsbivand
 
 	* DESCRIPTION: tidy

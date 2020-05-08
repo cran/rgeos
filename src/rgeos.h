@@ -20,12 +20,18 @@
 #define  HAVE_DELAUNAY 1
 #define HAVE_NODE 1
 #define HAVE_NEARESTPOINTS 1
+#define HAVE_MAKEVALID 1
 #endif
 #if GEOS_VERSION_MAJOR == 3
 #if GEOS_VERSION_MINOR >= 4
 #define  HAVE_DELAUNAY 1
 #define HAVE_NODE 1
 #define HAVE_NEARESTPOINTS 1
+#endif
+#endif
+#if GEOS_VERSION_MAJOR == 3
+#if GEOS_VERSION_MINOR >= 8
+#define HAVE_MAKEVALID 1
 #endif
 #endif
 
@@ -133,6 +139,9 @@ SEXP rgeos_simplify(SEXP env, SEXP obj, SEXP tol, SEXP id, SEXP byid, SEXP topPr
 SEXP rgeos_polygonize(SEXP env, SEXP obj, SEXP id, SEXP p4s, SEXP cutEdges);
 #ifdef HAVE_NODE
 SEXP rgeos_node(SEXP env, SEXP obj);
+#endif
+#ifdef HAVE_MAKEVALID
+SEXP rgeos_makevalid(SEXP env, SEXP obj, SEXP id, SEXP byid );
 #endif
 
 // Binary Topology Functions - rgeos_topology_binary.c

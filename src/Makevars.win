@@ -1,14 +1,39 @@
-VERSION = 2.2.3
-COMPILED_BY ?= gcc-4.6.3
-RWINLIB = ../windows/gdal2-$(VERSION)
+#VERSION = 2.2.3
+#COMPILED_BY ?= gcc-4.6.3
+#RWINLIB = ../windows/gdal2-$(VERSION)
+#TARGET = lib$(subst gcc,,$(COMPILED_BY))$(R_ARCH)
+
+#PKG_CPPFLAGS =\
+#	-I$(RWINLIB)/include/geos
+
+#PKG_LIBS = \
+#	-L$(RWINLIB)/$(TARGET) \
+#        -L$(RWINLIB)/lib$(R_ARCH) \
+#	-lgeos_c -lgeos
+
+#all: clean winlibs
+
+#CXX_STD = CXX11
+
+#winlibs:
+#	mkdir -p ../inst
+#	"${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" --vanilla "../tools/winlibs.R" $(VERSION)
+
+#clean:
+#	rm -f $(SHLIB) $(OBJECTS)
+
+#.PHONY: all winlibs clean
+
+VERSION = 3.0.4
+RWINLIB = ../windows/gdal3-$(VERSION)
 TARGET = lib$(subst gcc,,$(COMPILED_BY))$(R_ARCH)
 
 PKG_CPPFLAGS =\
-	-I$(RWINLIB)/include/geos
+	-I$(RWINLIB)/include/geos-3.8.0
 
 PKG_LIBS = \
 	-L$(RWINLIB)/$(TARGET) \
-        -L$(RWINLIB)/lib$(R_ARCH) \
+	-L$(RWINLIB)/lib$(R_ARCH) \
 	-lgeos_c -lgeos
 
 all: clean winlibs
@@ -23,3 +48,4 @@ clean:
 	rm -f $(SHLIB) $(OBJECTS)
 
 .PHONY: all winlibs clean
+
