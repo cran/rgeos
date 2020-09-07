@@ -40,7 +40,7 @@ If \code{hausdorff} is TRUE and \code{densifyFrac} is specified then the geometr
 
 \references{
 Hausdorff Differences:
-\url{http://en.wikipedia.org/wiki/Hausdorff_distance}
+\url{https://en.wikipedia.org/wiki/Hausdorff_distance}
 \url{http://lin-ear-th-inking.blogspot.com/2009/01/computing-geometric-similarity.html}
 }
 

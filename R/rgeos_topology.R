@@ -88,6 +88,8 @@ TopologyFunc = function(spgeom, id, byid, func) {
         x <- .Call("rgeos_unioncascaded", .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos")
     else if (func == "rgeos_makevalid")
         x <- .Call("rgeos_makevalid", .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_coverageunion")
+        x <- .Call("rgeos_coverageunion", .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos")
     else stop("no such function:", func)
 
 
@@ -159,6 +161,14 @@ gMakeValid = function(spgeom, byid=FALSE, id = NULL) {
     if (version_GEOS0() < "3.8.0")
         stop("No UnaryUnion in this version of GEOS")
     return( TopologyFunc(spgeom, id, byid, "rgeos_makevalid") ) 
+
+}
+
+gCoverageUnion = function(spgeom, byid=FALSE, id = NULL) {
+
+    if (version_GEOS0() < "3.8.0")
+        stop("No CoverageUnion in this version of GEOS")
+    return( TopologyFunc(spgeom, id, byid, "rgeos_coverageunion") ) 
 
 }
 

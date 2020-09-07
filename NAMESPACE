@@ -55,7 +55,8 @@ export( bbox2SP )
 export( RGEOSEnvelope, RGEOSConvexHull, RGEOSBoundary, RGEOSGetCentroid, 
 		RGEOSPointOnSurface, RGEOSLineMerge, RGEOSUnionCascaded)
 export( gEnvelope, gConvexHull, gBoundary, gCentroid, 
-		gPointOnSurface, gLineMerge, gUnionCascaded, gUnaryUnion)
+		gPointOnSurface, gLineMerge, gUnionCascaded, gUnaryUnion,
+                gCoverageUnion)
 
 export(	gSimplify, gPolygonize, gDelaunayTriangulation, gNode)
 

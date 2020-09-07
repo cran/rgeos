@@ -20,7 +20,7 @@
 \author{Roger Bivand}
 
 \references{
-\url{http://en.wikipedia.org/wiki/Delaunay_triangulation}
+\url{https://en.wikipedia.org/wiki/Delaunay_triangulation}
 }
 
 

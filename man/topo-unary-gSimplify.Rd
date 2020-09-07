@@ -21,7 +21,7 @@
 
 \references{
 Douglas-Peuker Algorithm:
-\url{http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm}
+\url{https://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm}
 }
 
 

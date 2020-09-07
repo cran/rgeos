@@ -32,6 +32,7 @@
 #if GEOS_VERSION_MAJOR == 3
 #if GEOS_VERSION_MINOR >= 8
 #define HAVE_MAKEVALID 1
+#define HAVE_COVERAGEUNION 1
 #endif
 #endif
 
@@ -130,6 +131,9 @@ SEXP rgeos_unaryunion(SEXP env, SEXP obj, SEXP id, SEXP byid );
 #ifdef HAVE_DELAUNAY
 SEXP rgeos_delaunaytriangulation(SEXP env, SEXP obj, SEXP tol,
  SEXP onlyEdges);
+#endif
+#ifdef HAVE_COVERAGEUNION
+SEXP rgeos_coverageunion(SEXP env, SEXP obj, SEXP id, SEXP byid );
 #endif
 
 typedef GEOSGeometry* (*p_topofunc)(GEOSContextHandle_t, const GEOSGeometry*);

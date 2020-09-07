@@ -140,6 +140,7 @@ LIBS="${LIBS} ${PKG_LIBS}"
 AC_MSG_CHECKING(geos_c.h  presence and usability)
 [cat > geos_test.c << _EOCONF
 #include <stdio.h>
+#include <stdlib.h>
 #include <geos_c.h>
 
 int main() {

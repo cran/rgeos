@@ -86,6 +86,15 @@ SEXP rgeos_makevalid(SEXP env, SEXP obj, SEXP id, SEXP byid ) {
 }
 #endif
 
+
+#ifdef HAVE_COVERAGEUNION
+SEXP rgeos_coverageunion(SEXP env, SEXP obj, SEXP id, SEXP byid ) {
+    return( rgeos_topologyfunc(env, obj, id, byid, &GEOSCoverageUnion_r) ); 
+}
+#endif
+
+
+
 SEXP rgeos_topologyfunc(SEXP env, SEXP obj, SEXP id, SEXP byid, p_topofunc topofunc) {
 
     GEOSContextHandle_t GEOShandle = getContextHandle(env);

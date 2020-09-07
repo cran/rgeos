@@ -1,3 +1,23 @@
+2020-09-01 12:38  rsbivand
+
+	* man/labelpt.Rd, man/misc-gDistance.Rd,
+	  man/topo-unary-gDelaunayTriangulation.Rd,
+	  man/topo-unary-gSimplify.Rd, man/wkt-functions.Rd: tidy
+
+2020-09-01 11:38  rsbivand
+
+	* DESCRIPTION, configure, configure.ac: add stdlib.h declaration to
+	  configure.ac where missing
+
+2020-08-06 09:57  rsbivand
+
+	* DESCRIPTION, NAMESPACE, R/rgeos_topology.R, configure,
+	  src/init.c, src/rgeos.h, src/rgeos_topology.c: add CoverageUnion
+
+2020-05-08 13:18  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2020-05-08 13:17  rsbivand
 
 	* DESCRIPTION: tidy
