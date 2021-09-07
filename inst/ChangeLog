@@ -1,3 +1,132 @@
+2021-09-07 10:26  rsbivand
+
+	* ChangeLog, DESCRIPTION, NEWS.md, R/AAA.R: tidy
+
+2021-07-23 15:39  rsbivand
+
+	* DESCRIPTION, src/Makevars.ucrt, src/Makevars.win: add UCRT tweak
+
+2021-04-27 18:13  rsbivand
+
+	* R/rgeos_util.R: test OverlayNG only >= 3.9.0
+
+2021-04-27 07:39  rsbivand
+
+	* inst/wkts/nc34.wkt, tests/DP_simplify.R,
+	  tests/DP_simplify.Rout.save: revert after GEOS DP regression
+	  fixed
+
+2021-04-27 07:38  rsbivand
+
+	* NEWS.md, R/rgeos_topology.R, man/topo-unary-gSimplify.Rd: revert
+	  after GEOS DP regression fixed
+
+2021-04-25 16:58  rsbivand
+
+	* NEWS.md: gSimplify() use topologyPreserving by defaulr >= 3.10
+
+2021-04-25 16:55  rsbivand
+
+	* R/rgeos_topology.R, man/topo-unary-gSimplify.Rd: gSimplify() use
+	  topologyPreserving by defaulr >= 3.10
+
+2021-04-24 13:51  rsbivand
+
+	* NEWS.md, man/topo-unary-gMakeValid.Rd: use make valid name
+	  changes
+
+2021-04-24 13:30  rsbivand
+
+	* NEWS.md, man/topo-unary-gMakeValid.Rd: use make valid name
+	  changes
+
+2021-04-24 13:22  rsbivand
+
+	* R/rgeos_topology.R, man/topo-unary-gMakeValid.Rd,
+	  src/rgeos_topology.c: use make valid name changes
+
+2021-04-23 13:02  rsbivand
+
+	* man/topo-unary-gMakeValid.Rd: update for www9
+
+2021-04-23 12:24  rsbivand
+
+	* R/rgeos_topology.R, man/topo-unary-gMakeValid.Rd: add keep
+	  collapsed env-var
+
+2021-04-23 09:48  rsbivand
+
+	* NEWS.md, R/rgeos_topology.R, configure,
+	  man/topo-unary-gMakeValid.Rd, src/init.c, src/rgeos.h,
+	  src/rgeos_topology.c: add MakeValidWithParams update
+
+2021-04-21 15:47  rsbivand
+
+	* DESCRIPTION, NEWS.md, R/AAA.R, configure, configure.ac: adapt for
+	  GEOS 3.10.0 version number
+
+2021-02-16 10:09  rsbivand
+
+	* R/rgeos_util.R: fix mistake in OverlayNG detection
+
+2021-02-09 09:18  rsbivand
+
+	* NEWS.md, man/topo-unary-gMaximumInscribedCircle.Rd,
+	  man/topo-unary-gMinumumRotatedRectangle.Rd: tidy
+
+2021-02-09 09:03  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2021-02-09 09:03  rsbivand
+
+	* NAMESPACE, NEWS.md, R/rgeos_topology.R, src/init.c, src/rgeos.h,
+	  src/rgeos_R2geos.c, src/rgeos_R2geosMP.c, src/rgeos_buffer.c,
+	  src/rgeos_coord.c, src/rgeos_geos2R.c, src/rgeos_linearref.c,
+	  src/rgeos_poly2nb.c, src/rgeos_topology.c,
+	  src/rgeos_topology_binary.c, src/rgeos_wkt.c: adapt for GEOS
+	  3.9.0
+
+2021-01-30 13:22  rsbivand
+
+	* NEWS.md: tidy
+
+2021-01-30 13:21  rsbivand
+
+	* ChangeLog, DESCRIPTION, NEWS.md, inst/ChangeLog,
+	  src/Makevars.win: update Windows static GEOS to 3.9.0
+
+2020-12-10 10:17  rsbivand
+
+	* DESCRIPTION, R/rgeos_util.R,
+	  inst/test_cases/OverlayNG_test_c.rds: GEOS 3.9.0 beta2
+
+2020-10-20 10:56  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2020-10-20 09:54  rsbivand
+
+	* R/AAA.R, R/rgeos_util.R, inst/test_cases/OverlayNG_test_a.rds,
+	  inst/test_cases/OverlayNG_test_b.rds, src/rgeos_geos2R.c: add
+	  test for OverlayNG
+
+2020-10-08 14:01  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
+2020-10-08 14:00  rsbivand
+
+	* DESCRIPTION, configure, tests/leak_by_exception.Rout.save: tidy
+
+2020-09-02 08:50  rsbivand
+
+	* man/topo-unary-gCoverageUnion.Rd: tidy
+
+2020-09-01 12:39  rsbivand
+
+	* ChangeLog, inst/ChangeLog: tidy
+
 2020-09-01 12:38  rsbivand
 
 	* man/labelpt.Rd, man/misc-gDistance.Rd,

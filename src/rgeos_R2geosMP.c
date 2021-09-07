@@ -26,7 +26,7 @@ GEOSGeom rgeos_Polygons2MP(SEXP env, SEXP obj) {
             geoms[ii] = rgeos_xy2Pt(env, NUMERIC_POINTER(crdMat)[j],NUMERIC_POINTER(crdMat)[j+n]);
     }
 
-    GEOSGeom GC = GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOINT, geoms, (unsigned int) nn);
+    GEOSGeom GC = GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOINT, geoms, (unsigned int) nn);//VG FIXME
     if (GC == NULL)
         error("rgeos_Polygons2MP: collection not created");
 

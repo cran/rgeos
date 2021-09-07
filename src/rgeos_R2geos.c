@@ -167,14 +167,14 @@ GEOSGeom rgeos_SpatialPoints2geospoint(SEXP env, SEXP obj) {
                 }
                 
                 geoms[j] = (k == 1) ? subgeoms[0] : 
-                            GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOINT, subgeoms, (unsigned int) unqcnt[j]);
+                            GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOINT, subgeoms, (unsigned int) unqcnt[j]);//VG FIXME
                 
                 if (geoms[j] == NULL) 
                     error("rgeos_SpatialPoints2geospoint: collection not created");
             }
             
             GC = (nunq == 1) ? geoms[0] :
-                   GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) nunq);
+                   GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) nunq);//VG FIXME
             
             if (GC == NULL)
                 error("rgeos_SpatialPoints2geospoint: collection not created");
@@ -205,7 +205,7 @@ GEOSGeom rgeos_SpatialLines2geosline(SEXP env, SEXP obj) {
     
     // If there is only one line collection return multiline not GC
     GEOSGeom GC = (nlines == 1) ? geoms[0]
-                    : GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) nlines);
+                    : GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) nlines);//VG FIXME
     if (GC == NULL) {
             GEOSGeom_destroy_r(GEOShandle, GC);
             char* buf = get_errbuf();
@@ -240,7 +240,7 @@ GEOSGeom rgeos_Lines2geosline(SEXP env, SEXP obj) {
     }
     
     GEOSGeom GC = (nlns == 1) ? geoms[0]
-                    : GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTILINESTRING, geoms, (unsigned int) nlns);
+                    : GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTILINESTRING, geoms, (unsigned int) nlns); //VG FIXME
     if (GC == NULL) {
             GEOSGeom_destroy_r(GEOShandle, GC);
             char* buf = get_errbuf();
@@ -268,7 +268,7 @@ GEOSGeom rgeos_SpatialPolygons2geospolygon(SEXP env, SEXP obj) {
         geoms[i] = rgeos_Polygons2geospolygon(env, VECTOR_ELT(pls, i));
     
     GEOSGeom GC = (npls == 1) ? geoms[0]
-                    : GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) npls);
+                    : GEOSGeom_createCollection_r(GEOShandle, GEOS_GEOMETRYCOLLECTION, geoms, (unsigned int) npls);//VG FIXME
     
     UNPROTECT(pc);
     return(GC);
@@ -368,7 +368,7 @@ GEOSGeom rgeos_Polygons_i_2Polygon(SEXP env, SEXP pls, SEXP vec) {
 //Rprintf("rgeos_Polygons_i_2Polygon: n: %d\n", n);
     if (n == 1) {
 //Rprintf("in n==1 branch\n");
-        res = GEOSGeom_createPolygon_r(GEOShandle, pol, NULL, (unsigned int) 0);
+        res = GEOSGeom_createPolygon_r(GEOShandle, pol, NULL, (unsigned int) 0);//VG FIXME
         if (res == NULL) {
             GEOSGeom_destroy_r(GEOShandle, pol);
             GEOSGeom_destroy_r(GEOShandle, res);

@@ -100,7 +100,7 @@ SEXP rgeos_interpolate(SEXP env, SEXP spgeom, SEXP d, SEXP normalized) {
 
         dist = NUMERIC_POINTER(d)[i];
 
-        res_geos = (*interp_fun)(GEOShandle, geom, dist);
+        res_geos = (*interp_fun)(GEOShandle, geom, dist);//VG FIXME
 
         rgeos_Pt2xy(env, res_geos, &x, &y);
 

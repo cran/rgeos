@@ -78,9 +78,13 @@ if test `${GEOS_CONFIG} --version`;
 then
 
         GEOS_VER=`${GEOS_CONFIG} --version`
-        GEOS_VER_DOT=`echo $GEOS_VER | tr -d "." | cut -c1-3`
+        MAJ_VER=`echo $GEOS_VER | cut -d "." -f 1`
+        MIN_VER=`echo $GEOS_VER | cut -d "." -f 2`
+        PAT_VER=`echo $GEOS_VER | cut -d "." -f 3 | cut -c 1`
+#        GEOS_VER_DOT=`echo $GEOS_VER | tr -d "." | cut -c1-3`
 	GEOS_CPPFLAGS=`${GEOS_CONFIG} --cflags`
-        if test ${GEOS_VER_DOT} -lt 370 ; then
+        if test ${MAJ_VER} = 3 && test ${MIN_VER} -lt 7 ; then
+#        if test ${GEOS_VER_DOT} -lt 370 ; then
 	    GEOS_LIBS=`${GEOS_CONFIG} --libs`
         else
 	    GEOS_LIBS=`${GEOS_CONFIG} --clibs`
@@ -96,7 +100,8 @@ fi
 
 AC_MSG_NOTICE([GEOS version: ${GEOS_VER}])
 AC_MSG_CHECKING([geos version at least 3.2.0])
-if test ${GEOS_VER_DOT} -lt 320 ; then
+if test ${MAJ_VER} = 3 && test ${MIN_VER} -lt 2 ; then
+#if test ${GEOS_VER_DOT} -lt 320 ; then
         AC_MSG_RESULT(no)
         AC_MSG_ERROR([Upgrade GEOS to at least 3.2.0])
 else
@@ -110,14 +115,25 @@ fi
 #        AC_MSG_RESULT(yes)
 #fi
 
+TEST_332="no"
+if test ${MAJ_VER} -gt 3 ; then
+TEST_332="yes"
+fi
+if test ${MAJ_VER} = 3 && test ${MIN_VER} -gt 3 ; then
+TEST_332="yes"
+fi
+if test ${MAJ_VER} = 3 && test ${MIN_VER} = 3 && test ${PAT_VER} -ge 2 ; then
+TEST_332="yes"
+fi
 
 AC_MSG_CHECKING(geos-config clibs)
-if test ${GEOS_VER_DOT} -lt 332 ; then
-        AC_MSG_RESULT(no)
-        GEOS_CLIBS="-lgeos_c"
-else        
+if test ${TEST_332} = "yes" ; then
+#if test ${GEOS_VER_DOT} -lt 332 ; then
         GEOS_CLIBS=`${GEOS_CONFIG} --clibs`
         AC_MSG_RESULT(yes)
+else        
+        AC_MSG_RESULT(no)
+        GEOS_CLIBS="-lgeos_c"
 fi
 
 

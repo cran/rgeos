@@ -56,7 +56,8 @@ export( RGEOSEnvelope, RGEOSConvexHull, RGEOSBoundary, RGEOSGetCentroid,
 		RGEOSPointOnSurface, RGEOSLineMerge, RGEOSUnionCascaded)
 export( gEnvelope, gConvexHull, gBoundary, gCentroid, 
 		gPointOnSurface, gLineMerge, gUnionCascaded, gUnaryUnion,
-                gCoverageUnion)
+                gCoverageUnion, gMinumumRotatedRectangle,
+                gMaximumInscribedCircle)
 
 export(	gSimplify, gPolygonize, gDelaunayTriangulation, gNode)
 

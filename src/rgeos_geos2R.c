@@ -4,6 +4,12 @@ SEXP rgeos_convert_geos2R(SEXP env, GEOSGeom geom, SEXP p4s, SEXP id) {
     
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
 
+/*    int norm = GEOSNormalize_r(GEOShandle, geom);
+    if (norm == -1) {
+        GEOSGeom_destroy_r(GEOShandle, geom);
+        error("rgeos_convert_geos2R: normalization failed");
+    }*/
+
     int type = GEOSGeomTypeId_r(GEOShandle, geom);
     int ng = GEOSGetNumGeometries_r(GEOShandle, geom);
     if (ng == -1) error("rgeos_convert_geos2R: invalid number of subgeometries"); 
@@ -65,7 +71,7 @@ SEXP rgeos_convert_geos2R(SEXP env, GEOSGeom geom, SEXP p4s, SEXP id) {
                     Rprintf("output subgeometry %d, row.name: %s\n", i,
                         CHAR(STRING_ELT(id, i)));
                     for (int ii=0; ii<ns; ii++)
-                        Rprintf("subsubgeometry %d: %s\n", ii,
+                        Rprintf("subsubgeometry %d: %s\n", ii,//VG FIXME
                             GEOSGeomType_r(GEOShandle,
                             GEOSGetGeometryN_r(GEOShandle, subgeom, ii)));
                     error("Geometry collections may not contain other geometry collections");
@@ -245,7 +251,7 @@ SEXP rgeos_geospolygon2SpatialPolygons(SEXP env, GEOSGeom geom, SEXP p4s, SEXP I
         if (iarea < polyT) {
             keep[i] = FALSE;
             ing++;
-            if (warnSlivers) warning("%d: %s object %s area %g", ing,
+            if (warnSlivers) warning("%d: %s object %s area %g", ing, //VG FIXME
                 GEOSGeomType_r(GEOShandle, GC), CHAR(STRING_ELT(IDs, i)),
                 iarea);
         }
@@ -313,7 +319,7 @@ SEXP rgeos_geospolygon2SpatialPolygons(SEXP env, GEOSGeom geom, SEXP p4s, SEXP I
     }
 
     if (dropSlivers) {
-        PROTECT(bbox = rgeos_geom2bbox(env,
+        PROTECT(bbox = rgeos_geom2bbox(env,//VG FIXME
             GEOSGeom_createCollection_r(GEOShandle, GEOS_MULTIPOLYGON,
                 bbs, (unsigned int) nng))); pc++;
         
@@ -407,7 +413,7 @@ SEXP rgeos_geospolygon2Polygons(SEXP env, GEOSGeom geom, SEXP ID) {
                 GC);
             if (lr == NULL)
                 error("rgeos_geospolygon2Polygons: exterior ring failure");
-            GEOSArea_r(GEOShandle, GEOSGeom_createPolygon_r(GEOShandle, lr, NULL, (unsigned int) 0), &iiarea);
+            GEOSArea_r(GEOShandle, GEOSGeom_createPolygon_r(GEOShandle, lr, NULL, (unsigned int) 0), &iiarea);//VG FIXME
             if (iiarea < polyT) {
                 keep[kk] = FALSE;
                 if (iiarea > maxiiarea) n_maxarea = kk;

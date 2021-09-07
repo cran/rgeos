@@ -224,3 +224,8 @@ groupID = function(spgeom, ids) {
     
     return(ans)
 }
+
+gIsOverlayNG <- function() {
+    version_GEOS0() >= "3.9.0"
+}
+

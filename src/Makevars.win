@@ -24,16 +24,16 @@
 
 #.PHONY: all winlibs clean
 
-VERSION = 3.0.4
+VERSION = 3.2.1
 RWINLIB = ../windows/gdal3-$(VERSION)
 TARGET = lib$(subst gcc,,$(COMPILED_BY))$(R_ARCH)
 
 PKG_CPPFLAGS =\
-	-I$(RWINLIB)/include/geos-3.8.0
+	-I$(RWINLIB)/include/geos-3.9.0
 
 PKG_LIBS = \
 	-L$(RWINLIB)/$(TARGET) \
-	-L$(RWINLIB)/lib$(R_ARCH) \
+	-L$(RWINLIB)/lib$(R_ARCH)$(CRT) \
 	-lgeos_c -lgeos
 
 all: clean winlibs

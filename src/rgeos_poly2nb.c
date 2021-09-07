@@ -143,7 +143,7 @@ SEXP rgeos_binary_STRtree_query(SEXP env, SEXP obj1, SEXP obj2) {
         if (GC == NULL) {
             error("rgeos_binary_STRtree_query: MP GC[%d] not created", i);
         }
-        if ((bb = GEOSEnvelope_r(GEOShandle, GC)) == NULL) {
+        if ((bb = GEOSEnvelope_r(GEOShandle, GC)) == NULL) {//VG FIXME
             error("rgeos_binary_STRtree_query: envelope [%d] not created", i);
         }
         GEOSGeom_destroy_r(GEOShandle, GC);

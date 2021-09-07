@@ -51,7 +51,7 @@ SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width,
         }
 //Rprintf("i %d k %d curgeom is %s\n", i, k, GEOSGeomType_r(GEOShandle, curgeom));
         
-        thisgeom = GEOSBufferWithStyle_r(GEOShandle, curgeom, 
+        thisgeom = GEOSBufferWithStyle_r(GEOShandle, curgeom,//VG FIXME 
                                          NUMERIC_POINTER(width)[i], 
                                          INTEGER_POINTER(quadsegs)[0], 
                                          INTEGER_POINTER(capStyle)[0], 

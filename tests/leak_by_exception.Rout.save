@@ -1,5 +1,5 @@
 
-R version 4.0.0 (2020-04-24) -- "Arbor Day"
+R version 4.0.2 (2020-06-22) -- "Taking Off Again"
 Copyright (C) 2020 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
@@ -23,8 +23,12 @@ Type 'q()' to quit R.
 > # binary operators
 > try(g3 <- gUnion(g1, g2))
 g1 is invalid
+Input geom 0 is INVALID: Self-intersection at or near point 5 5 (5 5)
+<A>
+POLYGON ((0.0000000000000000 0.0000000000000000, 10.0000000000000000 0.0000000000000000, 0.0000000000000000 10.0000000000000000, 10.0000000000000000 10.0000000000000000, 0.0000000000000000 0.0000000000000000))
+</A>
 Error in RGEOSBinTopoFunc(spgeom1, spgeom2, byid, id, drop_lower_td, unaryUnion_if_byid_false,  : 
-  TopologyException: Input geom 0 is invalid: Self-intersection at or near point 5 5 at 5 5
+  TopologyException: Input geom 0 is invalid: Self-intersection at 5 5
 In addition: Warning messages:
 1: In RGEOSUnaryPredFunc(spgeom, byid, "rgeos_isvalid") :
   Self-intersection at or near point 5 5
@@ -32,8 +36,12 @@ In addition: Warning messages:
   Invalid objects found; consider using set_RGEOS_CheckValidity(2L)
 > try(g3 <- gDifference(g1, g2))
 g1 is invalid
+Input geom 0 is INVALID: Self-intersection at or near point 5 5 (5 5)
+<A>
+POLYGON ((0.0000000000000000 0.0000000000000000, 10.0000000000000000 0.0000000000000000, 0.0000000000000000 10.0000000000000000, 10.0000000000000000 10.0000000000000000, 0.0000000000000000 0.0000000000000000))
+</A>
 Error in RGEOSBinTopoFunc(spgeom1, spgeom2, byid, id, drop_lower_td, unaryUnion_if_byid_false,  : 
-  TopologyException: Input geom 0 is invalid: Self-intersection at or near point 5 5 at 5 5
+  TopologyException: Input geom 0 is invalid: Self-intersection at 5 5
 In addition: Warning messages:
 1: In RGEOSUnaryPredFunc(spgeom, byid, "rgeos_isvalid") :
   Self-intersection at or near point 5 5
@@ -41,8 +49,12 @@ In addition: Warning messages:
   Invalid objects found; consider using set_RGEOS_CheckValidity(2L)
 > try(g3 <- gIntersection(g1, g2))
 g1 is invalid
+Input geom 0 is INVALID: Self-intersection at or near point 5 5 (5 5)
+<A>
+POLYGON ((0.0000000000000000 0.0000000000000000, 10.0000000000000000 0.0000000000000000, 0.0000000000000000 10.0000000000000000, 10.0000000000000000 10.0000000000000000, 0.0000000000000000 0.0000000000000000))
+</A>
 Error in RGEOSBinTopoFunc(spgeom1, spgeom2, byid, id, drop_lower_td, unaryUnion_if_byid_false,  : 
-  TopologyException: Input geom 0 is invalid: Self-intersection at or near point 5 5 at 5 5
+  TopologyException: Input geom 0 is invalid: Self-intersection at 5 5
 In addition: Warning messages:
 1: In RGEOSUnaryPredFunc(spgeom, byid, "rgeos_isvalid") :
   Self-intersection at or near point 5 5
@@ -50,8 +62,12 @@ In addition: Warning messages:
   Invalid objects found; consider using set_RGEOS_CheckValidity(2L)
 > try(g3 <- gSymdifference(g1, g2))
 g1 is invalid
+Input geom 0 is INVALID: Self-intersection at or near point 5 5 (5 5)
+<A>
+POLYGON ((0.0000000000000000 0.0000000000000000, 10.0000000000000000 0.0000000000000000, 0.0000000000000000 10.0000000000000000, 10.0000000000000000 10.0000000000000000, 0.0000000000000000 0.0000000000000000))
+</A>
 Error in RGEOSBinTopoFunc(spgeom1, spgeom2, byid, id, drop_lower_td, unaryUnion_if_byid_false,  : 
-  TopologyException: Input geom 0 is invalid: Self-intersection at or near point 5 5 at 5 5
+  TopologyException: Input geom 0 is invalid: Self-intersection at 5 5
 In addition: Warning messages:
 1: In RGEOSUnaryPredFunc(spgeom, byid, "rgeos_isvalid") :
   Self-intersection at or near point 5 5
@@ -95,4 +111,4 @@ In RGEOSUnaryPredFunc(spgeom, byid, "rgeos_isvalid") :
 > 
 > proc.time()
    user  system elapsed 
-  0.348   0.023   0.366 
+  0.385   0.029   0.427 

@@ -1,14 +1,13 @@
 gSimplify = function(spgeom, tol, topologyPreserve=FALSE) {
 
-	getCutEdges = as.logical(topologyPreserve)
-	if (is.na(topologyPreserve))
-		stop("Invalid value for topologyPreserve, must be logical")
+    stopifnot(is.logical(topologyPreserve))
+    if (is.na(topologyPreserve))
+	stop("Invalid value for topologyPreserve, must be logical")
 	
     if (inherits(spgeom, "SpatialPolygons") && get_do_poly_check() && notAllComments(spgeom)) 
         spgeom <- createSPComment(spgeom)
     id = row.names(spgeom)
-    return( .Call("rgeos_simplify", .RGEOS_HANDLE, spgeom, tol, id, 
-									FALSE, topologyPreserve, PACKAGE="rgeos") )
+    return( .Call("rgeos_simplify", .RGEOS_HANDLE, spgeom, tol, id, FALSE, topologyPreserve, PACKAGE="rgeos") )
 }
 
 gPolygonize = function( splist, getCutEdges=FALSE) {
@@ -56,7 +55,7 @@ gPolygonize = function( splist, getCutEdges=FALSE) {
 TopologyFunc = function(spgeom, id, byid, func) {
     
     stopifnot(is.logical(byid))
-    byid = as.logical(byid)
+#    byid = as.logical(byid)
     if (is.na(byid)) 
         stop("Invalid value for byid, must be logical")
     
@@ -88,8 +87,12 @@ TopologyFunc = function(spgeom, id, byid, func) {
         x <- .Call("rgeos_unioncascaded", .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos")
     else if (func == "rgeos_makevalid")
         x <- .Call("rgeos_makevalid", .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_makevalidparams")
+        x <- .Call("rgeos_makevalidparams", .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos")
     else if (func == "rgeos_coverageunion")
         x <- .Call("rgeos_coverageunion", .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos")
+    else if (func == "rgeos_minimumrotatedrectangle")
+        x <- .Call("rgeos_minimumrotatedrectangle", .RGEOS_HANDLE, spgeom, id, byid, PACKAGE="rgeos")
     else stop("no such function:", func)
 
 
@@ -156,12 +159,41 @@ gUnionCascaded = function(spgeom, id = NULL) {
     res
 }
 
-gMakeValid = function(spgeom, byid=FALSE, id = NULL) {
+gMakeValid = function(spgeom, byid=FALSE, id = NULL, original=NULL, keepCollapsed=NULL) {
 
     if (version_GEOS0() < "3.8.0")
         stop("No UnaryUnion in this version of GEOS")
-    return( TopologyFunc(spgeom, id, byid, "rgeos_makevalid") ) 
-
+    if (version_GEOS0() < "3.10.0") {
+        return( TopologyFunc(spgeom, id, byid, "rgeos_makevalid") ) 
+    } else {
+        if (is.null(original)) {
+            envvar <- Sys.getenv("GEOS_MAKE_VALID")
+            if (nzchar(envvar)) {
+                original <- TRUE
+                if (envvar == "STRUCTURE") original <- FALSE
+            } else {
+                original <- TRUE
+            }
+        }
+        if (original) {
+            keepCollapsed <- FALSE
+        } else {
+            if(is.null(keepCollapsed)) {
+                envvar <- Sys.getenv("GEOS_MAKE_VALID_KEEPCOLLAPSED")
+                if (nzchar(envvar)) {
+                    keepCollapsed <- FALSE
+                    if (envvar == "TRUE") keepCollapsed <- TRUE
+                } else {
+                    keepCollapsed <- FALSE
+                }
+            }
+        } 
+        stopifnot(is.logical(original))
+        stopifnot(is.logical(keepCollapsed))
+        attr(byid, "original") <- original
+        attr(byid, "keepCollapsed") <- keepCollapsed
+        return( TopologyFunc(spgeom, id, byid, "rgeos_makevalidparams") ) 
+    }
 }
 
 gCoverageUnion = function(spgeom, byid=FALSE, id = NULL) {
@@ -171,6 +203,64 @@ gCoverageUnion = function(spgeom, byid=FALSE, id = NULL) {
     return( TopologyFunc(spgeom, id, byid, "rgeos_coverageunion") ) 
 
 }
+
+gMinumumRotatedRectangle <- function(spgeom, byid=FALSE, id = NULL) {
+
+    if (version_GEOS0() < "3.9.0")
+        stop("No MinumumRotatedRectangle in this version of GEOS")
+    return( TopologyFunc(spgeom, id, byid, "rgeos_minimumrotatedrectangle") ) 
+
+}
+
+
+gMaximumInscribedCircle <- function(spgeom, byid=FALSE, id = NULL, tol=.Machine$double.eps^(1/2), checkValidity=NULL) {    
+
+    if (version_GEOS0() < "3.9.0")
+        stop("No MaximumInscribedCircle in this version of GEOS")
+
+    if (!inherits(spgeom,"SpatialPolygons"))
+        stop("Invalid geometry, may only be applied to polygons")
+
+    stopifnot(is.logical(byid))
+    byid = as.logical(byid)
+    if (is.na(byid)) 
+        stop("Invalid value for byid, must be logical")
+
+    if (is.null(checkValidity)) checkValidity <- get_RGEOS_CheckValidity()
+    if(checkValidity > 0L) {
+        val1 <- isTRUE(all(gIsValid(spgeom, byid=TRUE)))
+        nm_1 <- deparse(substitute(spgeom))
+        if (!val1) message(nm_1, " is invalid")
+        if (checkValidity == 1L && !all(val1)) warning("Invalid objects found; consider using set_RGEOS_CheckValidity(2L)")
+        if (checkValidity == 2L) {
+            if (!val1) {
+                spgeom <- gBuffer(spgeom, byid=TRUE, width=0.0)
+                message("Attempting to make ", nm_1, " valid by zero-width buffering")
+                if (!isTRUE(all(gIsValid(spgeom, byid=TRUE)))) stop("Zero width buffer repair of spgeom1 failed")
+            }
+        }
+    }
+
+    spgeom <- as(spgeom, "SpatialPolygons")
+    curids = unique(row.names(spgeom))
+    if (is.null(id)) {
+        if (byid)   id = curids
+        else        id = "1"
+    }
+    id = as.character(id)
+
+#    if (any(is.na(id))) stop("No NAs permitted in id")
+
+    if (get_do_poly_check() && notAllComments(spgeom)) spgeom <- createSPComment(spgeom)
+
+    .Call("rgeos_maximuminscribedcircle", .RGEOS_HANDLE,
+        spgeom, id, byid, tol, PACKAGE="rgeos")
+
+
+#    return( TopologyFunc(spgeom, id, byid, tol, "rgeos_maximuminscribedcircle") ) 
+
+}
+
 
 gUnaryUnion = function(spgeom, id = NULL, checkValidity=NULL) {
 

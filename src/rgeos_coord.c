@@ -35,7 +35,7 @@ GEOSGeom rgeos_crdMat2LineString(SEXP env, SEXP mat, SEXP dim) {
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
 
     GEOSCoordSeq s = rgeos_crdMat2CoordSeq(env, mat, dim);    
-    GEOSGeom gl = GEOSGeom_createLineString_r(GEOShandle, s);
+    GEOSGeom gl = GEOSGeom_createLineString_r(GEOShandle, s);//VG FIXME
     
     if (gl == NULL) {
         GEOSGeom_destroy_r(GEOShandle, gl);
@@ -269,7 +269,7 @@ GEOSGeom rgeos_xy2Pt(SEXP env, double x, double y) {
             error("rgeos_xy2Pt: Y not set");
         }
         
-        gl = GEOSGeom_createPoint_r(GEOShandle, s);
+        gl = GEOSGeom_createPoint_r(GEOShandle, s);//VG FIXME
     }
     
     if (gl == NULL) { // EJP: destroy NULL pointer?

@@ -6,7 +6,7 @@ SEXP rgeos_readWKT(SEXP env, SEXP obj, SEXP p4s, SEXP id) {
     GEOSContextHandle_t GEOShandle = getContextHandle(env);
     
     GEOSWKTReader *reader = GEOSWKTReader_create_r(GEOShandle);
-    GEOSGeom geom = GEOSWKTReader_read_r(GEOShandle,reader, CHAR(STRING_ELT(obj, 0)));
+    GEOSGeom geom = GEOSWKTReader_read_r(GEOShandle,reader, CHAR(STRING_ELT(obj, 0))); //VG FIXME
     GEOSWKTReader_destroy_r(GEOShandle,reader);
     
     if (geom == NULL) error("rgeos_readWKT: unable to read wkt");
