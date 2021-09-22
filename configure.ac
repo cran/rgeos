@@ -1,6 +1,6 @@
 # dnl Process this file with autoconf to produce a configure script.
 define([pkgversion], esyscmd([sh -c "grep Version: DESCRIPTION | cut -d' ' -f2 | tr -d '\n'"]))dnl
-AC_INIT(rgeos, [pkgversion], Roger.Bivand@nhh.no)
+AC_INIT([rgeos],[pkgversion],[Roger.Bivand@nhh.no])
 AC_CONFIG_SRCDIR(src/rgeos.c)
 
 # find R home and set correct compiler + flags
@@ -40,8 +40,7 @@ GEOS_CONFIG="geos-config"
 GEOS_CONFIG_SET="no"
 
 AC_ARG_WITH([geos-config],
-    AC_HELP_STRING([--with-geos-config=GEOS_CONFIG],
-           [the location of geos-config]),
+    AS_HELP_STRING([--with-geos-config=GEOS_CONFIG],[the location of geos-config]),
            [geos_config=$withval])
 if test [ -n "$geos_config" ] ; then
     GEOS_CONFIG_SET="yes"

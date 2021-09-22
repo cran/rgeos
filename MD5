@@ -1,8 +1,8 @@
-ca50c5672365edd776183464dafbe8aa *ChangeLog
-8250d9254bdfd3f4599b2023ef30b3ea *DESCRIPTION
+0eac79abaa6ac070c8273004ff6caa83 *ChangeLog
+b832449faecc51037cfd0de0c0234578 *DESCRIPTION
 63fee8598b58d43d08a6201feafd58b7 *LICENSE.note
 522c2a66eb54d5b8a7b29de95b814103 *NAMESPACE
-2cc7e281573b86a3baef7eb328729cb0 *NEWS.md
+58828cd7b5b776ec007e52f2d4a96a6f *NEWS.md
 ae574846467c6970b64ed95352299fe2 *R/AAA.R
 437f4edbd6c67d561783af7960575283 *R/Rgpc_funcs.R
 fa1203778e80f3a61090cd1e34b24c4b *R/bbox2SP.R
@@ -21,11 +21,11 @@ f37a3eea852cac68636deb934a054bfc *R/rgeos_topology_binary.R
 0561eb63a5ec807919efffc4acc0c3f4 *R/rgeos_util.R
 6d0eb1653d9c722481408f7ce9d33e3c *R/rgeos_wkt.R
 c3cded853a2388ad53569a7105d1c1e3 *cleanup
-b2035e6cda1a4bde6769824ddd2359d7 *configure
-3b6c1b0a893743c802f0e1dd161584d3 *configure.ac
-ca50c5672365edd776183464dafbe8aa *inst/ChangeLog
+8b0f4dd7c2d7666a1184eb36655f10e5 *configure
+9e4edfae7897079371b3008cde997136 *configure.ac
+0eac79abaa6ac070c8273004ff6caa83 *inst/ChangeLog
 3c570969cc1bcbc2fc4a3753b140a0d1 *inst/README
-2f0b1cf366e0c7a3025a955ad7e4143d *inst/SVN_VERSION
+9605c996116832f02064a0ae452f694f *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt

@@ -1,6 +1,10 @@
 # Please note that **rgeos** will be retired by the end of 2023, plan transition to sf functions using GEOS at your earliest convenience.
 
-# Version 0.5-7 (development, rev. 641-675)
+# Version 0.5-8 (development, rev 676-678)
+
+* Run autoupdate on configure.ac to handle obsolete AC_HELP_STRING etc.
+
+# Version 0.5-7 (2021-09-07, rev. 641-675)
 
 * adapt to OverlayNG in GEOS 3.9
 
