@@ -1,8 +1,8 @@
-0eac79abaa6ac070c8273004ff6caa83 *ChangeLog
-b832449faecc51037cfd0de0c0234578 *DESCRIPTION
+4e25c225b824796f92f0026798a06091 *ChangeLog
+114d6b24907146cadcf1479c74d60966 *DESCRIPTION
 63fee8598b58d43d08a6201feafd58b7 *LICENSE.note
 522c2a66eb54d5b8a7b29de95b814103 *NAMESPACE
-58828cd7b5b776ec007e52f2d4a96a6f *NEWS.md
+fe4dd010571bc0cdb80ce04678fd62a3 *NEWS.md
 ae574846467c6970b64ed95352299fe2 *R/AAA.R
 437f4edbd6c67d561783af7960575283 *R/Rgpc_funcs.R
 fa1203778e80f3a61090cd1e34b24c4b *R/bbox2SP.R
@@ -21,11 +21,11 @@ f37a3eea852cac68636deb934a054bfc *R/rgeos_topology_binary.R
 0561eb63a5ec807919efffc4acc0c3f4 *R/rgeos_util.R
 6d0eb1653d9c722481408f7ce9d33e3c *R/rgeos_wkt.R
 c3cded853a2388ad53569a7105d1c1e3 *cleanup
-8b0f4dd7c2d7666a1184eb36655f10e5 *configure
+9eb04a21d07896b2c52ddeccbbce201b *configure
 9e4edfae7897079371b3008cde997136 *configure.ac
-0eac79abaa6ac070c8273004ff6caa83 *inst/ChangeLog
+4e25c225b824796f92f0026798a06091 *inst/ChangeLog
 3c570969cc1bcbc2fc4a3753b140a0d1 *inst/README
-9605c996116832f02064a0ae452f694f *inst/SVN_VERSION
+3377a764543e9bc7bc4591c2ec2d8347 *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -89,7 +89,7 @@ c2e31026e6db37a1b5f2be893e472da8 *man/topo-unary-gSimplify.Rd
 d7fa8335aff1e066307bad016ea352d9 *man/utility-functions.Rd
 888575b59fe82fb2e9754c07d317f48f *man/wkt-functions.Rd
 b9d869d125e18d6f05c1de7ff4e95d9b *src/Makevars.in
-2cec33791efd347cbcb051402d7cf9c4 *src/Makevars.ucrt
+2c861a7dc40da0c43ab1232cca514178 *src/Makevars.ucrt
 9948758ce3c4b066901d5a07f3608ff7 *src/Makevars.win
 d41d8cd98f00b204e9800998ecf8427e *src/dummy.cc
 9aaa18c3df1b6da1e1226f067c3662f4 *src/init.c
@@ -114,7 +114,7 @@ a61694b4d033ea023b4dc14762f05d86 *src/rgeos_wkt.c
 2f71a3fd3908e077be2d96d4b447aca9 *tests/DP_simplify.R
 bf4ebf701ce2e7b7d58bc0a918bd2030 *tests/DP_simplify.Rout.save
 0a35ef68a0533c8fdd016140b47b7df5 *tests/leak_by_exception.R
-7959ffd30c810242c9b041bad93cb27a *tests/leak_by_exception.Rout.save
+37f5808b74776b8c330d305c397df6bb *tests/leak_by_exception.Rout.save
 768a54afc9389fb1b01d6b3973e81f33 *tests/test-all.R
 f28048eb32f3fc4ffdbd2f750b31e535 *tests/testthat/process_testxml.R
 627c975e214e2ff8ec9ff74a7c44a3a7 *tests/testthat/test-jts-xml.R

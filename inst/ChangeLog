@@ -1,3 +1,25 @@
+2021-12-14 13:40  rsbivand
+
+	* [r683] DESCRIPTION, NEWS.md, src/Makevars.ucrt: R4.2 devel
+	  Windows UCRT
+
+2021-11-17 11:35  rsbivand
+
+	* [r682] DESCRIPTION: fixing
+	  https://github.com/r-spatial/sf/issues/1843 (partly)
+
+2021-10-07 11:40  rsbivand
+
+	* [r681] DESCRIPTION, NEWS.md, configure: tidy
+
+2021-10-02 11:47  rsbivand
+
+	* [r680] tests/leak_by_exception.Rout.save: tidy
+
+2021-09-21 20:28  rsbivand
+
+	* [r679] ChangeLog, NEWS.md, configure, inst/ChangeLog: tidy
+
 2021-09-14 10:27  rsbivand
 
 	* [r678] DESCRIPTION, configure.ac: run autoupdate

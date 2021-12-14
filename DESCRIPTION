@@ -1,7 +1,7 @@
 Package: rgeos
 Title: Interface to Geometry Engine - Open Source ('GEOS')
-Version: 0.5-8
-Date: 2021-09-14
+Version: 0.5-9
+Date: 2021-12-14
 Depends: R (>= 3.3.0), methods, sp (>= 1.1-0)
 Imports: utils, stats, graphics
 LinkingTo: sp
@@ -19,15 +19,14 @@ Authors@R: c(
         person("Martin", "Davis", role = c("cph", "ctb")),
         person("Sandro", "Santilli", role = c("cph", "ctb")))
 License: GPL (>= 2)
-URL: https://r-forge.r-project.org/projects/rgeos/
-        https://trac.osgeo.org/geos/
+URL: https://r-forge.r-project.org/projects/rgeos/ https://libgeos.org
         http://rgeos.r-forge.r-project.org/index.html
 SystemRequirements: GEOS (>= 3.2.0); for building from source: GEOS
-        from http://trac.osgeo.org/geos/; GEOS OSX frameworks built by
-        William Kyngesburye at http://www.kyngchaos.com/ may be used
-        for source installs on OSX.
+        from https://libgeos.org; GEOS OSX frameworks built by William
+        Kyngesburye at http://www.kyngchaos.com/ may be used for source
+        installs on OSX.
 RoxygenNote: 6.1.1
-Packaged: 2021-09-21 20:29:02 UTC; rsb
+Packaged: 2021-12-14 14:05:51 UTC; rsb
 Author: Roger Bivand [cre, aut] (<https://orcid.org/0000-0003-2392-6140>),
   Colin Rundel [aut],
   Edzer Pebesma [ctb],
@@ -38,4 +37,4 @@ Author: Roger Bivand [cre, aut] (<https://orcid.org/0000-0003-2392-6140>),
   Sandro Santilli [cph, ctb]
 Maintainer: Roger Bivand <Roger.Bivand@nhh.no>
 Repository: CRAN
-Date/Publication: 2021-09-22 09:40:06 UTC
+Date/Publication: 2021-12-15 00:50:02 UTC
