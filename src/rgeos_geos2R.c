@@ -105,7 +105,7 @@ SEXP rgeos_convert_geos2R(SEXP env, GEOSGeom geom, SEXP p4s, SEXP id) {
 
                     PROTECT(id = NEW_CHARACTER(m)); pc++;
                     for (int i=0;i<m;i++) {
-                        sprintf(buf,"%d",i);
+                        snprintf(buf, sizeof(buf), "%d", i);
                         SET_STRING_ELT(id, i, COPY_TO_USER_STRING(buf));
                     }
                 }

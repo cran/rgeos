@@ -1,3 +1,12 @@
+2022-03-24 11:59  rsbivand
+
+	* [r685] DESCRIPTION, NEWS.md, src/Makevars.win:
+	  https://github.com/r-spatial/sf/pull/1919
+
+2021-12-14 14:02  rsbivand
+
+	* [r684] ChangeLog, NEWS.md, inst/ChangeLog: tidy
+
 2021-12-14 13:40  rsbivand
 
 	* [r683] DESCRIPTION, NEWS.md, src/Makevars.ucrt: R4.2 devel

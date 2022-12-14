@@ -1,4 +1,5 @@
 RGEOSBinTopoFunc = function(spgeom1, spgeom2, byid, ids=NULL, drop_lower_td=FALSE, unaryUnion_if_byid_false=TRUE, func) {
+  .Deprecated("", package="rgeos", msg="GEOS support is provided by the sf and terra packages among others")
     stopifnot(is.logical(byid))
     stopifnot(is.logical(drop_lower_td))
     stopifnot(length(drop_lower_td) == 1)

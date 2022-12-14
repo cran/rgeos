@@ -126,7 +126,7 @@ checkP4S = function(p4s) {
     if (length(p4s) != 1)
         stop("proj4string must be of length 1")
     
-    if ( class(p4s) != "CRS") {
+    if ( !inherits(p4s, "CRS")) {
         stop("proj4string has invalid class")
     }
     

@@ -3,6 +3,7 @@
 gBuffer = function(spgeom, byid=FALSE, id=NULL, width=1.0, quadsegs=5, 
                      capStyle="ROUND", joinStyle="ROUND", mitreLimit=1.0) {
 
+  .Deprecated("", package="rgeos", msg="GEOS support is provided by the sf and terra packages among others")
     stopifnot(is.logical(byid))
     if (!is.na(is.projected(spgeom)) && !is.projected(spgeom))
      warning("Spatial object is not projected; GEOS expects planar coordinates")

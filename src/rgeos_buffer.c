@@ -19,7 +19,7 @@ SEXP rgeos_buffer(SEXP env, SEXP obj, SEXP byid, SEXP id, SEXP width,
             PROTECT(n_id = NEW_CHARACTER(n)); pc++;
             char str[15];
             for (i=0; i < n; i++) {
-                sprintf(str, "%d", i+R_OFFSET);
+                snprintf(str, sizeof(str), "%d", i+R_OFFSET);
 //Rprintf("i %d, str %s\n", i, str);
                 SET_STRING_ELT(n_id, i, COPY_TO_USER_STRING(str));
             }

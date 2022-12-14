@@ -1,6 +1,6 @@
 
-R version 4.1.1 (2021-08-10) -- "Kick Things"
-Copyright (C) 2021 The R Foundation for Statistical Computing
+R Under development (unstable) (2022-12-10 r83428) -- "Unsuffered Consequences"
+Copyright (C) 2022 The R Foundation for Statistical Computing
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -30,6 +30,7 @@ In addition: Warning messages:
   Self-intersection at or near point 5 5
 2: In gUnion(g1, g2) :
   Invalid objects found; consider using set_RGEOS_CheckValidity(2L)
+3: GEOS support is provided by the sf and terra packages among others 
 > try(g3 <- gDifference(g1, g2))
 g1 is invalid
 Error in RGEOSBinTopoFunc(spgeom1, spgeom2, byid, id, drop_lower_td, unaryUnion_if_byid_false,  : 
@@ -39,6 +40,7 @@ In addition: Warning messages:
   Self-intersection at or near point 5 5
 2: In gDifference(g1, g2) :
   Invalid objects found; consider using set_RGEOS_CheckValidity(2L)
+3: GEOS support is provided by the sf and terra packages among others 
 > try(g3 <- gIntersection(g1, g2))
 g1 is invalid
 Error in RGEOSBinTopoFunc(spgeom1, spgeom2, byid, id, drop_lower_td, unaryUnion_if_byid_false,  : 
@@ -48,6 +50,7 @@ In addition: Warning messages:
   Self-intersection at or near point 5 5
 2: In gIntersection(g1, g2) :
   Invalid objects found; consider using set_RGEOS_CheckValidity(2L)
+3: GEOS support is provided by the sf and terra packages among others 
 > try(g3 <- gSymdifference(g1, g2))
 g1 is invalid
 Error in RGEOSBinTopoFunc(spgeom1, spgeom2, byid, id, drop_lower_td, unaryUnion_if_byid_false,  : 
@@ -57,6 +60,7 @@ In addition: Warning messages:
   Self-intersection at or near point 5 5
 2: In gSymdifference(g1, g2) :
   Invalid objects found; consider using set_RGEOS_CheckValidity(2L)
+3: GEOS support is provided by the sf and terra packages among others 
 > 
 > # unary operators
 > try(g3 <- gSimplify(g1, tol=0.1))
@@ -95,4 +99,4 @@ In RGEOSUnaryPredFunc(spgeom, byid, "rgeos_isvalid") :
 > 
 > proc.time()
    user  system elapsed 
-  0.350   0.035   0.376 
+  0.319   0.035   0.347 

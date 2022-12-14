@@ -131,7 +131,7 @@ version_sp_linkingTo <- function() {
     ", (SVN revision ", svn_version, ")\n", sep="")
   Smess <- paste(Smess, "GEOS runtime version:",
     version_GEOS(), "\n")
-  Smess <- paste(Smess, "Please note that rgeos will be retired by the end of 2023,\nplan transition to sf functions using GEOS at your earliest convenience.\n")
+  Smess <- paste(Smess, "Please note that rgeos will be retired during 2023,\nplan transition to sf functions using GEOS at your earliest convenience.\n")
   if (gIsOverlayNG()) Smess <- paste(Smess, "GEOS using OverlayNG\n")
   splVersion <- version_sp_linkingTo()
   Smess <- paste(Smess, "Linking to sp version:", splVersion, "\n")

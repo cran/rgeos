@@ -1,5 +1,4 @@
 \name{gUnion}
-\alias{gUnion}
 \alias{gUnaryUnion}
 \alias{gUnionCascaded}
 \alias{RGEOSUnionCascaded}
@@ -9,26 +8,19 @@
 \title{Geometry Union}
 \description{Functions for joining intersecting geometries.}
 \usage{
-gUnion(spgeom1, spgeom2, byid=FALSE, id=NULL, drop_lower_td=FALSE,
- unaryUnion_if_byid_false=TRUE, checkValidity=NULL)
 gUnionCascaded(spgeom, id = NULL)
 gUnaryUnion(spgeom, id = NULL, checkValidity=NULL)
 gLineMerge(spgeom, byid=FALSE, id = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{spgeom1, spgeom2}{sp objects as defined in package sp}
   \item{byid}{Logical vector determining if the function should be applied across ids (TRUE) or the entire object (FALSE) for spgeom1 and spgeom2}
   \item{id}{Character vector defining id labels for the resulting geometries, if unspecified returned geometries will be labeled based on their parent geometries' labels; it may contain NA values for input objects not included in the union; it should define the memberships of the output Polygons objects}
-  \item{drop_lower_td}{default FALSE; if TRUE, objects will be dropped from output GEOMETRYCOLLECTION objects to simplify output if their topological dinension is less than the minimum topological dinension of the input objects.}
   \item{spgeom}{sp Polygon(s) or Line(s) depending on the function used}
-  \item{unaryUnion_if_byid_false}{default TRUE; if \code{byid} takes a FALSE in either position, the subgeometries are combined first to avoid possible topology exceptions (change in 0.3-13, previous behaviour did not combine subgeometries, and may be achieved by setting this argument FALSE}
   \item{checkValidity}{default NULL, integer 0L (no action), 1L (check), 2L (check and try to buffer by zero distance to repair). If NULL, a value set to 0L for GEOS < 3.7.2, 1L for GEOS >= 3.7.2 is read from values assigned on load. Error meesages from GEOS do not say clearly which object fails if a topology exception is encountered. If this argument is > 0L, \code{gIsValid} is run on each in turn}
 }
 
-\details{Returns an sp object with intersecting geometries merged. If geometries do not intersect then both are returned as distinct subgeometries.
-
-gUnionCascaded expects a single sp object of class SpatialPolygons with subgeometries which it unions together. gUnionCascaded can only dissolve MultiPolygon objects, so GeometryCollection objects to be dissolved, here a SpatialPolygons object, must be flattened a Polygons object; if GEOS version 3.3.0 is available, use gUnaryUnion.
+\details{gUnionCascaded expects a single sp object of class SpatialPolygons with subgeometries which it unions together. gUnionCascaded can only dissolve MultiPolygon objects, so GeometryCollection objects to be dissolved, here a SpatialPolygons object, must be flattened a Polygons object; if GEOS version 3.3.0 is available, use gUnaryUnion.
 
 gUnaryUnion expects a single sp object of class SpatialPolygons with subgeometries which it unions together; introduced in GEOS version 3.3.0, and handles GeometryCollection objects. If the id argument is used, it should be a character vector defining the memberships of the output Polygons objects, equal in length to the length of the polygons slot of spgeom.
 

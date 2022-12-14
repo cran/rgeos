@@ -94,7 +94,7 @@ static void __warningHandler(const char *fmt, ...) {
     char buf[BUFSIZ], *p;
     va_list ap;
     va_start(ap, fmt);
-    vsprintf(buf, fmt, ap);
+    vsnprintf(buf, sizeof(buf), fmt, ap);
     va_end(ap);
     p = buf + strlen(buf) - 1;
     if(strlen(buf) > 0 && *p == '\n') *p = '\0';

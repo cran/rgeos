@@ -183,7 +183,7 @@ SEXP rgeos_delaunaytriangulation(SEXP env, SEXP obj, SEXP tol,
 
     PROTECT(id = NEW_CHARACTER(ng)); pc++;
     for (int i=0; i<ng; i++) {
-        sprintf(buf, "%d", i);
+        snprintf(buf, sizeof(buf), "%d", i);
         SET_STRING_ELT(id, i, COPY_TO_USER_STRING(buf));
     }
 
@@ -331,7 +331,7 @@ SEXP rgeos_node(SEXP env, SEXP obj) {
 
     PROTECT(id = NEW_CHARACTER(ng)); pc++;
     for (int i=0; i<ng; i++) {
-        sprintf(buf, "%d", i);
+        snprintf(buf, sizeof(buf), "%d", i);
         SET_STRING_ELT(id, i, COPY_TO_USER_STRING(buf));
     }
 

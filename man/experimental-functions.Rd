@@ -38,8 +38,8 @@ a1
 nc1 <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1],
  proj4string=CRS("+proj=longlat +datum=NAD27"))
 a2 <- gUnarySTRtreeQuery(nc1)
-a3 <- poly_findInBoxGEOS(nc1)
-all.equal(a2, a3)
+#a3 <- poly_findInBoxGEOS(nc1)
+#all.equal(a2, a3)
 a2
 pl <- slot(nc1, "polygons")[[4]]
 a5 <- gUnarySTRtreeQuery(pl)
