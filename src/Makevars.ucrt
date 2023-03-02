@@ -31,7 +31,7 @@ PKG_LIBS = \
 
 all: clean 
 
-CXX_STD = CXX11
+#CXX_STD = CXX11
 
 clean:
 	rm -f $(SHLIB) $(OBJECTS)

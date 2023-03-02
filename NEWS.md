@@ -1,6 +1,10 @@
 # Please note that **rgeos** will be retired by the end of 2023, plan transition to sf functions using GEOS at your earliest convenience.
 
-# Version 0.6-1 (development, rev 685-)
+# Version 0.6-2 (development, rev 693-)
+
+* remove CXX11 requirement
+
+# Version 0.6-1 (2022-12-14, rev 685-692)
 
 * commence deprecation
 

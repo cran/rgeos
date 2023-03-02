@@ -23,7 +23,7 @@ writeWKT converts an sp geometry object to a GEOS C object which is then written
 
 \references{Additional information on WKT Simple Feature Specification can be found at the following locations:
 
-\url{https://www.ogc.org/standards/sfs}
+\url{https://www.ogc.org/standard/sfs/}
 
 \url{https://en.wikipedia.org/wiki/Well-known_text}
 
