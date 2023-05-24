@@ -1,6 +1,10 @@
-# Please note that **rgeos** will be retired by the end of 2023, plan transition to sf functions using GEOS at your earliest convenience.
+# Please note that **rgeos** will be retired during October 2023, plan transition to **sf** or **terra** functions using GEOS at your earliest convenience (see https://r-spatial.org/r/2023/05/15/evolution4.html and earlier blogs for guidance).
 
-# Version 0.6-2 (development, rev 693-)
+# Version 0.6-3 (development, rev 694-)
+
+* Make retirement in October 2023 explicit, move package start-up messages to load from attach
+
+# Version 0.6-2 (2023-03-02, rev 693)
 
 * remove CXX11 requirement
 

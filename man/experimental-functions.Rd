@@ -30,11 +30,6 @@ xx <- readShapeSpatial(system.file("shapes/fylk-val-ll.shp",
  package="maptools")[1], proj4string=CRS("+proj=longlat +datum=WGS84"))
 a0 <- gUnarySTRtreeQuery(xx)
 a0
-bbxx <- bbox(xx)
-wdb_lines <- system.file("share/wdb_borders_c.b", package="maptools")
-xxx <- Rgshhs(wdb_lines, xlim=bbxx[1,], ylim=bbxx[2,])$SP
-a1 <- gBinarySTRtreeQuery(xx, xxx)
-a1
 nc1 <- readShapePoly(system.file("shapes/sids.shp", package="maptools")[1],
  proj4string=CRS("+proj=longlat +datum=NAD27"))
 a2 <- gUnarySTRtreeQuery(nc1)

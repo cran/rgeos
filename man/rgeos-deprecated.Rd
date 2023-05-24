@@ -109,17 +109,6 @@ plot(d,col='red',pbg='white')
 
 # Empty geometry since y is completely contained with x
 d2 = gDifference(y,x)
-if (require(maptools)) {
-xx <- readShapeSpatial(system.file("shapes/fylk-val-ll.shp", package="maptools")[1],
- proj4string=CRS("+proj=longlat +datum=WGS84"))
-bbxx <- bbox(xx)
-wdb_lines <- system.file("share/wdb_borders_c.b", package="maptools")
-xxx <- Rgshhs(wdb_lines, xlim=bbxx[1,], ylim=bbxx[2,])$SP
-res <-gIntersection(xx, xxx)
-plot(xx, axes=TRUE)
-plot(xxx, lty=2, add=TRUE)
-plot(res, add=TRUE, pch=16,col='red')
-}
 pol <- readWKT(paste("POLYGON((-180 -20, -140 55, 10 0, -140 -60, -180 -20),",
  "(-150 -20, -100 -10, -110 20, -150 -20))"))
 library(sp)

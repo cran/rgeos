@@ -1,9 +1,9 @@
 f679d5a621cf0cb4717ae8c3c2e3bef4 *ChangeLog
-42d740c7a7d09cbdeec4400d2068efb4 *DESCRIPTION
+af42c6d84937069d133841cc1b29c6b0 *DESCRIPTION
 63fee8598b58d43d08a6201feafd58b7 *LICENSE.note
 d5248edab392a8b905063f745e040ec4 *NAMESPACE
-e2cc03aeeee571f33640c8e94c49cc89 *NEWS.md
-4150c45d25e24635d8b5b8c566e38b05 *R/AAA.R
+116e456e993ea0a6d6a1bcb63e927440 *NEWS.md
+17dadb63cb6b4a8f6484f16d5111b9c6 *R/AAA.R
 437f4edbd6c67d561783af7960575283 *R/Rgpc_funcs.R
 fa1203778e80f3a61090cd1e34b24c4b *R/bbox2SP.R
 d97a5d4ab563a8c66bfd93dec1449adc *R/gpc_geos.R
@@ -21,11 +21,11 @@ d93133e3c7d7173580c0fe1242dcc1c8 *R/rgeos_topology.R
 18dfe68c4d93ef1258cec15654e05737 *R/rgeos_util.R
 6d0eb1653d9c722481408f7ce9d33e3c *R/rgeos_wkt.R
 c3cded853a2388ad53569a7105d1c1e3 *cleanup
-55bf74f8e36438785127a248bb2a6bd5 *configure
+9b5a8b2e9856b4e1c271e8342c2c4e74 *configure
 9e4edfae7897079371b3008cde997136 *configure.ac
 f679d5a621cf0cb4717ae8c3c2e3bef4 *inst/ChangeLog
 3c570969cc1bcbc2fc4a3753b140a0d1 *inst/README
-087d72360e588012e0accf3c08c8928a *inst/SVN_VERSION
+46a7cca16366fc9d6a92ee77d0f2ee9c *inst/SVN_VERSION
 f330d6b1d9127bc82881f33dfe6e18bd *inst/poly-ex-gpc/ex-poly1.txt
 734b9a203116bec1dd173e7f8a50e07a *inst/poly-ex-gpc/ex-poly2.txt
 bd20bfd0827e13fa7ca4a022810e8962 *inst/poly-ex-gpc/hole-poly.txt
@@ -47,7 +47,7 @@ aed22fcecc8afa3757bfd9b4fe50b2a4 *man/class-gpc.poly.nohole.Rd
 c7b2f59109cc485be1daae3e4e7e4eb1 *man/comment-functions.Rd
 8c28c48df99e566a47a72cfca9449edf *man/constructor-SpatialCollections.Rd
 a4f8b6f11e2595120e19822213c04368 *man/constructor-SpatialRings.Rd
-b18b027ed0dff0e11a9f4e577cd48e0f *man/experimental-functions.Rd
+9111e4e2c3c9126cc9ed6c3e136c3b6a *man/experimental-functions.Rd
 9b8dad2cab20bd54dd7bf27f1383f7ca *man/gpc-new-generics.Rd
 9daa96192eadb9b1f430ff76cf9b795f *man/gpc-polyfile.Rd
 800ef0429558430406e3714c3ae4e9ba *man/labelpt.Rd
@@ -68,7 +68,7 @@ d56a8bd17039002543dbcc021de23189 *man/pred-unary-gIsEmpty.Rd
 47f95df67ce2465ec0635518f9a5cc6a *man/pred-unary-gIsRing.Rd
 14522b6206db0c56b0bb8f0e61af4fdb *man/pred-unary-gIsSimple.Rd
 38a68cd3e2aca689b69c3a51622df5da *man/pred-unary-gIsValid.Rd
-af8ba09e182b1d04f3e215425a0d085a *man/rgeos-deprecated.Rd
+6681de4a4451ce7d5a360fc2e6e5a97d *man/rgeos-deprecated.Rd
 27c39ed58f8f2c85524cc417beaf13a9 *man/topo-bin-gUnion.Rd
 b05955696472d44437c45f50812907f0 *man/topo-unary-gBoundary.Rd
 a16d91c0e3066d6f64c0483ac1aac007 *man/topo-unary-gCentroid.Rd

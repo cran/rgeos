@@ -95,12 +95,7 @@ version_sp_linkingTo <- function() {
     .Call("rgeos_sp_linkingTo_version")
 }
 
-.onLoad <- function(lib, pkg) {
-#  require(methods, quietly = TRUE, warn.conflicts = FALSE)
-#  require("sp")
-#  require("stringr")
-#  library.dynam('rgeos', pkg, lib)
-
+load_stuff <- function() {
   set_RGEOS_HANDLE(init_RGEOS())
   if (!isTRUE(all.equal(version_GEOS(TRUE), version_GEOS(FALSE),
     check.attributes=FALSE))) {
@@ -118,9 +113,6 @@ version_sp_linkingTo <- function() {
   assign("STRsubset", FALSE, envir=.RGEOS_HANDLE)
   cV <- ifelse(c(version_GEOS0()) < "3.7.2", 0L, 1L)
   assign("CheckValidity", cV, envir=.RGEOS_HANDLE)
-}
-
-.onAttach <- function(lib, pkg) {
   fn <- system.file("SVN_VERSION", package="rgeos")
   if (file.exists(fn)) {
     svn_version <- scan(fn, what=character(1), sep="\n", quiet=TRUE)
@@ -131,7 +123,7 @@ version_sp_linkingTo <- function() {
     ", (SVN revision ", svn_version, ")\n", sep="")
   Smess <- paste(Smess, "GEOS runtime version:",
     version_GEOS(), "\n")
-  Smess <- paste(Smess, "Please note that rgeos will be retired during 2023,\nplan transition to sf functions using GEOS at your earliest convenience.\n")
+  Smess <- paste(Smess, "Please note that rgeos will be retired during October 2023,\nplan transition to sf or terra functions using GEOS at your earliest convenience.\nSee https://r-spatial.org/r/2023/05/15/evolution4.html for details.\n")
   if (gIsOverlayNG()) Smess <- paste(Smess, "GEOS using OverlayNG\n")
   splVersion <- version_sp_linkingTo()
   Smess <- paste(Smess, "Linking to sp version:", splVersion, "\n")
@@ -142,6 +134,14 @@ version_sp_linkingTo <- function() {
 
   Smess <- paste(Smess, "Polygon checking:", get_do_poly_check(), "\n")
   packageStartupMessage(Smess, appendLF = TRUE)
+
+}
+
+.onLoad <- function(lib, pkg) {
+  load_stuff()
+}
+
+.onAttach <- function(lib, pkg) {
 }
 
 .onUnload <- function(libpath) {
