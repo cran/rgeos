@@ -31,7 +31,7 @@ See references for additional details.
 
 \references{
 Documentation of Intersection Matrix Patterns:
-\url{http://docs.geotools.org/stable/userguide/library/jts/dim9.html}
+\url{https://docs.geotools.org/stable/userguide/library/jts/dim9.html}
 }
 
 \author{Roger Bivand & Colin Rundel}

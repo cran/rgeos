@@ -1,6 +1,10 @@
 # Please note that **rgeos** will be retired during October 2023, plan transition to **sf** or **terra** functions using GEOS at your earliest convenience (see https://r-spatial.org/r/2023/05/15/evolution4.html and earlier blogs for guidance).
 
-# Version 0.6-3 (development, rev 694-)
+# Version 0.6-4 (development, rev 698-)
+
+* GEOS 3.12.0 beta WKTReader: Throw exception if WKT contains extra text after end of geometry (#1095, Dan Baston) uncovered error in WKT input in test.
+
+# Version 0.6-3 (2023-05-24, rev 694-697)
 
 * Make retirement in October 2023 explicit, move package start-up messages to load from attach
 

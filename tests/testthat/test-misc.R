@@ -50,7 +50,7 @@ test_that("gNearestPoints works with different geometries as inputs", {
   g2 <- readWKT("MULTIPOLYGON(((34 54, 60 34, 60 54, 34 54),
                                (50 50, 52 50, 52 48, 50 48, 50 50)),
                               ((100 100, 150 100, 150 150, 100 150, 100 100),
-                               (120 120, 120 130, 130 130, 130 120, 120 120))))")
+                               (120 120, 120 130, 130 130, 130 120, 120 120)))")
   expect_identical(coord(gNearestPoints(g1, g2)),
                    coord(readWKT("MULTIPOINT(35 60, 35 54)")))
   expect_identical(gDistance(g1, g2), 6)
